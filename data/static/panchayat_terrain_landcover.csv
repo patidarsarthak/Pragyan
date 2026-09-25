@@ -1,0 +1,240 @@
+GPCODE,GPNAME,BLOCK,DISTRICT,STATE,LATITUDE,LONGITUDE,ELEVATION_M,SLOPE_DEG,LANDCOVER_CLASS,LANDCOVER_NAME
+111722,BAGDAHA,Baghmara,Dhanbad,Jharkhand,23.75,86.151,231.0,3.796,13,Built-up / Urban settlements
+111723,BAGRA,Baghmara,Dhanbad,Jharkhand,23.751,86.175333,198.0,3.797,12,Cropland
+111724,BAHIYARDIH,Baghmara,Dhanbad,Jharkhand,23.752,86.196667,188.0,3.798,12,Cropland
+111725,BANSJORA,Baghmara,Dhanbad,Jharkhand,23.75,86.221,203.0,3.796,12,Cropland
+111726,BARORA,Baghmara,Dhanbad,Jharkhand,23.751,86.245333,215.0,3.797,12,Cropland
+111727,BEHRAKUDAR,Baghmara,Dhanbad,Jharkhand,23.752,86.266667,208.0,3.798,12,Cropland
+111728,BHIMKANALI,Baghmara,Dhanbad,Jharkhand,23.75,86.291,186.0,3.796,12,Cropland
+111729,BOWAKALA NORTH,Baghmara,Dhanbad,Jharkhand,23.767429,86.152,213.0,3.795,13,Built-up / Urban settlements
+111730,BOWAKALA SOUTH,Baghmara,Dhanbad,Jharkhand,23.768429,86.173333,203.0,3.794,12,Cropland
+111731,CHHATRUTAND,Baghmara,Dhanbad,Jharkhand,23.766429,86.197667,205.0,3.796,12,Cropland
+111732,DALUDIH,Baghmara,Dhanbad,Jharkhand,23.767429,86.222,212.0,3.795,12,Cropland
+111733,DARIDA,Baghmara,Dhanbad,Jharkhand,23.768429,86.243333,206.0,3.794,12,Cropland
+111734,DHARMABANDH,Baghmara,Dhanbad,Jharkhand,23.766429,86.267667,198.0,3.796,12,Cropland
+111735,DHAWACHITA,Baghmara,Dhanbad,Jharkhand,23.767429,86.292,183.0,3.795,12,Cropland
+111736,DUMRA NORTH,Baghmara,Dhanbad,Jharkhand,23.784857,86.15,210.0,3.76,13,Built-up / Urban settlements
+111737,FULARITAND,Baghmara,Dhanbad,Jharkhand,23.782857,86.174333,183.0,3.765,12,Cropland
+111738,GOBINDADIH,Baghmara,Dhanbad,Jharkhand,23.783857,86.198667,226.0,3.762,12,Cropland
+111739,HARINA,Baghmara,Dhanbad,Jharkhand,23.784857,86.22,215.0,3.76,12,Cropland
+111740,HATHUDIH,Baghmara,Dhanbad,Jharkhand,23.782857,86.244333,205.0,3.765,12,Cropland
+111741,JAMUA,Baghmara,Dhanbad,Jharkhand,23.783857,86.268667,187.0,3.762,12,Cropland
+111742,JAMUATAND,Baghmara,Dhanbad,Jharkhand,23.784857,86.29,185.0,3.76,12,Cropland
+111743,JHIJHIPAHARI,Baghmara,Dhanbad,Jharkhand,23.799286,86.151,215.0,3.704,13,Built-up / Urban settlements
+111744,KANCHANPUR,Baghmara,Dhanbad,Jharkhand,23.800286,86.175333,216.0,3.699,12,Cropland
+111745,KANDRA,Baghmara,Dhanbad,Jharkhand,23.801286,86.196667,234.0,3.695,12,Cropland
+111746,KATRAS,Baghmara,Dhanbad,Jharkhand,23.799286,86.221,220.0,3.704,12,Cropland
+111747,KESHALPUR,Baghmara,Dhanbad,Jharkhand,23.800286,86.245333,155.0,3.699,12,Cropland
+111748,KHARKHAREE,Baghmara,Dhanbad,Jharkhand,23.801286,86.266667,157.0,3.695,12,Cropland
+111749,KHUDIYA,Baghmara,Dhanbad,Jharkhand,23.799286,86.291,213.0,3.704,12,Cropland
+111750,KUMARDHUBI,Baghmara,Dhanbad,Jharkhand,23.816714,86.152,230.0,3.607,13,Built-up / Urban settlements
+111751,LOHAPATTI,Baghmara,Dhanbad,Jharkhand,23.817714,86.173333,223.0,3.6,12,Cropland
+111752,MADHUBAN,Baghmara,Dhanbad,Jharkhand,23.815714,86.197667,241.0,3.613,12,Cropland
+111753,MAHESHPUR 1,Baghmara,Dhanbad,Jharkhand,23.816714,86.222,223.0,3.607,12,Cropland
+111754,MAHESHPUR 2,Baghmara,Dhanbad,Jharkhand,23.817714,86.243333,224.0,3.6,12,Cropland
+111755,MALLIKDIH,Baghmara,Dhanbad,Jharkhand,23.815714,86.267667,213.0,3.613,12,Cropland
+111756,MATIGARA,Baghmara,Dhanbad,Jharkhand,23.816714,86.292,210.0,3.607,12,Cropland
+111757,MOHLIDIH,Baghmara,Dhanbad,Jharkhand,23.834143,86.15,204.0,3.479,13,Built-up / Urban settlements
+111758,MURAIDIH,Baghmara,Dhanbad,Jharkhand,23.832143,86.174333,227.0,3.495,12,Cropland
+111759,NADKHURKEE,Baghmara,Dhanbad,Jharkhand,23.833143,86.198667,238.0,3.487,12,Cropland
+111760,NANDKHURKI,Baghmara,Dhanbad,Jharkhand,23.834143,86.22,237.0,3.479,12,Cropland
+111761,NARAYANPUR,Baghmara,Dhanbad,Jharkhand,23.832143,86.244333,239.0,3.495,12,Cropland
+111762,NAWAGARH,Baghmara,Dhanbad,Jharkhand,23.833143,86.268667,239.0,3.487,12,Cropland
+111763,PADHRA,Baghmara,Dhanbad,Jharkhand,23.834143,86.29,225.0,3.479,12,Cropland
+111764,PANDEYDIH,Baghmara,Dhanbad,Jharkhand,23.848571,86.151,230.0,3.351,13,Built-up / Urban settlements
+111765,PIALGORA,Baghmara,Dhanbad,Jharkhand,23.849571,86.175333,231.0,3.341,12,Cropland
+111766,RAGHUNATHPUR,Baghmara,Dhanbad,Jharkhand,23.850571,86.196667,253.0,3.331,12,Cropland
+111767,RAJGANJ,Baghmara,Dhanbad,Jharkhand,23.848571,86.221,243.0,3.351,12,Cropland
+111768,RAMKANALI,Baghmara,Dhanbad,Jharkhand,23.849571,86.245333,241.0,3.341,12,Cropland
+111769,SADHOBAD,Baghmara,Dhanbad,Jharkhand,23.850571,86.266667,245.0,3.331,12,Cropland
+111770,SALANPUR,Baghmara,Dhanbad,Jharkhand,23.848571,86.291,220.0,3.351,12,Cropland
+111771,SINIDIH,Baghmara,Dhanbad,Jharkhand,23.866,86.152,235.0,3.172,13,Built-up / Urban settlements
+111772,SONARDIH,Baghmara,Dhanbad,Jharkhand,23.867,86.173333,245.0,3.161,12,Cropland
+111773,TELMOCHO,Baghmara,Dhanbad,Jharkhand,23.865,86.197667,268.0,3.183,12,Cropland
+111774,TIKAPAHARI,Baghmara,Dhanbad,Jharkhand,23.866,86.222,252.0,3.172,12,Cropland
+111775,TUNDOO,Baghmara,Dhanbad,Jharkhand,23.867,86.243333,263.0,3.161,12,Cropland
+111776,ALAKDIHA,Baliapur,Dhanbad,Jharkhand,23.66,86.471,154.0,2.178,12,Cropland
+111777,AMJHAR,Baliapur,Dhanbad,Jharkhand,23.661,86.507,152.0,1.941,4,Grassland / Shrubland
+111778,BALIAPUR,Baliapur,Dhanbad,Jharkhand,23.662,86.54,151.0,1.669,12,Cropland
+111779,BARA DAHAL,Baliapur,Dhanbad,Jharkhand,23.66,86.576,125.0,1.336,12,Cropland
+111780,BAWANDIH,Baliapur,Dhanbad,Jharkhand,23.661,86.612,125.0,0.991,12,Cropland
+111781,BHIKHRAJDIH,Baliapur,Dhanbad,Jharkhand,23.68825,86.47,162.0,2.184,12,Cropland
+111782,BODRA,Baliapur,Dhanbad,Jharkhand,23.68625,86.506,160.0,1.948,12,Cropland
+111783,CHANDRA,Baliapur,Dhanbad,Jharkhand,23.68725,86.542,169.0,1.651,12,Cropland
+111784,CHHOTADAHA,Baliapur,Dhanbad,Jharkhand,23.68825,86.575,133.0,1.345,12,Cropland
+111785,DANGUAPARA,Baliapur,Dhanbad,Jharkhand,23.68625,86.611,147.0,1.001,12,Cropland
+111786,DUDHIYA,Baliapur,Dhanbad,Jharkhand,23.7135,86.472,189.0,2.173,12,Cropland
+111787,GOPALPUR,Baliapur,Dhanbad,Jharkhand,23.7145,86.505,176.0,1.956,12,Cropland
+111788,HEMETPUR,Baliapur,Dhanbad,Jharkhand,23.7125,86.541,159.0,1.66,4,Grassland / Shrubland
+111789,KALAPAHAR,Baliapur,Dhanbad,Jharkhand,23.7135,86.577,150.0,1.326,12,Cropland
+111790,KARMATAND,Baliapur,Dhanbad,Jharkhand,23.7145,86.61,174.0,1.01,12,Cropland
+111791,KUMARDHI,Baliapur,Dhanbad,Jharkhand,23.73875,86.471,232.0,2.178,12,Cropland
+111792,MOHANPUR,Baliapur,Dhanbad,Jharkhand,23.73975,86.507,183.0,1.941,12,Cropland
+111793,MUKUNDAPUR,Baliapur,Dhanbad,Jharkhand,23.74075,86.54,164.0,1.669,12,Cropland
+111794,PALASHBANI,Baliapur,Dhanbad,Jharkhand,23.73875,86.576,162.0,1.336,12,Cropland
+111795,PRADHANKHANTA,Baliapur,Dhanbad,Jharkhand,23.73975,86.612,181.0,0.991,12,Cropland
+111796,RANGAMATI,Baliapur,Dhanbad,Jharkhand,23.767,86.47,212.0,2.184,12,Cropland
+111797,SURAJDIH,Baliapur,Dhanbad,Jharkhand,23.765,86.506,184.0,1.948,12,Cropland
+111798,TILABANI,Baliapur,Dhanbad,Jharkhand,23.766,86.542,178.0,1.651,12,Cropland
+111799,BABUDIH,Dhanbad,Dhanbad,Jharkhand,23.76,86.371,198.0,2.38,13,Built-up / Urban settlements
+111800,BALUDIH,Dhanbad,Dhanbad,Jharkhand,23.761,86.4195,203.0,2.375,12,Cropland
+111801,BHELATAND,Dhanbad,Dhanbad,Jharkhand,23.762,86.465,221.0,2.211,12,Cropland
+111802,CHANDUADIH,Dhanbad,Dhanbad,Jharkhand,23.785,86.371,223.0,2.38,12,Cropland
+111803,DHAIYA,Dhanbad,Dhanbad,Jharkhand,23.786,86.4195,228.0,2.375,12,Cropland
+111804,JAGJIVAN NAGAR,Dhanbad,Dhanbad,Jharkhand,23.787,86.465,210.0,2.211,12,Cropland
+111805,KARMA TAND,Dhanbad,Dhanbad,Jharkhand,23.81,86.371,224.0,2.38,12,Cropland
+111806,KOLAKUSMA,Dhanbad,Dhanbad,Jharkhand,23.811,86.4195,238.0,2.375,13,Built-up / Urban settlements
+111807,MANAITAND,Dhanbad,Dhanbad,Jharkhand,23.812,86.465,237.0,2.211,12,Cropland
+111808,PANDARPALAA,Dhanbad,Dhanbad,Jharkhand,23.835,86.371,284.0,2.38,12,Cropland
+111809,SARAIDHELA,Dhanbad,Dhanbad,Jharkhand,23.836,86.4195,262.0,2.375,12,Cropland
+111810,SUGIAADIH,Dhanbad,Dhanbad,Jharkhand,23.837,86.465,221.0,2.211,12,Cropland
+111811,AMBAPAHARI,Egarkund,Dhanbad,Jharkhand,23.72,86.746,143.0,0.5,12,Cropland
+111812,BAHALA,Egarkund,Dhanbad,Jharkhand,23.721,86.783667,113.0,0.5,12,Cropland
+111813,BAMANDIHA,Egarkund,Dhanbad,Jharkhand,23.722,86.818333,120.0,0.5,12,Cropland
+111814,CHIRKUNDA RURAL,Egarkund,Dhanbad,Jharkhand,23.72,86.856,139.0,0.5,12,Cropland
+111815,DUMBURDHA,Egarkund,Dhanbad,Jharkhand,23.74225,86.747,108.0,0.5,12,Cropland
+111816,EGARKUND,Egarkund,Dhanbad,Jharkhand,23.74325,86.781667,132.0,0.5,12,Cropland
+111817,FATIKAHARI,Egarkund,Dhanbad,Jharkhand,23.74125,86.819333,129.0,0.5,12,Cropland
+111818,GOPALGANJ,Egarkund,Dhanbad,Jharkhand,23.74225,86.857,133.0,0.5,12,Cropland
+111819,JAMBAD,Egarkund,Dhanbad,Jharkhand,23.7645,86.745,134.0,0.5,12,Cropland
+111820,JONADIH,Egarkund,Dhanbad,Jharkhand,23.7625,86.782667,129.0,0.5,12,Cropland
+111821,KUMARDHUBI RURAL,Egarkund,Dhanbad,Jharkhand,23.7635,86.820333,107.0,0.5,12,Cropland
+111822,MAITHON RURAL,Egarkund,Dhanbad,Jharkhand,23.7645,86.855,138.0,0.5,12,Cropland
+111823,MUGMA,Egarkund,Dhanbad,Jharkhand,23.78375,86.746,161.0,0.5,12,Cropland
+111824,PANIKAPAHARI,Egarkund,Dhanbad,Jharkhand,23.78475,86.783667,159.0,0.5,12,Cropland
+111825,PARBATPUR,Egarkund,Dhanbad,Jharkhand,23.78575,86.818333,117.0,0.5,12,Cropland
+111826,RAMCHANDRAPUR,Egarkund,Dhanbad,Jharkhand,23.78375,86.856,158.0,0.5,12,Cropland
+111827,SHYAMPUR,Egarkund,Dhanbad,Jharkhand,23.806,86.747,170.0,0.5,12,Cropland
+111828,UTTARDHAMAPARA,Egarkund,Dhanbad,Jharkhand,23.807,86.781667,139.0,0.5,12,Cropland
+111829,AMARPUR,Govindpur,Dhanbad,Jharkhand,23.795,86.441,246.0,2.315,12,Cropland
+111830,BAGHSUMA,Govindpur,Dhanbad,Jharkhand,23.796,86.475,213.0,2.156,12,Cropland
+111831,BARADAH,Govindpur,Dhanbad,Jharkhand,23.797,86.506,342.0,1.948,12,Cropland
+111832,BARWA,Govindpur,Dhanbad,Jharkhand,23.795,86.54,212.0,1.669,12,Cropland
+111833,BASKIPIRO,Govindpur,Dhanbad,Jharkhand,23.796,86.574,188.0,1.355,12,Cropland
+111834,BELCHANDRA,Govindpur,Dhanbad,Jharkhand,23.797,86.605,193.0,1.058,12,Cropland
+111835,BHITIYA,Govindpur,Dhanbad,Jharkhand,23.813333,86.441,255.0,2.315,12,Cropland
+111836,CHALDHOWAGORA,Govindpur,Dhanbad,Jharkhand,23.814333,86.475,242.0,2.156,12,Cropland
+111837,CHHOTABAWAN,Govindpur,Dhanbad,Jharkhand,23.815333,86.506,216.0,1.948,12,Cropland
+111838,DALDAL,Govindpur,Dhanbad,Jharkhand,23.813333,86.54,214.0,1.669,12,Cropland
+111839,DAMODARPUR,Govindpur,Dhanbad,Jharkhand,23.814333,86.574,191.0,1.355,12,Cropland
+111840,DEOLI,Govindpur,Dhanbad,Jharkhand,23.815333,86.605,174.0,1.058,12,Cropland
+111841,DHANWAD,Govindpur,Dhanbad,Jharkhand,23.831667,86.441,244.0,2.315,12,Cropland
+111842,GANDHIGRAM,Govindpur,Dhanbad,Jharkhand,23.832667,86.475,217.0,2.156,12,Cropland
+111843,GOSANIDIH,Govindpur,Dhanbad,Jharkhand,23.833667,86.506,209.0,1.948,12,Cropland
+111844,GOVINDPUR,Govindpur,Dhanbad,Jharkhand,23.831667,86.54,198.0,1.669,12,Cropland
+111845,JANGALPUR,Govindpur,Dhanbad,Jharkhand,23.832667,86.574,188.0,1.355,12,Cropland
+111846,JHALBAR,Govindpur,Dhanbad,Jharkhand,23.833667,86.605,167.0,1.058,12,Cropland
+111847,KALIKAPUR,Govindpur,Dhanbad,Jharkhand,23.85,86.441,236.0,2.315,12,Cropland
+111848,KANCHANPUR,Govindpur,Dhanbad,Jharkhand,23.851,86.475,213.0,2.156,12,Cropland
+111849,KARMATAND,Govindpur,Dhanbad,Jharkhand,23.852,86.506,205.0,1.948,12,Cropland
+111850,KATHALGORA,Govindpur,Dhanbad,Jharkhand,23.85,86.54,209.0,1.669,12,Cropland
+111851,KHANUDIH,Govindpur,Dhanbad,Jharkhand,23.851,86.574,178.0,1.355,12,Cropland
+111852,KOLAHARI,Govindpur,Dhanbad,Jharkhand,23.852,86.605,193.0,1.058,12,Cropland
+111853,KUKRUBAHIYAR,Govindpur,Dhanbad,Jharkhand,23.868333,86.441,220.0,2.315,12,Cropland
+111854,KUMARDIH,Govindpur,Dhanbad,Jharkhand,23.869333,86.475,212.0,2.156,12,Cropland
+111855,MAHARAJGORA,Govindpur,Dhanbad,Jharkhand,23.870333,86.506,204.0,1.948,12,Cropland
+111856,MAHUBANI,Govindpur,Dhanbad,Jharkhand,23.868333,86.54,211.0,1.669,12,Cropland
+111857,MANDRO,Govindpur,Dhanbad,Jharkhand,23.869333,86.574,187.0,1.355,12,Cropland
+111858,NANDPUR,Govindpur,Dhanbad,Jharkhand,23.870333,86.605,198.0,1.058,12,Cropland
+111859,NAWADIH,Govindpur,Dhanbad,Jharkhand,23.886667,86.441,221.0,2.315,12,Cropland
+111860,PANDUA,Govindpur,Dhanbad,Jharkhand,23.887667,86.475,217.0,2.156,12,Cropland
+111861,PURANADIH,Govindpur,Dhanbad,Jharkhand,23.888667,86.506,215.0,1.948,12,Cropland
+111862,RAJDHANWAR,Govindpur,Dhanbad,Jharkhand,23.886667,86.54,206.0,1.669,12,Cropland
+111863,RATANPUR,Govindpur,Dhanbad,Jharkhand,23.887667,86.574,208.0,1.355,12,Cropland
+111864,SAHARPURA,Govindpur,Dhanbad,Jharkhand,23.888667,86.605,206.0,1.058,12,Cropland
+111865,SARKARDIH,Govindpur,Dhanbad,Jharkhand,23.905,86.441,237.0,2.315,12,Cropland
+111866,TANTRI,Govindpur,Dhanbad,Jharkhand,23.906,86.475,240.0,2.156,12,Cropland
+111867,UKMA,Govindpur,Dhanbad,Jharkhand,23.907,86.506,231.0,1.948,12,Cropland
+111868,ALAMDIH,Kaliasol,Dhanbad,Jharkhand,23.68,86.616,141.0,0.954,12,Cropland
+111869,ASANBONA,Kaliasol,Dhanbad,Jharkhand,23.681,86.660333,125.0,0.561,12,Cropland
+111870,BAMNI,Kaliasol,Dhanbad,Jharkhand,23.682,86.701667,133.0,0.5,12,Cropland
+111871,BARA KALIA,Kaliasol,Dhanbad,Jharkhand,23.68,86.746,125.0,0.5,12,Cropland
+111872,BEHRA,Kaliasol,Dhanbad,Jharkhand,23.70725,86.617,165.0,0.944,12,Cropland
+111873,CHAMARBAHIYAR,Kaliasol,Dhanbad,Jharkhand,23.70825,86.658333,143.0,0.577,12,Cropland
+111874,DOMGARH,Kaliasol,Dhanbad,Jharkhand,23.70625,86.702667,137.0,0.5,12,Cropland
+111875,DUBLAJOR,Kaliasol,Dhanbad,Jharkhand,23.70725,86.747,127.0,0.5,12,Cropland
+111876,HARINARAYANPUR,Kaliasol,Dhanbad,Jharkhand,23.7345,86.615,166.0,0.963,4,Grassland / Shrubland
+111877,JAMUADANG,Kaliasol,Dhanbad,Jharkhand,23.7325,86.659333,171.0,0.569,12,Cropland
+111878,KALIASOL,Kaliasol,Dhanbad,Jharkhand,23.7335,86.703667,154.0,0.5,12,Cropland
+111879,KANCHANPUR,Kaliasol,Dhanbad,Jharkhand,23.7345,86.745,127.0,0.5,12,Cropland
+111880,LAKHIPUR,Kaliasol,Dhanbad,Jharkhand,23.75875,86.616,186.0,0.954,12,Cropland
+111881,NAGARJUN,Kaliasol,Dhanbad,Jharkhand,23.75975,86.660333,145.0,0.561,12,Cropland
+111882,PALSIYA,Kaliasol,Dhanbad,Jharkhand,23.76075,86.701667,144.0,0.5,12,Cropland
+111883,PINDRAHAT,Kaliasol,Dhanbad,Jharkhand,23.75875,86.746,100.0,0.5,12,Cropland
+111884,RADHANAGAR,Kaliasol,Dhanbad,Jharkhand,23.786,86.617,192.0,0.944,12,Cropland
+111885,SIULIBARI,Kaliasol,Dhanbad,Jharkhand,23.787,86.658333,168.0,0.577,12,Cropland
+111886,BAGMARA,Nirsa,Dhanbad,Jharkhand,23.745,86.646,171.0,3.79,12,Cropland
+111887,BARABARI,Nirsa,Dhanbad,Jharkhand,23.746,86.682,172.0,3.791,12,Cropland
+111888,BHALUKKHULIA,Nirsa,Dhanbad,Jharkhand,23.747,86.715,144.0,3.793,12,Cropland
+111889,BONIA,Nirsa,Dhanbad,Jharkhand,23.745,86.751,125.0,3.79,12,Cropland
+111890,CHATABHIYAR,Nirsa,Dhanbad,Jharkhand,23.746,86.787,125.0,3.791,12,Cropland
+111891,CHUTIKANALI,Nirsa,Dhanbad,Jharkhand,23.772,86.645,157.0,3.789,12,Cropland
+111892,DAHIBARI,Nirsa,Dhanbad,Jharkhand,23.77,86.681,146.0,3.792,12,Cropland
+111893,DHANPUR,Nirsa,Dhanbad,Jharkhand,23.771,86.717,128.0,3.791,12,Cropland
+111894,DUMARBAHIYAR,Nirsa,Dhanbad,Jharkhand,23.772,86.75,139.0,3.789,12,Cropland
+111895,GOPALGANJ,Nirsa,Dhanbad,Jharkhand,23.77,86.786,136.0,3.792,12,Cropland
+111896,JAMBURIA,Nirsa,Dhanbad,Jharkhand,23.796,86.647,169.0,3.719,12,Cropland
+111897,JHINKIPAHARI,Nirsa,Dhanbad,Jharkhand,23.797,86.68,159.0,3.714,12,Cropland
+111898,KANCHANDIH,Nirsa,Dhanbad,Jharkhand,23.795,86.716,140.0,3.723,12,Cropland
+111899,KESHARDHI,Nirsa,Dhanbad,Jharkhand,23.796,86.752,163.0,3.719,12,Cropland
+111900,MARMA,Nirsa,Dhanbad,Jharkhand,23.797,86.785,145.0,3.714,12,Cropland
+111901,MANDWAL,Nirsa,Dhanbad,Jharkhand,23.82,86.646,157.0,3.585,12,Cropland
+111902,NIRSA,Nirsa,Dhanbad,Jharkhand,23.821,86.682,162.0,3.578,12,Cropland
+111903,PALASHIA,Nirsa,Dhanbad,Jharkhand,23.822,86.715,155.0,3.571,12,Cropland
+111904,PANRRA,Nirsa,Dhanbad,Jharkhand,23.82,86.751,189.0,3.585,12,Cropland
+111905,PANCHAGARH,Nirsa,Dhanbad,Jharkhand,23.821,86.787,157.0,3.578,12,Cropland
+111906,PIRGANJ,Nirsa,Dhanbad,Jharkhand,23.847,86.645,178.0,3.365,12,Cropland
+111907,PITHAKEDARI,Nirsa,Dhanbad,Jharkhand,23.845,86.681,182.0,3.384,12,Cropland
+111908,RAMKANALI,Nirsa,Dhanbad,Jharkhand,23.846,86.717,158.0,3.375,12,Cropland
+111909,UDAYPUR,Nirsa,Dhanbad,Jharkhand,23.847,86.75,163.0,3.365,12,Cropland
+111910,BAGHMUNDI,Purvi Tundi,Dhanbad,Jharkhand,23.935,86.546,274.0,5.923,12,Cropland
+111911,BARADAHA,Purvi Tundi,Dhanbad,Jharkhand,23.936,86.617,181.0,6.257,12,Cropland
+111912,CHURULIA,Purvi Tundi,Dhanbad,Jharkhand,23.937,86.685,180.0,6.42,12,Cropland
+111913,JAMDIHA,Purvi Tundi,Dhanbad,Jharkhand,23.9875,86.546,179.0,6.778,12,Cropland
+111914,LADAHARI,Purvi Tundi,Dhanbad,Jharkhand,23.9885,86.617,201.0,7.102,12,Cropland
+111915,MOHLIDIH,Purvi Tundi,Dhanbad,Jharkhand,23.9895,86.685,201.0,7.255,12,Cropland
+111916,PANDRA,Purvi Tundi,Dhanbad,Jharkhand,24.04,86.546,246.0,7.029,12,Cropland
+111917,PURVI TUNDI,Purvi Tundi,Dhanbad,Jharkhand,24.041,86.617,240.0,7.34,12,Cropland
+111918,RAGHUNATHPUR,Purvi Tundi,Dhanbad,Jharkhand,24.042,86.685,210.0,7.48,12,Cropland
+111919,AMBATAND,Topchanchi,Dhanbad,Jharkhand,23.855,86.116,240.0,1.501,12,Cropland
+111920,BAGHMUNDA,Topchanchi,Dhanbad,Jharkhand,23.856,86.1545,222.0,1.605,12,Cropland
+111921,BALUDIH,Topchanchi,Dhanbad,Jharkhand,23.857,86.19,246.0,1.748,12,Cropland
+111922,BARIARPUR,Topchanchi,Dhanbad,Jharkhand,23.855,86.2285,239.0,1.873,12,Cropland
+111923,BHAGABANDH,Topchanchi,Dhanbad,Jharkhand,23.856,86.267,246.0,2.112,12,Cropland
+111924,BHALUA,Topchanchi,Dhanbad,Jharkhand,23.879,86.115,227.0,2.096,12,Cropland
+111925,CHALKARI,Topchanchi,Dhanbad,Jharkhand,23.877,86.1535,266.0,2.124,10,Tree cover / Forest
+111926,CHANDRAHA,Topchanchi,Dhanbad,Jharkhand,23.878,86.192,311.0,2.278,10,Tree cover / Forest
+111927,CHHATATAND,Topchanchi,Dhanbad,Jharkhand,23.879,86.2275,274.0,2.464,10,Tree cover / Forest
+111928,DUMRI,Topchanchi,Dhanbad,Jharkhand,23.877,86.266,244.0,2.628,12,Cropland
+111929,GOHALBARI,Topchanchi,Dhanbad,Jharkhand,23.9,86.117,238.0,2.618,12,Cropland
+111930,HARDIHI,Topchanchi,Dhanbad,Jharkhand,23.901,86.1525,281.0,2.714,10,Tree cover / Forest
+111931,KANKO,Topchanchi,Dhanbad,Jharkhand,23.899,86.191,293.0,2.794,10,Tree cover / Forest
+111932,KHANUDIH,Topchanchi,Dhanbad,Jharkhand,23.9,86.2295,277.0,2.993,10,Tree cover / Forest
+111933,MADHUGARH,Topchanchi,Dhanbad,Jharkhand,23.901,86.265,277.0,3.215,10,Tree cover / Forest
+111934,MATARI,Topchanchi,Dhanbad,Jharkhand,23.921,86.116,278.0,3.11,10,Tree cover / Forest
+111935,MOKHTARPUR,Topchanchi,Dhanbad,Jharkhand,23.922,86.1545,295.0,3.211,10,Tree cover / Forest
+111936,NAWADIH,Topchanchi,Dhanbad,Jharkhand,23.923,86.19,312.0,3.353,10,Tree cover / Forest
+111937,NETURDIH,Topchanchi,Dhanbad,Jharkhand,23.921,86.2285,318.0,3.482,10,Tree cover / Forest
+111938,PAHARPUR,Topchanchi,Dhanbad,Jharkhand,23.922,86.267,409.0,3.719,10,Tree cover / Forest
+111939,PRADHANKHANTA,Topchanchi,Dhanbad,Jharkhand,23.945,86.115,499.0,3.613,10,Tree cover / Forest
+111940,RAMAKUNDA,Topchanchi,Dhanbad,Jharkhand,23.943,86.1535,467.0,3.652,10,Tree cover / Forest
+111941,ROAM,Topchanchi,Dhanbad,Jharkhand,23.944,86.192,364.0,3.801,10,Tree cover / Forest
+111942,SAHIJANA,Topchanchi,Dhanbad,Jharkhand,23.945,86.2275,383.0,3.981,10,Tree cover / Forest
+111943,SINGHDAHA,Topchanchi,Dhanbad,Jharkhand,23.943,86.266,327.0,4.156,10,Tree cover / Forest
+111944,TANTRI,Topchanchi,Dhanbad,Jharkhand,23.966,86.117,841.0,3.983,10,Tree cover / Forest
+111945,TOPCHANCHI,Topchanchi,Dhanbad,Jharkhand,23.967,86.1525,969.0,4.071,10,Tree cover / Forest
+111946,VISHNUPUR,Topchanchi,Dhanbad,Jharkhand,23.965,86.191,383.0,4.168,10,Tree cover / Forest
+111947,BAMANDIHA,Tundi,Dhanbad,Jharkhand,23.925,86.376,275.0,4.541,10,Tree cover / Forest
+111948,BARIDIH,Tundi,Dhanbad,Jharkhand,23.926,86.427,282.0,4.944,10,Tree cover / Forest
+111949,BHATUA,Tundi,Dhanbad,Jharkhand,23.927,86.475,251.0,5.311,12,Cropland
+111950,CHAMPI,Tundi,Dhanbad,Jharkhand,23.925,86.526,245.0,5.595,12,Cropland
+111951,DHANWAR,Tundi,Dhanbad,Jharkhand,23.964333,86.377,655.0,5.305,10,Tree cover / Forest
+111952,JAMUKANDAR,Tundi,Dhanbad,Jharkhand,23.965333,86.425,479.0,5.679,10,Tree cover / Forest
+111953,KATAHARA,Tundi,Dhanbad,Jharkhand,23.963333,86.476,252.0,6.014,12,Cropland
+111954,KOLHABANI,Tundi,Dhanbad,Jharkhand,23.964333,86.527,214.0,6.357,12,Cropland
+111955,MACHHIAHARI,Tundi,Dhanbad,Jharkhand,24.003667,86.375,239.0,5.751,12,Cropland
+111956,MANIADIH,Tundi,Dhanbad,Jharkhand,24.001667,86.426,232.0,6.117,12,Cropland
+111957,NANDPUR,Tundi,Dhanbad,Jharkhand,24.002667,86.477,199.0,6.491,12,Cropland
+111958,RATANPUR,Tundi,Dhanbad,Jharkhand,24.003667,86.525,201.0,6.807,12,Cropland
+111959,RUPABAN,Tundi,Dhanbad,Jharkhand,24.04,86.376,235.0,5.861,12,Cropland
+111960,TUNDI,Tundi,Dhanbad,Jharkhand,24.041,86.427,209.0,6.24,12,Cropland
