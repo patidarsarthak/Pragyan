@@ -1,0 +1,16 @@
+EXPERIMENT,VARIABLE,MODEL,MAE,RMSE,R2,PEARSON_R,RMSE_IMPROVEMENT_PCT,RAW_BOOTSTRAP_COVERAGE_PCT,CALIBRATED_80PCT_COVERAGE,MEAN_INTERVAL_WIDTH
+Standard_Chronological_2024,RAINFALL,Single_Variable_Coarse_Baseline,0.2299,1.0113,0.9909,0.9954,0.0,,,
+Standard_Chronological_2024,RAINFALL,Joint_MultiOutput_Ensemble,0.0453,0.1856,0.9997,0.9998,81.65,54.27,96.67,0.0641
+Standard_Chronological_2024,TEMPERATURE,Single_Variable_Coarse_Baseline,0.3407,0.605,0.9876,0.9938,0.0,,,
+Standard_Chronological_2024,TEMPERATURE,Joint_MultiOutput_Ensemble,0.0028,0.0037,1.0,1.0,99.39,13.71,84.48,0.0012
+Standard_Chronological_2024,HUMIDITY,Single_Variable_Coarse_Baseline,0.6105,1.1022,0.9968,0.9984,0.0,,,
+Standard_Chronological_2024,HUMIDITY,Joint_MultiOutput_Ensemble,0.0024,0.0068,1.0,1.0,99.38,13.0,98.99,0.0014
+Standard_Chronological_2024,WIND_SPEED,Single_Variable_Coarse_Baseline,0.2339,0.3186,0.965,0.9823,0.0,,,
+Standard_Chronological_2024,WIND_SPEED,Joint_MultiOutput_Ensemble,0.0222,0.0345,0.9996,0.9998,89.17,21.35,85.17,0.0129
+Standard_Chronological_2024,EVAPOTRANSPIRATION,Single_Variable_Coarse_Baseline,0.2153,0.2655,0.9855,0.9944,0.0,,,
+Standard_Chronological_2024,EVAPOTRANSPIRATION,Joint_MultiOutput_Ensemble,0.0248,0.0671,0.9991,0.9997,74.73,14.4,94.49,0.0061
+Spatial_Holdout_Topchanchi_Tundi_2024,RAINFALL,Joint_MultiOutput_Ensemble,0.3798,1.503,0.9832,0.9931,,,,
+Spatial_Holdout_Topchanchi_Tundi_2024,TEMPERATURE,Joint_MultiOutput_Ensemble,0.0262,0.042,0.9999,1.0,,,,
+Spatial_Holdout_Topchanchi_Tundi_2024,HUMIDITY,Joint_MultiOutput_Ensemble,0.0022,0.0027,1.0,1.0,,,,
+Spatial_Holdout_Topchanchi_Tundi_2024,WIND_SPEED,Joint_MultiOutput_Ensemble,0.3925,0.5473,0.8948,0.975,,,,
+Spatial_Holdout_Topchanchi_Tundi_2024,EVAPOTRANSPIRATION,Joint_MultiOutput_Ensemble,0.0229,0.055,0.9993,0.9998,,,,
