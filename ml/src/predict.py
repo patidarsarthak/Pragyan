@@ -141,11 +141,13 @@ def predict_weather(
                 eval_df[f"COARSE_{col}"] = eval_df[col]
         if "GPCODE" in eval_df.columns:
             eval_df["GPCODE"] = eval_df["GPCODE"].astype(int)
-            eval_df = eval_df.merge(
-                static_df[["GPCODE", "ELEVATION_M", "SLOPE_DEG", "LANDCOVER_CLASS"]],
-                on="GPCODE",
-                how="left"
-            )
+            missing_terrain = [c for c in ["ELEVATION_M", "SLOPE_DEG", "LANDCOVER_CLASS"] if c not in eval_df.columns]
+            if missing_terrain:
+                eval_df = eval_df.merge(
+                    static_df[["GPCODE"] + missing_terrain],
+                    on="GPCODE",
+                    how="left"
+                )
         else:
             # Repeat coarse values for all target Panchayats
             dfs = []
