@@ -16,9 +16,11 @@ import os
 from typing import Optional, List
 from fastapi import FastAPI, HTTPException, Query, Path
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, RedirectResponse
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+FRONTEND_DIR = os.path.join(PROJECT_ROOT, "frontend")
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
@@ -58,6 +60,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static frontend application
+if os.path.exists(FRONTEND_DIR):
+    app.mount("/dashboard", StaticFiles(directory=FRONTEND_DIR, html=True), name="dashboard")
+
 
 @app.get("/", tags=["System"])
 def root_status():
@@ -73,6 +79,7 @@ def root_status():
         "district": "Dhanbad, Jharkhand",
         "total_panchayats": 239,
         "blocks": 10,
+        "dashboard_url": "/dashboard",
         "forecast_status": forecast_status,
         "docs_url": "/docs",
         "openapi_url": "/openapi.json"
