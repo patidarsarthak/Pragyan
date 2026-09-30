@@ -3992,4 +3992,167 @@ body {
   }
 }
 
+/* ==========================================================================
+   10. FORECAST EVALUATION & BUST RISK CARDS (MATCHING USER METEOROLOGY SPECS)
+   ========================================================================== */
+.evaluation-chart-card {
+  background: var(--color-canvas-surface, #ffffff);
+  border: 1px solid var(--color-canvas-border, #ded8cb);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.eval-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.eval-location-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-soil-dark, #0f172a);
+  letter-spacing: -0.01em;
+}
+
+.eval-event-subtitle {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.eval-chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.eval-chart-canvas-wrap canvas {
+  width: 100% !important;
+  max-width: 100%;
+  display: block;
+}
+
+.eval-bottom-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--color-canvas-border, #e2e8f0);
+}
+
+.eval-tolerance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.eval-tol-icon {
+  font-size: 11px;
+  color: #0f172a;
+}
+
+.eval-legend-keys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 11.5px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.key-marker {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.marker-blue-line {
+  width: 18px;
+  height: 2.5px;
+  background: #2563eb;
+  position: relative;
+}
+
+.marker-blue-line::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 1.5px solid #fff;
+}
+
+.marker-black-line {
+  width: 18px;
+  height: 2px;
+  border-top: 2px dashed #0f172a;
+  position: relative;
+}
+
+.marker-black-line::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 1.5px solid #fff;
+}
+
+.eval-risk-legend-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+  color: #475569;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--color-canvas-border, #e2e8f0);
+}
+
+.dot-red-filled {
+  color: #ef4444;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.dot-blue-hollow {
+  color: #2563eb;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.eval-sep {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.eval-annotation-note {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-top: 8px;
+  background: #f8fafc;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+}
+
 

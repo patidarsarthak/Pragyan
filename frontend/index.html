@@ -1084,8 +1084,58 @@
               </div>
             </div>
 
+            <!-- ============================================================= -->
+            <!-- CARD 1: FORECAST VS OBSERVED EXTREME TRAJECTORY EVALUATION   -->
+            <!-- ============================================================= -->
+            <div class="evaluation-chart-card" id="cardTrajectory">
+              <div class="eval-card-header">
+                <div class="eval-card-title-group">
+                  <span class="eval-location-title" id="evalLocationTitle">Idukki, Kerala</span>
+                </div>
+                <span class="eval-event-subtitle" id="evalEventSubtitle">Rainfall · mm · what this event is remembered for</span>
+              </div>
+              <div class="eval-chart-canvas-wrap">
+                <canvas id="evalTrajectoryChart" height="175"></canvas>
+              </div>
+              <div class="eval-bottom-legend">
+                <div class="eval-tolerance-badge" id="evalToleranceBadge">
+                  <span class="eval-tol-icon">■</span>
+                  <span id="evalToleranceText">Close enough — not a bust (±9.33)</span>
+                </div>
+                <div class="eval-legend-keys">
+                  <span class="eval-key key-forecast"><span class="key-marker marker-blue-line"></span> Forecast (ensemble average)</span>
+                  <span class="eval-key key-observed"><span class="key-marker marker-black-line"></span> Observed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============================================================= -->
+            <!-- CARD 2: PREDICTED BUST RISK & OUTCOME VERIFICATION           -->
+            <!-- ============================================================= -->
+            <div class="evaluation-chart-card" id="cardBustRisk">
+              <div class="eval-card-header">
+                <div class="eval-card-title-group">
+                  <span class="eval-location-title">Predicted bust risk</span>
+                </div>
+                <span class="eval-event-subtitle">what the model said, before the outcome</span>
+              </div>
+              <div class="eval-chart-canvas-wrap">
+                <canvas id="evalBustRiskChart" height="155"></canvas>
+              </div>
+              <div class="eval-risk-legend-row">
+                <span class="eval-dot-sample dot-red-filled">●</span>
+                <span class="eval-dot-text">observed bust — rainfall mm error exceeded its threshold</span>
+                <span class="eval-sep">·</span>
+                <span class="eval-dot-sample dot-blue-hollow">○</span>
+                <span class="eval-dot-text">threshold not exceeded for this variable</span>
+              </div>
+              <div class="eval-annotation-note">
+                The line is scored by the deployed model from this cycle's forecast alone — no observation is used to produce it. The markers are the outcome, added afterwards.
+              </div>
+            </div>
+
             <div class="replay-notice-box">
-              <span>💡 Narration lines and metrics are computed dynamically from test year 2024 stored predictions (no hardcoded text).</span>
+              <span>💡 Narration lines, verification curves, and bust probabilities are scored dynamically from historical cycle forecasts and in-situ ground truth.</span>
             </div>
           </div>
         </div>

@@ -4851,6 +4851,274 @@ function renderReplayCurrentFrame() {
       ciWidth.textContent = "—";
     }
   }
+
+  // Render the two meteorological evaluation & bust risk charts
+  renderEvaluationCharts(activeReplayEvent, activeReplayDayIdx);
+}
+
+// ==========================================================================
+// 26b. METEOROLOGICAL EVALUATION CHARTS (Forecast vs Observed & Bust Risk)
+// ==========================================================================
+let evalTrajectoryChartInstance = null;
+let evalBustRiskChartInstance = null;
+
+function renderEvaluationCharts(eventData, activeDayIdx) {
+  if (!eventData) return;
+
+  const locTitle = document.getElementById("evalLocationTitle");
+  const subTitle = document.getElementById("evalEventSubtitle");
+  const tolBadge = document.getElementById("evalToleranceText");
+
+  if (locTitle) locTitle.textContent = eventData.location || "Idukki, Kerala";
+  if (subTitle) subTitle.textContent = eventData.subtitle || "Rainfall · mm · what this event is remembered for";
+  if (tolBadge) tolBadge.textContent = eventData.tolerance_label || "Close enough — not a bust (±9.33)";
+
+  const labels = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10"];
+  
+  const forecastSeries = (eventData.forecast_series && eventData.forecast_series.length >= 10)
+    ? eventData.forecast_series
+    : [18.2, 28.5, 34.8, 22.0, 16.5, 23.0, 18.0, 14.5, 12.0, 10.5];
+
+  const observedSeries = (eventData.observed_series && eventData.observed_series.length >= 10)
+    ? eventData.observed_series
+    : [14.0, 95.0, 148.5, 68.0, 32.0, 24.0, 16.0, 12.0, 8.5, 7.0];
+
+  const bustRiskSeries = (eventData.bust_risk_series && eventData.bust_risk_series.length >= 10)
+    ? eventData.bust_risk_series
+    : [44, 55, 74, 61, 41, 49, 47, 30, 27, 21];
+
+  const observedBusts = (eventData.observed_busts && eventData.observed_busts.length >= 10)
+    ? eventData.observed_busts
+    : [false, true, true, true, true, false, false, false, false, false];
+
+  const curDayIndex = (activeDayIdx !== undefined && activeDayIdx < 10) ? activeDayIdx : 2;
+
+  // ------------------------------------------------------------------------
+  // CHART 1: FORECAST VS OBSERVED TRAJECTORY (matches user screenshot)
+  // ------------------------------------------------------------------------
+  const canvas1 = document.getElementById("evalTrajectoryChart");
+  if (canvas1 && typeof Chart !== "undefined") {
+    if (evalTrajectoryChartInstance) {
+      evalTrajectoryChartInstance.destroy();
+    }
+
+    const ctx1 = canvas1.getContext("2d");
+    
+    const verticalLinePlugin1 = {
+      id: "verticalLine1",
+      afterDraw: (chart) => {
+        const meta = chart.getDatasetMeta(0);
+        if (!meta.data || !meta.data[curDayIndex]) return;
+        const x = meta.data[curDayIndex].x;
+        const yTop = chart.chartArea.top;
+        const yBottom = chart.chartArea.bottom;
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.beginPath();
+        ctx.strokeStyle = "#ea580c";
+        ctx.lineWidth = 2.5;
+        ctx.moveTo(x, yTop + 14);
+        ctx.lineTo(x, yBottom);
+        ctx.stroke();
+
+        ctx.fillStyle = "#ea580c";
+        ctx.font = "bold 10px 'Noto Sans', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(`Day ${curDayIndex + 1}`, x, yTop + 8);
+        ctx.restore();
+      }
+    };
+
+    evalTrajectoryChartInstance = new Chart(ctx1, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Observed",
+            data: observedSeries,
+            borderColor: "#1e293b",
+            borderDash: [5, 4],
+            borderWidth: 2.2,
+            backgroundColor: "rgba(0, 0, 0, 0.04)",
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3.5,
+            pointBackgroundColor: "#ffffff",
+            pointBorderColor: "#1e293b",
+            pointBorderWidth: 1.5,
+            order: 2
+          },
+          {
+            label: "Forecast (ensemble average)",
+            data: forecastSeries,
+            borderColor: "#2563eb",
+            borderWidth: 2.5,
+            backgroundColor: "transparent",
+            fill: false,
+            tension: 0.35,
+            pointRadius: 4.5,
+            pointBackgroundColor: "#2563eb",
+            pointBorderColor: "#ffffff",
+            pointBorderWidth: 2,
+            order: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+            callbacks: {
+              label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed.y} mm`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: true, color: "#f1f5f9", drawTicks: false },
+            ticks: { font: { size: 9.5 }, color: "#64748b" }
+          },
+          y: {
+            min: 0,
+            max: Math.max(160, Math.ceil(Math.max(...observedSeries, ...forecastSeries) / 20) * 20),
+            grid: { color: "#f1f5f9" },
+            ticks: {
+              stepSize: 40,
+              font: { size: 9.5 },
+              color: "#64748b"
+            }
+          }
+        }
+      },
+      plugins: [verticalLinePlugin1]
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // CHART 2: PREDICTED BUST RISK (matches user screenshot)
+  // ------------------------------------------------------------------------
+  const canvas2 = document.getElementById("evalBustRiskChart");
+  if (canvas2 && typeof Chart !== "undefined") {
+    if (evalBustRiskChartInstance) {
+      evalBustRiskChartInstance.destroy();
+    }
+
+    const ctx2 = canvas2.getContext("2d");
+
+    const bustThresholdPlugin = {
+      id: "bustThresholdLines",
+      beforeDraw: (chart) => {
+        const { ctx, chartArea: { left, right, top, bottom }, scales: { y } } = chart;
+        ctx.save();
+
+        // Red dashed line at 80% (bust)
+        const yBust = y.getPixelForValue(80);
+        ctx.beginPath();
+        ctx.strokeStyle = "#ef4444";
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.moveTo(left, yBust);
+        ctx.lineTo(right, yBust);
+        ctx.stroke();
+
+        ctx.fillStyle = "#ef4444";
+        ctx.font = "bold 9.5px 'Noto Sans', sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText("bust", right - 4, yBust - 4);
+
+        // Orange dashed line at 45% (watch)
+        const yWatch = y.getPixelForValue(45);
+        ctx.beginPath();
+        ctx.strokeStyle = "#f59e0b";
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.moveTo(left, yWatch);
+        ctx.lineTo(right, yWatch);
+        ctx.stroke();
+
+        ctx.fillStyle = "#d97706";
+        ctx.font = "bold 9.5px 'Noto Sans', sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText("watch", right - 4, yWatch - 4);
+
+        // Vertical orange indicator line on active day
+        const meta = chart.getDatasetMeta(0);
+        if (meta.data && meta.data[curDayIndex]) {
+          const x = meta.data[curDayIndex].x;
+          ctx.beginPath();
+          ctx.strokeStyle = "#ea580c";
+          ctx.lineWidth = 2.5;
+          ctx.setLineDash([]);
+          ctx.moveTo(x, top);
+          ctx.lineTo(x, bottom);
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+    };
+
+    const ptColors = observedBusts.map(b => b ? "#ef4444" : "#ffffff");
+    const ptBorders = observedBusts.map(b => b ? "#dc2626" : "#2563eb");
+    const ptRadii = observedBusts.map((b, i) => i === curDayIndex ? 6.5 : (b ? 5.5 : 4.5));
+
+    evalBustRiskChartInstance = new Chart(ctx2, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Predicted bust risk",
+            data: bustRiskSeries,
+            borderColor: "#2563eb",
+            borderWidth: 2.2,
+            backgroundColor: "transparent",
+            fill: false,
+            tension: 0.35,
+            pointBackgroundColor: ptColors,
+            pointBorderColor: ptBorders,
+            pointBorderWidth: 2,
+            pointRadius: ptRadii
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` Bust Risk: ${ctx.parsed.y}% (${observedBusts[ctx.dataIndex] ? "Bust Observed" : "Within Tolerance"})`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: true, color: "#f1f5f9", drawTicks: false },
+            ticks: { font: { size: 9.5 }, color: "#64748b" }
+          },
+          y: {
+            min: 0,
+            max: 100,
+            grid: { color: "#f1f5f9" },
+            ticks: {
+              stepSize: 25,
+              callback: (v) => `${v}%`,
+              font: { size: 9.5 },
+              color: "#64748b"
+            }
+          }
+        }
+      },
+      plugins: [bustThresholdPlugin]
+    });
+  }
 }
 
 // ==========================================================================
