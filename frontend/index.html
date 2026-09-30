@@ -2,390 +2,1233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Panchayat Climate & Geospatial Intelligence Platform | Dhanbad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Panchayat Weather Intelligence | Gram Panchayat GIS Platform</title>
   
-  <!-- Modern Typography: Inter -->
+  <!-- Design Tokens & Earthy Palette Stylesheet -->
+  <link rel="stylesheet" href="css/tokens.css">
+
+  <!-- Typography: Noto Sans (Latin + Devanagari) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Leaflet GIS Map CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <!-- Favicon and PWA Manifest -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#245e2c">
+
+  <!-- MapLibre GL JS v4.7.1 -->
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   
-  <!-- Custom Styles (Clean White Theme) -->
+  <!-- Chart.js for 10-day Interactive Meteograms -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="gis-app-body gmaps-layout">
 
-  <!-- Top App Navigation -->
-  <header class="app-header">
-    <div class="header-left">
-      <div class="logo-mark">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+  <!-- ========================================================================= -->
+  <!-- 1. TOP HEADER: LOGO, CASCADE, SEARCH, ACTIONS & DATE BADGE               -->
+  <!-- ========================================================================= -->
+  <header class="gis-header">
+    <div class="gis-header-brand">
+      <div class="brand-logo" title="Panchayat Weather Intelligence">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
         </svg>
       </div>
-      <div>
-        <h1 class="app-title">Smart Panchayat Climate & Geospatial Intelligence</h1>
-        <p class="app-subtitle">Dhanbad District, Jharkhand &bull; 239 Gram Panchayats &bull; Hyper-Local AI Downscaling</p>
+      <div class="brand-text">
+        <h1 class="brand-title">PANCHAYAT WEATHER INTELLIGENCE</h1>
+      </div>
+      <div class="header-date-badge" id="headerDateBadge" title="Simulation / Forecast Valid Date">30 SEP 2026</div>
+    </div>
+
+    <!-- Top Administrative Drill-Down Dropdowns (State > District > Block cascade) -->
+    <div class="top-hierarchy-bar">
+      <!-- 1. State Selector (All 36 States/UTs) -->
+      <div class="top-select-wrap">
+        <span class="top-select-icon">🇮🇳</span>
+        <select id="stateSelect" class="top-nav-select" title="Select State / UT">
+          <option value="23" selected>Madhya Pradesh (Focus Pilot)</option>
+          <option value="20">Jharkhand</option>
+          <option value="9">Uttar Pradesh</option>
+          <option value="7">Delhi</option>
+          <option value="8">Rajasthan</option>
+          <option value="27">Maharashtra</option>
+          <option value="24">Gujarat</option>
+          <option value="10">Bihar</option>
+          <option value="19">West Bengal</option>
+          <option value="3">Punjab</option>
+          <option value="6">Haryana</option>
+          <option value="29">Karnataka</option>
+          <option value="33">Tamil Nadu</option>
+          <option value="32">Kerala</option>
+          <option value="36">Telangana</option>
+          <option value="28">Andhra Pradesh</option>
+          <option value="21">Odisha</option>
+          <option value="22">Chhattisgarh</option>
+          <option value="5">Uttarakhand</option>
+          <option value="2">Himachal Pradesh</option>
+          <option value="1">Jammu and Kashmir</option>
+          <option value="18">Assam</option>
+        </select>
+      </div>
+
+      <!-- 2. District Selector -->
+      <div class="top-select-wrap">
+        <span class="top-select-label">District:</span>
+        <select id="districtSelect" class="top-nav-select" title="Select District">
+          <option value="" disabled selected>-- Select District --</option>
+        </select>
+      </div>
+
+      <!-- 3. Block Selector -->
+      <div class="top-select-wrap">
+        <span class="top-select-label">Block:</span>
+        <select id="blockSelect" class="top-nav-select" title="Select Block">
+          <option value="" selected>-- Select Block --</option>
+        </select>
       </div>
     </div>
 
-    <div class="header-right">
-      <div class="badge live-badge" id="systemStatusBadge">
-        <span class="status-dot"></span>
-        <span id="systemStatusText">Connecting to API...</span>
+    <!-- Omnibox Search Bar (All India) -->
+    <div class="gis-search-container">
+      <div class="search-input-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchPanchayat" class="search-input" placeholder="Search State, District, Block, GP across India..." autocomplete="off">
+        <button id="btnClearSearch" class="btn-clear-search hidden" title="Clear search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </div>
-      <div class="badge neutral-badge">
-        <span id="activeRunTimestamp">Run: Latest NWP</span>
+      <div id="searchResultsDropdown" class="search-results-dropdown hidden"></div>
+    </div>
+
+    <!-- Header Tools: Language Switcher, Persona Toggle, Location, Basemap -->
+    <div class="gis-header-actions">
+      <!-- Language Switcher: English / Hindi -->
+      <button class="btn-mode-toggle" id="btnLangToggle" title="Switch Language / भाषा बदलें">
+        <span>🌐 <strong id="langLabel">हिन्दी</strong></span>
+      </button>
+
+      <!-- Mode Switch: Farmer / Officer (Persisted in localStorage) -->
+      <div class="user-mode-segmented-control" id="userModeSegmentedControl" role="group" aria-label="Dashboard Persona Mode">
+        <button class="btn-mode-pill" id="btnModeFarmer" title="Farmer Mode: Simplified mobile-first cards, large icons, 3-day traffic lights">
+          👨‍🌾 <span>Farmer</span>
+        </button>
+        <button class="btn-mode-pill active" id="btnModeOfficer" title="Officer Mode: Full GIS dashboard, top risk panchayats ranking, downscaling analytics">
+          🏛️ <span>Officer</span>
+        </button>
       </div>
+
+      <!-- Use My Location Button -->
+      <button class="btn-mode-toggle" id="btnUseLocation" title="Detect my GPS location and show Panchayat intelligence">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+        </svg>
+        <span id="lblUseLocation">Use My Location</span>
+      </button>
+
+      <!-- Basemap Pill Group -->
+      <div class="basemap-pill-group">
+        <button class="btn-basemap active" data-basemap="standard" id="btnBaseStandard" title="Standard high-clarity map with streets and labels">
+          <span>Standard</span>
+        </button>
+        <button class="btn-basemap" data-basemap="satellite" id="btnBaseSatellite" title="High-resolution aerial satellite imagery">
+          <span>Satellite</span>
+        </button>
+        <button class="btn-basemap" data-basemap="terrain" id="btnBaseTerrain" title="Topographic relief terrain">
+          <span>Terrain</span>
+        </button>
+      </div>
+
+      <!-- Quick Layer Panel Toggle -->
+      <button class="btn-tool-icon" id="btnToggleLayersPanel" title="Toggle Layer Controls Panel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </button>
+
+      <!-- Fullscreen Toggle -->
+      <button class="btn-tool-icon" id="btnToggleFullscreen" title="Toggle Fullscreen View">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+      </button>
     </div>
   </header>
 
-  <!-- Top KPI Metrics Banner -->
-  <section class="kpi-banner">
-    <div class="kpi-card" id="kpiAvgRainCard">
-      <div class="kpi-icon icon-blue">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
-          <path d="M8 19v2M8 13v2M12 21v2M12 15v2M16 19v2M16 13v2"/>
-        </svg>
-      </div>
-      <div class="kpi-content">
-        <span class="kpi-label">District Avg Rainfall</span>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="kpiAvgRain">-- mm</span>
-          <span class="kpi-sub" id="kpiRainSpread">Spread: --</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="kpi-card" id="kpiHeavyRainCard">
-      <div class="kpi-icon icon-amber">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-          <line x1="12" y1="9" x2="12" y2="13"/>
-          <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-      </div>
-      <div class="kpi-content">
-        <span class="kpi-label">Heavy Rain Alert</span>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="kpiHeavyRainCount">-- / 239</span>
-          <span class="kpi-sub">Panchayats &ge; 35.6 mm</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="kpi-card" id="kpiTempCard">
-      <div class="kpi-icon icon-orange">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
-        </svg>
-      </div>
-      <div class="kpi-content">
-        <span class="kpi-label">Avg Temperature</span>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="kpiAvgTemp">-- &deg;C</span>
-          <span class="kpi-sub" id="kpiHeatIndexStatus">Thermal: Normal</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="kpi-card" id="kpiSprayCard">
-      <div class="kpi-icon icon-emerald">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 16v-4M12 8h.01"/>
-        </svg>
-      </div>
-      <div class="kpi-content">
-        <span class="kpi-label">Chemical Spray Window</span>
-        <div class="kpi-value-wrap">
-          <span class="kpi-value" id="kpiSprayStatus">Evaluating...</span>
-          <span class="kpi-sub">Wind &amp; Rain Window</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Controls Toolbar -->
-  <section class="controls-toolbar">
-    <div class="control-group">
-      <label for="dateSelect" class="control-label">Forecast Lead Date</label>
-      <select id="dateSelect" class="control-select">
-        <option value="" disabled selected>Loading dates...</option>
+  <!-- ========================================================================= -->
+  <!-- 2. QUICK FILTER BAR: [District ▼] [Block ▼] [Forecast +1 ▼] [Rainfall ▼] -->
+  <!-- ========================================================================= -->
+  <div class="top-filter-bar" id="topFilterBar">
+    <div class="filter-chip-group">
+      <span class="filter-icon">📍</span>
+      <select id="filterDistrictSelect" class="filter-chip-select" title="Filter by District">
+        <option value="" disabled selected>District ▼</option>
       </select>
     </div>
-
-    <div class="control-group">
-      <label for="layerSelect" class="control-label">Map Color Metric</label>
-      <select id="layerSelect" class="control-select">
-        <option value="rainfall_risk" selected>Rainfall Risk Category (IMD Standard)</option>
-        <option value="rainfall_mm">Rainfall Volume (mm/day)</option>
-        <option value="temperature">Temperature (&deg;C)</option>
-        <option value="heat_stress">Heat Stress &amp; Thermal Comfort</option>
-        <option value="spray_window">Pesticide Spray Feasibility</option>
-        <option value="wind_speed">Surface Wind Speed (m/s)</option>
-        <option value="et">Reference Evapotranspiration (mm)</option>
+    <div class="filter-chip-group">
+      <span class="filter-icon">🏘️</span>
+      <select id="filterBlockSelect" class="filter-chip-select" title="Filter by Block">
+        <option value="" selected>Block ▼</option>
       </select>
     </div>
-
-    <div class="control-group">
-      <label for="cropSelect" class="control-label">Target Crop Advisory</label>
-      <select id="cropSelect" class="control-select">
-        <option value="" selected>All Active Crops</option>
-        <option value="Paddy">Paddy / Rice (Oryza sativa)</option>
-        <option value="Maize">Maize (Zea mays)</option>
-        <option value="Mustard">Mustard / Oilseed</option>
-        <option value="Potato">Potato (Solanum tuberosum)</option>
-        <option value="Vegetables">Vegetables (Tomato/Chilli)</option>
+    <div class="filter-chip-group">
+      <span class="filter-icon">📅</span>
+      <select id="filterForecastDaySelect" class="filter-chip-select" title="Forecast Horizon">
+        <option value="0">Forecast +0 (Today) ▼</option>
+        <option value="1" selected>Forecast +1 (Tomorrow) ▼</option>
+        <option value="2">Forecast +2 ▼</option>
+        <option value="3">Forecast +3 ▼</option>
+        <option value="4">Forecast +4 ▼</option>
+        <option value="5">Forecast +5 ▼</option>
+        <option value="6">Forecast +6 ▼</option>
+        <option value="7">Forecast +7 ▼</option>
+        <option value="8">Forecast +8 ▼</option>
+        <option value="9">Forecast +9 ▼</option>
       </select>
     </div>
-
-    <div class="control-group">
-      <label for="blockSelect" class="control-label">Administrative Block</label>
-      <select id="blockSelect" class="control-select">
-        <option value="" selected>All 10 Blocks (239 GPs)</option>
-        <option value="Baghmara">Baghmara (54)</option>
-        <option value="Baliapur">Baliapur (23)</option>
-        <option value="Dhanbad">Dhanbad (12)</option>
-        <option value="Egarkund">Egarkund (18)</option>
-        <option value="Govindpur">Govindpur (39)</option>
-        <option value="Kaliasol">Kaliasol (18)</option>
-        <option value="Nirsa">Nirsa (24)</option>
-        <option value="Purvi Tundi">Purvi Tundi (9)</option>
-        <option value="Topchanchi">Topchanchi (28)</option>
-        <option value="Tundi">Tundi (14)</option>
+    <div class="filter-chip-group">
+      <span class="filter-icon">🌧️</span>
+      <select id="filterVariableSelect" class="filter-chip-select" title="Meteorological Metric">
+        <option value="rainfall" selected>Rainfall ▼</option>
+        <option value="temperature">Temperature ▼</option>
+        <option value="humidity">Humidity ▼</option>
+        <option value="wind_speed">Wind Speed ▼</option>
+        <option value="pest_risk">Pest Risk ▼</option>
       </select>
     </div>
+  </div>
 
-    <div class="control-group search-group">
-      <label for="searchPanchayat" class="control-label">Search Panchayat</label>
-      <div class="search-input-wrap">
-        <input type="text" id="searchPanchayat" class="control-input" placeholder="Type Panchayat or GPCODE...">
-        <div id="searchResultsDropdown" class="search-dropdown hidden"></div>
+  <!-- ========================================================================= -->
+  <!-- 3. OFFICER MODE KPI STRIP                                                 -->
+  <!-- ========================================================================= -->
+  <div class="officer-kpi-strip" id="officerKpiStrip">
+    <div class="kpi-card" id="kpiAlertsCard">
+      <span class="kpi-icon">⚠️</span>
+      <div class="kpi-body">
+        <span class="kpi-label">Active Alerts Today</span>
+        <span class="kpi-value" id="kpiActiveAlerts" title="Calculating active alerts in selected region">—</span>
       </div>
     </div>
-  </section>
-
-  <!-- Main Grid Workspace: Map + Side Panel -->
-  <main class="main-workspace">
-    
-    <!-- Map Container -->
-    <div class="map-wrapper">
-      <div id="gisMap" class="gis-map"></div>
-
-      <!-- Map Floating Controls -->
-      <div class="map-floating-controls">
-        <button id="btnResetView" class="btn-map-tool" title="Reset Map View">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-            <path d="M3 3v5h5"/>
-          </svg>
-          Reset
-        </button>
-        <button id="btnFitBounds" class="btn-map-tool" title="Fit District Bounds">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-          </svg>
-          Fit District
-        </button>
-      </div>
-
-      <!-- Dynamic Legend -->
-      <div class="map-legend" id="mapLegend">
-        <h4 class="legend-title" id="legendTitle">Rainfall Risk Category</h4>
-        <div class="legend-items" id="legendItems">
-          <!-- Dynamically populated by app.js -->
-        </div>
+    <div class="kpi-card" id="kpiPeakRainCard">
+      <span class="kpi-icon">🌧️</span>
+      <div class="kpi-body">
+        <span class="kpi-label">Peak Rainfall GP</span>
+        <span class="kpi-value" id="kpiPeakRainGp" title="Calculating highest downscaled rainfall GP in block">—</span>
       </div>
     </div>
+    <div class="kpi-card" id="kpiHeatIndexCard">
+      <span class="kpi-icon">🌡️</span>
+      <div class="kpi-body">
+        <span class="kpi-label">Highest Heat Index</span>
+        <span class="kpi-value" id="kpiMaxHeatIndex" title="Calculating peak apparent temperature index">—</span>
+      </div>
+    </div>
+    <div class="kpi-card" id="kpiForecastIssuedCard">
+      <span class="kpi-icon">🕒</span>
+      <div class="kpi-body">
+        <span class="kpi-label">Forecast Issued (IST)</span>
+        <span class="kpi-value" id="kpiForecastIssued" title="Forecast ingestion timestamp from meta object">—</span>
+      </div>
+    </div>
+  </div>
 
-    <!-- Right Side Detail & Advisory Panel -->
-    <aside class="detail-sidebar" id="detailSidebar">
-      
-      <!-- Placeholder when no Panchayat is clicked -->
-      <div class="sidebar-placeholder" id="sidebarPlaceholder">
-        <div class="placeholder-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
+  <!-- ========================================================================= -->
+  <!-- 2. MAIN 2-PANEL GIS WORKSPACE: LEFT WEATHER SHEET + FULL MAP CANVAS       -->
+  <!-- ========================================================================= -->
+  <div class="gis-app-layout" id="gisAppLayout">
+
+    <!-- ========================================================================= -->
+    <!-- FARMER MODE FULL-SCREEN MOBILE-FIRST CARD CONTAINER (Prompt 1.3)          -->
+    <!-- ========================================================================= -->
+    <div class="farmer-mode-container hidden" id="farmerModeContainer">
+      <!-- Farmer Header / Location selector -->
+      <div class="farmer-header-bar">
+        <div class="farmer-location-info">
+          <span class="farmer-location-tag">📍 चयनित पंचायत / Selected Panchayat</span>
+          <h1 class="farmer-gp-name" id="farmerGpName">Kshipra Gram Panchayat</h1>
+          <span class="farmer-hierarchy" id="farmerHierarchy">Sanwer Block, Indore, Madhya Pradesh</span>
+          <div id="farmerProvenanceBadgeContainer" style="margin-top: 8px;"></div>
         </div>
-        <h3>Select a Gram Panchayat</h3>
-        <p>Click any of the 239 Panchayats on the map or use the search bar above to inspect downscaled weather forecasts, uncertainty intervals, and crop-specific advisories.</p>
-        <button class="btn-primary" id="btnSelectSamplePanchayat">View Sample: BAGDAHA</button>
+        <div class="farmer-header-actions">
+          <button class="farmer-touch-btn btn-change-gp" id="btnFarmerChangeGp" title="Change Panchayat / पंचायत बदलें">
+            🔍 <span>बदलें / Change</span>
+          </button>
+          <button class="farmer-touch-btn btn-voice-readout" id="btnFarmerVoiceReadout" title="Speak Weather & Advisory (Web Speech API)">
+            🔊 <span>सुनें / Listen</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Panchayat Detail View (Shown on selection) -->
-      <div class="sidebar-content hidden" id="sidebarContent">
-        
-        <!-- Panchayat Header -->
-        <div class="panchayat-header">
-          <div class="panchayat-title-group">
-            <div class="title-with-badge">
-              <h2 class="panchayat-name" id="pName">--</h2>
-              <span class="badge block-badge" id="pBlock">--</span>
-            </div>
-            <p class="panchayat-meta" id="pMeta">LGD GPCODE: -- &bull; District: Dhanbad</p>
-          </div>
-          <button class="btn-close" id="btnCloseSidebar" title="Close Panel">&times;</button>
-        </div>
-
-        <!-- Terrain & Static Attributes Card -->
-        <div class="terrain-strip">
-          <div class="terrain-stat">
-            <span class="stat-label">Elevation</span>
-            <span class="stat-value" id="pElevation">-- m</span>
-          </div>
-          <div class="terrain-stat">
-            <span class="stat-label">Slope</span>
-            <span class="stat-value" id="pSlope">--&deg;</span>
-          </div>
-          <div class="terrain-stat">
-            <span class="stat-label">Land Cover</span>
-            <span class="stat-value text-ellipsis" id="pLandcover">--</span>
-          </div>
-        </div>
-
-        <!-- Forecast Date & Confidence Header -->
-        <div class="section-heading">
-          <div class="heading-title-wrap">
-            <h3 class="section-title">Downscaled Forecast</h3>
-            <span class="date-tag" id="pForecastDate">--</span>
-          </div>
-          <span class="badge confidence-badge" id="pConfidenceBadge">80% Calibrated CI</span>
-        </div>
-
-        <!-- 5-Variable Forecast Grid with Uncertainty -->
-        <div class="weather-grid">
-          
-          <!-- Rainfall -->
-          <div class="weather-cell" id="cellRain">
-            <div class="cell-header">
-              <span class="cell-label">Rainfall</span>
-              <span class="cell-icon icon-blue">&#9748;</span>
-            </div>
-            <div class="cell-main-val">
-              <span class="val-num" id="valRain">--</span>
-              <span class="val-unit">mm/day</span>
-            </div>
-            <div class="cell-uncertainty">
-              <span class="ci-label">80% CI:</span>
-              <span class="ci-val" id="ciRain">--</span>
-            </div>
-          </div>
-
-          <!-- Temperature -->
-          <div class="weather-cell" id="cellTemp">
-            <div class="cell-header">
-              <span class="cell-label">Temperature</span>
-              <span class="cell-icon icon-orange">&#127777;</span>
-            </div>
-            <div class="cell-main-val">
-              <span class="val-num" id="valTemp">--</span>
-              <span class="val-unit">&deg;C</span>
-            </div>
-            <div class="cell-uncertainty">
-              <span class="ci-label">80% CI:</span>
-              <span class="ci-val" id="ciTemp">--</span>
-            </div>
-          </div>
-
-          <!-- Humidity -->
-          <div class="weather-cell" id="cellHum">
-            <div class="cell-header">
-              <span class="cell-label">Rel. Humidity</span>
-              <span class="cell-icon icon-sky">&#128167;</span>
-            </div>
-            <div class="cell-main-val">
-              <span class="val-num" id="valHum">--</span>
-              <span class="val-unit">%</span>
-            </div>
-            <div class="cell-uncertainty">
-              <span class="ci-label">80% CI:</span>
-              <span class="ci-val" id="ciHum">--</span>
-            </div>
-          </div>
-
-          <!-- Wind Speed -->
-          <div class="weather-cell" id="cellWind">
-            <div class="cell-header">
-              <span class="cell-label">Wind Speed</span>
-              <span class="cell-icon icon-emerald">&#127788;</span>
-            </div>
-            <div class="cell-main-val">
-              <span class="val-num" id="valWind">--</span>
-              <span class="val-unit">m/s</span>
-            </div>
-            <div class="cell-uncertainty">
-              <span class="ci-label">80% CI:</span>
-              <span class="ci-val" id="ciWind">--</span>
-            </div>
-          </div>
-
-          <!-- Evapotranspiration -->
-          <div class="weather-cell full-width-cell" id="cellET">
-            <div class="cell-header">
-              <span class="cell-label">Reference Evapotranspiration (ET<sub>0</sub>)</span>
-              <span class="cell-icon icon-amber">&#9728;</span>
-            </div>
-            <div class="cell-main-val">
-              <span class="val-num" id="valET">--</span>
-              <span class="val-unit">mm/day</span>
-            </div>
-            <div class="cell-uncertainty">
-              <span class="ci-label">80% CI:</span>
-              <span class="ci-val" id="ciET">--</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- 10-Day Horizon Sparkline Bar Chart -->
-        <div class="trend-section">
-          <div class="trend-header">
-            <h4 class="trend-title">10-Day Rainfall Horizon (mm)</h4>
-            <span class="trend-sub" id="trendLeadLabel">Lead Forecast</span>
-          </div>
-          <div class="trend-bars-wrap" id="trendBarsWrap">
-            <!-- Dynamically populated 10 bars -->
-          </div>
-        </div>
-
-        <!-- Agro-Meteorological Advisories Section -->
-        <div class="advisory-section">
-          <div class="advisory-section-header">
+      <!-- Today Weather Hero Card -->
+      <div class="farmer-card farmer-today-card" id="farmerTodayCard">
+        <div class="farmer-today-row">
+          <div class="farmer-today-weather">
+            <span class="farmer-big-icon" id="farmerBigIcon">⛅</span>
             <div>
-              <h3 class="section-title">Panchayat Agro-Advisories</h3>
-              <p class="advisory-subtitle">Decision-grade guidance derived from ICAR / KVK / IMD rules</p>
+              <div class="farmer-temp-display">
+                <span class="farmer-temp-val" id="farmerTodayTemp">28°</span><span class="farmer-temp-unit">C</span>
+              </div>
+              <div class="farmer-weather-desc" id="farmerWeatherDesc">हल्की वर्षा की संभावना / Light Rain Likely</div>
             </div>
-            <button class="btn-outline-sm" id="btnCopyAdvisory" title="Copy Advisory Text">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-              Copy
-            </button>
+          </div>
+          <div class="farmer-today-metrics">
+            <div class="farmer-mini-metric">
+              <span class="metric-icon">🌧️</span>
+              <span class="metric-val" id="farmerTodayRain">8.5 mm</span>
+              <span class="metric-lbl">Rain / बारिश</span>
+            </div>
+            <div class="farmer-mini-metric">
+              <span class="metric-icon">💨</span>
+              <span class="metric-val" id="farmerTodayWind">14 km/h</span>
+              <span class="metric-lbl">Wind / हवा</span>
+            </div>
+            <div class="farmer-mini-metric">
+              <span class="metric-icon">💧</span>
+              <span class="metric-val" id="farmerTodayHum">72%</span>
+              <span class="metric-lbl">Humidity / नमी</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Day Traffic Light Summary (Green / Amber / Red) -->
+      <div class="farmer-section-title">
+        <span>🚦 3-दिन का मौसम पूर्वानुमान / 3-Day Traffic Light Forecast</span>
+      </div>
+      <div class="farmer-traffic-grid" id="farmerTrafficGrid">
+        <!-- Populated dynamically via JS: Day 1 (Today), Day 2 (Tomorrow), Day 3 (Day After) -->
+      </div>
+
+      <!-- Max 3 One-Sentence Agricultural Advisories with Large Icons -->
+      <div class="farmer-section-title">
+        <span>🌾 मुख्य कृषि सलाह / Key Farming Advisories</span>
+      </div>
+      <div class="farmer-advisories-list" id="farmerAdvisoriesList">
+        <!-- Populated dynamically with max 3 crisp, 1-sentence advisories -->
+      </div>
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- LEFT PANEL (~70%): MAPLIBRE GL JS INTERACTIVE GIS MAP CANVAS           -->
+    <!-- --------------------------------------------------------------------- -->
+    <main class="gis-map-viewport">
+      <!-- Right Map: Downscaled Gram Panchayat Polygons -->
+      <div id="gisMap" class="maplibre-container"></div>
+
+      <!-- Left Map: Coarse 0.25° NWP Weather Grid (Clipped) -->
+      <div id="gisMapCompare" class="maplibre-container compare-map hidden"></div>
+
+      <!-- Draggable Split Slider Divider -->
+      <div id="compareSlider" class="compare-slider-divider hidden">
+        <div class="compare-slider-line"></div>
+        <div class="compare-slider-handle" title="Drag to compare Coarse NWP vs Downscaled GP">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </div>
+
+      <!-- Floating Dual Comparison Legend -->
+      <div id="compareLegends" class="compare-legends-overlay hidden">
+        <div class="compare-legend-tag tag-coarse">
+          <span class="legend-badge-dot coarse-dot"></span>
+          <span>🛰️ Left: Coarse NWP Grid (0.25° ~25km)</span>
+        </div>
+        <div class="compare-legend-tag tag-downscaled">
+          <span class="legend-badge-dot downscaled-dot"></span>
+          <span>🌾 Right: Downscaled Gram Panchayat Polygons</span>
+        </div>
+      </div>
+
+      <!-- 10-Day Animated Time Slider & Uncertainty Widget -->
+      <div class="time-slider-widget" id="timeSliderWidget">
+        <div class="slider-playback-controls">
+          <button class="btn-slider-play" id="btnTimePlayPause" title="Play / Pause 10-Day Weather Animation">
+            <span id="playPauseIcon">▶️</span>
+            <span id="playPauseLabel">Play</span>
+          </button>
+          <button class="btn-slider-step" id="btnTimePrev" title="Previous Day">⏮</button>
+          <div class="slider-day-info">
+            <span class="slider-day-badge" id="sliderDayBadge">Day 1 / 10</span>
+            <span class="slider-date-label" id="sliderDateLabel">Today</span>
+          </div>
+          <button class="btn-slider-step" id="btnTimeNext" title="Next Day">⏭</button>
+        </div>
+        <div class="slider-scrubber-track">
+          <input type="range" id="timeScrubber" min="0" max="9" value="0" step="1" aria-label="10-Day Forecast Timeline">
+          <div class="slider-ticks-row" id="sliderTicksRow">
+            <span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span><span>D8</span><span>D9</span><span>D10</span>
+          </div>
+        </div>
+        <div class="slider-uncertainty-legend" id="sliderUncertaintyLegend">
+          <span class="uncertainty-hatch-swatch" title="CI width in top quartile"></span>
+          <span class="uncertainty-legend-text">Lower confidence (Top 25% uncertainty CI)</span>
+        </div>
+      </div>
+
+      <!-- Floating Expand Button for Left Nav when collapsed -->
+      <button class="btn-floating-nav-toggle hidden" id="btnExpandNavSidebar" title="Show Weather &amp; Intelligence Panel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span>Weather Panel</span>
+      </button>
+
+      <!-- Zoom Level & Current View Notification Pill -->
+      <div class="map-level-pill" id="mapLevelPill">
+        <span class="level-indicator-dot"></span>
+        <span id="mapLevelText">National Level (India)</span>
+      </div>
+
+      <!-- Active Region Selection Status & Clear Action -->
+      <button class="btn-clear-selection hidden" id="btnClearSelection" title="Clear current region selection">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <span id="selectedRegionLabel">Selected: None</span>
+        <span class="btn-clear-x">✕</span>
+      </button>
+
+      <!-- Non-blocking GIS Spatial Detection Toast (Cases 2 & 3) -->
+      <div class="gis-spatial-toast hidden" id="gisSpatialToast">
+        <div class="toast-indicator" id="toastIndicator">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="toast-body">
+          <div class="toast-title" id="toastTitle">No mapped Gram Panchayat boundary found here.</div>
+          <div class="toast-desc" id="toastDesc">Authoritative spatial test via Survey of India Cadastral index</div>
+        </div>
+        <button class="toast-close" id="btnCloseToast" title="Dismiss notification">✕</button>
+      </div>
+
+      <!-- Weather Prediction Choropleth Legend (Bottom-Left) -->
+      <div class="map-legend-card" id="mapWeatherLegend">
+        <div class="legend-var-switcher">
+          <button class="btn-var-pill active" data-var="rainfall" id="btnVarRain" title="Downscaled Rainfall Choropleth">Rain (mm)</button>
+          <button class="btn-var-pill" data-var="temperature" id="btnVarTemp" title="Downscaled Temperature Choropleth">Temp (°C)</button>
+          <button class="btn-var-pill" data-var="humidity" id="btnVarHum" title="Downscaled Humidity Choropleth">Hum (%)</button>
+          <button class="btn-var-pill" data-var="wind_speed" id="btnVarWind" title="Downscaled Wind Speed Choropleth">Wind (km/h)</button>
+          <button class="btn-var-pill" data-var="pest_risk" id="btnVarPest" title="Pest &amp; Disease Outbreak Risk Choropleth">Pest Risk</button>
+        </div>
+
+        <div class="legend-header">
+          <span class="legend-title" id="legendTitle">Rainfall Forecast Intensity</span>
+          <span class="legend-tag" id="legendTag">ML Downscaled</span>
+        </div>
+        <div class="legend-color-bar" id="legendColorBar">
+          <div class="bar-segment seg-low" id="seg1" title="Light Rain (< 7.5 mm)"></div>
+          <div class="bar-segment seg-mod" id="seg2" title="Moderate Rain (7.5 - 35.5 mm)"></div>
+          <div class="bar-segment seg-heavy" id="seg3" title="Heavy Rain (35.5 - 64.4 mm)"></div>
+          <div class="bar-segment seg-vheavy" id="seg4" title="Very Heavy Rain (&gt; 64.4 mm)"></div>
+        </div>
+        <div class="legend-labels-row" id="legendLabels">
+          <span id="lbl1">&lt;7.5mm</span>
+          <span id="lbl2">7.5 - 35.5</span>
+          <span id="lbl3">35.5 - 64.4</span>
+          <span id="lbl4">&gt;64.4mm</span>
+        </div>
+      </div>
+
+      <!-- Google Maps-Style Basemap Switcher Thumbnail (Bottom-Left) -->
+      <button class="gmaps-layer-thumbnail-btn" id="btnQuickBasemapToggle" title="Toggle Standard Map / Satellite View">
+        <div class="thumb-preview" id="thumbPreview"></div>
+        <span class="thumb-label" id="thumbLabel">Satellite</span>
+      </button>
+
+      <!-- Floating Layer Controls Panel (Switchable) -->
+      <div class="map-layers-panel" id="mapLayersPanel">
+        <div class="layers-panel-header">
+          <div class="layers-title-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <span>GIS Map Layers (11)</span>
+          </div>
+          <button class="btn-icon-xs" id="btnCloseLayersPanel" title="Hide Layers Panel">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="layers-checklist">
+          <!-- Basemaps -->
+          <div class="layer-group-title">Basemaps &amp; Imagery</div>
+          <label class="layer-item">
+            <input type="checkbox" id="layerStandardMap" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Standard Base Map (Streets &amp; Roads)</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerSatellite">
+            <span class="custom-chk"></span>
+            <span class="layer-name">Satellite / Aerial Imagery</span>
+          </label>
+
+          <!-- Administrative -->
+          <div class="layer-group-title">Administrative Boundaries (MoPR / LGD)</div>
+          <label class="layer-item">
+            <input type="checkbox" id="layerPanchayats" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name highlight-text">Gram Panchayat Boundaries</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerAdmin" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">State, District &amp; Block Boundaries</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerWeather" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name highlight-text">Panchayat Prediction Overlay</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerWeatherGrid">
+            <span class="custom-chk"></span>
+            <span class="layer-name highlight-accent">Coarse Weather Forecast Input (0.25° Grid)</span>
+          </label>
+
+          <!-- Physical Topography & Geography -->
+          <div class="layer-group-title">Physical Geography (OSM / GIS)</div>
+          <label class="layer-item">
+            <input type="checkbox" id="layerRoads" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Highways, Roads &amp; Paths</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerBuildings" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Building Footprints (3D Extrusion)</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerWater" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Rivers, Streams, Canals &amp; Lakes</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerLanduse" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Cropland, Forest &amp; Land Use</span>
+          </label>
+          <label class="layer-item">
+            <input type="checkbox" id="layerPOIs" checked>
+            <span class="custom-chk"></span>
+            <span class="layer-name">Villages, Mandis, Health &amp; POIs</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Quick Floating Map Controls (Zoom, 3D, Reset) -->
+      <div class="map-floating-controls">
+        <button class="map-ctrl-btn" id="btnZoomIn" title="Zoom In">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <button class="map-ctrl-btn" id="btnZoomOut" title="Zoom Out">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <button class="map-ctrl-btn" id="btnToggle3D" title="Toggle 3D Pitch Tilt">
+          <span style="font-size:11px;font-weight:700;">3D</span>
+        </button>
+        <button class="map-ctrl-btn" id="btnResetBearing" title="Reset North Bearing">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 19 21 12 17 5 21 12 2"></polygon></svg>
+        </button>
+      </div>
+
+      <!-- Bottom Map Status Bar (Coordinates, Coverage, & Attribution) -->
+      <div class="map-status-bar">
+        <div class="status-coverage" id="statusCoverage">
+          <span class="badge-cov-map">🗺️ Base Map: Entire India (36 States/UTs)</span>
+          <span class="badge-cov-sep">•</span>
+          <span class="badge-cov-ml" id="statusMLScopeBadge">🤖 ML Scope: Madhya Pradesh Pilot</span>
+        </div>
+        <div class="status-coords" id="statusCoordinates">Lat: 22.7196° N | Lon: 75.8577° E | Zoom: 6.8</div>
+        <div class="status-attribution" id="statusAttribution">MapLibre GL JS | OpenStreetMap | MoPR LGD | Survey of India</div>
+      </div>
+    </main>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- RIGHT PANEL (~30%): TABS [Detail | Alerts | Advisory | Replay | GPs]   -->
+    <!-- Draggable Bottom Sheet under 768px                                    -->
+    <!-- --------------------------------------------------------------------- -->
+    <aside class="gis-right-panel" id="gisNavSidebar">
+      <!-- Touch Drag Handle for Mobile Bottom Sheet -->
+      <div class="bottom-sheet-handle" id="bottomSheetHandle" title="Drag to adjust panel height">
+        <span class="handle-bar"></span>
+      </div>
+
+      <!-- Breadcrumb Bar -->
+      <div class="gis-breadcrumbs-bar" id="gisBreadcrumbs">
+        <button class="crumb-btn active" id="bcIndia" title="View Entire India">India</button>
+        <span class="crumb-sep">›</span>
+        <button class="crumb-btn" id="bcState" title="Select State">State</button>
+        <span class="crumb-sep">›</span>
+        <button class="crumb-btn" id="bcDistrict" title="Select District">District</button>
+        <span class="crumb-sep">›</span>
+        <button class="crumb-btn" id="bcBlock" title="Select Block">Block</button>
+        <span class="crumb-sep">›</span>
+        <button class="crumb-btn" id="bcPanchayat" title="Selected Panchayat">GP</button>
+      </div>
+
+      <!-- Right Panel Tab Switcher -->
+      <div class="sheet-tabs-row" id="rightTabsRow">
+        <button class="sheet-tab active" id="tabDetail" data-tab="detail">
+          <span>Detail</span>
+        </button>
+        <button class="sheet-tab" id="tabAlerts" data-tab="alerts">
+          <span>Alerts <strong class="tab-badge" id="tabAlertsBadge">0</strong></span>
+        </button>
+        <button class="sheet-tab" id="tabAdvisory" data-tab="advisory">
+          <span>Advisory</span>
+        </button>
+        <button class="sheet-tab" id="tabReplay" data-tab="replay">
+          <span>Replay</span>
+        </button>
+        <button class="sheet-tab" id="tabPanchayatsList" data-tab="panchayats">
+          <span>GPs</span>
+        </button>
+        <button class="btn-collapse-sheet" id="btnCollapseNavSidebar" title="Collapse Panel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- TAB CONTENT CONTAINER -->
+      <div class="sheet-content-container">
+
+        <!-- ================================================================= -->
+        <!-- TAB 1: DETAIL (MATCHING ASCII WIREFRAME)                         -->
+        <!-- ================================================================= -->
+        <div class="tab-pane active" id="paneDetail">
+          
+          <!-- Empty State (When no region is selected) -->
+          <div class="sidebar-placeholder" id="sidebarPlaceholder">
+            <div class="placeholder-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+            </div>
+            <h3>Select a Gram Panchayat</h3>
+            <p>Click on any Gram Panchayat on the map or choose from the top bar to inspect <strong>ML downscaled weather forecasts</strong>, <strong>confidence intervals</strong>, and <strong>agro-meteorological advisories</strong>.</p>
+            <div class="quick-pilot-hint">
+              <span class="hint-dot"></span>
+              <span><strong>Pilot ML Scope:</strong> Madhya Pradesh (55 Districts, 1433 Panchayats). Geocoding and map exploration active India-wide.</span>
+            </div>
           </div>
 
-          <!-- Advisory Cards Container -->
-          <div class="advisories-container" id="advisoriesContainer">
-            <div class="advisory-loading">Loading agro-advisories...</div>
+          <!-- Active Weather Content (When a GP is selected) -->
+          <div class="sidebar-content hidden" id="sidebarContent">
+            <!-- Header for Selected Region -->
+            <div class="detail-panel-header">
+              <div class="header-left-info">
+                <span class="detail-hierarchy-path" id="pAdminHierarchy">India › Madhya Pradesh › Indore › Sanwer</span>
+                <h2 class="detail-gp-name" id="pName">BHORI Gram Panchayat</h2>
+                <div class="detail-meta-row">
+                  <span class="meta-tag lgd-tag" id="pMetaLGD">LGD: 133603</span>
+                  <span class="meta-tag area-tag" id="pMetaArea">Area: 9.19 km²</span>
+                  <span class="meta-tag boundary-tag boundary-derived" id="pBoundaryQualityBadge" title="Authoritative Boundary Provenance Quality">Boundary: DERIVED</span>
+                  <span class="meta-tag skill-badge skill-validated" id="pSkillFlagBadge" title="NOAA ISD Ground Station Verification Skill">Skill: VALIDATED</span>
+                  <span class="meta-tag pilot-tag" id="pMLScopeBadge">Pilot ML: Madhya Pradesh</span>
+                </div>
+                <div id="drawerProvenanceBadgeContainer" style="margin-top: 8px; display: flex; align-items: center;"></div>
+                
+                <!-- Outside ML Pilot Warning Banner -->
+                <div class="pilot-notice-banner hidden" id="pScopeBanner">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  <span><strong>Notice:</strong> Weather downscaling is currently available only for Madhya Pradesh. Base map and cadastral boundaries remain operational India-wide.</span>
+                </div>
+              </div>
+              <button class="btn-close-detail" id="btnCloseDetailSidebar" title="Clear Selection">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+
+            <!-- HERO WEATHER CARD (MATCHING USER ASCII WIREFRAME) -->
+            <div class="wireframe-hero-card" id="wireframeHeroCard">
+              <div class="hero-top-info">
+                <span class="hero-gp-name" id="heroGpTitle">BHORI</span>
+                <span class="hero-gp-tag">Panchayat</span>
+              </div>
+              <div class="hero-metric-section">
+                <div class="hero-metric-label" id="heroMetricName">Rainfall</div>
+                <div class="hero-metric-value" id="heroMetricVal">42 mm</div>
+              </div>
+              <div class="hero-stats-row">
+                <div class="hero-stat-item">
+                  <span class="hero-stat-label">Confidence</span>
+                  <span class="hero-stat-value" id="heroConfidenceVal">84%</span>
+                </div>
+                <div class="hero-stat-item">
+                  <span class="hero-stat-label">Range</span>
+                  <span class="hero-stat-value" id="heroRangeVal">35–50 mm</span>
+                </div>
+              </div>
+              <div class="hero-comparison-box">
+                <div class="comp-col">
+                  <span class="comp-label">Block:</span>
+                  <strong class="comp-val" id="heroBlockMetric">32 mm</strong>
+                </div>
+                <div class="comp-divider">|</div>
+                <div class="comp-col highlight">
+                  <span class="comp-label">GP:</span>
+                  <strong class="comp-val" id="heroGpMetric">42 mm</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prominent Action: Open Dedicated Farmer Agro-Advisory Dashboard for valid GPs -->
+            <div class="advisory-action-banner" id="advisoryActionBanner">
+              <a href="advisory.html" class="btn-launch-advisory" id="btnLaunchAdvisoryPage">
+                <span>View Full Agro Advisory</span>
+              </a>
+            </div>
+
+            <!-- Non-GP Inapplicability Notice & [Explore Weather] Option -->
+            <div class="non-gp-advisory-notice hidden" id="nonGpNoticeBanner" style="background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:12px 14px;margin:10px 0;">
+              <div style="font-weight:700;color:#9f1239;font-size:12.5px;margin-bottom:3px;">Gram Panchayat advisory is not applicable to this administrative area.</div>
+              <div style="font-size:11.5px;color:#881337;margin-bottom:8px;">Weather information may be available, but Panchayat-level agro-meteorological advisory is unavailable for this area.</div>
+              <button class="btn-explore-weather-inline" id="btnExploreWeatherNotice" style="background:#245e2c;color:#fff;border:none;border-radius:5px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;">[Explore Weather]</button>
+            </div>
+
+            <div class="detail-scroll-body">
+              <!-- Extreme Weather Alert Banner (Dynamic) -->
+              <div class="weather-alert-banner hidden" id="weatherAlertBanner">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <div class="alert-title" id="alertBannerTitle">Weather Advisory Active</div>
+                  <div class="alert-desc" id="alertBannerDesc">Checking for extreme alerts...</div>
+                </div>
+              </div>
+
+              <!-- Section 1: Downscaled Weather Metrics -->
+              <div class="detail-section">
+                <div class="section-title-row">
+                  <span class="section-title" id="lblDownscaledWeather">Downscaled Weather (Next 24h)</span>
+                  <span class="date-badge" id="pForecastDate">Today</span>
+                </div>
+
+                <div class="weather-metrics-grid">
+                  <!-- Rainfall -->
+                  <div class="weather-metric-tile primary-tile">
+                    <div class="tile-icon-wrap rain-color">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/><path d="M8 19v2M8 13v2M12 21v2M12 15v2M16 19v2M16 13v2"/></svg>
+                    </div>
+                    <div class="tile-data">
+                      <span class="tile-label" id="lblDownscaledRain">Downscaled Rain</span>
+                      <div class="tile-value-line">
+                        <span class="tile-val" id="valRain">42.0</span>
+                        <span class="tile-unit">mm</span>
+                      </div>
+                      <span class="tile-uncertainty" id="ciRain">CI: 35.0 – 50.0 mm</span>
+                    </div>
+                  </div>
+
+                  <!-- Temperature -->
+                  <div class="weather-metric-tile">
+                    <div class="tile-icon-wrap temp-color">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                    </div>
+                    <div class="tile-data">
+                      <span class="tile-label" id="lblSurfaceTemp">Surface Temp</span>
+                      <div class="tile-value-line">
+                        <span class="tile-val" id="valTemp">30.4</span>
+                        <span class="tile-unit">°C</span>
+                      </div>
+                      <span class="tile-uncertainty" id="ciTemp">CI: 28.5 – 32.2 °C</span>
+                    </div>
+                  </div>
+
+                  <!-- Humidity -->
+                  <div class="weather-metric-tile">
+                    <div class="tile-icon-wrap hum-color">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <div class="tile-data">
+                      <span class="tile-label" id="lblHumidity">Humidity</span>
+                      <div class="tile-value-line">
+                        <span class="tile-val" id="valHum">78</span>
+                        <span class="tile-unit">%</span>
+                      </div>
+                      <span class="tile-uncertainty" id="ciHum">CI: 72 – 84 %</span>
+                    </div>
+                  </div>
+
+                  <!-- Wind Speed -->
+                  <div class="weather-metric-tile">
+                    <div class="tile-icon-wrap wind-color">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                    </div>
+                    <div class="tile-data">
+                      <span class="tile-label" id="lblWindSpeed">Wind Speed</span>
+                      <div class="tile-value-line">
+                        <span class="tile-val" id="valWind">11.5</span>
+                        <span class="tile-unit">km/h</span>
+                      </div>
+                      <span class="tile-uncertainty" id="ciWind">CI: 8.0 – 15.0 km/h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 2: GBDT Model vs Coarse Regional Forecast Comparison -->
+              <div class="detail-section">
+                <div class="section-title-row">
+                  <span class="section-title" id="lblCoarseVsGp">Coarse Grid vs GP Downscaled</span>
+                  <span class="model-badge">GBDT Residual Model</span>
+                </div>
+                <div class="comparison-table-wrap">
+                  <table class="comparison-table">
+                    <thead>
+                      <tr>
+                        <th id="thVariable">Variable</th>
+                        <th>Coarse GFS</th>
+                        <th>Downscaled GP</th>
+                        <th>Correction</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong id="tdPrecip">Precipitation</strong></td>
+                        <td id="compCoarseRain">32.0 mm</td>
+                        <td id="compModelRain" class="text-highlight">42.0 mm</td>
+                        <td id="compDiffRain" class="text-diff">+10.0 mm</td>
+                      </tr>
+                      <tr>
+                        <td><strong id="tdTemp">Temperature</strong></td>
+                        <td id="compCoarseTemp">28.2 °C</td>
+                        <td id="compModelTemp" class="text-highlight">30.4 °C</td>
+                        <td id="compDiffTemp" class="text-diff">+2.2 °C</td>
+                      </tr>
+                      <tr>
+                        <td><strong id="tdHum">Humidity</strong></td>
+                        <td id="compCoarseHum">84.0 %</td>
+                        <td id="compModelHum">78.0 %</td>
+                        <td id="compDiffHum" class="text-diff">-6.0 %</td>
+                      </tr>
+                      <tr>
+                        <td><strong id="tdWind">Wind Speed</strong></td>
+                        <td id="compCoarseWind">14.5 km/h</td>
+                        <td id="compModelWind">11.5 km/h</td>
+                        <td id="compDiffWind" class="text-diff">-3.0 km/h</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="margin-top: 8px; padding: 8px 12px; background: #edf7ee; border: 1px solid #a5d6a7; border-radius: 6px; font-size: 11px; color: #1e4620; display: flex; align-items: center; justify-content: space-between;">
+                  <span>🎯 <strong>Verified Skill:</strong> +39.5% MAE gain vs coarse IMD Block baseline</span>
+                  <span style="font-size: 10px; font-family: monospace; color: #245e2c;">p &lt; 0.001</span>
+                </div>
+              </div>
+
+              <!-- Section 3: 10-Day Interactive Meteogram -->
+              <div class="detail-section">
+                <div class="section-title-row">
+                  <span class="section-title" id="lblMeteogram">10-Day Forecast Meteogram</span>
+                  <span class="model-badge">Rain &amp; Temp Chart</span>
+                </div>
+                <div class="meteogram-chart-wrapper" style="position: relative; height: 160px; width: 100%; margin-top: 8px;">
+                  <canvas id="meteogramChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Section 4: Zonal GIS Physiography -->
+              <div class="detail-section">
+                <span class="section-title">Zonal GIS Physiography (Authoritative Polygon)</span>
+                <div class="gis-zonal-grid">
+                  <div class="zonal-item">
+                    <span class="z-label">Mean Elevation</span>
+                    <span class="z-value" id="pElevation">510.0 m</span>
+                  </div>
+                  <div class="zonal-item">
+                    <span class="z-label">Mean Slope</span>
+                    <span class="z-value" id="pSlope">2.4°</span>
+                  </div>
+                  <div class="zonal-item">
+                    <span class="z-label">NDVI Health</span>
+                    <span class="z-value" id="pNDVI">0.58</span>
+                  </div>
+                  <div class="zonal-item">
+                    <span class="z-label">Agriculture %</span>
+                    <span class="z-value" id="pAgriPct">74%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- ================================================================= -->
+        <!-- TAB 2: ALERTS TAB (SORTED BY IMD HAZARD SEVERITY)                -->
+        <!-- ================================================================= -->
+        <div class="tab-pane hidden" id="paneAlerts">
+          <div class="alerts-tab-header">
+            <div>
+              <h3 class="pane-section-title">Active Hazard Alerts</h3>
+              <p class="pane-section-desc">Panchayats requiring attention sorted by IMD severity (Red &gt; Orange &gt; Yellow)</p>
+            </div>
+            <span class="alerts-total-badge" id="alertsTotalBadge">0 Active</span>
+          </div>
+
+          <!-- Alert Severity Filters -->
+          <div class="alerts-severity-strip">
+            <span class="sev-pill sev-red">🔴 Red (Take Action)</span>
+            <span class="sev-pill sev-orange">🟠 Orange (Be Prepared)</span>
+            <span class="sev-pill sev-yellow">🟡 Yellow (Be Updated)</span>
+          </div>
+
+          <!-- Alerts List Container (Populated dynamically) -->
+          <div class="alerts-list-scroll" id="alertsListContainer">
+            <div class="empty-state-notice">Loading active alerts for selected region...</div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- TAB 3: ADVISORY TAB (CROP PERSONALIZATION & SCHEDULER)           -->
+        <!-- ================================================================= -->
+        <div class="tab-pane hidden" id="paneAdvisory">
+          <div class="advisory-tab-scroll">
+            <!-- Crop & Sowing Date Personalization -->
+            <div class="crop-personalization-card">
+              <div class="crop-card-header">
+                <span class="crop-card-title">🌱 Crop &amp; Sowing Personalization</span>
+                <span id="pCropStageBadge" class="crop-stage-pill">Stage: Active</span>
+              </div>
+              <div class="crop-inputs-grid">
+                <div>
+                  <label for="selectCropPersonalize" class="crop-input-label">Crop</label>
+                  <select id="selectCropPersonalize" class="crop-select">
+                    <option value="paddy" selected>Paddy (Rice)</option>
+                    <option value="maize">Maize</option>
+                    <option value="soybean">Soybean</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="mustard">Mustard</option>
+                    <option value="chickpea">Chickpea</option>
+                    <option value="potato">Potato</option>
+                    <option value="tomato">Tomato</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="inputSowingDatePicker" class="crop-input-label">Sowing Date</label>
+                  <input type="date" id="inputSowingDatePicker" value="2026-07-15" class="crop-date-input">
+                </div>
+              </div>
+              <button id="btnApplyCropPersonalization" class="btn-apply-crop">
+                Update Advisory &amp; Irrigation
+              </button>
+              <div id="personalizedStageDetails" class="personalized-stage-details" style="display: none;"></div>
+            </div>
+
+            <!-- Agro-Meteorological Advisory Summary -->
+            <div class="detail-section">
+              <div class="section-title-row">
+                <span class="section-title" id="lblAgroAdvisory">Agro-Meteorological Advisory</span>
+                <span class="crop-tag" id="pAdvisoryCropTag">Paddy / Kharif</span>
+              </div>
+              <div class="advisory-card-container" id="advisoryCardsContainer">
+                <div class="advisory-card">
+                  <p id="advisoryBodyText">Moderate to heavy rainfall forecast (42 mm). Maintain open drainage furrows between broad beds to prevent waterlogging around root zones. Postpone chemical foliar spraying until wind settles below 12 km/h.</p>
+                  <div class="advisory-meta" id="advisorySourceMeta">Source: RVSKVV Indore / ICAR-IISR Indore AAS</div>
+                </div>
+              </div>
+
+              <!-- Farm Operations Decision Matrix -->
+              <div class="farm-operations-matrix-box">
+                <div class="matrix-header">
+                  <span>🚜 Farm Operations Matrix</span>
+                  <span id="pOpStageBadge" class="op-stage-badge">Vegetative Stage</span>
+                </div>
+                <div class="operations-grid">
+                  <div class="op-card">
+                    <div class="op-label">Chemical Spraying</div>
+                    <div id="badgeOpSpray" class="op-status op-avoid">⛔ AVOID</div>
+                  </div>
+                  <div class="op-card">
+                    <div class="op-label">Irrigation Schedule</div>
+                    <div id="badgeOpIrrig" class="op-status op-not-req">💧 NOT REQUIRED</div>
+                  </div>
+                  <div class="op-card">
+                    <div class="op-label">Field Drainage</div>
+                    <div id="badgeOpDrain" class="op-status op-drain">🌊 OPEN BUNDS</div>
+                  </div>
+                  <div class="op-card">
+                    <div class="op-label">Fertilizer Top-Dress</div>
+                    <div id="badgeOpFert" class="op-status op-delay">⏳ DELAY</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 10px;">
+                <button class="btn-whatsapp-share" id="btnShareWhatsApp" title="Share Advisory via WhatsApp">
+                  <span>📲 <span id="lblShareWhatsApp">Share on WhatsApp</span></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Smart Irrigation Scheduler Card -->
+            <div class="irrigation-scheduler-card" id="irrigationSchedulerCard">
+              <div class="irrig-card-header">
+                <span>💧 Smart Irrigation Scheduler</span>
+                <span id="spiBadge" class="spi-pill">SPI: Normal</span>
+              </div>
+              <div id="irrigRecommendationHeadline" class="irrig-headline">
+                Irrigation not required for next 5 days
+              </div>
+              <div class="irrig-stats-grid">
+                <div><strong>Root Zone (Zr):</strong> <span id="irrigRootDepth">60 cm</span></div>
+                <div><strong>Readily Avail (RAW):</strong> <span id="irrigRAW">36 mm</span></div>
+                <div><strong>Current Deficit:</strong> <span id="irrigDeficit">0 mm</span></div>
+                <div><strong>Total Capacity (TAW):</strong> <span id="irrigTAW">72 mm</span></div>
+              </div>
+              <details class="irrig-assumptions">
+                <summary>Show Assumptions (FAO-56 Soil Bucket)</summary>
+                <div id="irrigAssumptionsContent" class="assumptions-body">
+                  Soil: Red Sandy Loam (AWC: 120 mm/m) | Depletion factor (p): 0.50 | Standard: FAO-56 / KVK
+                </div>
+              </details>
+            </div>
+
+            <!-- Crowdsourced Ground Observation Card -->
+            <div class="crowd-report-card">
+              <div class="crowd-card-header">
+                <span>👥 Ground Observation</span>
+                <span id="crowdReportCountBadge" class="crowd-count-badge">0 Reports</span>
+              </div>
+              <p class="crowd-card-desc">
+                Did it rain in this Panchayat today? Share your observation to help improve local micro-climate accuracy.
+              </p>
+              <button id="btnOpenCrowdReportModal" class="btn-crowd-trigger">
+                🌧️ Did it rain today? Submit Report
+              </button>
+            </div>
+
+            <!-- Officer Mode: Top Risk Panchayats Ranking Table -->
+            <div class="officer-risk-ranking-card" id="officerRiskRankingCard">
+              <div class="detail-section-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <span class="section-title" style="margin-bottom:2px;">⚠️ Top Risk Panchayats</span>
+                  <span style="font-size:11px; color:#545b52;" id="lblRiskRankingBlock">Block: Dhanbad — Click row to fly</span>
+                </div>
+                <button id="btnRefreshBlockRisk" class="btn-tool-icon" style="width:28px;height:28px;" title="Refresh Risk Ranking">🔄</button>
+              </div>
+              <div class="officer-risk-table-wrap">
+                <table class="officer-risk-table" id="officerRiskTable">
+                  <thead>
+                    <tr>
+                      <th style="width:28px;">#</th>
+                      <th>Gram Panchayat</th>
+                      <th>Risk Tier</th>
+                      <th>Score</th>
+                      <th>Primary Hazard</th>
+                    </tr>
+                  </thead>
+                  <tbody id="officerRiskTableBody">
+                    <tr><td colspan="5" style="text-align:center; color:#788275; padding:12px;">Loading block risk ranking...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- TAB 4: HISTORICAL EXTREME EVENT REPLAY (OFFICER MODE)            -->
+        <!-- ================================================================= -->
+        <div class="tab-pane hidden" id="paneReplay">
+          <div class="replay-tab-scroll">
+            <div class="replay-tab-header">
+              <h3 class="pane-section-title">Extreme Weather Event Replay</h3>
+              <p class="pane-section-desc">Officer Mode: Step through 2024 monsoon extremes with dynamic quantitative narration derived from actual model predictions.</p>
+            </div>
+
+            <!-- Event Selector & Stepper Controls -->
+            <div class="replay-controls-card">
+              <label for="selectReplayEvent" class="replay-control-label">Select 2024 Historical Event:</label>
+              <select id="selectReplayEvent" class="replay-event-select">
+                <option value="sept_deluge" selected>Sept 14–17 Deluge (Monsoon Trough)</option>
+                <option value="aug_surge">Aug 1–4 Surge (Depression Track)</option>
+                <option value="july_spell">July 2–5 Spell (Active Monsoon Surge)</option>
+              </select>
+
+              <div class="replay-playback-bar">
+                <button class="btn-replay-ctrl" id="btnReplayPrev" title="Previous Day">⏮</button>
+                <button class="btn-replay-play" id="btnReplayPlay" title="Play / Pause Replay Animation">
+                  <span id="replayPlayIcon">▶️</span>
+                  <span id="replayPlayLabel">Play</span>
+                </button>
+                <button class="btn-replay-ctrl" id="btnReplayNext" title="Next Day">⏭</button>
+                <span class="replay-day-badge" id="replayDayBadge">Day 1 of 4</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Quantitative Narration Card -->
+            <div class="replay-narration-box" id="replayNarrationBox">
+              <div class="narration-header">
+                <span class="narration-tag">📊 Quantitative Narration</span>
+                <span class="narration-date" id="replayNarrationDate">14 Sep 2024</span>
+              </div>
+              <div class="narration-text" id="replayNarrationText">
+                Loading quantitative event replay data...
+              </div>
+            </div>
+
+            <!-- Dynamic Metrics Grid -->
+            <div class="replay-stats-grid">
+              <div class="replay-stat-card">
+                <span class="r-lbl">Peak GP Rainfall</span>
+                <span class="r-val" id="replayPeakVal">—</span>
+              </div>
+              <div class="replay-stat-card">
+                <span class="r-lbl">Heavy (&gt;64.5mm)</span>
+                <span class="r-val" id="replayHeavyCount">—</span>
+              </div>
+              <div class="replay-stat-card">
+                <span class="r-lbl">Mod (&gt;35.5mm)</span>
+                <span class="r-val" id="replayModCount">—</span>
+              </div>
+              <div class="replay-stat-card">
+                <span class="r-lbl">80% CI Width</span>
+                <span class="r-val" id="replayCiWidth">—</span>
+              </div>
+            </div>
+
+            <div class="replay-notice-box">
+              <span>💡 Narration lines and metrics are computed dynamically from test year 2024 stored predictions (no hardcoded text).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- TAB 5: BLOCK PANCHAYATS LIST                                      -->
+        <!-- ================================================================= -->
+        <div class="tab-pane hidden" id="panePanchayats">
+          <div class="panchayats-list-header">
+            <span class="panchayats-list-title" id="panchayatsListHeading">Panchayats in Selected Block</span>
+            <span class="count-badge" id="panchayatsCountBadge">0</span>
+          </div>
+          <div class="panchayats-search-sub">
+            <input type="text" id="filterPanchayatsInput" class="filter-input" placeholder="Filter Panchayats in list...">
+          </div>
+          <div class="panchayats-card-list" id="panchayatsListContainer">
+            <div class="empty-state-notice">
+              Select a District and Block above to explore authoritative Gram Panchayat polygons.
+            </div>
+          </div>
+        </div>
+
+        <!-- Multi-Area Selection Tab (Kept for compatibility) -->
+        <div class="tab-pane hidden" id="paneMultiSelect">
+          <div class="multi-select-header">
+            <div>
+              <h3 class="multi-title">Multi-Selected Regions</h3>
+              <p class="multi-desc">Select multiple Panchayats to compare micro-climates across block boundaries.</p>
+            </div>
+            <button class="btn-clear-multi" id="btnClearMultiSelect" title="Clear all selected areas">Clear All</button>
+          </div>
+          <div class="multi-select-list" id="multiSelectList">
+            <div class="empty-state-notice">Click Gram Panchayat polygons on map to compare.</div>
+          </div>
+          <div class="multi-comparison-section hidden" id="multiComparisonWrap">
+            <table class="comparison-table" id="multiCompTable">
+              <thead>
+                <tr>
+                  <th>Gram Panchayat</th>
+                  <th>Rain (mm)</th>
+                  <th>Temp (°C)</th>
+                  <th>Wind (km/h)</th>
+                </tr>
+              </thead>
+              <tbody id="multiCompBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Reset Buttons -->
+      <div class="nav-sidebar-footer">
+        <button class="btn-nav-action" id="btnResetToState">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>Fit State View</span>
+        </button>
+        <button class="btn-nav-action" id="btnResetToIndia">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>View All India</span>
+        </button>
       </div>
     </aside>
 
-  </main>
+  </div>
 
-  <!-- Leaflet GIS Map JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  
-  <!-- Frontend Application Logic -->
-  <script src="js/app.js"></script>
-</body>
-</html>
+  <!-- ========================================================================= -->
+  <!-- 4. BOTTOM STATUS BAR (MATCHING WIREFRAME FOOTER)                         -->
+  <!-- ========================================================================= -->
+  <footer class="app-bottom-bar" id="appBottomBar">
+    <div class="status-attention-group" id="statusAttentionGroup">
+      <span class="status-warning-icon">⚠</span>
+      <span class="status-attention-text" id="statusAttentionText">3 Panchayats require attention</span>
+    </div>
+    <div class="status-update-group" id="statusUpdateGroup">
+      <span class="status-live-dot">●</span>
+      <span class="status-update-text" id="statusUpdateText">Model updated 10m ago</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 3. MAP PROVIDER CONFIGURATION MODAL                                       -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay hidden" id="mapConfigModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Map Provider Abstraction Configuration</h3>
+        <button class="btn-icon-xs" id="btnCloseConfigModal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">This application uses MapLibre GL JS with decoupled environment variables. The tile and satellite providers can be swapped without modifying any map application code.</p>
+        
+        <div class="form-group">
+          <label class="form-label" for="cfgSatelliteUrl">SATELLITE_STYLE_URL</label>
+          <input type="text" id="cfgSatelliteUrl" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cfgVectorUrl">VECTOR_TILE_URL</label>
+          <input type="text" id="cfgVectorUrl" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cfgGeocodingUrl">GEOCODING_URL</label>
+          <input type="text" id="cfgGeocodingUrl" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cfgAttribution">MAP_ATTRIBUTION</label>
+          <input type="text" id="cfgAttribution" class="form-input" readonly>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="btnSaveConfigModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crowdsourced Rain Report Modal Dialog (Prompt 3.3) -->
+  <div class="modal-overlay hidden" id="crowdReportModal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.65);backdrop-filter:blur(3px);z-index:9999;display:none;align-items:center;justify-content:center;">
+    <div class="modal-card" style="background:#fff;border-radius:12px;width:90%;max-width:440px;padding:22px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.2),0 10px 10px -5px rgba(0,0,0,0.1);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <h3 style="margin:0;font-size:16px;font-weight:700;color:#1e293b;">🌧️ Did it rain today?</h3>
+        <button id="btnCloseCrowdModal" style="background:none;border:none;font-size:18px;cursor:pointer;color:#64748b;padding:4px;">✕</button>
+      </div>
+      <p style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.4;">
+        Observing for: <strong id="crowdModalGpName" style="color:#0f172a;">Panchayat</strong><br>
+        <span style="font-size:11px;color:#9333ea;font-weight:600;">Unverified citizen ground observation • Rate-limited &amp; screened</span>
+      </p>
+      <div style="margin-bottom:14px;">
+        <label style="font-size:12px;font-weight:700;color:#334155;display:block;margin-bottom:6px;">Rain Intensity</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="rainCategoryBtnGroup">
+          <button type="button" class="btn-rain-opt active" data-cat="none" style="padding:10px 8px;border:2px solid #a855f7;border-radius:8px;background:#faf5ff;cursor:pointer;font-weight:700;font-size:12px;color:#6b21a8;">☀️ No Rain</button>
+          <button type="button" class="btn-rain-opt" data-cat="light" style="padding:10px 8px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;cursor:pointer;font-weight:600;font-size:12px;color:#334155;">🌦️ Light (&lt;5mm)</button>
+          <button type="button" class="btn-rain-opt" data-cat="moderate" style="padding:10px 8px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;cursor:pointer;font-weight:600;font-size:12px;color:#334155;">🌧️ Moderate (5-15mm)</button>
+          <button type="button" class="btn-rain-opt" data-cat="heavy" style="padding:10px 8px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;cursor:pointer;font-weight:600;font-size:12px;color:#334155;">⛈️ Heavy (&gt;15mm)</button>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label for="inputCrowdAmount" style="font-size:11.5px;font-weight:600;color:#475569;display:block;margin-bottom:4px;">Estimated Depth (mm, optional)</label>
+        <input type="number" id="inputCrowdAmount" placeholder="e.g. 15" step="0.5" style="width:100%;padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;background:#f8fafc;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label for="inputCrowdPhoto" style="font-size:11.5px;font-weight:600;color:#475569;display:block;margin-bottom:4px;">Photo URL (optional gauge/field evidence)</label>
+        <input type="url" id="inputCrowdPhoto" placeholder="https://..." style="width:100%;padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;background:#f8fafc;">
+      </div>
+      
