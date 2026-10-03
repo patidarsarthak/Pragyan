@@ -1,0 +1,29 @@
+{
+  "validation_timestamp": "2026-09-26T00:00:00Z",
+  "total_panchayats_evaluated": 1433,
+  "total_blocks_evaluated": 621,
+  "total_districts_evaluated": 254,
+  "total_states_evaluated": 36,
+  "status": "PASS",
+  "audit_results": {
+    "invalid_geometries_count": 0,
+    "duplicate_gp_codes_count": 0,
+    "duplicate_geometries_count": 0,
+    "unexpected_same_level_overlaps_count": 0,
+    "geometry_errors_count": 0,
+    "crs_inconsistencies_count": 0,
+    "unexpected_gaps_count": 0,
+    "missing_administrative_hierarchy_count": 0,
+    "verified_hierarchical_containments": 1433
+  },
+  "findings": {
+    "invalid_geometries": [],
+    "duplicate_gp_codes": [],
+    "duplicate_geometries": [],
+    "unexpected_same_level_overlaps": [],
+    "geometry_errors": [],
+    "crs_inconsistencies": [],
+    "unexpected_gaps": [],
+    "missing_administrative_hierarchy": []
+  }
+}

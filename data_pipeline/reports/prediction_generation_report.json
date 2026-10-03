@@ -1,0 +1,18 @@
+{
+  "pipeline_step": "13_generate_predictions",
+  "status": "COMPLETED",
+  "target_dates": [
+    "2026-09-25"
+  ],
+  "panchayats_predicted": 239,
+  "total_prediction_records": 1195,
+  "total_advisories_generated": 717,
+  "coarse_forecast_input": {
+    "COARSE_RAINFALL": 18.5,
+    "COARSE_TEMPERATURE": 28.2,
+    "COARSE_HUMIDITY": 84.0,
+    "COARSE_WIND_SPEED": 14.5
+  },
+  "output_parquet": "C:\\Users\\LOQ\\Desktop\\sih26074\\data\\predictions\\dhanbad_operational_predictions.parquet",
+  "timestamp": "2026-09-25T19:27:36.077837+00:00"
+}

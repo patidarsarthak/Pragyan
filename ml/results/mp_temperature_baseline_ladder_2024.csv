@@ -1,0 +1,4 @@
+variable,state,model_or_baseline,n_samples,mae_c,rmse_c,bias_c,pearson_r,held_out_test_year
+2m Temperature (°C),Madhya Pradesh,ERA5_Raw_0.25deg,1728,1.167,1.667,-0.773,0.97,2024
+2m Temperature (°C),Madhya Pradesh,Standard_Lapse_Rate_6.5C_km,1728,1.182,1.685,-0.796,0.97,2024
+2m Temperature (°C),Madhya Pradesh,LOSO_Regional_Bias_Correction,1728,1.274,1.648,0.151,0.963,2024

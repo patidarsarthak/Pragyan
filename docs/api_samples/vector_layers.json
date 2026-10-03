@@ -1,0 +1,2743 @@
+{
+  "water_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Damodar River",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.15,
+              23.7
+            ],
+            [
+              86.25,
+              23.68
+            ],
+            [
+              86.35,
+              23.66
+            ],
+            [
+              86.45,
+              23.65
+            ],
+            [
+              86.55,
+              23.66
+            ],
+            [
+              86.68,
+              23.67
+            ],
+            [
+              86.78,
+              23.68
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Barakar River",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.3,
+              23.95
+            ],
+            [
+              86.42,
+              23.9
+            ],
+            [
+              86.55,
+              23.85
+            ],
+            [
+              86.68,
+              23.8
+            ],
+            [
+              86.82,
+              23.78
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Khudia River",
+          "type": "stream",
+          "class": "stream"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.28,
+              23.88
+            ],
+            [
+              86.35,
+              23.82
+            ],
+            [
+              86.42,
+              23.76
+            ],
+            [
+              86.48,
+              23.72
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Lake Reservoir",
+          "type": "reservoir",
+          "area_ha": 214
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.195,
+                23.9
+              ],
+              [
+                86.215,
+                23.905
+              ],
+              [
+                86.22,
+                23.895
+              ],
+              [
+                86.205,
+                23.885
+              ],
+              [
+                86.195,
+                23.9
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Maithon Dam Reservoir",
+          "type": "reservoir",
+          "area_ha": 6500
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.78,
+                23.77
+              ],
+              [
+                86.83,
+                23.81
+              ],
+              [
+                86.85,
+                23.79
+              ],
+              [
+                86.81,
+                23.75
+              ],
+              [
+                86.78,
+                23.77
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Panchet Dam Reservoir",
+          "type": "reservoir",
+          "area_ha": 4800
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.72,
+                23.67
+              ],
+              [
+                86.77,
+                23.7
+              ],
+              [
+                86.78,
+                23.66
+              ],
+              [
+                86.74,
+                23.64
+              ],
+              [
+                86.72,
+                23.67
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kshipra River",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.82,
+              22.88
+            ],
+            [
+              75.84,
+              22.92
+            ],
+            [
+              75.83,
+              22.98
+            ],
+            [
+              75.81,
+              23.05
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sirpur Lake (Ramsar Site)",
+          "type": "lake",
+          "area_ha": 260
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.81,
+                22.7
+              ],
+              [
+                75.83,
+                22.71
+              ],
+              [
+                75.83,
+                22.69
+              ],
+              [
+                75.81,
+                22.7
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bilawali Reservoir",
+          "type": "reservoir",
+          "area_ha": 180
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.86,
+                22.68
+              ],
+              [
+                75.88,
+                22.69
+              ],
+              [
+                75.88,
+                22.67
+              ],
+              [
+                75.86,
+                22.68
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chambal River Tributary",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.5,
+              22.8
+            ],
+            [
+              75.55,
+              22.86
+            ],
+            [
+              75.6,
+              22.94
+            ],
+            [
+              75.65,
+              23.05
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer Branch Irrigation Canal",
+          "type": "canal",
+          "class": "irrigation_canal"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.8,
+              22.92
+            ],
+            [
+              75.82,
+              22.95
+            ],
+            [
+              75.84,
+              22.98
+            ],
+            [
+              75.85,
+              23.02
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kshipra River - Sanwer Reach",
+          "type": "river",
+          "class": "perennial_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.81,
+              22.93
+            ],
+            [
+              75.83,
+              22.97
+            ],
+            [
+              75.84,
+              23.01
+            ],
+            [
+              75.82,
+              23.06
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Yashwant Sagar Reservoir (Ramsar Site)",
+          "type": "reservoir",
+          "area_ha": 1400
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.68,
+                22.8
+              ],
+              [
+                75.72,
+                22.82
+              ],
+              [
+                75.74,
+                22.79
+              ],
+              [
+                75.7,
+                22.77
+              ],
+              [
+                75.68,
+                22.8
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Irrigation Distributary",
+          "type": "canal",
+          "class": "canal"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.2,
+              23.9
+            ],
+            [
+              86.23,
+              23.88
+            ],
+            [
+              86.26,
+              23.85
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ganga River (Varanasi Reach)",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              82.94,
+              25.26
+            ],
+            [
+              82.98,
+              25.28
+            ],
+            [
+              83.01,
+              25.31
+            ],
+            [
+              83.03,
+              25.34
+            ],
+            [
+              83.04,
+              25.38
+            ],
+            [
+              83.08,
+              25.43
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Varuna River",
+          "type": "river",
+          "class": "tributary"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              82.8,
+              25.4
+            ],
+            [
+              82.88,
+              25.36
+            ],
+            [
+              82.95,
+              25.34
+            ],
+            [
+              83.01,
+              25.33
+            ],
+            [
+              83.04,
+              25.34
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Assi River",
+          "type": "stream",
+          "class": "stream"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              82.95,
+              25.27
+            ],
+            [
+              82.98,
+              25.28
+            ],
+            [
+              83.0,
+              25.29
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Yamuna River (Delhi Reach)",
+          "type": "river",
+          "class": "major_river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              77.16,
+              28.87
+            ],
+            [
+              77.19,
+              28.82
+            ],
+            [
+              77.21,
+              28.75
+            ],
+            [
+              77.23,
+              28.7
+            ],
+            [
+              77.25,
+              28.62
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Western Yamuna Canal",
+          "type": "canal",
+          "class": "canal"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              77.08,
+              28.88
+            ],
+            [
+              77.1,
+              28.82
+            ],
+            [
+              77.12,
+              28.76
+            ],
+            [
+              77.14,
+              28.71
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Najafgarh Drain Basin",
+          "type": "canal",
+          "class": "drainage_canal"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              76.92,
+              28.6
+            ],
+            [
+              77.01,
+              28.65
+            ],
+            [
+              77.11,
+              28.7
+            ],
+            [
+              77.21,
+              28.72
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bhalswa Horseshoe Lake",
+          "type": "lake",
+          "class": "lake"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.165,
+                28.74
+              ],
+              [
+                77.172,
+                28.745
+              ],
+              [
+                77.17,
+                28.752
+              ],
+              [
+                77.16,
+                28.748
+              ],
+              [
+                77.165,
+                28.74
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dravyavati River (Amanishah Nallah)",
+          "type": "river",
+          "class": "river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.83,
+              26.98
+            ],
+            [
+              75.8,
+              26.92
+            ],
+            [
+              75.78,
+              26.85
+            ],
+            [
+              75.76,
+              26.78
+            ],
+            [
+              75.78,
+              26.72
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dhund River",
+          "type": "river",
+          "class": "river"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.98,
+              27.08
+            ],
+            [
+              76.01,
+              26.98
+            ],
+            [
+              76.02,
+              26.85
+            ],
+            [
+              75.99,
+              26.75
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ramgarh Lake Reservoir",
+          "type": "reservoir",
+          "class": "reservoir"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.01,
+                27.045
+              ],
+              [
+                76.03,
+                27.055
+              ],
+              [
+                76.025,
+                27.07
+              ],
+              [
+                76.005,
+                27.06
+              ],
+              [
+                76.01,
+                27.045
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Mansagar Lake (Jal Mahal)",
+          "type": "lake",
+          "class": "lake"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.84,
+                26.95
+              ],
+              [
+                75.855,
+                26.955
+              ],
+              [
+                75.85,
+                26.965
+              ],
+              [
+                75.838,
+                26.96
+              ],
+              [
+                75.84,
+                26.95
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Narmada River",
+          "type": "river",
+          "class": "major_river",
+          "description": "Lifeline of Madhya Pradesh flowing 1,312 km through central India"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              81.76,
+              22.67
+            ],
+            [
+              81.08,
+              22.6
+            ],
+            [
+              80.37,
+              22.6
+            ],
+            [
+              79.95,
+              23.13
+            ],
+            [
+              79.2,
+              22.95
+            ],
+            [
+              77.74,
+              22.75
+            ],
+            [
+              77.01,
+              22.5
+            ],
+            [
+              76.15,
+              22.25
+            ],
+            [
+              75.58,
+              22.17
+            ],
+            [
+              74.9,
+              22.05
+            ],
+            [
+              74.3,
+              21.85
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Betwa River",
+          "type": "river",
+          "class": "major_river",
+          "description": "Tributary of Yamuna originating in Raisen district, MP"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              77.4,
+              23.05
+            ],
+            [
+              77.82,
+              23.53
+            ],
+            [
+              78.64,
+              25.35
+            ],
+            [
+              79.2,
+              25.9
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bhojtal (Upper Lake Bhopal - Ramsar Site)",
+          "type": "lake",
+          "area_ha": 3100,
+          "description": "Major freshwater wetland and Ramsar site in Bhopal, MP"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.3,
+                23.23
+              ],
+              [
+                77.36,
+                23.26
+              ],
+              [
+                77.39,
+                23.24
+              ],
+              [
+                77.35,
+                23.21
+              ],
+              [
+                77.31,
+                23.21
+              ],
+              [
+                77.3,
+                23.23
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "road_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "NH-19 (Grand Trunk Road)",
+          "ref": "NH19",
+          "class": "national_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.1,
+              23.92
+            ],
+            [
+              86.2,
+              23.9
+            ],
+            [
+              86.3,
+              23.86
+            ],
+            [
+              86.42,
+              23.82
+            ],
+            [
+              86.55,
+              23.81
+            ],
+            [
+              86.7,
+              23.77
+            ],
+            [
+              86.85,
+              23.75
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "NH-32 (Dhanbad-Bokaro-Ranchi Expressway)",
+          "ref": "NH32",
+          "class": "national_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.43,
+              23.8
+            ],
+            [
+              86.38,
+              23.76
+            ],
+            [
+              86.3,
+              23.74
+            ],
+            [
+              86.2,
+              23.7
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dhanbad - Govindpur Arterial Highway",
+          "ref": "SH12",
+          "class": "state_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.43,
+              23.8
+            ],
+            [
+              86.48,
+              23.82
+            ],
+            [
+              86.52,
+              23.84
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Baliapur - Sindri Link Road",
+          "ref": "MDR",
+          "class": "district_road"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.45,
+              23.78
+            ],
+            [
+              86.53,
+              23.73
+            ],
+            [
+              86.5,
+              23.65
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi - Gomoh Rural Connect Road",
+          "ref": "ODR",
+          "class": "rural_road"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              86.2,
+              23.9
+            ],
+            [
+              86.16,
+              23.87
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "NH-52 (Agra-Bombay Road / AB Road)",
+          "ref": "NH52",
+          "class": "national_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.8,
+              22.6
+            ],
+            [
+              75.85,
+              22.7
+            ],
+            [
+              75.88,
+              22.8
+            ],
+            [
+              75.9,
+              22.95
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Indore - Depalpur State Highway",
+          "ref": "SH27",
+          "class": "state_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.85,
+              22.72
+            ],
+            [
+              75.7,
+              22.78
+            ],
+            [
+              75.55,
+              22.85
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Indore - Sanwer - Ujjain 4-Lane Highway",
+          "ref": "SH27",
+          "class": "state_highway"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.86,
+              22.75
+            ],
+            [
+              75.84,
+              22.85
+            ],
+            [
+              75.83,
+              22.97
+            ],
+            [
+              75.81,
+              23.1
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer - Kshipra Rural Link Road",
+          "ref": "ODR",
+          "class": "rural_road"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.835,
+              22.975
+            ],
+            [
+              75.85,
+              22.96
+            ],
+            [
+              75.885,
+              22.945
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer - Ajnod Rural Arterial",
+          "ref": "ODR",
+          "class": "rural_road"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.835,
+              22.975
+            ],
+            [
+              75.815,
+              22.99
+            ],
+            [
+              75.805,
+              23.015
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ralamandal Sanctuary Eco Trail",
+          "ref": "TRAIL",
+          "class": "path_trail"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.9,
+              22.668
+            ],
+            [
+              75.905,
+              22.672
+            ],
+            [
+              75.91,
+              22.675
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Varanasi Ring Road Phase 1 & 2",
+          "class": "national_highway",
+          "lanes": 4
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              82.88,
+              25.42
+            ],
+            [
+              82.95,
+              25.44
+            ],
+            [
+              83.05,
+              25.41
+            ],
+            [
+              83.1,
+              25.35
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Rameshwar-Kashi Vidyapeeth Rural Link Road",
+          "class": "rural_road",
+          "lanes": 2
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              82.9,
+              25.34
+            ],
+            [
+              82.915,
+              25.328
+            ],
+            [
+              82.94,
+              25.315
+            ],
+            [
+              82.96,
+              25.31
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "NH-44 (GT Karnal Road Expressway)",
+          "class": "national_highway",
+          "lanes": 8
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              77.12,
+              28.88
+            ],
+            [
+              77.13,
+              28.83
+            ],
+            [
+              77.14,
+              28.78
+            ],
+            [
+              77.15,
+              28.72
+            ],
+            [
+              77.17,
+              28.66
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Western Peripheral Expressway (KMP)",
+          "class": "national_highway",
+          "lanes": 6
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              76.9,
+              28.85
+            ],
+            [
+              76.95,
+              28.78
+            ],
+            [
+              76.98,
+              28.7
+            ],
+            [
+              77.01,
+              28.62
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Alipur-Bakhtawarpur Arterial Road",
+          "class": "state_highway",
+          "lanes": 4
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              77.135,
+              28.798
+            ],
+            [
+              77.145,
+              28.81
+            ],
+            [
+              77.155,
+              28.815
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "NH-48 (Delhi-Jaipur Highway)",
+          "class": "national_highway",
+          "lanes": 6
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.98,
+              27.2
+            ],
+            [
+              75.92,
+              27.1
+            ],
+            [
+              75.86,
+              27.01
+            ],
+            [
+              75.8,
+              26.92
+            ],
+            [
+              75.74,
+              26.82
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Jaipur Ring Road Expressway",
+          "class": "national_highway",
+          "lanes": 6
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.68,
+              26.85
+            ],
+            [
+              75.72,
+              26.75
+            ],
+            [
+              75.82,
+              26.72
+            ],
+            [
+              75.92,
+              26.76
+            ],
+            [
+              75.98,
+              26.85
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Amer-Chomu Rural Link Road",
+          "class": "state_highway",
+          "lanes": 2
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              75.875,
+              27.025
+            ],
+            [
+              75.82,
+              27.08
+            ],
+            [
+              75.76,
+              27.14
+            ],
+            [
+              75.735,
+              27.185
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "poi_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Krishi Vigyan Kendra (ICAR-KVK) Baliapur",
+          "type": "agricultural_research",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.535,
+            23.736
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dhanbad IMD Agro-Meteorological Observatory",
+          "type": "weather_station",
+          "icon": "met"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.43,
+            23.795
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Wild Life Sanctuary & Eco-Centre",
+          "type": "conservation_area",
+          "icon": "nature"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.205,
+            23.905
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Maithon Hydro-Meteorological Station",
+          "type": "hydromet",
+          "icon": "water"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.808,
+            23.785
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Baghmara Block Development Office & CSC",
+          "type": "government",
+          "icon": "admin"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.21,
+            23.79
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Govindpur Community Health Centre (CHC)",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.52,
+            23.835
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Tundi Model Higher Secondary School",
+          "type": "school",
+          "icon": "school"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.45,
+            23.98
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ICAR-IISR Indore Soybean Research Institute",
+          "type": "agricultural_research",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.875,
+            22.73
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ralamandal Wildlife & Biodiversity Sanctuary",
+          "type": "conservation_area",
+          "icon": "nature"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.9,
+            22.67
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer Community Health Centre (CHC)",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.835,
+            22.978
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kshipra Government Higher Secondary School",
+          "type": "school",
+          "icon": "school"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.885,
+            22.945
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer Krishi Upaj Mandi (Grain Market)",
+          "type": "mandi",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.83,
+            22.97
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kshipra Gram Panchayat Bhawan",
+          "type": "panchayat_bhawan",
+          "icon": "admin"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.882,
+            22.942
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ajnod Primary Health Sub-Centre",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.805,
+            23.015
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Primary Health Centre (PHC)",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.208,
+            23.902
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Baliapur Utkramit High School",
+          "type": "school",
+          "icon": "school"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            86.538,
+            23.738
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Rameshwar Gram Panchayat Bhavan",
+          "type": "panchayat_office",
+          "icon": "admin"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            82.915,
+            25.328
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Shivpur Primary Health Centre",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            82.975,
+            25.362
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "ICAR-IIVR Vegetable Research Center",
+          "type": "agro_research",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            82.855,
+            25.265
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Babatpur IMD Weather Station",
+          "type": "weather_station",
+          "icon": "met"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            82.86,
+            25.445
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Phulpur Govt Inter College",
+          "type": "school",
+          "icon": "school"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            82.825,
+            25.545
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Alipur Block Development Office",
+          "type": "admin_office",
+          "icon": "admin"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.135,
+            28.798
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bakhtawarpur Kisan Seva Kendra",
+          "type": "farmer_center",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.155,
+            28.815
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Narela Krishi Mandi (Grain Market)",
+          "type": "agro_mandi",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.085,
+            28.86
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kanjhawala Primary Health Centre",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.01,
+            28.728
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Delhi Jal Board Western Canal Station",
+          "type": "water_station",
+          "icon": "met"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            77.115,
+            28.825
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Amer Rural Gram Panchayat Office",
+          "type": "panchayat_office",
+          "icon": "admin"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.875,
+            27.025
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chomu Krishi Upaj Mandi (Mandi Samiti)",
+          "type": "agro_mandi",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.735,
+            27.185
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Muhana Fruit & Vegetable Terminal Market",
+          "type": "agro_market",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.715,
+            26.765
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "SKN Agriculture University Extension Center",
+          "type": "agro_university",
+          "icon": "agro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.785,
+            27.225
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanganer Community Health Centre",
+          "type": "hospital",
+          "icon": "health"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.745,
+            26.785
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Jaipur IMD Sanganer Observatory",
+          "type": "weather_station",
+          "icon": "met"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            75.805,
+            26.82
+          ]
+        }
+      }
+    ]
+  },
+  "building_clusters": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bagdaha Panchayat Bhawan & Rural Settlement",
+          "class": "settlement_cluster",
+          "height_m": 6
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.23,
+                23.782
+              ],
+              [
+                86.233,
+                23.784
+              ],
+              [
+                86.235,
+                23.781
+              ],
+              [
+                86.232,
+                23.779
+              ],
+              [
+                86.23,
+                23.782
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Market & Residential Settlement",
+          "class": "settlement_cluster",
+          "height_m": 8
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.2,
+                23.9
+              ],
+              [
+                86.205,
+                23.902
+              ],
+              [
+                86.207,
+                23.898
+              ],
+              [
+                86.202,
+                23.896
+              ],
+              [
+                86.2,
+                23.9
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Baliapur Agri Hub & Grain Storage Godown",
+          "class": "settlement_cluster",
+          "height_m": 7
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.53,
+                23.732
+              ],
+              [
+                86.534,
+                23.735
+              ],
+              [
+                86.537,
+                23.731
+              ],
+              [
+                86.532,
+                23.729
+              ],
+              [
+                86.53,
+                23.732
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ralamandal Rural Village Cluster",
+          "class": "settlement_cluster",
+          "height_m": 6
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.9,
+                22.77
+              ],
+              [
+                75.903,
+                22.772
+              ],
+              [
+                75.905,
+                22.769
+              ],
+              [
+                75.901,
+                22.767
+              ],
+              [
+                75.9,
+                22.77
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Kshipra Panchayat Bhawan & Village Settlement",
+          "class": "settlement_cluster",
+          "height_m": 7
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.882,
+                22.942
+              ],
+              [
+                75.886,
+                22.945
+              ],
+              [
+                75.889,
+                22.941
+              ],
+              [
+                75.885,
+                22.939
+              ],
+              [
+                75.882,
+                22.942
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sanwer Tehsil & Administrative Complex",
+          "class": "settlement_cluster",
+          "height_m": 9
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.832,
+                22.974
+              ],
+              [
+                75.837,
+                22.977
+              ],
+              [
+                75.839,
+                22.972
+              ],
+              [
+                75.834,
+                22.97
+              ],
+              [
+                75.832,
+                22.974
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ajnod Village Settlement & Grain Godown",
+          "class": "settlement_cluster",
+          "height_m": 6
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.803,
+                23.012
+              ],
+              [
+                75.807,
+                23.016
+              ],
+              [
+                75.81,
+                23.013
+              ],
+              [
+                75.805,
+                23.01
+              ],
+              [
+                75.803,
+                23.012
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Dudhia Village Settlement Cluster",
+          "class": "settlement_cluster",
+          "height_m": 6
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.918,
+                22.738
+              ],
+              [
+                75.923,
+                22.741
+              ],
+              [
+                75.926,
+                22.737
+              ],
+              [
+                75.92,
+                22.735
+              ],
+              [
+                75.918,
+                22.738
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Rameshwar Central Settlement Cluster",
+          "height_m": 8.5,
+          "type": "village_homes"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.913,
+                25.327
+              ],
+              [
+                82.916,
+                25.327
+              ],
+              [
+                82.916,
+                25.329
+              ],
+              [
+                82.913,
+                25.329
+              ],
+              [
+                82.913,
+                25.327
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Rameshwar North Primary School & Ward",
+          "height_m": 7.0,
+          "type": "public_building"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.917,
+                25.33
+              ],
+              [
+                82.919,
+                25.33
+              ],
+              [
+                82.919,
+                25.332
+              ],
+              [
+                82.917,
+                25.332
+              ],
+              [
+                82.917,
+                25.33
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Alipur Rural Abadi Settlement",
+          "height_m": 10.0,
+          "type": "peri_urban_homes"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.132,
+                28.796
+              ],
+              [
+                77.136,
+                28.796
+              ],
+              [
+                77.136,
+                28.8
+              ],
+              [
+                77.132,
+                28.8
+              ],
+              [
+                77.132,
+                28.796
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Bakhtawarpur Cold Storage & Aggregation Hub",
+          "height_m": 12.0,
+          "type": "agro_storage"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.152,
+                28.813
+              ],
+              [
+                77.156,
+                28.813
+              ],
+              [
+                77.156,
+                28.817
+              ],
+              [
+                77.152,
+                28.817
+              ],
+              [
+                77.152,
+                28.813
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Amer Rural Settlement Dhaani",
+          "height_m": 7.5,
+          "type": "stone_dwellings"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.872,
+                27.023
+              ],
+              [
+                75.876,
+                27.023
+              ],
+              [
+                75.876,
+                27.027
+              ],
+              [
+                75.872,
+                27.027
+              ],
+              [
+                75.872,
+                27.023
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chomu Vegetable Packing & Transit Yard",
+          "height_m": 9.0,
+          "type": "mandi_shed"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.732,
+                27.183
+              ],
+              [
+                75.736,
+                27.183
+              ],
+              [
+                75.736,
+                27.187
+              ],
+              [
+                75.732,
+                27.187
+              ],
+              [
+                75.732,
+                27.183
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "landuse_features": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Malwa Vertisol Soybean & Wheat Cropland",
+          "type": "agriculture",
+          "crop": "Soybean / Wheat"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.8,
+                22.9
+              ],
+              [
+                75.88,
+                22.9
+              ],
+              [
+                75.88,
+                23.02
+              ],
+              [
+                75.8,
+                23.02
+              ],
+              [
+                75.8,
+                22.9
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Ralamandal Forest Reserve & Biodiversity Park",
+          "type": "forest",
+          "class": "protected_forest"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.895,
+                22.665
+              ],
+              [
+                75.915,
+                22.665
+              ],
+              [
+                75.915,
+                22.685
+              ],
+              [
+                75.895,
+                22.685
+              ],
+              [
+                75.895,
+                22.665
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Damodar Basin Paddy Cultivation Belt",
+          "type": "agriculture",
+          "crop": "Kharif Paddy"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.35,
+                23.7
+              ],
+              [
+                86.55,
+                23.7
+              ],
+              [
+                86.55,
+                23.82
+              ],
+              [
+                86.35,
+                23.82
+              ],
+              [
+                86.35,
+                23.7
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Topchanchi Wildlife Sanctuary Protected Forest",
+          "type": "forest",
+          "class": "sanctuary"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86.18,
+                23.88
+              ],
+              [
+                86.23,
+                23.88
+              ],
+              [
+                86.23,
+                23.93
+              ],
+              [
+                86.18,
+                23.93
+              ],
+              [
+                86.18,
+                23.88
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Varanasi Gangetic Alluvial Cropland Zone",
+          "type": "cropland",
+          "zone": "intensive_agriculture"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                82.88,
+                25.3
+              ],
+              [
+                82.96,
+                25.3
+              ],
+              [
+                82.96,
+                25.36
+              ],
+              [
+                82.88,
+                25.36
+              ],
+              [
+                82.88,
+                25.3
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Alipur-Bakhtawarpur Peri-Urban Vegetable Zone",
+          "type": "cropland",
+          "zone": "horticulture"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                77.12,
+                28.78
+              ],
+              [
+                77.17,
+                28.78
+              ],
+              [
+                77.17,
+                28.84
+              ],
+              [
+                77.12,
+                28.84
+              ],
+              [
+                77.12,
+                28.78
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Amer Aravalli Scrub & Protected Ridge",
+          "type": "forest",
+          "zone": "aravalli_scrub"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.86,
+                27.02
+              ],
+              [
+                75.92,
+                27.02
+              ],
+              [
+                75.92,
+                27.08
+              ],
+              [
+                75.86,
+                27.08
+              ],
+              [
+                75.86,
+                27.02
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Chomu-Amer Dryland Pearl Millet Cropland",
+          "type": "cropland",
+          "zone": "semi_arid_farming"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.7,
+                27.14
+              ],
+              [
+                75.78,
+                27.14
+              ],
+              [
+                75.78,
+                27.2
+              ],
+              [
+                75.7,
+                27.2
+              ],
+              [
+                75.7,
+                27.14
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  }
+}

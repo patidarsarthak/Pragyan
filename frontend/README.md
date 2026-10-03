@@ -1,123 +1,110 @@
-# Smart Panchayat Climate & Geospatial Intelligence Platform (SIH26074)
-## Phase 6: Frontend GIS Dashboard
+# Sanket: the dashboard
 
-A responsive, high-performance GIS dashboard for Dhanbad District, Jharkhand, delivering hyper-local 1–10 day downscaled weather forecasts and ICAR/IMD agro-climatic advisories across all 239 Gram Panchayats.
+React 18 + TypeScript + Vite. It talks only to the FastAPI backend, holds no data of its
+own and fabricates nothing: every figure on screen comes from an API response.
 
----
-
-## 1. Visual & Design Architecture
-
-Per design guidelines, the dashboard is styled with a **clean, modern white theme** (`#ffffff` canvas, `#f8fafc` subtle background tints, `#0f172a` high-contrast typography, and refined border-radius + box shadows). It offers an intuitive, low-cognitive-load experience tailored for district agriculture officers, block development officers, and field extension workers.
-
-```
-+----------------------------------------------------------------------------------------------------+
-|  [Logo] Smart Panchayat Climate & Geospatial Intelligence  |  [Live API: 239 GPs]  [Run: 2026-09-25] |
-+----------------------------------------------------------------------------------------------------+
-|  KPI: Dist. Avg Rain  |  Max Temperature  |  High Risk Panchayats  |  Avg Confidence  |  Lead Time |
-+----------------------------------------------------------------------------------------------------+
-|  CONTROLS: [Date: 2026-09-25] [Layer: Rainfall Risk] [Crop: Paddy] [Block: All] [Search Panchayat] |
-+------------------------------------------------------------------+---------------------------------+
-|                                                                  |  PANEL: Chhatabad (GP: 110023)  |
-|                                                                  |  Block: Baghmara                |
-|                    INTERACTIVE LEAFLET MAP                       +---------------------------------+
-|                                                                  |  DOWN-SCALED 5-VARIABLE CARDS:  |
-|            - CartoDB Positron Base Layer (Light)                 |  * Rainfall: 14.8 mm [11 - 18]  |
-|            - 239 Panchayat Centroid Markers                      |  * Temperature: 31.4 C          |
-|            - Dynamic Thematic Choropleth Fill                    |  * Relative Humidity: 82.5%     |
-|            - Hover Tooltip with GP and Metric                    |  * Wind Speed: 14.2 km/h        |
-|            - Click-to-Focus and Detail Fetch                     |  * Evapotranspiration: 3.8 mm   |
-|                                                                  +---------------------------------+
-|   [ Legend: No Rain / Light / Moderate / Heavy / Very Heavy ]    |  10-DAY RAINFALL SPARKLINE      |
-|                                                                  +---------------------------------+
-|                                                                  |  AGRO-ADVISORY (ICAR / IMD)     |
-|                                                                  |  Stage: Tillering               |
-|                                                                  |  * Water Balance: Skip irrigate |
-|                                                                  |  * Heat/Blast: High humidity    |
-+------------------------------------------------------------------+---------------------------------+
-```
-
----
-
-## 2. Key Features
-
-### A. Thematic Map Visualization (All 239 Panchayats)
-- **Base Map:** CartoDB Positron high-resolution light tile layer.
-- **Layers Supported:**
-  1. `rainfall_risk` (Default): Categorized per IMD rainfall classification (No Rain / Trace, Light, Moderate, Heavy, Very Heavy).
-  2. `rainfall_mm`: Continuous gradient from light sky blue to deep indigo.
-  3. `temp_c`: Continuous temperature gradient (green $\to$ amber $\to$ crimson).
-  4. `confidence`: Visual representation of model certainty (85% to 99%).
-- **Interactive Controls:**
-  - Auto-fit bounds on district initialization (`map.fitBounds`).
-  - Smooth zoom-to-panchayat on selection.
-  - Hover tooltip with name, block, value, and confidence rating.
-
-### B. Controls & Filtering
-- **Lead-Time Date Selector:** Fetches dynamic available forecast dates from `/forecast/district-summary` (Day 1 through Day 10).
-- **Thematic Layer Selector:** Instant switch between risk categories and raw physical variables without reloading.
-- **Crop Context Selector:** Select between Paddy, Maize, Mustard, or Vegetables; dynamically refreshes the ICAR/IMD agro-advisories for the selected panchayat.
-- **Block Filter:** Filters the 239 panchayats by administrative block (Baghmara, Baliapur, Dhanbad, Govindpur, Jharia, Nirsa, Topchanchi, Tundi, Purbi Tundi, Egarkund).
-- **Typeahead Search:** Instant autocomplete search to locate any panchayat by name or GPCODE.
-
-### C. Detail Drawer & Multi-Variable Inspection
-- **5 Physical Variables:**
-  - Rainfall (`mm`) with lower/upper uncertainty intervals.
-  - 2m Temperature (`°C`) with uncertainty envelope.
-  - Relative Humidity (`%`).
-  - 10m Wind Speed (`km/h`).
-  - Reference Evapotranspiration (`mm/day`).
-- **Confidence Rating:** Color-coded pill reflecting bootstrap ensemble spread.
-- **10-Day Trend Sparkline:** Mini bar chart showing daily rainfall distribution over the full forecast horizon.
-- **Actionable Agro-Advisory:** Direct rendering of ICAR/IMD rule evaluations:
-  - Irrigation advice (Water Balance: Rainfall vs. ET).
-  - Pest/disease warning (Blast, blight risk based on temp + humidity index).
-  - Spray/wind advice (Safe chemical application threshold < 15 km/h).
-  - Official citations (ICAR-CRURRS, KVK Dhanbad, IMD AAS Bulletin).
-
----
-
-## 3. End-to-End API Consumption
-
-The dashboard **directly consumes the live FastAPI service** running on port 8000:
-
-| UI Component | Backend Endpoint | Query Params | Functionality |
-| :--- | :--- | :--- | :--- |
-| Map Geography | `GET /panchayats` | — | Loads 239 panchayat coordinates, names, and blocks. |
-| Thematic Coloring & KPIs | `GET /forecast/district-summary` | `date=YYYY-MM-DD` | Returns aggregate metrics and per-GP risk categories. |
-| Detail Weather Cards | `GET /forecast/{gpcode}` | `date=YYYY-MM-DD` | Returns 5 downscaled values with uncertainty envelopes. |
-| 10-Day Sparkline | `GET /forecast/{gpcode}` | — | Returns full multi-day forecast time-series. |
-| Advisory Drawer | `GET /advisory/{gpcode}` | `date=YYYY-MM-DD&crop=...` | Returns ICAR-backed advisory rules, urgency, and citations. |
-
----
-
-## 4. How to Run Locally
-
-### Option 1: Via Backend Static Mount (Recommended)
-The FastAPI server automatically serves the frontend at `/dashboard/`:
-
-1. Start the FastAPI backend:
-   ```bash
-   uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
-   ```
-2. Open your browser:
-   ```
-   http://127.0.0.1:8000/dashboard/
-   ```
-
-### Option 2: Standalone Local HTTP Server
-If running frontend separately:
 ```bash
-cd frontend
-python -m http.server 3000
+npm install
+cp .env.example .env          # Windows PowerShell: Copy-Item .env.example .env
+npm run dev                   # http://localhost:5173 (the backend must be on :8000)
 ```
-Open `http://127.0.0.1:3000`. The frontend automatically detects port 3000 and routes all API requests to `http://127.0.0.1:8000`.
 
----
+| Script | What it does |
+|---|---|
+| `npm run dev` | Development server with hot reload |
+| `npm run build` | Type-check (`tsc -b`), then a production build into `dist/` |
+| `npm test` | The vitest suite (jsdom and Testing Library), run once |
+| `npm run lint` | ESLint |
+| `npm run preview` | Serve the production build locally |
 
-## 5. Acceptance Test Verification
+| Variable | Meaning |
+|---|---|
+| `VITE_API_BASE_URL` | Where the API is, e.g. `http://localhost:8000`. In production the dashboard is served by the API itself, from the same origin. |
+| `VITE_WS_URL` | The live-events WebSocket, e.g. `ws://localhost:8000/ws` |
+| `VITE_ENABLE_UPLOAD` | `false` hides the upload panel. The production image sets it, because the serving box refuses writes. |
 
-- [x] **239 Panchayats Rendered:** Verified via Leaflet circle markers with exact geographic coordinates.
-- [x] **Dynamic Coloring:** Markers color-coded based on `/forecast/district-summary` data for the active date.
-- [x] **Real API Integration:** Zero mock data; all numbers come from Phase 3 Parquet forecast stores and Phase 4 advisory rules.
-- [x] **Click-Through:** Clicking any marker or search item immediately loads the detail drawer and renders 5 variables + advisory text.
-- [x] **White Clean UI:** Strictly adheres to light-mode surface design with responsive layout.
+## Screens
+
+`pages/DashboardPage.tsx` is the tab shell. Its state lives in the URL
+(`lib/urlState.ts`): the tab, the lead day, the district and the risk-band filter. So a
+view can be shared as a link, and the back button works.
+
+- **Operations:** the national picture for the current cycle. It has the hero ("where the
+  forecast comes apart"), the KPI strip, the district map with its lead-day rail, a
+  district's detail panel with its SHAP factors, and the worst-district ticker.
+- **Alerts:** every district and day above the watch level, worst first, with filters and
+  CSV export.
+- **Model:** the served run, its held-out metrics, its training data, the per-variable bust
+  thresholds, the reliability and economic-value cards, and the pipeline log.
+- **Replay a real bust:** a past cycle scored as of issue time and stepped through day by
+  day, with the forecast against what was observed.
+- **About:** the question, the evidence and the baseline ladder, the limitations, and the
+  data attribution.
+
+## Layout
+
+```
+src/
+  api/          typed fetch clients: regions, alerts, modelStatus, ensemble, replay,
+                ingest, upload; types.ts mirrors backend/app/api/schemas.py by hand
+  hooks/        useDashboardData (TanStack Query), useLiveSocket (WS → cache
+                invalidation), useMediaQuery, useElapsedSeconds
+  store/        liveStore (Zustand): socket status and the last live event
+  lib/          pure, unit-tested helpers: risk bands, formatting, display names, CSV,
+                chart domains, URL state, replay prefetch, economic value
+  components/
+    dashboard/  HeroDivergence, KpiStrip, RiskTicker, WorstDistrictsPanel,
+                BaselineLadderCard, FeedFreshness
+    map/        IndiaChoroplethMap, LeadDayRail, LeadDaySelector, MapLegend
+    detail/     RegionDetailPanel, BustProbabilityCurve, VariableTrajectoryChart,
+                ShapFactorsList
+    alerts/     AlertsPage
+    model/      ModelPage, BaselineLadderTable, CorpReliabilityCard,
+                EconomicValueCard, MissesCard, PipelineLog
+    replay/     ReplayView, ReplayCyclePicker, ReplayEventHeader, ReplayFocusChart,
+                ReplayProbabilityChart
+    about/      AboutPage
+    upload/     UploadPanel, ColumnMappingConfirmModal
+    common/     States (empty, loading, error), CopyLinkButton, TopDistrictsList
+  assets/geo/   india_districts.topojson, claimed_territory.geojson
+  styles.css    the whole design system, hand-written
+  theme.ts      chart colours, mirroring the CSS custom properties
+```
+
+## The map
+
+`assets/geo/india_districts.topojson` holds the 666 GADM 4.1 districts, built by
+`backend/scripts/build_district_geo.py` from the same geometry the backend aggregates with.
+So the map and the numbers describe identical areas. `claimed_territory.geojson` (Natural
+Earth, via `build_claimed_territory_geo.py`) draws the areas India claims but does not
+administer, such as Gilgit-Baltistan, Aksai Chin and the Shaksgam Valley, for which GADM
+has no district polygon.
+`india_states.topojson` is from the earlier state-level map and is no longer imported. See
+[`docs/boundary-geometry-licensing.md`](../docs/boundary-geometry-licensing.md) before
+changing any of it.
+
+## Live updates
+
+`useLiveSocket` opens `/ws` and, on each event, invalidates the affected TanStack Query
+keys, so the data is refetched over REST. Socket payloads are never merged into UI state,
+which keeps the socket and REST shapes independent. The queries also refetch on a timer,
+so the dashboard stays current on hosts that cannot carry a WebSocket, such as Render's
+free tier.
+
+## The honesty rules, in UI terms
+
+- A district the API did not score is drawn in the explicit **"No data"** grey, never in a
+  risk colour, so an absent prediction cannot be read as low risk.
+- With no trained model, the views show an empty state carrying the backend's own
+  explanation instead of colours or charts.
+- A number that cannot be computed from real data shows as an em dash with the reason,
+  never as a placeholder.
+- Observed values are drawn only where the forecast has verified; an unverified cycle says
+  so rather than leaving a line that looks like data.
+
+## Two conventions
+
+- **`src/api/types.ts` mirrors `backend/app/api/schemas.py` by hand.** There is no codegen.
+  Change a response shape and both files move together.
+- **`theme.ts` mirrors the custom properties in `styles.css`.** Recharts needs real colour
+  strings and cannot read `var(--blue)`, so the duplication is deliberate.

@@ -1,0 +1,17 @@
+{
+  "gp_code": 111722,
+  "gp_name": "BAGDAHA",
+  "history_days_returned": 1,
+  "records": [
+    {
+      "date": "2026-09-25",
+      "rainfall_mm": 18.5,
+      "temperature_c": 28.2,
+      "humidity_pct": 84.0,
+      "wind_speed_ms": 4.1,
+      "target_quality": "SATELLITE_DERIVED",
+      "observation_distance_km": 14.5,
+      "source": "IMD AWS Dhanbad / UCSB CHIRPS v2.0"
+    }
+  ]
+}

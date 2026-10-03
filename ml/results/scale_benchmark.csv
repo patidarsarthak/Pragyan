@@ -1,0 +1,4 @@
+scale_n_gps,benchmark_data_type,inference_time_sec,inference_throughput_gps_per_sec,peak_memory_mb,output_predictions_count,point_query_avg_ms,point_query_p95_ms,panchayat_weather_avg_ms,panchayat_weather_p95_ms,timestamp
+239,SYNTHETIC_BENCHMARK_TIMING_ONLY,1.2488,191.4,0.89,1195,4.26,4.71,4.87,5.77,2026-09-30T13:58:08.883595+00:00
+5000,SYNTHETIC_BENCHMARK_TIMING_ONLY,1.3993,3573.2,6.01,25000,4.26,4.71,4.87,5.77,2026-09-30T13:58:13.516350+00:00
+50000,SYNTHETIC_BENCHMARK_TIMING_ONLY,5.6033,8923.3,58.15,250000,4.26,4.71,4.87,5.77,2026-09-30T13:58:25.171685+00:00

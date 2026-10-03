@@ -1,0 +1,8 @@
+station_id,name,lat,lon,elevation,terrain_type,in_training_data,coarse_grid_elevation
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,False,200.0
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,200.0
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,200.0
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,200.0
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,200.0
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,200.0
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,200.0

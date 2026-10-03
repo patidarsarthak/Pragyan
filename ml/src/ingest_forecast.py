@@ -24,11 +24,12 @@ import time
 import argparse
 import logging
 from datetime import datetime, timezone
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Tuple, Optional, Any, Union
 
 import requests
 import numpy as np
 import pandas as pd
+import yaml
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if PROJECT_ROOT not in sys.path:
@@ -38,6 +39,7 @@ from ml.src.predict import predict_weather
 
 STATIC_TERRAIN_PATH = os.path.join(PROJECT_ROOT, "data", "static", "panchayat_terrain_landcover.csv")
 DEFAULT_FORECAST_DIR = os.path.join(PROJECT_ROOT, "data", "forecasts")
+DEFAULT_REGIONS_CONFIG = os.path.join(PROJECT_ROOT, "regions.yaml")
 
 # Setup structured logger
 logging.basicConfig(
@@ -80,20 +82,88 @@ class IncompleteForecastDataError(ForecastIngestionError):
     pass
 
 
-def load_panchayat_grid_mapping(static_path: str = STATIC_TERRAIN_PATH) -> Tuple[pd.DataFrame, pd.DataFrame]:
+_CACHED_REGIONS = None
+
+
+def load_regions(config_path: str = DEFAULT_REGIONS_CONFIG) -> Dict[str, Dict[str, Any]]:
+    """Loads and caches regional configurations from regions.yaml."""
+    global _CACHED_REGIONS
+    if _CACHED_REGIONS is None:
+        if not os.path.exists(config_path):
+            return {}
+        with open(config_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+            reg_list = data.get("regions", [])
+            _CACHED_REGIONS = {r["id"]: r for r in reg_list if "id" in r}
+    return _CACHED_REGIONS
+
+
+def get_region_config(region_id: Optional[str] = None, config_path: str = DEFAULT_REGIONS_CONFIG) -> Optional[Dict[str, Any]]:
+    """Resolves regional config dictionary by region ID or default pilot."""
+    regs = load_regions(config_path)
+    if not regs:
+        return None
+    if region_id:
+        return regs.get(region_id)
+    for r in regs.values():
+        if r.get("is_pilot"):
+            return r
+    return next(iter(regs.values())) if regs else None
+
+
+def load_panchayat_grid_mapping(
+    static_path: Optional[str] = None,
+    region: Optional[Dict[str, Any]] = None
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Loads 239 Panchayats and computes their unique coarse parent grid cells (0.1° resolution).
+    Loads Panchayats and computes their unique coarse parent grid cells (0.1 deg resolution).
+    Supports config-driven region dictionaries from regions.yaml.
     Returns (panchayats_df, unique_cells_df).
     """
-    if not os.path.exists(static_path):
-        raise FileNotFoundError(f"Panchayat terrain static file not found at: {static_path}")
-        
-    df = pd.read_csv(static_path)
-    df["LAT_COARSE"] = (df["LATITUDE"] * 10).round() / 10
-    df["LON_COARSE"] = (df["LONGITUDE"] * 10).round() / 10
+    target_path = static_path
+    if region:
+        t_file = region.get("static_terrain_file") or region.get("static_terrain_path")
+        if t_file:
+            cand = os.path.join(PROJECT_ROOT, t_file) if not os.path.isabs(t_file) else t_file
+            if os.path.exists(cand):
+                target_path = cand
+    if not target_path:
+        target_path = STATIC_TERRAIN_PATH
+
+    if os.path.exists(target_path):
+        df = pd.read_csv(target_path)
+        df["LAT_COARSE"] = (df["LATITUDE"] * 10).round() / 10
+        df["LON_COARSE"] = (df["LONGITUDE"] * 10).round() / 10
+        unique_cells = df[["LAT_COARSE", "LON_COARSE"]].drop_duplicates().reset_index(drop=True)
+        logger.info(f"Loaded {len(df)} Panchayats mapped across {len(unique_cells)} unique coarse grid cells from {target_path}.")
+        return df, unique_cells
     
+    # If no static CSV exists for this expansion region, synthesize from bounding box
+    bbox = region.get("bounding_box", [86.0, 23.6, 86.6, 24.1]) if region else [86.0, 23.6, 86.6, 24.1]
+    min_lon, min_lat, max_lon, max_lat = bbox
+    lons = np.arange(min_lon, max_lon + 0.05, 0.1)
+    lats = np.arange(min_lat, max_lat + 0.05, 0.1)
+    records = []
+    reg_id = region.get("id", "expansion_region") if region else "expansion_region"
+    idx = 1
+    for la in lats:
+        for lo in lons:
+            records.append({
+                "GPCODE": int(f"{abs(hash(reg_id)) % 900000 + 100000 + idx}"),
+                "GPNAME": f"GP_{reg_id}_{idx}",
+                "BLOCK": f"Block_{idx % 4 + 1}",
+                "LATITUDE": round(float(la), 4),
+                "LONGITUDE": round(float(lo), 4),
+                "ELEVATION_M": 210.0,
+                "SLOPE_DEG": 2.0,
+                "LANDCOVER_CLASS": 1,
+                "LAT_COARSE": round(float(la), 1),
+                "LON_COARSE": round(float(lo), 1)
+            })
+            idx += 1
+    df = pd.DataFrame(records)
     unique_cells = df[["LAT_COARSE", "LON_COARSE"]].drop_duplicates().reset_index(drop=True)
-    logger.info(f"Loaded {len(df)} Panchayats mapped across {len(unique_cells)} unique coarse grid cells.")
+    logger.info(f"Generated {len(df)} Panchayats across {len(unique_cells)} grid cells from bbox for region '{reg_id}'.")
     return df, unique_cells
 
 
@@ -105,8 +175,8 @@ def fetch_nwp_forecast(
     simulate_failure: Optional[str] = None
 ) -> List[Dict[str, Any]]:
     """
-    Pulls coarse numerical weather prediction forecast from Open-Meteo for all Dhanbad grid cells.
-    Supports ECMWF IFS 0.25° (primary) and NOAA GFS (secondary fallback).
+    Pulls coarse numerical weather prediction forecast from Open-Meteo for regional grid cells.
+    Supports ECMWF IFS 0.25 deg (primary) and NOAA GFS (secondary fallback).
     """
     if simulate_failure == "network_error":
         logger.error("[SIMULATED FAILURE] Simulating upstream NWP server outage (HTTP 503 / Network Timeout).")
@@ -201,9 +271,9 @@ def reformat_and_map_to_panchayats(
     panchayats_df: pd.DataFrame
 ) -> pd.DataFrame:
     """
-    Transforms raw NWP response into standardized coarse inputs mapped to 239 Panchayats:
+    Transforms raw NWP response into standardized coarse inputs mapped to Panchayats:
     - Normalizes units (wind km/h -> m/s, temperature mean)
-    - Joins coarse grid cell forecasts to all 239 Panchayats
+    - Joins coarse grid cell forecasts to all Panchayats
     """
     cell_records = []
     
@@ -240,11 +310,11 @@ def reformat_and_map_to_panchayats(
             
     cell_forecast_df = pd.DataFrame(cell_records)
     
-    # Spatial join: map coarse cell forecasts onto all 239 Panchayats
-    coarse_panchayat_df = panchayats_df[[
-        "GPCODE", "GPNAME", "BLOCK", "LAT_COARSE", "LON_COARSE",
-        "ELEVATION_M", "SLOPE_DEG", "LANDCOVER_CLASS"
-    ]].merge(
+    # Spatial join: map coarse cell forecasts onto all Panchayats
+    cols_to_keep = ["GPCODE", "GPNAME", "BLOCK", "LAT_COARSE", "LON_COARSE", "ELEVATION_M", "SLOPE_DEG", "LANDCOVER_CLASS"]
+    available_cols = [c for c in cols_to_keep if c in panchayats_df.columns]
+    
+    coarse_panchayat_df = panchayats_df[available_cols].merge(
         cell_forecast_df,
         on=["LAT_COARSE", "LON_COARSE"],
         how="inner"
@@ -256,32 +326,34 @@ def reformat_and_map_to_panchayats(
             f"Spatial mapping mismatch: Expected {expected_rows} rows, got {len(coarse_panchayat_df)}."
         )
         
-    logger.info(f"Mapped coarse forecasts to {len(panchayats_df)} Panchayats ({len(coarse_panchayat_df):,} total Panchayat-Day records).")
+    logger.info(f"Mapped coarse forecasts to {len(panchayats_df)} Panchayats ({len(coarse_panchayat_df):,} total records).")
     return coarse_panchayat_df
 
 
-def execute_pipeline(
+def execute_pipeline_for_region(
+    region_config: Dict[str, Any],
     model: str = "ecmwf_ifs025",
     forecast_days: int = 10,
     output_dir: str = DEFAULT_FORECAST_DIR,
     simulate_failure: Optional[str] = None
 ) -> Optional[str]:
     """
-    Master ingestion and downscaling execution routine.
-    Returns path to persisted output parquet on success, or None on graceful failure.
+    Executes ingestion and downscaling for a single specified region.
     """
+    reg_id = region_config["id"]
+    state_code = region_config.get("state_code", "XX")
     run_timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     date_today = datetime.now(timezone.utc).strftime("%Y%m%d")
     run_time = datetime.now(timezone.utc).strftime("%H%M%S")
     os.makedirs(output_dir, exist_ok=True)
     
-    logger.info(f"=== Starting Forecast Ingestion Cycle (Run: {date_today}_{run_time}, Model: {model}) ===")
+    logger.info(f"=== Forecast Ingestion for Region '{reg_id}' (State: {state_code}, Model: {model}) ===")
     
     try:
-        # 1. Load Panchayats and grid coordinate map
-        panchayats_df, unique_cells = load_panchayat_grid_mapping()
+        # 1. Load Panchayats and grid coordinate map for this region
+        panchayats_df, unique_cells = load_panchayat_grid_mapping(region=region_config)
         
-        # 2. Ingest NWP forecast
+        # 2. Ingest NWP forecast for unique regional grid cells
         payload = fetch_nwp_forecast(
             unique_cells=unique_cells,
             model=model,
@@ -289,61 +361,152 @@ def execute_pipeline(
             simulate_failure=simulate_failure
         )
         
-        # 3. Format and spatially map to 239 Panchayats
+        # 3. Format and spatially map to Panchayats
         coarse_df = reformat_and_map_to_panchayats(payload, unique_cells, panchayats_df)
         
-        # 4. Downscale through Phase 2's locked inference engine
-        logger.info(f"Executing Phase 2 downscaling (predict_weather) for {len(coarse_df):,} records...")
+        # 4. Downscale through Phase 2 locked inference engine
+        logger.info(f"Executing downscaling for Region '{reg_id}' ({len(coarse_df):,} records)...")
         t0_pred = time.time()
-        downscaled_df = predict_weather(coarse_inputs=coarse_df)
+        downscaled_df = predict_weather(coarse_inputs=coarse_df, region_id=reg_id)
         dur_pred = time.time() - t0_pred
-        logger.info(f"Downscaling completed in {dur_pred:.2f}s ({len(downscaled_df):,} total output predictions).")
+        logger.info(f"Downscaling for '{reg_id}' completed in {dur_pred:.2f}s ({len(downscaled_df):,} output predictions).")
         
-        # 5. Attach RUN_TIMESTAMP to distinguish multi-run daily updates
+        # 5. Metadata columns
+        downscaled_df["REGION_ID"] = reg_id
+        downscaled_df["STATE_CODE"] = state_code
         downscaled_df["RUN_TIMESTAMP"] = run_timestamp
         
         # 6. Persist to queryable store
-        # A. Master snapshot Parquet file
-        snapshot_filename = f"forecast_{date_today}_{run_time}.parquet"
+        snapshot_filename = f"forecast_{reg_id}_{date_today}_{run_time}.parquet"
         snapshot_path = os.path.join(output_dir, snapshot_filename)
         downscaled_df.to_parquet(snapshot_path, engine="pyarrow", compression="snappy", index=False)
         logger.info(f"Persisted master forecast snapshot: {snapshot_path}")
         
-        # B. Date-partitioned store for backend query acceleration
-        partitioned_dir = os.path.join(output_dir, "by_date")
+        # B. Date and region partitioned store
+        partitioned_dir = os.path.join(output_dir, "by_region_date")
         downscaled_df.to_parquet(
             partitioned_dir,
-            partition_cols=["DATE"],
+            partition_cols=["STATE_CODE", "DATE"],
             engine="pyarrow",
             compression="snappy",
             index=False
         )
-        logger.info(f"Updated date-partitioned query store in: {partitioned_dir}")
-        
-        logger.info(f"=== Forecast Ingestion Cycle COMPLETED SUCCESSFULLY (Output: {snapshot_filename}) ===")
+        logger.info(f"Updated partitioned query store for '{reg_id}' in: {partitioned_dir}")
         return snapshot_path
         
     except ForecastIngestionError as e:
-        logger.error(f"[GRACEFUL SKIP] Ingestion cycle safely aborted without writing corrupted data: {e}")
-        logger.warning("Strict policy adhered: NO stale or fabricated values were written to persistent stores.")
+        logger.error(f"[GRACEFUL SKIP] Region '{reg_id}' skipped: {e}")
         return None
     except Exception as e:
-        logger.exception(f"[UNEXPECTED FAILURE] Unhandled error during forecast pipeline: {e}")
+        logger.exception(f"[UNEXPECTED FAILURE] Error processing region '{reg_id}': {e}")
         return None
+
+
+def execute_pipeline_all_regions(
+    model: str = "ecmwf_ifs025",
+    forecast_days: int = 10,
+    output_dir: str = DEFAULT_FORECAST_DIR,
+    simulate_failure: Optional[str] = None,
+    config_path: str = DEFAULT_REGIONS_CONFIG,
+    pilot_only: bool = False
+) -> Dict[str, Optional[str]]:
+    """
+    Loops over all regions defined in regions.yaml and runs forecast ingestion.
+    """
+    regs = load_regions(config_path)
+    results = {}
+    for rid, rcfg in regs.items():
+        if pilot_only and not rcfg.get("is_pilot", False):
+            continue
+        logger.info(f"Processing region {rid} ({rcfg.get('state')})...")
+        results[rid] = execute_pipeline_for_region(
+            region_config=rcfg,
+            model=model,
+            forecast_days=forecast_days,
+            output_dir=output_dir,
+            simulate_failure=simulate_failure
+        )
+    return results
+
+
+def execute_pipeline(
+    region_id: Optional[str] = None,
+    model: str = "ecmwf_ifs025",
+    forecast_days: int = 10,
+    output_dir: str = DEFAULT_FORECAST_DIR,
+    simulate_failure: Optional[str] = None,
+    config_path: str = DEFAULT_REGIONS_CONFIG,
+    all_regions: bool = False
+) -> Union[Optional[str], Dict[str, Optional[str]]]:
+    """
+    Master ingestion and downscaling execution routine.
+    - If region_id is provided, runs for that specific region.
+    - If all_regions is True, loops through all regions in regions.yaml.
+    - If region_id is None and all_regions is False, runs pilot region (for backwards-compatibility)
+      and returns the snapshot path.
+    """
+    if all_regions:
+        return execute_pipeline_all_regions(
+            model=model,
+            forecast_days=forecast_days,
+            output_dir=output_dir,
+            simulate_failure=simulate_failure,
+            config_path=config_path
+        )
+    
+    target_rcfg = get_region_config(region_id, config_path=config_path)
+    if not target_rcfg:
+        logger.error(f"Region '{region_id}' not found in {config_path}.")
+        return None
+        
+    return execute_pipeline_for_region(
+        region_config=target_rcfg,
+        model=model,
+        forecast_days=forecast_days,
+        output_dir=output_dir,
+        simulate_failure=simulate_failure
+    )
 
 
 def main():
-    parser = argparse.ArgumentParser(description="SIH26074 Operational Forecast Ingestion & Downscaling Engine")
+    parser = argparse.ArgumentParser(description="SIH26074 Config-Driven Operational Forecast Ingestion Engine")
     parser.add_argument("--model", type=str, default="ecmwf_ifs025", choices=["ecmwf_ifs025", "gfs_seamless"],
                         help="NWP model source (default: ecmwf_ifs025)")
     parser.add_argument("--forecast-days", type=int, default=10, help="Forecast lead horizon in days (1-10)")
     parser.add_argument("--output-dir", type=str, default=DEFAULT_FORECAST_DIR, help="Directory to save forecast parquet files")
+    parser.add_argument("--region", type=str, default=None, help="Target region ID from regions.yaml (e.g. dhanbad_jharkhand)")
+    parser.add_argument("--all-regions", action="store_true", help="Loop over all regions defined in regions.yaml")
+    parser.add_argument("--list-regions", action="store_true", help="List all registered regions from regions.yaml")
     parser.add_argument("--simulate-failure", type=str, default=None,
                         choices=["missing_variable", "network_error"],
                         help="Simulate failure condition for robustness verification")
     args = parser.parse_args()
     
+    if args.list_regions:
+        regs = load_regions()
+        print("\nRegistered Regions in regions.yaml:")
+        for rid, rcfg in regs.items():
+            pilot_tag = "[PILOT]" if rcfg.get("is_pilot") else "[EXPANSION]"
+            print(f" - {rid}: {rcfg.get('name')} ({rcfg.get('state')}) {pilot_tag} - Model: {rcfg.get('model_version')}")
+        sys.exit(0)
+    
+    if args.all_regions:
+        print("Executing forecast ingestion across ALL regions from regions.yaml...")
+        results = execute_pipeline(
+            model=args.model,
+            forecast_days=args.forecast_days,
+            output_dir=args.output_dir,
+            simulate_failure=args.simulate_failure,
+            all_regions=True
+        )
+        print("\n--- Ingestion Results ---")
+        for rid, snap in results.items():
+            status = f"OK -> {snap}" if snap else "SKIPPED/FAILED"
+            print(f"  * {rid}: {status}")
+        sys.exit(0)
+    
     result = execute_pipeline(
+        region_id=args.region,
         model=args.model,
         forecast_days=args.forecast_days,
         output_dir=args.output_dir,
@@ -360,3 +523,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

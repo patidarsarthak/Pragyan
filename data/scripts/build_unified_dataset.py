@@ -17,6 +17,7 @@ Covers 5 meteorological parameters (2020-01-01 to 2024-12-31, 1,827 days):
 
 import os
 import time
+import json
 import requests
 import numpy as np
 import pandas as pd
@@ -90,13 +91,11 @@ def main():
         cache_file = os.path.join(RAW_DIR, f"era5_land_daily_{clat:.1f}_{clon:.1f}_2020_2024.json")
         
         if os.path.exists(cache_file):
-            import json
             with open(cache_file, "r") as f:
                 cell_data = json.load(f)
         else:
             print(f"Fetching coarse ERA5-Land data for cell ({clat:.1f}, {clon:.1f})...")
             cell_data = fetch_coarse_cell_data(clat, clon)
-            import json
             with open(cache_file, "w") as f:
                 json.dump(cell_data, f)
             time.sleep(1.0)

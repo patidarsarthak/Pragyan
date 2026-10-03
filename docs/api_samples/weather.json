@@ -1,0 +1,63 @@
+{
+  "gp_code": 111722,
+  "gp_name": "BAGDAHA",
+  "block_name": "Baghmara",
+  "district_name": "Dhanbad",
+  "state_name": "Jharkhand",
+  "is_pilot_region": false,
+  "prediction_date": "2026-09-25",
+  "forecast_lead_days": 1,
+  "model_version": "v2.0-joint-ensemble",
+  "coarse_regional_forecast": {
+    "rainfall_mm": 18.5,
+    "temperature_c": 28.2,
+    "humidity_pct": 84.0,
+    "wind_speed_ms": 14.5
+  },
+  "downscaled_panchayat_prediction": {
+    "wind_speed": {
+      "predicted_value": 14.926,
+      "uncertainty_lower": 14.857,
+      "uncertainty_upper": 15.058,
+      "confidence_pct": 80.0
+    },
+    "temperature": {
+      "predicted_value": 28.423,
+      "uncertainty_lower": 28.421,
+      "uncertainty_upper": 28.425,
+      "confidence_pct": 80.0
+    },
+    "rainfall": {
+      "predicted_value": 18.934,
+      "uncertainty_lower": 18.852,
+      "uncertainty_upper": 19.007,
+      "confidence_pct": 80.0
+    },
+    "humidity": {
+      "predicted_value": 84.361,
+      "uncertainty_lower": 84.359,
+      "uncertainty_upper": 84.363,
+      "confidence_pct": 80.0
+    },
+    "evapotranspiration": {
+      "predicted_value": 4.259,
+      "uncertainty_lower": 4.255,
+      "uncertainty_upper": 4.265,
+      "confidence_pct": 80.0
+    }
+  },
+  "ground_observation_reference": {
+    "target_quality": "SATELLITE_DERIVED",
+    "observed_rainfall_mm": 18.5,
+    "source": "IMD AWS Dhanbad / UCSB CHIRPS v2.0"
+  },
+  "meta": {
+    "forecast_issued_at": "2026-09-26T00:24:40+05:30",
+    "source_model": "ECMWF IFS 0.25 deg via Open-Meteo",
+    "model_version": "v2.0-joint-ensemble",
+    "ground_truth_flag": "SATELLITE_DERIVED",
+    "boundary_quality": "DERIVED",
+    "data_age_minutes": 8704,
+    "skill_flag": "VALIDATED"
+  }
+}

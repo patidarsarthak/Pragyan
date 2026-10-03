@@ -1,0 +1,36 @@
+station_id,name,lat,lon,elevation,terrain_type,in_training_data,period,method,n_days,mae,rmse,bias,pearson_r,anomaly_r
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,True,2023-01-01 to 2024-12-31,Coarse_NWP,731,2.9147,2.9213,2.9147,0.9993,0.9952
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,True,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.1559,0.1965,0.0027,0.9993,0.9952
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,True,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1555,0.1961,0.0,0.9993,0.9952
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,True,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1259,0.1768,0.0133,0.9994,0.9961
+42591099999,Ranchi Birsa Munda Airport Observatory,23.314,85.321,648.0,Plateau,True,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.1571,0.198,-0.0235,0.9993,0.9952
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.4581,0.5178,-0.4384,0.9991,0.9952
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.2246,0.2958,0.1076,0.9991,0.9952
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1553,0.197,-0.0,0.9993,0.9952
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1238,0.1757,0.0134,0.9995,0.9962
+42587099999,Gaya Airport Meteorological Observatory,24.744,84.951,116.0,Alluvial Lowland,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.2197,0.2865,0.0729,0.9991,0.9952
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.6501,0.7299,-0.6257,0.9985,0.9948
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.3602,0.4102,-0.1642,0.9985,0.9948
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1652,0.2051,-0.0,0.9993,0.9948
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1409,0.1926,0.0138,0.9994,0.9954
+42693099999,Jamshedpur Sonari Observatory,22.813,86.167,129.0,Valley,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.3307,0.4526,0.2501,0.9986,0.9948
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.8303,0.8536,-0.8303,0.9993,0.9952
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.3575,0.4016,-0.3493,0.9993,0.9952
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1567,0.1966,0.0,0.9993,0.9952
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1348,0.1851,0.017,0.9994,0.9958
+42619099999,Asansol Andal Aerodrome Observatory,23.683,86.983,126.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.1643,0.2082,0.062,0.9993,0.9952
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.3559,0.4039,0.3497,0.9993,0.9951
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.1631,0.2023,0.0052,0.9993,0.9951
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1608,0.1999,0.0,0.9993,0.9951
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1382,0.1871,0.0142,0.9994,0.9957
+42595099999,Deoghar Airport Observatory,24.444,86.703,253.0,Peneplain,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.1639,0.2034,-0.0166,0.9993,0.9951
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.3047,0.3569,-0.2898,0.9992,0.9948
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.3623,0.4114,-0.3548,0.9992,0.9948
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1645,0.2071,-0.0,0.9992,0.9948
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1426,0.1965,0.0176,0.9993,0.9953
+42593099999,Bokaro Steel City Aerodrome Observatory,23.644,85.983,210.0,River Basin,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.1751,0.2181,0.063,0.9992,0.9947
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Coarse_NWP,731,0.2163,0.2629,0.1844,0.9994,0.9957
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Lapse_Rate_Correct,731,0.1505,0.1875,0.0024,0.9994,0.9957
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Monthly_Bias_Correction,731,0.1494,0.186,0.0,0.9994,0.9957
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Quantile_Mapping,731,0.1229,0.1681,0.0172,0.9995,0.9965
+42700099999,Purulia Meteorological Observatory,23.333,86.367,228.0,Undulating Plain,False,2023-01-01 to 2024-12-31,Joint_Ensemble_Model,731,0.1517,0.1888,-0.0218,0.9994,0.9956

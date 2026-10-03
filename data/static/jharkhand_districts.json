@@ -1,0 +1,125 @@
+[
+  {
+    "district_code": 331,
+    "district_name": "Bokaro",
+    "state_code": 20
+  },
+  {
+    "district_code": 332,
+    "district_name": "Chatra",
+    "state_code": 20
+  },
+  {
+    "district_code": 333,
+    "district_name": "Deoghar",
+    "state_code": 20
+  },
+  {
+    "district_code": 334,
+    "district_name": "Dumka",
+    "state_code": 20
+  },
+  {
+    "district_code": 335,
+    "district_name": "East Singhbhum",
+    "state_code": 20
+  },
+  {
+    "district_code": 336,
+    "district_name": "Dhanbad",
+    "state_code": 20,
+    "is_pilot": true,
+    "total_gps": 239,
+    "total_blocks": 10
+  },
+  {
+    "district_code": 337,
+    "district_name": "Garhwa",
+    "state_code": 20
+  },
+  {
+    "district_code": 338,
+    "district_name": "Giridih",
+    "state_code": 20
+  },
+  {
+    "district_code": 339,
+    "district_name": "Godda",
+    "state_code": 20
+  },
+  {
+    "district_code": 340,
+    "district_name": "Gumla",
+    "state_code": 20
+  },
+  {
+    "district_code": 341,
+    "district_name": "Hazaribagh",
+    "state_code": 20
+  },
+  {
+    "district_code": 342,
+    "district_name": "Jamtara",
+    "state_code": 20
+  },
+  {
+    "district_code": 343,
+    "district_name": "Khunti",
+    "state_code": 20
+  },
+  {
+    "district_code": 344,
+    "district_name": "Koderma",
+    "state_code": 20
+  },
+  {
+    "district_code": 345,
+    "district_name": "Latehar",
+    "state_code": 20
+  },
+  {
+    "district_code": 346,
+    "district_name": "Lohardaga",
+    "state_code": 20
+  },
+  {
+    "district_code": 347,
+    "district_name": "Pakur",
+    "state_code": 20
+  },
+  {
+    "district_code": 348,
+    "district_name": "Palamu",
+    "state_code": 20
+  },
+  {
+    "district_code": 349,
+    "district_name": "Ramgarh",
+    "state_code": 20
+  },
+  {
+    "district_code": 350,
+    "district_name": "Ranchi",
+    "state_code": 20
+  },
+  {
+    "district_code": 351,
+    "district_name": "Sahibganj",
+    "state_code": 20
+  },
+  {
+    "district_code": 352,
+    "district_name": "Seraikela Kharsawan",
+    "state_code": 20
+  },
+  {
+    "district_code": 353,
+    "district_name": "Simdega",
+    "state_code": 20
+  },
+  {
+    "district_code": 354,
+    "district_name": "West Singhbhum",
+    "state_code": 20
+  }
+]

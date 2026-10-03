@@ -1,0 +1,7 @@
+station_id,usaf,wban,station_name,latitude,longitude,elevation_m,station_type,source
+42701099999,427010,99999,BIRSA MUNDA (Ranchi Airport),23.314,85.322,654.7,ISD_AIRPORT,NOAA NCEI Integrated Surface Database
+42591099999,425910,99999,GAYA (Gaya Airport),24.744,84.951,115.8,ISD_AIRPORT,NOAA NCEI Integrated Surface Database
+42705099999,427050,99999,PURULIA (Purulia Observatory),23.333,86.417,255.0,ISD_OBSERVATORY,NOAA NCEI Integrated Surface Database
+42798099999,427980,99999,JAMSHEDPUR (Sonari Airport),22.813,86.169,153.9,ISD_AIRPORT,NOAA NCEI Integrated Surface Database
+42706099999,427060,99999,BANKURA (Bankura Observatory),23.383,87.083,100.0,ISD_OBSERVATORY,NOAA NCEI Integrated Surface Database
+42708099999,427080,99999,SHANTI NIKETAN (Shanti Niketan),23.65,87.7,59.0,ISD_OBSERVATORY,NOAA NCEI Integrated Surface Database

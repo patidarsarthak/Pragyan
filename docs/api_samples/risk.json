@@ -1,0 +1,26 @@
+{
+  "gpcode": 111722,
+  "panchayat": "BAGDAHA",
+  "block": "Baghmara",
+  "crop": "Paddy",
+  "season": "kharif",
+  "composite_risk_score": 37.0,
+  "risk_tier": "Moderate Risk",
+  "risk_badge": "MODERATE",
+  "sub_indices": {
+    "drought_deficit_risk": 5.0,
+    "inundation_excess_rain_risk": 60.0,
+    "pest_disease_risk": 75.0,
+    "thermal_stress_risk": 15.0
+  },
+  "pmfby_advisory": "Conditions within normal agronomic thresholds.",
+  "meta": {
+    "forecast_issued_at": "2026-09-26T00:24:40+05:30",
+    "source_model": "ECMWF IFS 0.25 deg via Open-Meteo",
+    "model_version": "v2.0-joint-ensemble",
+    "ground_truth_flag": "SATELLITE_DERIVED",
+    "boundary_quality": "DERIVED",
+    "data_age_minutes": 8704,
+    "skill_flag": "VALIDATED"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "dataset_name": "CHIRPS 0.05° Daily Precipitation (UCSB Climate Hazards Center)",
+  "citation": "Funk et al. (2015). Scientific Data, 2, 150066. https://doi.org/10.1038/sdata.2015.66",
+  "archive_url": "https://data.chc.ucsb.edu/products/CHIRPS-2.0/global_daily/tifs/p05/",
+  "spatial_coverage": "Dhanbad District, Jharkhand",
+  "bounding_box_cells_count": 198,
+  "district_intersecting_cells_count": 170,
+  "district_centroid_inside_cells_count": 170,
+  "district_strictly_interior_cells_count": 120,
+  "dates_ingested_count": 459,
+  "years_covered": [2022, 2023, 2024],
+  "monsoon_months_covered": "June to October (153 days/year)",
+  "failed_dates_count": 0,
+  "total_cell_records": 78030,
+  "total_panchayat_records": 109701,
+  "missing_or_nan_values": 0,
+  "residual_fill_values": 0,
+  "mean_monsoon_daily_rainfall_mm": 7.15,
+  "max_daily_rainfall_mm": 132.49,
+  "imd_normal_comparison": {
+    "imd_climatological_normal_jjas_mm": "1050 to 1150 mm",
+    "source_reference": "IMD Pune District Rainfall Climatology (1971-2020)",
+    "verification_status": "unverified against live public endpoint (dropped quotation marks)",
+    "chirps_2022_monsoon_mean_mm": 1032.8,
+    "chirps_2023_monsoon_mean_mm": 1070.3,
+    "chirps_2024_monsoon_mean_mm": 1187.4,
+    "status": "Consistent within normal inter-annual monsoon variability"
+  },
+  "chc_day_definition": {
+    "day_definition": "00:00Z to 23:59Z UTC daily accumulation",
+    "source_reference": "Funk et al. (2015), Scientific Data 2, 150066; https://www.chc.ucsb.edu/data/chirps",
+    "verification_status": "unverified against live public endpoint (dropped quotation marks)"
+  },
+  "scientific_classification": "Satellite-and-gauge reference (not physical in-situ gauge truth)",
+  "scale_limitation_note": "CHIRPS resolution is ~5.3 km. Panchayats smaller than cell footprint receive area-weighted averages of neighbouring cells. Downscaling below 5 km is not independently resolved by satellite observation."
+}

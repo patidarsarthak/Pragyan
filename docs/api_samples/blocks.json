@@ -1,0 +1,92 @@
+[
+  {
+    "block_code": 2354,
+    "block_name": "Baghmara",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 701.8,
+    "centroid_lat": 23.73992,
+    "centroid_lon": 86.21225
+  },
+  {
+    "block_code": 2355,
+    "block_name": "Baliapur",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 378.16,
+    "centroid_lat": 23.68598,
+    "centroid_lon": 86.51002
+  },
+  {
+    "block_code": 2356,
+    "block_name": "Dhanbad",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 243.2,
+    "centroid_lat": 23.776,
+    "centroid_lon": 86.3867
+  },
+  {
+    "block_code": 2363,
+    "block_name": "Egarkund",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 310.4,
+    "centroid_lat": 23.7476,
+    "centroid_lon": 86.83895
+  },
+  {
+    "block_code": 2357,
+    "block_name": "Govindpur",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 310.61,
+    "centroid_lat": 23.85199,
+    "centroid_lon": 86.52636
+  },
+  {
+    "block_code": 2364,
+    "block_name": "Kaliasol",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 248.47,
+    "centroid_lat": 23.69028,
+    "centroid_lon": 86.69952
+  },
+  {
+    "block_code": 2359,
+    "block_name": "Nirsa",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 406.87,
+    "centroid_lat": 23.85628,
+    "centroid_lon": 86.75693
+  },
+  {
+    "block_code": 2360,
+    "block_name": "Purvi Tundi",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 644.12,
+    "centroid_lat": 24.00402,
+    "centroid_lon": 86.69286
+  },
+  {
+    "block_code": 2361,
+    "block_name": "Topchanchi",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 582.44,
+    "centroid_lat": 23.96155,
+    "centroid_lon": 86.18381
+  },
+  {
+    "block_code": 2362,
+    "block_name": "Tundi",
+    "district_code": 336,
+    "state_code": 20,
+    "area_sq_km": 455.65,
+    "centroid_lat": 23.99316,
+    "centroid_lon": 86.4082
+  }
+]

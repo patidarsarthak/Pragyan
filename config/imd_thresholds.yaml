@@ -1,0 +1,60 @@
+# IMD Standard Meteorological Alert & Agricultural Risk Thresholds
+# Source: India Meteorological Department (IMD) Standard Operational Procedure (SOP)
+# for Agrometeorological Advisory Services and Weather Hazard Warnings
+
+version: "1.0"
+agency: "IMD / ICAR"
+
+risk_bands:
+  calm:
+    label: "CALM"
+    min_score: 0.0
+    max_score: 24.9
+    color: "var(--calm)"
+    wash: "var(--calm-wash)"
+    description: "Agronomic conditions favorable; standard seasonal operations recommended."
+  watch:
+    label: "WATCH"
+    min_score: 25.0
+    max_score: 54.9
+    color: "var(--watch)"
+    wash: "var(--watch-wash)"
+    description: "Moderate hazard risk or high uncertainty; prepare precautionary measures."
+  alert:
+    label: "ALERT"
+    min_score: 55.0
+    max_score: 100.0
+    color: "var(--alert)"
+    wash: "var(--alert-wash)"
+    description: "Severe weather condition predicted with high impact; immediate agronomic defense required."
+
+hazard_thresholds:
+  rainfall_mm_per_day:
+    very_light: [0.1, 2.4]
+    light: [2.5, 15.5]
+    moderate: [15.6, 64.4]
+    heavy: [64.5, 115.5]      # WATCH
+    very_heavy: [115.6, 204.4] # ALERT
+    extremely_heavy: 204.5     # ALERT
+
+  temperature_celsius:
+    heatwave_warning: 40.0     # WATCH
+    severe_heatwave: 45.0      # ALERT
+    coldwave_warning: 6.0      # WATCH
+    severe_coldwave: 4.0       # ALERT
+
+  wind_speed_ms:
+    moderate: [0.0, 8.3]       # < 30 km/h
+    high_wind: [8.4, 13.8]     # 30-50 km/h (WATCH - withhold spraying)
+    squall_gale: 13.9          # > 50 km/h (ALERT - risk of lodging)
+
+  relative_humidity_pct:
+    dry: 30.0
+    normal: [30.0, 75.0]
+    high_disease_risk: 85.0    # WATCH when coupled with 22-30C (fungal blight)
+
+risk_weights:
+  drought_moisture_deficit: 0.35
+  inundation_excess_rain: 0.30
+  pest_disease_susceptibility: 0.20
+  thermal_heat_cold_stress: 0.15

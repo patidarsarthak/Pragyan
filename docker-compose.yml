@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: sih26074_postgis
+    environment:
+      POSTGRES_DB: sih26074_db
+      POSTGRES_USER: sih_user
+      POSTGRES_PASSWORD: sih_secure_password_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+      - ./backend/schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sih_user -d sih26074_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sih26074_backend
+    environment:
+      - DATABASE_URL=postgresql://sih_user:sih_secure_password_2026@postgis:5432/sih26074_db
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgis:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./ml/models:/app/ml/models
+      - ./ml/results:/app/ml/results
+    restart: unless-stopped
+
+volumes:
+  postgis_data:
+    driver: local

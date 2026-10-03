@@ -3,3 +3,23 @@ __pycache__/
 *$py.class
 .ipynb_checkpoints/
 .DS_Store
+.venv/
+node_modules/
+*/node_modules/
+.pytest_cache/
+*.log
+*.tsbuildinfo
+
+# User-excluded files (kept locally, not pushed)
+.env
+ATTRIBUTION.md
+DATA_SOURCES.md
+FINAL_AUDIT_REPORT.md
+INTEGRATION_TEST_NOTES.md
+MAPLIBRE_GIS_ARCHITECTURE.md
+PROJECT_CONTEXT.md
+pytest.ini
+SANKET_COPY_AUDIT.md
+SIH26074_Technical_Approach_and_Workflow_Report.pdf
+SIH26074_TECHNICAL_PRESENTATION_REPORT.md
+THIRD_PARTY_NOTICES.md

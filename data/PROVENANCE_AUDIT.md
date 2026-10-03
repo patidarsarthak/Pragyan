@@ -176,3 +176,21 @@ Actual and reference evapotranspiration cannot be measured directly by satellite
    - Code `10` (Tree cover / Forest, ~6%)
    - Code `13` (Built-up / Urban settlements, ~9%)
    - Code `4` (Grassland / Shrubland, ~1%)
+
+---
+
+## 🏛️ Administrative Boundary Provenance & Quality Classification (`boundary_source`, `boundary_quality`)
+
+To ensure complete transparency regarding how Gram Panchayat polygons were established across the platform, every polygon is classified and stored with explicit quality metadata in the PostGIS/SQLite database:
+
+| Quality Tier (`boundary_quality`) | Methodology Description | Source Attribution (`boundary_source`) |
+| :--- | :--- | :--- |
+| **`OFFICIAL`** | Directly digitized from official state cadastral portals or gazetted administrative boundaries. | *Survey of India / Bharat Maps Gazetted Boundary* |
+| **`DERIVED`** | Spatially partitioned via Voronoi / Delaunay tessellation from authoritative LGD revenue village centroids and bounded strictly by official Block & District administrative envelopes. | *LGD Revenue Village Centroids + Block-Bounded Voronoi Tessellation* |
+| **`APPROXIMATE`** | Estimated boundary geometry for non-cadastral forest fringe, open-cast mining leases, or border buffer zones under cadastral revision. | *Non-Cadastral Mining/Forest Fringe Buffer Boundary* |
+
+### Audit & Inspection Access:
+- **API Endpoint:** `GET /map/panchayats/{gp_code}` and `GET /panchayats/{gp_code}` return `boundary_source` and `boundary_quality`.
+- **Frontend Deep-Dive Drawer:** Displays the boundary quality tag directly below the GP title.
+- **Classification Script:** Re-classifiable at any time via `python scripts/classify_gp_boundaries.py`.
+

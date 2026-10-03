@@ -1,0 +1,48 @@
+{
+  "gpcode": 111722,
+  "panchayat": "BAGDAHA",
+  "block": "Baghmara",
+  "variable": "RAINFALL",
+  "unit": "mm",
+  "date": "2026-09-25",
+  "downscaled_prediction": 35.21,
+  "coarse_block_baseline": 34.59,
+  "prediction_interval": {
+    "p10": 26.41,
+    "p90": 44.01,
+    "confidence_pct": 80.0
+  },
+  "waterfall_contributions": [
+    {
+      "component": "Coarse IMD Block Forecast",
+      "value": 34.59,
+      "type": "baseline"
+    },
+    {
+      "component": "Elevation & Lapse Rate Effect",
+      "value": 0.16,
+      "type": "spatial_terrain"
+    },
+    {
+      "component": "Slope & Aspect Dynamics",
+      "value": 0.46,
+      "type": "spatial_terrain"
+    },
+    {
+      "component": "Land Cover / Canopy Roughness",
+      "value": -0.2,
+      "type": "land_surface"
+    },
+    {
+      "component": "Synoptic Residual Adjustment",
+      "value": 0.2,
+      "type": "ml_calibration"
+    }
+  ],
+  "disagreement_layer": {
+    "review_required": false,
+    "disagreement_magnitude": 0.62,
+    "disagreement_percentage": 1.8,
+    "warning_note": "High agreement with regional block guidance."
+  }
+}

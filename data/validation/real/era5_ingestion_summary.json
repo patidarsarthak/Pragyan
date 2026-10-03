@@ -1,0 +1,18 @@
+{
+  "dataset_name": "ECMWF ERA5 Atmospheric Reanalysis (Native 0.25\u00b0 / ~28 km)",
+  "source_provider": "ECMWF / Open-Meteo Native ERA5 Reanalysis Archive",
+  "spatial_resolution": "0.25 degree (~28 km) native grid",
+  "temporal_resolution": "Daily aggregate (00:00Z to 23:59Z UTC)",
+  "years_covered": "2015 to 2024 (10 full years)",
+  "dhanbad_cells_count": 6,
+  "dhanbad_records_count": 21918,
+  "isd_stations_count": 6,
+  "isd_records_count": 21918,
+  "variables": [
+    "precipitation_sum (mm)",
+    "temperature_2m_mean (\u00b0C)",
+    "temperature_2m_max (\u00b0C)",
+    "temperature_2m_min (\u00b0C)"
+  ],
+  "provenance_note": "Replaces synthesized coarse fields. Verified authentic native 0.25\u00b0 ERA5."
+}

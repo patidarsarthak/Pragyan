@@ -1,0 +1,312 @@
+# SIH26074 - Crop Calendar & Stage Durations (Days After Sowing / Planting)
+# Authoritative Source: data/AGRICULTURE_REFERENCE.md
+# Citations: ICAR-KVK Dhanbad, Birsa Agricultural University (BAU) Ranchi,
+# ICAR-CRIDA Dhanbad Contingency Plan, FAO Irrigation and Drainage Paper No. 56.
+
+version: "1.0"
+region: "Central and North Eastern Plateau Zone (Agro-Climatic Zone IV - Dhanbad)"
+
+crops:
+  paddy:
+    canonical_name: "Paddy / Rice"
+    scientific_name: "Oryza sativa"
+    season: "Kharif"
+    total_duration_days: 125
+    kc_mid: 1.20
+    root_depth_cm: 60
+    mad: 0.20 # Maximum Allowable Depletion (high sensitivity)
+    stages:
+      - id: "nursery"
+        name: "Nursery / Seedling"
+        start_day: 0
+        end_day: 25
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "paddy_nursery"
+      - id: "tillering"
+        name: "Active Tillering"
+        start_day: 26
+        end_day: 50
+        water_requirement: "High (Maintain 2-3 cm)"
+        critical: true
+        advisory_key: "paddy_tillering"
+      - id: "flowering"
+        name: "Panicle Initiation to Flowering"
+        start_day: 51
+        end_day: 85
+        water_requirement: "Critical (Maintain 5 cm standing water)"
+        critical: true
+        advisory_key: "paddy_flowering"
+      - id: "maturity"
+        name: "Grain Filling & Maturity"
+        start_day: 86
+        end_day: 125
+        water_requirement: "Declining (Drain 10 days before harvest)"
+        critical: false
+        advisory_key: "paddy_maturity"
+
+  maize:
+    canonical_name: "Maize"
+    scientific_name: "Zea mays"
+    season: "Kharif"
+    total_duration_days: 90
+    kc_mid: 1.15
+    root_depth_cm: 80
+    mad: 0.50
+    stages:
+      - id: "seedling"
+        name: "Germination & Seedling"
+        start_day: 0
+        end_day: 15
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "maize_seedling"
+      - id: "vegetative"
+        name: "Knee-high Vegetative"
+        start_day: 16
+        end_day: 35
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "maize_vegetative"
+      - id: "flowering"
+        name: "Tasseling & Silking"
+        start_day: 36
+        end_day: 60
+        water_requirement: "Critical (Tassel Blast Risk)"
+        critical: true
+        advisory_key: "maize_flowering"
+      - id: "maturity"
+        name: "Grain Filling & Cob Maturation"
+        start_day: 61
+        end_day: 90
+        water_requirement: "Low (Requires dry weather for drying)"
+        critical: false
+        advisory_key: "maize_maturity"
+
+  soybean:
+    canonical_name: "Soybean"
+    scientific_name: "Glycine max"
+    season: "Kharif"
+    total_duration_days: 105
+    kc_mid: 1.15
+    root_depth_cm: 70
+    mad: 0.50
+    stages:
+      - id: "emergence"
+        name: "Emergence & Early Vegetative"
+        start_day: 0
+        end_day: 15
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "soybean_emergence"
+      - id: "vegetative"
+        name: "Branching & Canopy Development"
+        start_day: 16
+        end_day: 35
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "soybean_vegetative"
+      - id: "flowering"
+        name: "Flowering & Pod Initiation"
+        start_day: 36
+        end_day: 60
+        water_requirement: "Critical (Moisture stress causes flower drop)"
+        critical: true
+        advisory_key: "soybean_flowering"
+      - id: "pod_filling"
+        name: "Pod Bulking & Seed Filling"
+        start_day: 61
+        end_day: 85
+        water_requirement: "High"
+        critical: true
+        advisory_key: "soybean_pod_filling"
+      - id: "maturity"
+        name: "Pod Ripening & Defoliation"
+        start_day: 86
+        end_day: 105
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "soybean_maturity"
+
+  wheat:
+    canonical_name: "Wheat"
+    scientific_name: "Triticum aestivum"
+    season: "Rabi"
+    total_duration_days: 120
+    kc_mid: 1.15
+    root_depth_cm: 90
+    mad: 0.55
+    stages:
+      - id: "crown_root_initiation"
+        name: "Crown Root Initiation (CRI)"
+        start_day: 0
+        end_day: 25
+        water_requirement: "Critical (Mandatory 1st Irrigation)"
+        critical: true
+        advisory_key: "wheat_cri"
+      - id: "tillering"
+        name: "Tillering & Jointing"
+        start_day: 26
+        end_day: 45
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "wheat_tillering"
+      - id: "flowering"
+        name: "Booting, Heading & Flowering"
+        start_day: 46
+        end_day: 80
+        water_requirement: "Critical (Terminal Heat Risk)"
+        critical: true
+        advisory_key: "wheat_flowering"
+      - id: "grain_filling"
+        name: "Dough & Ripening"
+        start_day: 81
+        end_day: 120
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "wheat_grain_filling"
+
+  mustard:
+    canonical_name: "Mustard"
+    scientific_name: "Brassica juncea"
+    season: "Rabi"
+    total_duration_days: 110
+    kc_mid: 1.05
+    root_depth_cm: 80
+    mad: 0.60
+    stages:
+      - id: "seedling"
+        name: "Seedling & Rosette"
+        start_day: 0
+        end_day: 25
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "mustard_seedling"
+      - id: "vegetative"
+        name: "Vegetative Branching"
+        start_day: 26
+        end_day: 45
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "mustard_vegetative"
+      - id: "flowering"
+        name: "Flowering & Siliqua Formation"
+        start_day: 46
+        end_day: 75
+        water_requirement: "Critical (Aphid & Frost Susceptibility)"
+        critical: true
+        advisory_key: "mustard_flowering"
+      - id: "maturity"
+        name: "Pod Maturation & Seed Hardening"
+        start_day: 76
+        end_day: 110
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "mustard_maturity"
+
+  chickpea:
+    canonical_name: "Chickpea (Gram)"
+    scientific_name: "Cicer arietinum"
+    season: "Rabi"
+    total_duration_days: 115
+    kc_mid: 1.00
+    root_depth_cm: 80
+    mad: 0.60
+    stages:
+      - id: "establishment"
+        name: "Establishment & Seedling"
+        start_day: 0
+        end_day: 25
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "chickpea_establishment"
+      - id: "vegetative"
+        name: "Branching"
+        start_day: 26
+        end_day: 50
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "chickpea_vegetative"
+      - id: "flowering"
+        name: "Flowering & Podding"
+        start_day: 51
+        end_day: 85
+        water_requirement: "Critical (Pod Borer & Wilt Risk)"
+        critical: true
+        advisory_key: "chickpea_flowering"
+      - id: "maturity"
+        name: "Pod Hardening & Senescence"
+        start_day: 86
+        end_day: 115
+        water_requirement: "Low"
+        critical: false
+        advisory_key: "chickpea_maturity"
+
+  potato:
+    canonical_name: "Potato"
+    scientific_name: "Solanum tuberosum"
+    season: "Rabi"
+    total_duration_days: 95
+    kc_mid: 1.15
+    root_depth_cm: 50
+    mad: 0.35 # High moisture sensitivity
+    stages:
+      - id: "emergence"
+        name: "Sprout Emergence"
+        start_day: 0
+        end_day: 20
+        water_requirement: "Low to Moderate"
+        critical: false
+        advisory_key: "potato_emergence"
+      - id: "tuber_initiation"
+        name: "Stolon & Tuber Initiation"
+        start_day: 21
+        end_day: 45
+        water_requirement: "Critical (First Earthing Up)"
+        critical: true
+        advisory_key: "potato_tuber_initiation"
+      - id: "tuber_bulking"
+        name: "Tuber Bulking"
+        start_day: 46
+        end_day: 75
+        water_requirement: "Critical (Late Blight Vulnerability)"
+        critical: true
+        advisory_key: "potato_tuber_bulking"
+      - id: "maturity"
+        name: "Skin Hardening & Maturity"
+        start_day: 76
+        end_day: 95
+        water_requirement: "Withhold 10 days before harvest"
+        critical: false
+        advisory_key: "potato_maturity"
+
+  tomato:
+    canonical_name: "Tomato"
+    scientific_name: "Solanum lycopersicum"
+    season: "Rabi / Autumn"
+    total_duration_days: 110
+    kc_mid: 1.15
+    root_depth_cm: 60
+    mad: 0.40
+    stages:
+      - id: "establishment"
+        name: "Transplanting & Establishment"
+        start_day: 0
+        end_day: 20
+        water_requirement: "Moderate"
+        critical: false
+        advisory_key: "tomato_establishment"
+      - id: "flowering"
+        name: "Vegetative Growth & Flowering"
+        start_day: 21
+        end_day: 50
+        water_requirement: "Critical (Blossom Drop / Fruit Set)"
+        critical: true
+        advisory_key: "tomato_flowering"
+      - id: "fruiting"
+        name: "Fruit Development & Picking"
+        start_day: 51
+        end_day: 110
+        water_requirement: "High (Uniform moisture to prevent cracking)"
+        critical: true
+        advisory_key: "tomato_fruiting"

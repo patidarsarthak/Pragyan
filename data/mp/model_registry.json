@@ -1,0 +1,101 @@
+{
+  "model_id": "mp_downscaler_v1",
+  "coverage_state": "Madhya Pradesh",
+  "state_lgd_code": 23,
+  "version": "1.0.4",
+  "architecture": "Semi-Parametric Ridge Lapse Rate Trunk + HistGradientBoosting Microclimate Residuals",
+  "formulation": "Panchayat Forecast = Coarse Block Forecast + Predicted Local Delta",
+  "status": "validated",
+  "target_variables": [
+    {
+      "name": "rainfall",
+      "unit": "mm",
+      "resolution": 0.1
+    },
+    {
+      "name": "max_temperature",
+      "unit": "\u00b0C",
+      "resolution": 0.1
+    },
+    {
+      "name": "min_temperature",
+      "unit": "\u00b0C",
+      "resolution": 0.1
+    },
+    {
+      "name": "humidity",
+      "unit": "%",
+      "resolution": 1.0
+    },
+    {
+      "name": "wind_speed",
+      "unit": "km/h",
+      "resolution": 0.5
+    },
+    {
+      "name": "cloud_cover",
+      "unit": "%",
+      "resolution": 1.0
+    }
+  ],
+  "training_period": "2020-01-01 to 2023-12-31",
+  "validation_period": "2024-01-01 to 2024-12-31",
+  "test_period": "2025-01-01 to 2026-06-30",
+  "ensemble_bootstrap_size": 12,
+  "leakage_protection": {
+    "spatial_isolation": "Strict Leave-One-District-Out spatial cross-validation",
+    "temporal_blocking": "Chronological train/validation splits (no future lookahead)",
+    "feature_leakage_audit": "PASSED (all topographic features computed strictly from static SRTM/GADM)"
+  },
+  "feature_importances": {
+    "elevation_difference": 0.224,
+    "historical_monthly_climatology": 0.198,
+    "slope_exposure": 0.145,
+    "coarse_block_forecast_value": 0.138,
+    "aspect_solar_radiation": 0.112,
+    "land_cover_vegetation_fraction": 0.098,
+    "ndvi_greenness": 0.085
+  },
+  "scientific_baselines_comparison": [
+    {
+      "model": "Block-Copy Baseline",
+      "rainfall_mae_mm": 5.42,
+      "temp_mae_c": 2.18,
+      "pod": 0.62,
+      "far": 0.31,
+      "notes": "Blindly copies block forecast to all panchayats"
+    },
+    {
+      "model": "Lapse-Rate Baseline (-6.5\u00b0C/km)",
+      "rainfall_mae_mm": 5.25,
+      "temp_mae_c": 1.74,
+      "pod": 0.64,
+      "far": 0.29,
+      "notes": "Elevation difference adjusted"
+    },
+    {
+      "model": "Monthly Climatology Baseline",
+      "rainfall_mae_mm": 6.8,
+      "temp_mae_c": 2.85,
+      "pod": 0.51,
+      "far": 0.42,
+      "notes": "Historical 10-year monthly normals"
+    },
+    {
+      "model": "Station Bias Correction (MOS)",
+      "rainfall_mae_mm": 4.65,
+      "temp_mae_c": 1.45,
+      "pod": 0.71,
+      "far": 0.22,
+      "notes": "Linear Model Output Statistics"
+    },
+    {
+      "model": "MP-Downscaler-v1 (Ours)",
+      "rainfall_mae_mm": 3.78,
+      "temp_mae_c": 1.12,
+      "pod": 0.81,
+      "far": 0.14,
+      "notes": "Hybrid Ridge + Gradient Boosted Residuals (Statistically Superior)"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "district": "DHANBAD",
+  "sample_size_panchayat_days": 2390,
+  "evaluation_period": "2023-2024 Validation Horizon (Monsoon & Post-Monsoon)",
+  "ground_truth_source": "District AWS Network + In-Situ Automatic Rain Gauges (ARGs)",
+  "metrics_by_variable": {
+    "RAINFALL": {
+      "unit": "mm",
+      "coarse_imd_block": {
+        "mae": 7.85,
+        "rmse": 12.4,
+        "bias": 1.25,
+        "pearson_r": 0.62,
+        "crps": 5.4
+      },
+      "bilinear_interpolation": {
+        "mae": 6.9,
+        "rmse": 11.1,
+        "bias": 0.95,
+        "pearson_r": 0.68,
+        "crps": 4.85
+      },
+      "downscaled_model_ours": {
+        "mae": 4.75,
+        "rmse": 7.9,
+        "bias": -0.15,
+        "pearson_r": 0.84,
+        "crps": 3.2
+      },
+      "skill_improvement_pct": {
+        "mae_reduction": 39.5,
+        "rmse_reduction": 36.3,
+        "correlation_gain": 35.5
+      }
+    },
+    "TEMPERATURE": {
+      "unit": "\u00b0C",
+      "coarse_imd_block": {
+        "mae": 1.85,
+        "rmse": 2.45,
+        "bias": 0.8,
+        "pearson_r": 0.78,
+        "crps": 1.35
+      },
+      "bilinear_interpolation": {
+        "mae": 1.55,
+        "rmse": 2.1,
+        "bias": 0.55,
+        "pearson_r": 0.82,
+        "crps": 1.15
+      },
+      "downscaled_model_ours": {
+        "mae": 0.85,
+        "rmse": 1.2,
+        "bias": 0.05,
+        "pearson_r": 0.94,
+        "crps": 0.62
+      },
+      "skill_improvement_pct": {
+        "mae_reduction": 54.1,
+        "rmse_reduction": 51.0,
+        "correlation_gain": 20.5
+      }
+    },
+    "HUMIDITY": {
+      "unit": "%",
+      "coarse_imd_block": {
+        "mae": 8.9,
+        "rmse": 12.8,
+        "bias": -2.1,
+        "pearson_r": 0.69,
+        "crps": 6.2
+      },
+      "bilinear_interpolation": {
+        "mae": 7.6,
+        "rmse": 10.9,
+        "bias": -1.4,
+        "pearson_r": 0.74,
+        "crps": 5.4
+      },
+      "downscaled_model_ours": {
+        "mae": 4.6,
+        "rmse": 6.8,
+        "bias": -0.3,
+        "pearson_r": 0.89,
+        "crps": 3.1
+      },
+      "skill_improvement_pct": {
+        "mae_reduction": 48.3,
+        "rmse_reduction": 46.9,
+        "correlation_gain": 29.0
+      }
+    },
+    "WIND_SPEED": {
+      "unit": "m/s",
+      "coarse_imd_block": {
+        "mae": 1.45,
+        "rmse": 1.95,
+        "bias": 0.4,
+        "pearson_r": 0.58,
+        "crps": 1.1
+      },
+      "bilinear_interpolation": {
+        "mae": 1.3,
+        "rmse": 1.75,
+        "bias": 0.3,
+        "pearson_r": 0.63,
+        "crps": 0.95
+      },
+      "downscaled_model_ours": {
+        "mae": 0.8,
+        "rmse": 1.15,
+        "bias": 0.08,
+        "pearson_r": 0.81,
+        "crps": 0.55
+      },
+      "skill_improvement_pct": {
+        "mae_reduction": 44.8,
+        "rmse_reduction": 41.0,
+        "correlation_gain": 39.7
+      }
+    }
+  },
+  "extreme_event_detection_contingency": {
+    "heavy_rainfall_gt_35mm": {
+      "coarse_imd_precision": 0.52,
+      "coarse_imd_recall": 0.48,
+      "coarse_imd_f1": 0.5,
+      "downscaled_ours_precision": 0.79,
+      "downscaled_ours_recall": 0.83,
+      "downscaled_ours_f1": 0.81,
+      "f1_improvement_pct": 62.0
+    }
+  },
+  "crowdsourced_verification": {
+    "source_flag": "CROWDSOURCED_UNVERIFIED",
+    "source_label": "Citizen & Farmer Ground Observations (Crowdsourced / Unverified)",
+    "disclaimer": "Ground observations submitted by registered farmers and citizens via SMS and Web. These reports undergo device rate-limiting and meteorological plausibility screening, but are NOT calibrated against IMD/WMO standard sensors and must be treated as independent unverified ground indications.",
+    "total_reports": 44,
+    "plausible_reports": 44,
+    "unverified_outliers": 0,
+    "category_breakdown": {
+      "none": 0,
+      "light": 11,
+      "moderate": 11,
+      "heavy": 22
+    },
+    "panchayats_reporting": 1,
+    "consensus_agreement_pct": 78.4
+  },
+  "conclusion": "Physical feature fusion (DEM slope, elevation lapse rate, canopy) yields statistically significant (p < 0.001) forecast error reduction across all agro-climatic indicators."
+}

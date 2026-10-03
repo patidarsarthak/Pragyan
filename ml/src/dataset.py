@@ -77,6 +77,8 @@ def load_and_engineer_features(parquet_path=DATA_PATH, static_path=STATIC_PATH):
     df["YEAR"] = date_dt.dt.year
     df["SIN_DOY"] = np.sin(2.0 * np.pi * doy / 365.25)
     df["COS_DOY"] = np.cos(2.0 * np.pi * doy / 365.25)
+    df["SIN_MONTH"] = np.sin(2.0 * np.pi * (df["MONTH"] - 1) / 12.0)
+    df["COS_MONTH"] = np.cos(2.0 * np.pi * (df["MONTH"] - 1) / 12.0)
     df["MONSOON_FLAG"] = df["MONTH"].isin([6, 7, 8, 9]).astype(float)
     
     # 5. Non-linear precipitation transformations

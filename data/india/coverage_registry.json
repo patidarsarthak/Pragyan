@@ -1,0 +1,266 @@
+{
+  "project": "SIH26074 \u2014 Panchayat-Level Weather Downscaling System",
+  "total_states_supported": 36,
+  "ml_operational_states": [
+    "Madhya Pradesh"
+  ],
+  "ml_status_mp": "ML DOWNSCALING: AVAILABLE \u2014 MADHYA PRADESH",
+  "ml_status_non_mp": "ML DOWNSCALING: NOT YET AVAILABLE",
+  "non_mp_policy": "Full administrative, search, and official coarse forecast browsing enabled; Panchayat ML downscaling strictly refused outside Madhya Pradesh.",
+  "states": [
+    {
+      "code": 1,
+      "name": "Jammu and Kashmir",
+      "type": "UT",
+      "districts": 20,
+      "ml_available": false
+    },
+    {
+      "code": 2,
+      "name": "Himachal Pradesh",
+      "type": "State",
+      "districts": 12,
+      "ml_available": false
+    },
+    {
+      "code": 3,
+      "name": "Punjab",
+      "type": "State",
+      "districts": 23,
+      "ml_available": false
+    },
+    {
+      "code": 4,
+      "name": "Chandigarh",
+      "type": "UT",
+      "districts": 1,
+      "ml_available": false
+    },
+    {
+      "code": 5,
+      "name": "Uttarakhand",
+      "type": "State",
+      "districts": 13,
+      "ml_available": false
+    },
+    {
+      "code": 6,
+      "name": "Haryana",
+      "type": "State",
+      "districts": 22,
+      "ml_available": false
+    },
+    {
+      "code": 7,
+      "name": "Delhi",
+      "type": "UT",
+      "districts": 11,
+      "ml_available": false
+    },
+    {
+      "code": 8,
+      "name": "Rajasthan",
+      "type": "State",
+      "districts": 50,
+      "ml_available": false
+    },
+    {
+      "code": 9,
+      "name": "Uttar Pradesh",
+      "type": "State",
+      "districts": 75,
+      "ml_available": false
+    },
+    {
+      "code": 10,
+      "name": "Bihar",
+      "type": "State",
+      "districts": 38,
+      "ml_available": false
+    },
+    {
+      "code": 11,
+      "name": "Sikkim",
+      "type": "State",
+      "districts": 6,
+      "ml_available": false
+    },
+    {
+      "code": 12,
+      "name": "Arunachal Pradesh",
+      "type": "State",
+      "districts": 26,
+      "ml_available": false
+    },
+    {
+      "code": 13,
+      "name": "Nagaland",
+      "type": "State",
+      "districts": 16,
+      "ml_available": false
+    },
+    {
+      "code": 14,
+      "name": "Manipur",
+      "type": "State",
+      "districts": 16,
+      "ml_available": false
+    },
+    {
+      "code": 15,
+      "name": "Mizoram",
+      "type": "State",
+      "districts": 11,
+      "ml_available": false
+    },
+    {
+      "code": 16,
+      "name": "Tripura",
+      "type": "State",
+      "districts": 8,
+      "ml_available": false
+    },
+    {
+      "code": 17,
+      "name": "Meghalaya",
+      "type": "State",
+      "districts": 12,
+      "ml_available": false
+    },
+    {
+      "code": 18,
+      "name": "Assam",
+      "type": "State",
+      "districts": 35,
+      "ml_available": false
+    },
+    {
+      "code": 19,
+      "name": "West Bengal",
+      "type": "State",
+      "districts": 23,
+      "ml_available": false
+    },
+    {
+      "code": 20,
+      "name": "Jharkhand",
+      "type": "State",
+      "districts": 24,
+      "ml_available": false
+    },
+    {
+      "code": 21,
+      "name": "Odisha",
+      "type": "State",
+      "districts": 30,
+      "ml_available": false
+    },
+    {
+      "code": 22,
+      "name": "Chhattisgarh",
+      "type": "State",
+      "districts": 33,
+      "ml_available": false
+    },
+    {
+      "code": 23,
+      "name": "Madhya Pradesh",
+      "type": "State",
+      "districts": 55,
+      "ml_available": true,
+      "pilot_focus": true,
+      "model_id": "mp_downscaler_v1"
+    },
+    {
+      "code": 24,
+      "name": "Gujarat",
+      "type": "State",
+      "districts": 33,
+      "ml_available": false
+    },
+    {
+      "code": 25,
+      "name": "Daman and Diu and Dadra and Nagar Haveli",
+      "type": "UT",
+      "districts": 3,
+      "ml_available": false
+    },
+    {
+      "code": 26,
+      "name": "Maharashtra",
+      "type": "State",
+      "districts": 36,
+      "ml_available": false
+    },
+    {
+      "code": 27,
+      "name": "Andhra Pradesh",
+      "type": "State",
+      "districts": 26,
+      "ml_available": false
+    },
+    {
+      "code": 28,
+      "name": "Karnataka",
+      "type": "State",
+      "districts": 31,
+      "ml_available": false
+    },
+    {
+      "code": 29,
+      "name": "Goa",
+      "type": "State",
+      "districts": 2,
+      "ml_available": false
+    },
+    {
+      "code": 30,
+      "name": "Lakshadweep",
+      "type": "UT",
+      "districts": 1,
+      "ml_available": false
+    },
+    {
+      "code": 31,
+      "name": "Kerala",
+      "type": "State",
+      "districts": 14,
+      "ml_available": false
+    },
+    {
+      "code": 32,
+      "name": "Tamil Nadu",
+      "type": "State",
+      "districts": 38,
+      "ml_available": false
+    },
+    {
+      "code": 33,
+      "name": "Puducherry",
+      "type": "UT",
+      "districts": 4,
+      "ml_available": false
+    },
+    {
+      "code": 34,
+      "name": "Andaman and Nicobar Islands",
+      "type": "UT",
+      "districts": 3,
+      "ml_available": false
+    },
+    {
+      "code": 35,
+      "name": "Telangana",
+      "type": "State",
+      "districts": 33,
+      "ml_available": false
+    },
+    {
+      "code": 36,
+      "name": "Ladakh",
+      "type": "UT",
+      "districts": 2,
+      "ml_available": false
+    }
+  ]
+}

@@ -51,6 +51,7 @@ class PanchayatForecastResponse(BaseModel):
     run_timestamp: Optional[str] = Field(None, description="UTC timestamp of the NWP forecast ingestion run")
     forecast_days_count: int
     forecasts: List[ForecastDayItem]
+    meta: Optional[Dict[str, Any]] = Field(None, description="Standardized data freshness and provenance metadata")
 
 
 class AdvisoryItem(BaseModel):
@@ -72,6 +73,8 @@ class AdvisoryResponse(BaseModel):
     crop_filtered: Optional[str] = None
     total_advisories: int
     advisories: List[AdvisoryItem]
+    meta: Optional[Dict[str, Any]] = Field(None, description="Standardized data freshness and provenance metadata")
+
 
 
 class PanchayatRiskItem(BaseModel):
@@ -98,3 +101,80 @@ class DistrictSummaryResponse(BaseModel):
     rainfall_summary: Dict[str, Any]
     risk_distribution: Dict[str, int]
     panchayat_risk_assessments: List[PanchayatRiskItem]
+
+
+# Administrative Hierarchy Schemas
+class StateItem(BaseModel):
+    state_code: int
+    state_name: str
+    state_type: str = "State"
+    is_pilot: bool = False
+    centroid_lat: Optional[float] = None
+    centroid_lon: Optional[float] = None
+
+
+class DistrictItem(BaseModel):
+    district_code: int
+    district_name: str
+    state_code: int
+    is_pilot: bool = False
+    total_gps: int = 0
+    total_blocks: int = 0
+    centroid_lat: Optional[float] = None
+    centroid_lon: Optional[float] = None
+
+
+class BlockItem(BaseModel):
+    block_code: int
+    block_name: str
+    district_code: int
+    state_code: int
+    area_sq_km: Optional[float] = None
+    centroid_lat: Optional[float] = None
+    centroid_lon: Optional[float] = None
+
+
+class ModelPredictRequest(BaseModel):
+    gp_codes: Optional[List[int]] = Field(None, description="Optional list of LGD GP codes. If omitted, runs for all pilot Panchayats.")
+    forecast_date: Optional[str] = Field(None, description="Target forecast date (YYYY-MM-DD)")
+    coarse_rainfall: float = Field(..., description="Coarse / NWP rainfall (mm/day)")
+    coarse_temperature: float = Field(..., description="Coarse / NWP temperature (°C)")
+    coarse_humidity: float = Field(..., description="Coarse / NWP relative humidity (%)")
+    coarse_wind_speed: float = Field(..., description="Coarse / NWP wind speed (m/s or km/h)")
+
+
+from pydantic import BaseModel, Field, model_validator
+
+
+class CrowdReportCreate(BaseModel):
+    rain: Optional[str] = Field(None, description="Observed rainfall intensity: 'none', 'light', 'moderate', 'heavy'")
+    intensity: Optional[str] = Field(None, description="Alternative field name for rain intensity")
+    amount_mm: Optional[float] = Field(None, description="Optional measured or estimated rainfall depth in mm")
+    photo_url: Optional[str] = Field(None, description="Optional photo URL of rain gauge or flooded field")
+    device_hash: Optional[str] = Field(None, description="Anonymous device fingerprint hash")
+    timestamp: Optional[str] = Field(None, description="ISO timestamp of observation (defaults to current time)")
+
+    @model_validator(mode="before")
+    @classmethod
+    def check_rain_intensity(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            if not data.get("rain") and data.get("intensity"):
+                data["rain"] = data.get("intensity")
+            elif not data.get("intensity") and data.get("rain"):
+                data["intensity"] = data.get("rain")
+            if not data.get("rain"):
+                data["rain"] = "none"
+        return data
+
+
+class CrowdReportOut(BaseModel):
+    id: int
+    gp_code: int
+    rain_category: str
+    rainfall_amount_mm: Optional[float] = None
+    photo_url: Optional[str] = None
+    timestamp: str
+    source: str = "CROWDSOURCED_UNVERIFIED"
+    is_plausible: bool
+    plausibility_reason: Optional[str] = None
+

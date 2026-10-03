@@ -1,0 +1,102 @@
+# SIH26074 - Parameter Registry
+# Defines all map and visualization parameters for the Sanket-style UI adapter
+
+parameters:
+  - id: risk
+    label: "Risk score"
+    unit: "0-100"
+    kind: banded
+    palette: "risk tokens (calm/watch/alert)"
+    labels:
+      en: "Risk Score"
+      hi: "जोखिम स्कोर"
+      bn: "ঝুঁকি স্কোর"
+  - id: rain
+    label: "Rainfall"
+    unit: "mm/day"
+    kind: sequential
+    palette: Blues
+    domain: [0, 100]
+    clamp: true
+    labels:
+      en: "Rainfall"
+      hi: "वर्षा"
+      bn: "বৃষ্টিপাত"
+  - id: tmax
+    label: "Max temperature"
+    unit: "°C"
+    kind: sequential
+    palette: Plasma
+    domain: [15, 48]
+    labels:
+      en: "Max Temperature"
+      hi: "अधिकतम तापमान"
+      bn: "সর্বোচ্চ তাপমাত্রা"
+  - id: tmin
+    label: "Min temperature"
+    unit: "°C"
+    kind: sequential
+    palette: Plasma
+    domain: [5, 35]
+    labels:
+      en: "Min Temperature"
+      hi: "न्यूनतम तापमान"
+      bn: "সর্বনিম্ন তাপমাত্রা"
+  - id: rh
+    label: "Relative humidity"
+    unit: "%"
+    kind: sequential
+    palette: YlGnBu
+    domain: [0, 100]
+    labels:
+      en: "Relative Humidity"
+      hi: "सापेक्षिक आर्द्रता"
+      bn: "আপেক্ষিক আর্দ্রতা"
+  - id: wind
+    label: "Wind speed"
+    unit: "m/s"
+    kind: sequential
+    palette: Purples
+    domain: [0, 25]
+    labels:
+      en: "Wind Speed"
+      hi: "हवा की गति"
+      bn: "বাতাসের গতি"
+  - id: et0
+    label: "Reference ET (derived)"
+    unit: "mm/day"
+    kind: sequential
+    palette: YlOrBr
+    domain: [0, 12]
+    labels:
+      en: "Reference Evapotranspiration"
+      hi: "संदर्भ वाष्पोत्सर्जन (ET0)"
+      bn: "রেফারেন্স বাষ্পীভবন (ET0)"
+  - id: agreement
+    label: "Model agreement"
+    unit: "0-1"
+    kind: sequential
+    palette: Greys
+    domain: [0, 1]
+    labels:
+      en: "Model Agreement"
+      hi: "मॉडल सहमति"
+      bn: "মডেল সম্মতি"
+  - id: coverage
+    label: "Verifiability"
+    unit: "class"
+    kind: categorical
+    classes: ["WELL_VERIFIABLE", "PARTIAL", "POORLY"]
+    labels:
+      en: "Verifiability Class"
+      hi: "सत्यापन क्षमता"
+      bn: "যাচাইকরণ শ্রেণী"
+  - id: expected_error
+    label: "Typical error"
+    unit: "per variable"
+    kind: sequential
+    palette: Greys
+    labels:
+      en: "Expected Error"
+      hi: "अपेक्षित त्रुटि"
+      bn: "প্রত্যাশিত ত্রুটি"

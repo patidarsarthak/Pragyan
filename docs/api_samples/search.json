@@ -1,0 +1,36 @@
+{
+  "query": "Baghmara",
+  "total_matches": 2,
+  "results": [
+    {
+      "level": "Block",
+      "name": "Baghmara",
+      "code": 2354,
+      "block_code": 2354,
+      "district_code": 336,
+      "district_name": "Dhanbad",
+      "state_code": 20,
+      "state_name": "Jharkhand",
+      "area_sq_km": 701.8,
+      "centroid_lon": 86.21225,
+      "centroid_lat": 23.73992
+    },
+    {
+      "level": "Physical Feature",
+      "name": "Baghmara Block Development Office & CSC",
+      "code": "Baghmara Block Development Office & CSC",
+      "category": "poi_features",
+      "feature_type": "government",
+      "description": "Natural physical geographic feature",
+      "centroid_lon": 86.21,
+      "centroid_lat": 23.79,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.21,
+          23.79
+        ]
+      }
+    }
+  ]
+}
