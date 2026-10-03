@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SIH26074 - Master FastAPI Backend Service
+Pragyan - Master FastAPI Backend Service
 -----------------------------------------
 Panchayat-Level Weather Downscaling & Agro-Meteorological Advisory System
 Authoritative Primary Spatial Unit: REAL Gram Panchayat Polygons
@@ -203,7 +203,7 @@ def root_status(request: Request):
     accept = request.headers.get("accept", "")
     if "application/json" in accept and "text/html" not in accept:
         return {
-            "project": "SIH26074 — Panchayat-Level Weather Downscaling System",
+            "project": "Pragyan — Panchayat-Level Weather Downscaling System",
             "primary_spatial_unit": "Gram Panchayat Polygon (LGD Registered)",
             "ml_pilot_state": "Madhya Pradesh (55 Districts, ML Downscaling Operational)",
             "all_india_coverage": "36 States/UTs (Coarse Synoptic Weather & Boundaries)",
@@ -216,7 +216,7 @@ def root_status(request: Request):
     if os.path.exists(index_file):
         return FileResponse(index_file)
     return {
-        "project": "SIH26074 — Panchayat-Level Weather Downscaling System",
+        "project": "Pragyan — Panchayat-Level Weather Downscaling System",
         "primary_spatial_unit": "Gram Panchayat Polygon (LGD Registered)",
         "ml_pilot_state": "Madhya Pradesh (55 Districts, ML Downscaling Operational)",
         "all_india_coverage": "36 States/UTs (Coarse Synoptic Weather & Boundaries)",
@@ -231,7 +231,7 @@ def root_status(request: Request):
 def system_metadata():
     """System metadata endpoint for automated monitoring and health checks."""
     return {
-        "project": "SIH26074 — Panchayat-Level Weather Downscaling System",
+        "project": "Pragyan — Panchayat-Level Weather Downscaling System",
         "spatial_architecture": "Gram Panchayat Polygon (LGD Registered)",
         "ml_pilot_state": "Madhya Pradesh (55 Districts)",
         "all_india_coverage": "36 States/UTs",

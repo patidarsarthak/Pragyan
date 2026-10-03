@@ -1,7 +1,7 @@
-# 🌾 GramMausam (SIH26074)
+# 🌾 Pragyan
 ### Cadastral-Scale Agrometeorological AI Downscaling & Hyperlocal Early Warning Engine
 
-[![Smart India Hackathon](https://img.shields.io/badge/SIH%202026-Problem%2026074-blue.svg?style=for-the-badge&logo=gov.in)](https://sih.gov.in)
+[![Pragyan Repository](https://img.shields.io/badge/GitHub-patidarsarthak%2FPragyan-blue.svg?style=for-the-badge&logo=github)](https://github.com/patidarsarthak/Pragyan)
 [![FastAPI Backend](https://img.shields.io/badge/FastAPI-v0.115-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white)](http://127.0.0.1:8000/docs)
 [![React + Vite](https://img.shields.io/badge/Frontend-React%2018%20%7C%20TypeScript-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black)](http://localhost:5173)
 [![OASIS CAP 1.2](https://img.shields.io/badge/Disaster%20Alerts-OASIS%20CAP%201.2-e11d48.svg?style=for-the-badge)](#-disaster-alert-engine-oasis-cap-12)
@@ -48,7 +48,7 @@ The frontend ([`frontend/`](frontend/)) is built with **React 18, TypeScript, an
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│ 🌾 GramMausam Operations · ALL INDIA · 603 PILOT PANCHAYATS · DAY 1                        │
+│ 🌾 Pragyan Operations · ALL INDIA · 603 PILOT PANCHAYATS · DAY 1                        │
 ├─────────────────────────────────────────────────────────────────────────────────────────────┤
 │  [ Operations ]   [ Alerts (CAP 1.2) ]   [ Model Evidence ]   [ Replay ]   [ Methodology ]  │
 ├─────────────────────────────────────────────────────────────────────────────────────────────┤
@@ -95,7 +95,7 @@ The frontend ([`frontend/`](frontend/)) is built with **React 18, TypeScript, an
 
 ## 🧠 Physics-Informed ML Downscaling Engine
 
-GramMausam bridges the 25km-to-cadastral resolution gap using an intelligent geospatial post-processing architecture:
+Pragyan bridges the 25km-to-cadastral resolution gap using an intelligent geospatial post-processing architecture:
 
 $$\hat{Y}_{\text{GP, } t} = f\left(\mathbf{X}_{\text{coarse NWP, } t}, \; \mathbf{Z}_{\text{polygon topography}}, \; \mathbf{L}_{\text{landcover fractions}}, \; \mathbf{H}_{\text{historical lags}}\right)$$
 
@@ -122,7 +122,7 @@ graph LR
 
 ## 📊 Scientific Honesty & The Verification Ladder
 
-GramMausam adheres to strict scientific integrity. Rather than claiming impossible accuracy, we present an honest **Verification Ladder** benchmarked on strictly held-out data:
+Pragyan adheres to strict scientific integrity. Rather than claiming impossible accuracy, we present an honest **Verification Ladder** benchmarked on strictly held-out data:
 
 | Tier | Forecasting Method | Temp MAE (°C) | Rain MAE (mm) | Description / Scientific Rationale |
 | :---: | :--- | :---: | :---: | :--- |
@@ -130,7 +130,7 @@ GramMausam adheres to strict scientific integrity. Rather than claiming impossib
 | **1** | **Block-Copy Baseline** | $2.18\text{ °C}$ | $5.42\text{ mm}$ | Coarse block NWP forecast copied identically to all Panchayats. |
 | **2** | **Lapse-Rate Adjustment** | $1.74\text{ °C}$ | $5.25\text{ mm}$ | Standard atmospheric environmental lapse rate ($-6.5\text{ }^\circ\text{C/km}$). |
 | **3** | **Station MOS Bias Correction** | $1.41\text{ °C}$ | $4.65\text{ mm}$ | Model Output Statistics linear correction against local stations. |
-| **4** | **GramMausam ML Downscaler** | **$1.12\text{ °C}$** | **$3.78\text{ mm}$** | **Terrain-aware gradient boosted downscaling with conformal bounds.** |
+| **4** | **Pragyan ML Downscaler** | **$1.12\text{ °C}$** | **$3.78\text{ mm}$** | **Terrain-aware gradient boosted downscaling with conformal bounds.** |
 
 > ⚠️ **Scientific Disclosure:** Full data provenance, known observation distances to airport ISD stations, and ongoing empirical sensor calibration roadmaps are detailed in [`data/PROVENANCE_AUDIT.md`](data/PROVENANCE_AUDIT.md).
 
@@ -138,7 +138,7 @@ GramMausam adheres to strict scientific integrity. Rather than claiming impossib
 
 ## 🚨 Disaster Alert Engine (OASIS CAP 1.2)
 
-GramMausam generates fully accredited Common Alerting Protocol (**OASIS CAP 1.2**) XML bulletins compliant with the **National Disaster Management Authority (NDMA)** and **SACHET** infrastructure:
+Pragyan generates fully accredited Common Alerting Protocol (**OASIS CAP 1.2**) XML bulletins compliant with the **National Disaster Management Authority (NDMA)** and **SACHET** infrastructure:
 
 <details>
 <summary><b>📄 Click to expand sample OASIS CAP 1.2 XML output</b></summary>
@@ -147,7 +147,7 @@ GramMausam generates fully accredited Common Alerting Protocol (**OASIS CAP 1.2*
 <?xml version="1.0" encoding="UTF-8"?>
 <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
   <identifier>CAP-IN-MP-IND-133203-20261004-01</identifier>
-  <sender>agromet-ai@grammausam.nic.in</sender>
+  <sender>agromet-ai@pragyan.gov.in</sender>
   <sent>2026-10-04T06:00:00+05:30</sent>
   <status>Actual</status>
   <msgType>Alert</msgType>
@@ -199,8 +199,8 @@ Complete interactive OpenAPI documentation is available live at `http://127.0.0.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/sih26074-grammausam.git
-cd sih26074-grammausam
+git clone https://github.com/patidarsarthak/Pragyan.git
+cd Pragyan
 
 # 2. Setup Python environment
 python -m venv .venv
@@ -237,7 +237,7 @@ npm run dev
 
 ## 🧪 Test Suite & Quality Verification
 
-GramMausam includes comprehensive automated test coverage across both backend pipelines and frontend interfaces:
+Pragyan includes comprehensive automated test coverage across both backend pipelines and frontend interfaces:
 
 ```bash
 # Run Backend Pytest Suite (87 tests: spatial geometry, APIs, CAP 1.2, ML bounds)
@@ -259,7 +259,7 @@ Tests       17 passed (17)
 ## 📂 Project Architecture
 
 ```
-sih26074/
+Pragyan/
 ├── backend/                       # FastAPI application core
 │   ├── main.py                    # App entrypoint, SPA static mount & router registration
 │   ├── ui_api.py                  # High-density UI endpoints (overview, hero, gp, ten-day, model)

@@ -3,18 +3,18 @@ version: '3.8'
 services:
   postgis:
     image: postgis/postgis:16-3.4
-    container_name: sih26074_postgis
+    container_name: pragyan_postgis
     environment:
-      POSTGRES_DB: sih26074_db
-      POSTGRES_USER: sih_user
-      POSTGRES_PASSWORD: sih_secure_password_2026
+      POSTGRES_DB: pragyan_db
+      POSTGRES_USER: pragyan_user
+      POSTGRES_PASSWORD: pragyan_secure_password_2026
     ports:
       - "5432:5432"
     volumes:
       - postgis_data:/var/lib/postgresql/data
       - ./backend/schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U sih_user -d sih26074_db"]
+      test: ["CMD-SHELL", "pg_isready -U pragyan_user -d pragyan_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,9 +24,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: sih26074_backend
+    container_name: pragyan_backend
     environment:
-      - DATABASE_URL=postgresql://sih_user:sih_secure_password_2026@postgis:5432/sih26074_db
+      - DATABASE_URL=postgresql://pragyan_user:pragyan_secure_password_2026@postgis:5432/pragyan_db
       - PYTHONUNBUFFERED=1
     ports:
       - "8000:8000"

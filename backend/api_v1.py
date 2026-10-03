@@ -1,5 +1,4 @@
-"""
-SIH26074 - Core REST API Router (backend/api_v1.py)
+Pragyan - Core REST API Router (backend/api_v1.py)
 --------------------------------------------------
 Fulfills Sections 48, 49, 8, 13, 21, 22, 23, 25, 27, 28, 30, 31, 33, 34, 39 of the Final Specification.
 Endpoints:
@@ -49,7 +48,7 @@ from backend.database import (
     CrowdReport
 )
 
-router = APIRouter(prefix="/api", tags=["SIH26074 Operations API"])
+router = APIRouter(prefix="/api", tags=["Pragyan Operations API"])
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 MP_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "mp")
 INDIA_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "india")
@@ -227,7 +226,7 @@ def api_health():
     """Liveness probe and system service registry."""
     return {
         "status": "healthy",
-        "service": "SIH26074 Panchayat Weather Intelligence",
+        "service": "Pragyan Panchayat Weather Intelligence",
         "primary_spatial_unit": "Gram Panchayat Polygon (LGD Registered)",
         "total_indian_states_supported": 36,
         "pilot_state": "Madhya Pradesh",
@@ -844,8 +843,8 @@ def export_cap_alert(alert_in: CapExportIn):
         now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+05:30")
         xml_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
-  <identifier>SIH26074-ALERT-{p.gp_code}-{datetime.now().strftime('%Y%m%d%H%M%S')}</identifier>
-  <sender>agromet-downscaler@sih26074.gov.in</sender>
+  <identifier>PRAGYAN-ALERT-{p.gp_code}-{datetime.now().strftime('%Y%m%d%H%M%S')}</identifier>
+  <sender>agromet-downscaler@pragyan.gov.in</sender>
   <sent>{now_iso}</sent>
   <status>Actual</status>
   <msgType>Alert</msgType>

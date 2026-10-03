@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      // SIH26074 backend API routes
+      // Pragyan backend API routes
       "/states": { target: "http://localhost:8000", changeOrigin: true },
       "/districts": { target: "http://localhost:8000", changeOrigin: true },
       "/blocks": { target: "http://localhost:8000", changeOrigin: true },

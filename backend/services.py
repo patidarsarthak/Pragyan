@@ -1,5 +1,5 @@
 """
-SIH26074 - Phase 5: Data Access & Analytical Services
+Pragyan - Phase 5: Data Access & Analytical Services
 ----------------------------------------------------
 Provides cached access to:
 - Static Panchayat terrain & geographic metadata
@@ -1972,12 +1972,12 @@ def generate_cap_alert_xml(gp_code: int) -> str:
         xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
   <identifier>{identifier}</identifier>
-  <sender>sih26074-panchayat-service@imd.gov.in</sender>
+  <sender>pragyan-panchayat-service@imd.gov.in</sender>
   <sent>{now_iso}</sent>
   <status>Actual</status>
   <msgType>Alert</msgType>
   <scope>Public</scope>
-  <code>sih26074-v2.0-joint-ensemble</code>
+  <code>pragyan-v2.0-joint-ensemble</code>
   <info>
     <language>en-IN</language>
     <category>Met</category>
@@ -1994,7 +1994,7 @@ def generate_cap_alert_xml(gp_code: int) -> str:
     <headline>{severity} Downscaled Rainfall ({rain_val} mm) Alert for {gp_name} Gram Panchayat</headline>
     <description>Downscaled physics model predicts {rain_val} mm rainfall (80% CI: {rain_ci_low} to {rain_ci_high} mm) for {gp_name} Panchayat. Local Vertisol depression soil reaches saturation. Wind gusts up to {wind_val} km/h expected.</description>
     <instruction>{instruction_en}</instruction>
-    <web>https://sih26074.gov.in/panchayats/{gp_code}</web>
+    <web>https://pragyan.gov.in/panchayats/{gp_code}</web>
     <parameter>
       <valueName>LGD_STATE_CODE</valueName>
       <value>{p.state_code if p else 20}</value>

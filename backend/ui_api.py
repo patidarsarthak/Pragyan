@@ -1,5 +1,5 @@
 """
-SIH26074 - UI API Adapter (backend/ui_api.py)
+Pragyan - UI API Adapter (backend/ui_api.py)
 --------------------------------------------
 Implements the view-model API endpoints required by the Sanket-style look-alike frontend
 and the Map-Driven Gram-Panchayat-Keyed Architecture (docs/MAP_DRIVEN_ARCHITECTURE.md).
@@ -873,7 +873,7 @@ def get_ui_model_evidence():
                 "notes": "Linear Model Output Statistics from nearest synoptic gauge"
             },
             {
-                "model": "SIH26074 Semi-Parametric Downscaler (Ours)",
+                "model": "Pragyan Semi-Parametric Downscaler (Ours)",
                 "rainfall_mae_mm": 3.78,
                 "temp_mae_c": 1.12,
                 "pod": 0.81,

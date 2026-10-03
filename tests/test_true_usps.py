@@ -68,7 +68,7 @@ def test_usp2_ground_report_flow():
     payload = {
         "amount_mm": 18.5,
         "intensity": "heavy",
-        "photo_url": "https://sih26074.gov.in/proof/rain_obs_01.jpg"
+        "photo_url": "https://pragyan.gov.in/proof/rain_obs_01.jpg"
     }
     post_res = client.post(f"/panchayats/{test_gp}/ground-report", json=payload)
     assert post_res.status_code == 200
