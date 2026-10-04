@@ -23,6 +23,6 @@ SANKET_COPY_AUDIT.md
 SIH26074_Technical_Approach_and_Workflow_Report.pdf
 SIH26074_TECHNICAL_PRESENTATION_REPORT.md
 SIH26074_TECHNICAL_PRESENTATION_REPORT.pdf
+SIH26074_TECHNICAL_PRESENTATION_REPORT.html
 THIRD_PARTY_NOTICES.md
-scripts/convert_to_pdf.py
-scripts/generate_comprehensive_report.py
+scripts/*.py
