@@ -25,3 +25,4 @@ SIH26074_TECHNICAL_PRESENTATION_REPORT.md
 SIH26074_TECHNICAL_PRESENTATION_REPORT.pdf
 THIRD_PARTY_NOTICES.md
 scripts/convert_to_pdf.py
+scripts/generate_comprehensive_report.py
