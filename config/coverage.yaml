@@ -1,0 +1,46 @@
+# ==============================================================================
+# Verifiability & Distance-to-Observation Standards (Feature 3)
+# Categorizes each Gram Panchayat by its proximity to certified ground observatories
+# ==============================================================================
+
+version: "1.0"
+
+distance_tiers:
+  well_verifiable:
+    max_distance_km: 30.0
+    label: "Well Verifiable"
+    label_hi: "उत्कृष्ट सत्यापन योग्य"
+    label_bn: "উত্তম যাচাইযোগ্য"
+    color: "#059669" # Green
+    description: "Within 30 km of certified synoptic/airport meteorological station. Local terrain gradient strongly correlated."
+    source: "ASSUMPTION"
+
+  partial:
+    min_distance_km: 30.1
+    max_distance_km: 80.0
+    label: "Partially Verifiable"
+    label_hi: "आंशिक सत्यापन योग्य"
+    label_bn: "আংশিক যাচাইযোগ্য"
+    color: "#D97706" # Amber
+    description: "Between 30 km and 80 km from ground station. Coarse lapse-rate trends apply but convective meso-cells have higher variance."
+    source: "ASSUMPTION"
+
+  poorly_verifiable:
+    min_distance_km: 80.1
+    label: "Poorly Verifiable"
+    label_hi: "कमजोर सत्यापन योग्य"
+    label_bn: "সীমিত যাচাইযোগ্য"
+    color: "#DC2626" # Red
+    description: "Beyond 80 km from ground station. Forecast relies heavily on satellite reanalysis; ground truth requires local citizen gauges."
+    source: "ASSUMPTION"
+
+evaluation_guards:
+  min_sample_size: 30 # Below n=30, honest system prints 'not enough data yet' instead of percentage
+  source: "ASSUMPTION"
+
+expected_error_models:
+  rainfall_base_mae_mm: 3.2
+  rainfall_km_slope: 0.024
+  temperature_base_mae_c: 1.1
+  temperature_km_slope: 0.008
+  source: "LEAVE_ONE_STATION_OUT_FIT" # Empirical fit over 8 MP NOAA ISD stations (2023-2024)

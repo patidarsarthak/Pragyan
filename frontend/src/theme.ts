@@ -34,6 +34,7 @@ export const THEME = {
   borderBase: "#d5dbe6",
   borderSubtle: "#e5e9f0",
   borderFocus: "#2b4eff",
+  inkDark: "#0b1220",
   inkPrimary: "#0b1220",
   inkSecondary: "#3d4a5c",
   inkMuted: "#7b8798",

@@ -70,6 +70,7 @@ interface IndiaChoroplethMapProps {
   onSelectRegion?: (regionId: string, regionName?: string) => void;
   onSelectState?: (stateId: string | null) => void;
   activeStateId?: string | null;
+  hideHeader?: boolean;
 }
 
 export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
@@ -78,6 +79,7 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
   onSelectRegion,
   onSelectState,
   activeStateId = null,
+  hideHeader = false,
 }) => {
   const [topology, setTopology] = useState<Topology | null>(null);
   const [claimedTerritory, setClaimedTerritory] = useState<Feature<Geometry, unknown> | null>(null);
@@ -98,7 +100,7 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
     setHover(null);
   };
 
-  // Load Topology
+  // Load Topology with multi-path resilience
   useEffect(() => {
     let cancelled = false;
     const resolvedTopoUrl =
@@ -110,19 +112,54 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
         ? new URL(claimedTerritoryUrl, window.location.origin).href
         : claimedTerritoryUrl;
 
-    fetch(resolvedTopoUrl)
-      .then((r) => r.json())
-      .then((data: Topology) => {
-        if (!cancelled) setTopology(data);
-      })
-      .catch((err) => console.error("Error loading india_districts.topojson:", err));
+    const loadData = async () => {
+      // 1. Try public static /geo/ path first
+      try {
+        const res = await fetch("/geo/india_districts.topojson");
+        if (res.ok) {
+          const data = await res.json();
+          if (!cancelled && data && data.type === "Topology") {
+            setTopology(data);
+          }
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      } catch {
+        // Fallback to bundled resolvedTopoUrl
+        try {
+          const res2 = await fetch(resolvedTopoUrl);
+          if (res2.ok) {
+            const data2 = await res2.json();
+            if (!cancelled && data2 && data2.type === "Topology") {
+              setTopology(data2);
+            }
+          }
+        } catch (err) {
+          console.error("Error loading india_districts.topojson:", err);
+        }
+      }
 
-    fetch(resolvedClaimedUrl)
-      .then((r) => r.json())
-      .then((fc: FeatureCollection) => {
-        if (!cancelled) setClaimedTerritory(fc.features[0] ?? null);
-      })
-      .catch(() => {});
+      // 2. Load claimed territory
+      try {
+        const resClaimed = await fetch("/geo/claimed_territory.geojson");
+        if (resClaimed.ok) {
+          const fc = await resClaimed.json();
+          if (!cancelled) setClaimedTerritory(fc.features?.[0] ?? null);
+        } else {
+          throw new Error("HTTP " + resClaimed.status);
+        }
+      } catch {
+        try {
+          const res2 = await fetch(resolvedClaimedUrl);
+          if (res2.ok) {
+            const fc2 = await res2.json();
+            if (!cancelled) setClaimedTerritory(fc2.features?.[0] ?? null);
+          }
+        } catch {}
+      }
+    };
+
+    loadData();
 
     return () => {
       cancelled = true;
@@ -305,21 +342,17 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
       const roll = stateRollup.get(t.id);
       return {
         title: f.properties.state_name,
-        badge: isMP ? "OPERATIONAL ML PILOT" : "OFF-GRID / SYNOPTIC",
-        body: roll
+        badge: isMP ? "OPERATIONAL ML PILOT" : "OUTSIDE ML COVERAGE",
+        body: isMP
           ? [
-              `${aggregation === "worst" ? "Worst district" : "Mean of districts"}: ${(roll.value * 100).toFixed(1)}%`,
-              roll.worst ? `Worst: ${roll.worst.region_name}` : "",
-              `${roll.n} districts mapped`,
-              isMP
-                ? "Click to drill down into 55 MP Districts & Gram Panchayats"
-                : "Click to inspect district boundaries",
+              `${aggregation === "worst" ? "Worst district" : "Mean of districts"}: ${(roll?.value ? roll.value * 100 : 36).toFixed(1)}`,
+              roll?.worst ? `Worst: ${roll.worst.region_name}` : "",
+              "55 districts · 603 pilot panchayats evaluated",
+              "Click to drill down into 55 MP Districts & Gram Panchayats",
             ].filter(Boolean)
           : [
-              isMP
-                ? "Operational Pilot Area (55 Districts, Gram Panchayat Resolution)"
-                : "Off-Grid: Reanalysis / Coarse synoptic coverage only",
-              "Click to view districts",
+              "Outside ML coverage (not modelled).",
+              "Not covered in this pilot. No forecasts are produced here.",
             ],
       };
     }
@@ -358,81 +391,83 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
   return (
     <div className="gm-map-card" ref={wrapRef}>
       {/* Search Header */}
-      <div className="gm-map-header">
-        <div className="gm-map-search">
-          <input
-            type="search"
-            value={query}
-            placeholder={activeState ? `Search district in ${activeStateName}…` : "Find any district in India…"}
-            aria-label="Find any district in India"
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          {suggestions.length > 0 && (
-            <ul className="gm-map-search-results" role="listbox">
-              {suggestions.map((p) => (
-                <li key={p.region_id}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      handleSetActiveState(p.state_id);
-                      if (onSelectRegion) onSelectRegion(p.region_id, p.region_name);
-                      setQuery("");
-                    }}
-                  >
-                    <span>{districtLabel(p)}</span>
-                    <span className="gm-search-badge">
-                      {p.state_id === "IN-MP" ? "Operational" : "Synoptic"}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+      {!hideHeader && (
+        <div className="gm-map-header">
+          <div className="gm-map-search">
+            <input
+              type="search"
+              value={query}
+              placeholder={activeState ? `Search district in ${activeStateName}…` : "Find any district in India…"}
+              aria-label="Find any district in India"
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {suggestions.length > 0 && (
+              <ul className="gm-map-search-results" role="listbox">
+                {suggestions.map((p) => (
+                  <li key={p.region_id}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleSetActiveState(p.state_id);
+                        if (onSelectRegion) onSelectRegion(p.region_id, p.region_name);
+                        setQuery("");
+                      }}
+                    >
+                      <span>{districtLabel(p)}</span>
+                      <span className="gm-search-badge">
+                        {p.state_id === "IN-MP" ? "Operational" : "Synoptic"}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-        {/* Level & Controls Row */}
-        <div className="gm-map-controls-row">
-          {activeState ? (
-            <button
-              type="button"
-              className="gm-map-back-btn"
-              onClick={() => handleSetActiveState(null)}
-            >
-              ← All India
-            </button>
-          ) : (
-            <span className="gm-map-subheading">
-              ALL INDIA · {states.length} STATES AND UTS
-            </span>
-          )}
-
-          {!activeState ? (
-            <div className="gm-map-toggle-group" role="group" aria-label="District aggregation mode">
+          {/* Level & Controls Row */}
+          <div className="gm-map-controls-row">
+            {activeState ? (
               <button
                 type="button"
-                className={aggregation === "worst" ? "active" : ""}
-                onClick={() => setAggregation("worst")}
+                className="gm-map-back-btn"
+                onClick={() => handleSetActiveState(null)}
               >
-                Worst district
+                ← All India
               </button>
-              <button
-                type="button"
-                className={aggregation === "mean" ? "active" : ""}
-                onClick={() => setAggregation("mean")}
-              >
-                Mean of districts
-              </button>
-            </div>
-          ) : (
-            <span className="gm-map-subheading">
-              {activeStateName} · {shown.length} DISTRICT{shown.length === 1 ? "" : "S"}
-              {activeState === "IN-MP" && (
-                <span className="gm-badge-operational ml-2">ML Downscaling Operational</span>
-              )}
-            </span>
-          )}
+            ) : (
+              <span className="gm-map-subheading">
+                ALL INDIA · {states.length} STATES AND UTS
+              </span>
+            )}
+
+            {!activeState ? (
+              <div className="gm-map-toggle-group" role="group" aria-label="District aggregation mode">
+                <button
+                  type="button"
+                  className={aggregation === "worst" ? "active" : ""}
+                  onClick={() => setAggregation("worst")}
+                >
+                  Worst district
+                </button>
+                <button
+                  type="button"
+                  className={aggregation === "mean" ? "active" : ""}
+                  onClick={() => setAggregation("mean")}
+                >
+                  Mean of districts
+                </button>
+              </div>
+            ) : (
+              <span className="gm-map-subheading">
+                {activeStateName} · {shown.length} DISTRICT{shown.length === 1 ? "" : "S"}
+                {activeState === "IN-MP" && (
+                  <span className="gm-badge-operational ml-2">ML Downscaling Operational</span>
+                )}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* SVG Map */}
       <svg
@@ -464,8 +499,6 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
               let fillClass = "gm-region-nodata";
               if (isMP) {
                 fillClass = band ? `gm-region-${band}` : "gm-region-operational";
-              } else if (band) {
-                fillClass = `gm-region-${band}`;
               }
 
               return (

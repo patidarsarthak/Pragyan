@@ -14,12 +14,14 @@ import {
 } from "recharts";
 import { UIHeroResponse } from "../../api/types";
 import { THEME } from "../../theme";
+import { Language, t } from "../../lib/i18n";
 
 interface HeroSectionProps {
   heroData: UIHeroResponse | null;
   day: number;
   onExploreMap: () => void;
   onSelectDay?: (day: number) => void;
+  lang?: Language;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -27,6 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   day,
   onExploreMap,
   onSelectDay,
+  lang = "en",
 }) => {
   const [activeRightTab, setActiveRightTab] = useState<"trajectory" | "calibration">("trajectory");
 
@@ -105,23 +108,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="sk-kicker">
             <span className="sk-kicker-rule" />
             <span className="sk-kicker-text">
-              ALL INDIA · {gauge.evaluated_panchayats} GRAM PANCHAYATS PILOT · DAY {day}
+              {t("heroKicker", lang)} {day}
             </span>
           </div>
 
           <h1 className="sk-headline">
-            Panchayat-level weather risks,{" "}
-            <em className="sk-em-red">before they hit your crops</em>.
+            {t("heroHeadline1", lang)}{" "}
+            <em className="sk-em-red">{t("heroHeadline2", lang)}</em>
           </h1>
 
           <p className="sk-subline">
-            ECMWF ERA5 & IFS downscaled to 1km cadastral resolution.{" "}
-            <strong>{kpis.active_alerts} Gram Panchayats</strong> in severe ALERT status today.
+            {t("heroSubtitle", lang)}
           </p>
 
           <div className="sk-note-blue">
-            Authoritative forecast unit: <strong>Gram Panchayat (LGD cadastral polygon)</strong>.
-            District and State metrics are derived aggregate averages across scored panchayats.
+            {t("heroNote", lang)}
           </div>
 
           {/* 128px Gauge Row */}
@@ -167,15 +168,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   className="sk-gauge-sub"
                   fill="#7b8798"
                 >
-                  ALERT
+                  {t("statusAlert", lang)}
                 </text>
               </svg>
             </div>
 
             <div className="sk-gauge-info">
-              <span className="sk-gauge-mono-caption">NATIONAL PILOT RISK RATIO</span>
+              <span className="sk-gauge-mono-caption">{t("heroRiskRatioTitle", lang)}</span>
               <p className="sk-gauge-desc">
-                {(gauge.share_alert * 100).toFixed(1)}% of pilot Gram Panchayats exceed agromet threat threshold.
+                {(gauge.share_alert * 100).toFixed(1)}% {t("heroRiskRatioDesc", lang)}
               </p>
               <div className="sk-gauge-delta-pill">
                 <span
@@ -184,7 +185,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   }`}
                 >
                   {gauge.delta_vs_prev > 0 ? "▲ +" : gauge.delta_vs_prev < 0 ? "▼ " : "● "}
-                  {(gauge.delta_vs_prev * 100).toFixed(1)}% vs yesterday
+                  {(gauge.delta_vs_prev * 100).toFixed(1)}% {t("heroVsYesterday", lang)}
                 </span>
               </div>
             </div>
@@ -196,10 +197,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="sk-card sk-right-card">
             <div className="sk-right-card-header">
               <div className="sk-card-title-mono">
-                RISK TRAJECTORY · 10-DAY LEAD
+                {t("heroRiskTrajectory", lang).toUpperCase()} · 10-{t("statusDay", lang).toUpperCase()}
               </div>
               <span className="sk-crossover-tag">
-                Day 3 Crossover Watch
+                {t("heroDay3Watch", lang)}
               </span>
             </div>
 
@@ -211,7 +212,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 role="tab"
                 aria-selected={activeRightTab === "trajectory"}
               >
-                Risk by forecast day
+                {t("heroRiskTrajectory", lang)}
               </button>
               <button
                 className={`sk-card-tab ${activeRightTab === "calibration" ? "is-active" : ""}`}
@@ -219,7 +220,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 role="tab"
                 aria-selected={activeRightTab === "calibration"}
               >
-                Were we right?
+                {t("heroWereWeRight", lang)}
               </button>
             </div>
 
@@ -347,18 +348,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Key Row */}
+            {/* Key Row */}
             <div className="sk-chart-key-row">
               <span className="sk-key-item">
                 <span className="sk-key-line" style={{ background: "#2b4eff" }} />
-                Forecast Risk
+                {t("chartForecastRisk", lang)}
               </span>
               <span className="sk-key-item">
                 <span className="sk-key-box" style={{ background: "#a9b6d6" }} />
-                80% Uncertainty Band
+                {t("chartUncertaintyBand", lang)}
               </span>
               <span className="sk-key-item">
                 <span className="sk-key-dot" style={{ background: "#f5254a" }} />
-                Critical Threshold (55%)
+                {t("chartCriticalThreshold", lang)}
               </span>
             </div>
           </div>
@@ -369,28 +371,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="sk-kpi-grid">
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.alert }} />
-          <span className="sk-kpi-label">ACTIVE ALERTS (DAY {day})</span>
+          <span className="sk-kpi-label">{t("heroActiveAlerts", lang, { day: String(day) })}</span>
           <div className="sk-kpi-val">{kpis.active_alerts} <span className="sk-kpi-unit">GPs</span></div>
-          <span className="sk-kpi-note">IMD severe threshold exceeded</span>
+          <span className="sk-kpi-note">{t("heroImdThreshold", lang)}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.blue }} />
-          <span className="sk-kpi-label">PILOT GRAM PANCHAYATS</span>
+          <span className="sk-kpi-label">{t("heroPilotGps", lang)}</span>
           <div className="sk-kpi-val">{kpis.total_gps_scored} <span className="sk-kpi-unit">GPs</span></div>
-          <span className="sk-kpi-note">Cadastral grid across 55 MP districts</span>
+          <span className="sk-kpi-note">{t("heroCadastralGrid", lang)}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.calm }} />
-          <span className="sk-kpi-label">MODEL AGREEMENT</span>
+          <span className="sk-kpi-label">{t("heroModelAgreement", lang)}</span>
           <div className="sk-kpi-val">{Number(kpis?.mean_agreement ?? 89.2).toFixed(1)}<span className="sk-kpi-unit">%</span></div>
-          <span className="sk-kpi-note">Multi-physics ensemble consensus</span>
+          <span className="sk-kpi-note">{t("heroMultiPhysics", lang)}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.watch }} />
-          <span className="sk-kpi-label">HIGHEST RISK PANCHAYAT</span>
+          <span className="sk-kpi-label">{t("heroHighestRiskGp", lang)}</span>
           <div className="sk-kpi-val" style={{ fontSize: "1.45rem" }}>
             {kpis?.worst_gp?.name ?? "Sanwer"} <span className="sk-kpi-unit">({Number(kpis?.worst_gp?.score ?? 78.4).toFixed(0)}%)</span>
           </div>
@@ -401,21 +403,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Red Call-to-Action Pill & Scroll Cue */}
       <div className="sk-cta-cue-row">
         <button className="sk-cta-btn" onClick={onExploreMap}>
-          <span>Explore Operations Map</span>
+          <span>{t("heroExploreMap", lang)}</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
 
         <div className="sk-scroll-cue sk-bob" onClick={onExploreMap} role="button" tabIndex={0}>
-          <span>The Panchayat Map</span>
+          <span>{t("heroThePanchayatMap", lang)}</span>
           <span className="sk-cue-arrow">↓</span>
         </div>
       </div>
 
       {/* Live Ticker Band */}
       <div className="sk-ticker-wrap" aria-label="High Risk Panchayat Monitor">
-        <div className="sk-ticker-badge">LIVE MONITOR</div>
+        <div className="sk-ticker-badge">{t("liveMonitor", lang)}</div>
         <div className="sk-ticker-marquee">
           <div className="sk-ticker-track">
             {tickerItems.concat(tickerItems).map((item, idx) => (

@@ -100,3 +100,34 @@ parameters:
       en: "Expected Error"
       hi: "अपेक्षित त्रुटि"
       bn: "প্রত্যাশিত ত্রুটি"
+  - id: spi
+    label: "Drought Index (SPI-30)"
+    unit: "index"
+    kind: diverging
+    palette: RdYlBu
+    domain: [-3.0, 3.0]
+    labels:
+      en: "Drought Index (SPI-30)"
+      hi: "सूखा सूचकांक (SPI-30)"
+      bn: "খরা সূচক (SPI-30)"
+  - id: dry_spell
+    label: "Dry-Spell Length"
+    unit: "days"
+    kind: sequential
+    palette: Oranges
+    domain: [0, 21]
+    labels:
+      en: "Dry-Spell Length"
+      hi: "शुष्क अवधि (दिन)"
+      bn: "শুষ্ক স্পেল দৈর্ঘ্য"
+  - id: soil_stress
+    label: "Soil Moisture Stress"
+    unit: "%"
+    kind: sequential
+    palette: YlOrRd
+    domain: [0, 100]
+    labels:
+      en: "Soil Moisture Stress"
+      hi: "मृदा नमी तनाव"
+      bn: "মাটির আর্দ্রতা চাপ"
+

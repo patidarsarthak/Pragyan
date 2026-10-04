@@ -1,0 +1,34 @@
+# ==============================================================================
+# Cost-Loss Action Presets (Murphy 1977 Decision Theoretic Framework)
+# Rule: Act if P(hazard event) >= Cost / Loss (C/L)
+# ==============================================================================
+
+version: "1.0"
+framework: "Cost-Loss Model (Murphy 1977; Richardson 2000)"
+
+presets:
+  cheap:
+    label: "Cheap (Low Cost / Preventative)"
+    ratio: 0.10
+    cost_to_loss_threshold: 0.10
+    description: "Low-cost preventative operations (e.g. unblocking field drains, scouting lower canopy, seed treatment)."
+    source: "ASSUMPTION" # Working default assumption for micro-cost preventative agronomical tasks
+
+  medium:
+    label: "Medium (Standard Field Intervention)"
+    ratio: 0.30
+    cost_to_loss_threshold: 0.30
+    description: "Moderate expenditure (e.g. renting pump for emergency drainage, purchasing protective biocides/fungicides, tractor fuel)."
+    source: "ASSUMPTION" # Working default assumption for standard active farming inputs
+
+  expensive:
+    label: "Expensive (High Capital / Irreversible)"
+    ratio: 0.60
+    cost_to_loss_threshold: 0.60
+    description: "High capital or irreversible decisions (e.g. premature harvesting with contract laborers, resowing entire cadastral plot)."
+    source: "ASSUMPTION" # Working default assumption for major capital expenditures
+
+robust_difference:
+  probability_margin: 0.10 # 10 percentage points difference in P(event) between GP and Block
+  description: "Divergence between GP and Block is robust if |P_gp(event) - P_block(event)| >= 0.10"
+  source: "ASSUMPTION" # Working margin to prevent reporting sub-uncertainty noise as actionable divergence

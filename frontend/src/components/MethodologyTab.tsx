@@ -13,9 +13,9 @@ export const MethodologyTab: React.FC<MethodologyTabProps> = ({ lang }) => {
       <div className="sk-page-header">
         <div>
           <div className="sk-page-kicker">SCIENTIFIC PROVENANCE &amp; OPEN METHODOLOGY</div>
-          <h1 className="sk-page-title">About Pragyan</h1>
+          <h1 className="sk-page-title">{t("aboutTitle", lang)}</h1>
           <p className="sk-page-desc">
-            Pragyan is India's dedicated Panchayat-level weather downscaling and agromet advisory platform, engineered for cadastral resolution and radical scientific honesty.
+            {t("aboutSubtitle", lang)}
           </p>
         </div>
       </div>

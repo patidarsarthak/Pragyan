@@ -1,92 +1,56 @@
 # ==============================================================================
-# SIH26074: Config-Driven Regional Registry (regions.yaml)
-# Enables seamless national expansion from Dhanbad to all-India without code edits
+# Pragyan Official Regional Registry (regions.yaml)
+# Single Source of Truth for ML Coverage and Scope Gating
 # ==============================================================================
 
-version: "1.0"
-default_region: "dhanbad_jharkhand"
+version: "2.0"
+default_region: "madhya_pradesh"
 
 regions:
-  - id: "dhanbad_jharkhand"
-    name: "Dhanbad Pilot Cluster"
-    state: "Jharkhand"
-    state_code: 20
-    is_pilot: true
-    bounding_box: [86.05, 23.60, 86.60, 24.05] # [min_lon, min_lat, max_lon, max_lat]
-    model_version: "v2.0-joint-ensemble"
-    grid_resolution_deg: 0.1
-    forecast_lead_days: 10
-    static_terrain_path: "data/static/panchayat_terrain_landcover.csv"
-    panchayat_count: 239
-    agro_climatic_zone: "Eastern Plateau and Hills (Zone VII)"
-    primary_crops: ["Paddy", "Maize", "Mustard", "Vegetables"]
-
-  - id: "ranchi_jharkhand"
-    name: "Chota Nagpur Central Plateau"
-    state: "Jharkhand"
-    state_code: 20
-    is_pilot: false
-    bounding_box: [85.00, 23.10, 85.80, 23.70]
-    model_version: "v2.0-joint-ensemble"
-    grid_resolution_deg: 0.1
-    forecast_lead_days: 10
-    static_terrain_path: "data/static/ranchi_panchayat_terrain.csv"
-    panchayat_count: 305
-    agro_climatic_zone: "Eastern Plateau and Hills (Zone VII)"
-    primary_crops: ["Paddy", "Ragi", "Pulses", "Tomato"]
-
-  - id: "indore_madhya_pradesh"
-    name: "Malwa Plateau Agricultural Zone"
+  - id: "madhya_pradesh"
+    state_id: "IN-MP"
+    name: "Madhya Pradesh"
+    display_title: "Madhya Pradesh Pilot Basin (55 Districts)"
     state: "Madhya Pradesh"
     state_code: 23
-    is_pilot: false
-    bounding_box: [75.40, 22.40, 76.20, 23.20]
-    model_version: "v2.0-joint-ensemble"
-    grid_resolution_deg: 0.1
+    level: "state"
+    ml_active: true
+    status: "PILOT_EVALUATION"
+    visible: true
+    coverage_class: "ML_ACTIVE"
+    bounding_box: [74.04, 21.08, 82.81, 26.87]
+    model_version: "MP-Downscaler-v1.0.4"
+    grid_resolution_deg: 0.01 # ~1km
     forecast_lead_days: 10
-    static_terrain_path: "data/static/mp_panchayat_terrain.csv"
-    panchayat_count: 672
-    agro_climatic_zone: "Central Plateau and Hills (Zone VIII)"
-    primary_crops: ["Soybean", "Wheat", "Gram", "Garlic"]
+    panchayat_count: 603
+    official_lgd_panchayats: 23043
+    agro_climatic_zone: "Central Plateau and Hills (Zone VIII) & Western Plateau (Zone IX)"
+    primary_crops: ["durum_wheat", "bread_wheat", "chickpea", "mustard", "soybean", "maize", "cotton"]
+    validation_status: "PILOT EVALUATION TIER (Out-of-Region Transfer from Dhanbad Baseline)"
+    independent_stations: 8
 
-  - id: "bihar_gangetic"
-    name: "South Bihar Alluvial Plains"
-    state: "Bihar"
-    state_code: 10
-    is_pilot: false
-    bounding_box: [84.80, 24.70, 85.60, 25.70]
-    model_version: "v1.2-regional-ensemble"
+  - id: "dhanbad_jharkhand"
+    state_id: "IN-JH"
+    name: "Dhanbad Development Archive"
+    display_title: "Dhanbad Historical Testbed"
+    state: "Jharkhand"
+    state_code: 20
+    level: "district"
+    ml_active: false
+    status: "DEVELOPMENT_ARCHIVE"
+    visible: false
+    coverage_class: "OUTSIDE_COVERAGE"
+    bounding_box: [86.05, 23.60, 86.60, 24.05]
+    model_version: "v2.0-joint-ensemble-archive"
     grid_resolution_deg: 0.1
     forecast_lead_days: 10
-    static_terrain_path: "data/static/bihar_panchayat_terrain.csv"
-    panchayat_count: 512
-    agro_climatic_zone: "Middle Gangetic Plain (Zone IV)"
-    primary_crops: ["Paddy", "Wheat", "Maize", "Lentil"]
+    panchayat_count: 239
+    official_lgd_panchayats: 239
+    notes: "Archived holdout development region. Excluded from public queries and active UI."
 
-  - id: "odisha_mayurbhanj"
-    name: "North Central Plateau & Coastal Hinterland"
-    state: "Odisha"
-    state_code: 21
-    is_pilot: false
-    bounding_box: [85.70, 21.60, 86.80, 22.50]
-    model_version: "v1.2-regional-ensemble"
-    grid_resolution_deg: 0.1
-    forecast_lead_days: 10
-    static_terrain_path: "data/static/odisha_panchayat_terrain.csv"
-    panchayat_count: 404
-    agro_climatic_zone: "East Coast Plains and Hills (Zone XI)"
-    primary_crops: ["Paddy", "Groundnut", "Sesame", "Mustard"]
-
-  - id: "rajasthan_arid"
-    name: "Semi-Arid Eastern Plain"
-    state: "Rajasthan"
-    state_code: 8
-    is_pilot: false
-    bounding_box: [75.20, 26.50, 76.30, 27.40]
-    model_version: "v1.1-arid-ensemble"
-    grid_resolution_deg: 0.1
-    forecast_lead_days: 10
-    static_terrain_path: "data/static/rajasthan_panchayat_terrain.csv"
-    panchayat_count: 480
-    agro_climatic_zone: "Western Dry Region (Zone XIV)"
-    primary_crops: ["Bajra", "Mustard", "Cluster Bean", "Barley"]
+# All other Indian States/UTs are implicitly OUTSIDE_COVERAGE with ml_active: false
+default_unmodelled:
+  ml_active: false
+  status: "OUTSIDE_COVERAGE"
+  coverage_class: "OUTSIDE_COVERAGE"
+  message: "Outside ML coverage (not modelled). Not covered in this pilot. No forecasts are produced here."

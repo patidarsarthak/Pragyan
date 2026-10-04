@@ -1,0 +1,66 @@
+rules:
+  - id: "wheat.irrigation.cri"
+    crops: ["wheat"]
+    stages: ["crown_root_initiation"]
+    trigger: "rainfall_48h < 3.0"
+    action: "Apply the first critical irrigation (50-60 mm) to wheat."
+    why: "Crop is at Crown Root Initiation (21-25 DAS), the single most sensitive stage determining tiller count and crown root anchorage."
+    when: "Apply within the next 48 hours during early morning or late afternoon when wind is calm."
+    severity: "watch"
+    verifiable_event: "rainfall_48h_lt_3mm"
+    source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 16"
+    status: "ACTIVE"
+    reviewed_by: "Dr. A.K. Sharma (Principal Scientist, Agronomy, JNKVV Jabalpur)"
+    translations:
+      hi:
+        action: "गेहूं में पहली महत्वपूर्ण सिंचाई (50-60 मिमी) तुरंत करें।"
+        why: "फसल ताज जड़ दीक्षा (CRI) अवस्था पर है, जो कल्लों के विकास और जड़ों की पकड़ के लिए सर्वाधिक संवेदनशील है।"
+        when: "अगले 48 घंटों में सुबह या शाम के शांत मौसम में सिंचाई करें।"
+      bn:
+        action: "গমের জমিতে প্রথম অপরিহার্য সেচ (৫০-৬০ মিমি) প্রয়োগ করুন।"
+        why: "ফসলটি শীর্ষ শিকড় সূচনা (CRI) পর্যায়ে রয়েছে, যা শিকড় গঠন এবং ফলনের জন্য সবচেয়ে গুরুত্বপূর্ণ।"
+        when: "পরবর্তী ৪৮ ঘণ্টার মধ্যে শান্ত আবহাওয়ায় সেচ দিন।"
+
+  - id: "wheat.drainage.heavy_rain"
+    crops: ["wheat"]
+    stages: ["crown_root_initiation", "tillering"]
+    trigger: "rainfall_24h >= 25.0"
+    action: "Open peripheral drainage furrows to evacuate excess standing water."
+    why: "Wheat is highly susceptible to root oxygen deficiency and collar rot if submerged for over 24 hours."
+    when: "Before forecast precipitation commences."
+    severity: "alert"
+    verifiable_event: "rainfall_24h_ge_25mm"
+    source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 19"
+    status: "ACTIVE"
+    reviewed_by: "Dr. A.K. Sharma (Principal Scientist, Agronomy, JNKVV Jabalpur)"
+    translations:
+      hi:
+        action: "खेत से अतिरिक्त पानी निकालने के लिए जल निकासी नालियां खोलें।"
+        why: "24 घंटे से अधिक जलभराव रहने पर गेहूं की जड़ों में ऑक्सीजन की कमी और कॉलर रॉट रोग का खतरा बढ़ जाता है।"
+        when: "बारिश शुरू होने से पहले जल निकासी की व्यवस्था करें।"
+      bn:
+        action: "জমি থেকে অতিরিক্ত জল নিষ্কাশনের জন্য নিকাশী নালা খুলে দিন।"
+        why: "২৪ ঘণ্টার বেশি জল জমে থাকলে গমের শিকড় পচে যাওয়ার মারাত্মক ঝুঁকি থাকে।"
+        when: "বৃষ্টি শুরু হওয়ার আগেই ব্যবস্থা নিন।"
+
+  - id: "wheat.heat_stress.flowering"
+    crops: ["wheat"]
+    stages: ["flowering", "grain_filling"]
+    trigger: "temp_max >= 32.0 and humidity_min < 30.0"
+    action: "Provide light sprinkler irrigation in late afternoon to lower canopy microclimate temperature."
+    why: "High daytime temperatures during anthesis and grain filling induce terminal heat stress, accelerating forced ripening and reducing test weight."
+    when: "Between 04:00 PM and 06:30 PM on days with forecast heat peaks."
+    severity: "alert"
+    verifiable_event: "temp_max_ge_32C"
+    source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 22"
+    status: "ACTIVE"
+    reviewed_by: "Dr. A.K. Sharma (Principal Scientist, Agronomy, JNKVV Jabalpur)"
+    translations:
+      hi:
+        action: "फसल के तापमान को कम करने के लिए शाम को हल्की स्प्रिंकलर सिंचाई करें।"
+        why: "फूल आने और दाना भरने के दौरान अधिक तापमान से दाना सिकुड़ने और समय पूर्व पकने (टर्मिनल हीट स्ट्रेस) का खतरा होता है।"
+        when: "दोपहर बाद 4:00 से 6:30 बजे के बीच हल्की सिंचाई करें।"
+      bn:
+        action: "জমির তাপমাত্রা কমাতে শেষ বিকেলে হালকা স্প্রিংকলার সেচ প্রয়োগ করুন।"
+        why: "ফুল ও দানা গঠনের সময় অতিরিক্ত গরমে গম শুকিয়ে যাওয়া এবং ফলন হ্রাসের আশঙ্কা থাকে।"
+        when: "বিকেল ৪:০০ থেকে সন্ধ্যা ৬:৩০ এর মধ্যে হালকা সেচ দিন।"

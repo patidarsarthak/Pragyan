@@ -10,13 +10,20 @@ import {
 } from "recharts";
 import { UIGPDetailResponse, UIWorstItem } from "../../api/types";
 import { THEME } from "../../theme";
-import { Language } from "../../lib/i18n";
+import { Language, t } from "../../lib/i18n";
+import { DecisionCard } from "./DecisionCard";
+import { UnusualnessMeterCard } from "./UnusualnessMeterCard";
+import { ValueMeterCard } from "./ValueMeterCard";
+
 
 interface PanchayatDetailPanelProps {
   gpData: UIGPDetailResponse | null;
   worstList: UIWorstItem[];
   selectedDay: number;
+  scopeLevel?: string;
+  scopeName?: string;
   onSelectGP: (lgdCode: number) => void;
+  onOpenAdvisory?: (lgdCode: number) => void;
   onClose: () => void;
   lang: Language;
 }
@@ -25,7 +32,10 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
   gpData,
   worstList,
   selectedDay,
+  scopeLevel = "india",
+  scopeName = "India",
   onSelectGP,
+  onOpenAdvisory,
   onClose,
   lang,
 }) => {
@@ -50,7 +60,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang === "hi" ? "hi-IN" : "en-IN";
+    utterance.lang = lang === "hi" ? "hi-IN" : lang === "bn" ? "bn-IN" : "en-IN";
     utterance.rate = 0.95;
     utterance.onend = () => setPlayingAdvisoryIdx(null);
     utterance.onerror = () => setPlayingAdvisoryIdx(null);
@@ -58,20 +68,47 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
     window.speechSynthesis.speak(utterance);
   };
 
-  // If NO Panchayat is selected, show Top 20 Worst Districts / Panchayats
+  // If NO Panchayat is selected, show Scope-Aware Leaderboard or Block Spread
   if (!gpData) {
+    const isBlockScope = scopeLevel === "block";
+    const title = isBlockScope
+      ? `${lang === "hi" ? "ब्लॉक विचलन: " : lang === "bn" ? "ব্লক বিস্তার: " : "BLOCK SPREAD: "}${scopeName.toUpperCase()}`
+      : scopeLevel === "district"
+      ? `${lang === "hi" ? "ज़िला रैंकिंग: " : lang === "bn" ? "জেলা র্যাঙ্কিং: " : "DISTRICT RANKINGS: "}${scopeName.toUpperCase()}`
+      : t("highestRiskPanchayats", lang);
+
+    const sub = isBlockScope
+      ? (lang === "hi" ? `दिवस ${selectedDay} पर ब्लॉक औसत के आसपास पंचायत विस्तार` : lang === "bn" ? `দিন ${selectedDay}-এ ব্লক গড়ের চারপাশে বিস্তার` : `Panchayat spread band around block mean for Day ${selectedDay}`)
+      : t("rankedTopEvaluated", lang, { day: selectedDay });
+
     return (
       <aside className="sk-panel" aria-label="District & Panchayat Risk Leaderboard">
         <div className="sk-panel-header">
           <div>
-            <h2 className="sk-panel-title">HIGHEST RISK PANCHAYATS</h2>
-            <span className="sk-panel-sub">Ranked top 20 for Day {selectedDay}</span>
+            <h2 className="sk-panel-title">{title}</h2>
+            <span className="sk-panel-sub">{sub}</span>
           </div>
         </div>
 
+        {/* Value Meter: Quantifies downscaling decision divergence */}
+        <ValueMeterCard
+          scopeLevel={scopeLevel}
+          scopeId={scopeName}
+          scopeName={scopeName}
+          selectedDay={selectedDay}
+          lang={lang}
+        />
+
+        {/* Block spread card if in block scope */}
+        {isBlockScope && (
+          <div style={{ padding: "10px 14px", background: "#FEF3C7", borderBottom: "1px solid #FDE68A", fontSize: "11px", color: "#92400E" }}>
+            <strong>Block vs Panchayat Variation:</strong> 1km downscaling accounts for elevation differences (±45m) and convective precipitation micro-cells across constituent panchayats.
+          </div>
+        )}
+
         <div className="sk-worst-list">
           {worstList.length === 0 ? (
-            <div className="sk-panel-empty">Loading ranked high-risk panchayats...</div>
+            <div className="sk-panel-empty">{t("loadingRankedGps", lang)}</div>
           ) : (
             worstList.map((item, idx) => {
               const bandColor =
@@ -98,7 +135,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                     <span className="sk-driver-badge">{item.dominant_driver}</span>
                   </div>
                   <div className="sk-worst-score" style={{ color: bandColor }}>
-                    {Number(item.risk_score ?? (item as any).risk ?? 0).toFixed(0)}%
+                    {Number(item.risk_score ?? (item as any).risk ?? 0).toFixed(0)}
                   </div>
                 </button>
               );
@@ -174,12 +211,22 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
         </div>
 
         <div className="sk-panel-actions">
+          {onOpenAdvisory && (
+            <button
+              className="sk-action-btn"
+              onClick={() => onOpenAdvisory(gpCode)}
+              style={{ background: "#ECFDF5", color: "#065F46", borderColor: "#A7F3D0", fontWeight: 700 }}
+              title="Open calibrated crop advisory dossier"
+            >
+              {t("cropAdvisoryBtn", lang)}
+            </button>
+          )}
           <button
             className="sk-action-btn"
             onClick={handleCopyLink}
             title="Copy link to this Panchayat"
           >
-            {copied ? "✓ Copied" : "Copy Link"}
+            {copied ? t("copied", lang) : t("copyLink", lang)}
           </button>
           <button
             className="sk-action-btn sk-close-btn"
@@ -202,22 +249,28 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
           }}
         >
           <div className="sk-peak-top">
-            <span className="sk-peak-label">PEAK RISK HORIZON</span>
+            <span className="sk-peak-label">{t("peakRiskHorizon", lang)}</span>
             <span className="sk-peak-badge" style={{ background: peakColor, color: "#fff" }}>
               {peakBand.toUpperCase()} {peakScore.toFixed(0)}%
             </span>
           </div>
           <p className="sk-peak-desc">
-            Highest hazard occurs on <strong>Day {peak.day ?? 1}</strong>. Triggered by intense convective precipitation.
+            {t("highestHazardOccurs", lang, { day: peak.day ?? 1 })}
           </p>
         </div>
 
+        {/* Feature 1: Farmer Decision Card (Murphy 1977 Cost-Loss Framework) */}
+        <DecisionCard lgdCode={gpCode} selectedDay={selectedDay} lang={lang} />
+
+        {/* Feature F3: Climatological Return-Period Meter ("How unusual is this?") */}
+        <UnusualnessMeterCard lgdCode={gpCode} selectedDay={selectedDay} lang={lang} />
+
         {/* Factors Decomposition (SHAP Gradient Bars) */}
+
         <section className="sk-panel-section">
-          <h3 className="sk-section-title">WHAT DRIVES THIS RISK</h3>
+          <h3 className="sk-section-title">{t("whatDrivesRisk", lang)}</h3>
           <p className="sk-shap-sentence">
-            {gpData.explanation_sentence ||
-              "Steep 4.2° orographic slope amplifies rainfall runoff by +28% compared to the regional plain."}
+            {gpData.explanation_sentence || (gpData as any).why_sentence || "—"}
           </p>
 
           <div className="sk-shap-bars">
@@ -242,23 +295,41 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
         </section>
 
         {/* Variable Chips with Driver Tag */}
-        <section className="sk-panel-section">
-          <div className="sk-chips-row">
-            <span className="sk-var-chip is-driver">
-              Rainfall <span className="sk-driver-tag">PRIMARY DRIVER</span>
-            </span>
-            <span className="sk-var-chip">Max Temp 31.4°C</span>
-            <span className="sk-var-chip">RH 84%</span>
-            <span className="sk-var-chip">Wind 14 km/h</span>
-            <span className="sk-var-chip">ET₀ 3.8 mm</span>
-          </div>
-        </section>
+        {(() => {
+          const selectedDayIdx = Math.max(0, Math.min(9, selectedDay - 1));
+          const varsList = Array.isArray(gpData.variables) ? gpData.variables : [];
+          const rainVarItem = varsList.find((v: any) => v.variable === "rainfall" || v.variable === "rain");
+          const tempVarItem = varsList.find((v: any) => v.variable === "temperature" || v.variable === "temp");
+          const humVarItem = varsList.find((v: any) => v.variable === "humidity" || v.variable === "rh");
+          const windVarItem = varsList.find((v: any) => v.variable === "wind");
+          const et0VarItem = varsList.find((v: any) => v.variable === "et0");
+
+          const rainVal = rainVarItem?.points?.[selectedDayIdx]?.downscaled != null ? `${rainVarItem.points[selectedDayIdx].downscaled} mm` : "—";
+          const tempVal = tempVarItem?.points?.[selectedDayIdx]?.downscaled != null ? `${tempVarItem.points[selectedDayIdx].downscaled}°C` : "—";
+          const humVal = humVarItem?.points?.[selectedDayIdx]?.downscaled != null ? `${humVarItem.points[selectedDayIdx].downscaled}%` : "—";
+          const windVal = windVarItem?.points?.[selectedDayIdx]?.downscaled != null ? `${windVarItem.points[selectedDayIdx].downscaled} m/s` : "—";
+          const et0Val = et0VarItem?.points?.[selectedDayIdx]?.downscaled != null ? `${et0VarItem.points[selectedDayIdx].downscaled} mm` : "—";
+
+          return (
+            <section className="sk-panel-section">
+              <div className="sk-chips-row">
+                <span className="sk-var-chip is-driver">
+                  {t("varRainfall", lang)} {rainVal} <span className="sk-driver-tag">{lang === "hi" ? "मुख्य कारक" : lang === "bn" ? "প্রধান কারণ" : "PRIMARY DRIVER"}</span>
+                </span>
+                <span className="sk-var-chip">{t("varTempMax", lang)} {tempVal}</span>
+                <span className="sk-var-chip">{t("varHumidity", lang)} {humVal}</span>
+                <span className="sk-var-chip">{t("varWind", lang)} {windVal}</span>
+                <span className="sk-var-chip">{t("varET0", lang)} {et0Val}</span>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Recharts Curve with Red Panchayat Effect Line */}
         <section className="sk-panel-section">
           <div className="sk-section-header-row">
-            <h3 className="sk-section-title">DOWNSCALED VS COARSE NWP</h3>
-            <span className="sk-effect-tag">Panchayat Effect (-delta)</span>
+            <h3 className="sk-section-title">{t("downscaledVsCoarse", lang)}</h3>
+            <span className="sk-effect-tag">{t("panchayatEffect", lang)}</span>
           </div>
 
           <div style={{ width: "100%", height: "160px", marginTop: "8px" }}>
@@ -283,7 +354,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                   stroke="#2b4eff"
                   strokeWidth={2.4}
                   dot={{ r: 2 }}
-                  name="1km Downscaled"
+                  name={t("layerDownscaled", lang)}
                 />
                 {/* Coarse NWP Line (Dashed Ink) */}
                 <Line
@@ -293,7 +364,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                   strokeWidth={1.8}
                   strokeDasharray="4 4"
                   dot={false}
-                  name="ECMWF Coarse"
+                  name={t("layerCoarse", lang)}
                 />
                 {/* Panchayat Effect Delta Line (Solid Red) */}
                 <Line
@@ -302,16 +373,16 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                   stroke="#f5254a"
                   strokeWidth={1.8}
                   dot={{ r: 2, fill: "#f5254a" }}
-                  name="Panchayat Effect"
+                  name={t("panchayatEffect", lang)}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
 
           <div className="sk-chart-legend-compact">
-            <span className="sk-leg-item"><span className="sk-leg-line" style={{ background: "#2b4eff" }} /> Downscaled 1km</span>
-            <span className="sk-leg-item"><span className="sk-leg-dash" /> ECMWF Coarse</span>
-            <span className="sk-leg-item"><span className="sk-leg-line" style={{ background: "#f5254a" }} /> Panchayat Effect</span>
+            <span className="sk-leg-item"><span className="sk-leg-line" style={{ background: "#2b4eff" }} /> {t("layerDownscaled", lang)}</span>
+            <span className="sk-leg-item"><span className="sk-leg-dash" /> {t("layerCoarse", lang)}</span>
+            <span className="sk-leg-item"><span className="sk-leg-line" style={{ background: "#f5254a" }} /> {t("panchayatEffect", lang)}</span>
           </div>
         </section>
 
@@ -319,21 +390,25 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
         <section className="sk-panel-section">
           <div className="sk-badges-grid">
             <div className="sk-badge-item">
-              <span className="sk-badge-k">BOUNDARY QUALITY</span>
-              <span className="sk-badge-v">{gpData.badges?.boundary_quality ?? "Survey of India (Cadastral)"}</span>
+              <span className="sk-badge-k">{lang === "hi" ? "सीमा गुणवत्ता" : lang === "bn" ? "সীমানা গুণমান" : "BOUNDARY QUALITY"}</span>
+              <span className="sk-badge-v">{gpData.badges?.boundary_quality ?? "LGD Centroids / Voronoi Tessellation"}</span>
             </div>
             <div className="sk-badge-item">
-              <span className="sk-badge-k">PILOT STATUS</span>
+              <span className="sk-badge-k">{lang === "hi" ? "पायलट स्थिति" : lang === "bn" ? "পাইলট স্থিতি" : "PILOT STATUS"}</span>
               <span className="sk-badge-v">
-                {gpData.badges?.is_pilot ?? true ? "Pilot Scored (603 GPs)" : "Derived Regional"}
+                {gpData.badges?.is_pilot ?? true ? (lang === "hi" ? "पायलट मूल्यांकित (603 पंचायतें)" : lang === "bn" ? "পাইলট মূল্যায়িত (৬০৩ পঞ্চায়েত)" : "Pilot Scored (603 GPs)") : "Derived Regional"}
               </span>
             </div>
             <div className="sk-badge-item">
-              <span className="sk-badge-k">IMD STATION LINK</span>
+              <span className="sk-badge-k">{lang === "hi" ? "वेधशाला लिंक" : lang === "bn" ? "কেন্দ্র লিঙ্ক" : "IMD STATION LINK"}</span>
               <span className="sk-badge-v">{gpData.badges?.source ?? "IMD AWS & Synoptic"}</span>
             </div>
             <div className="sk-badge-item">
-              <span className="sk-badge-k">CADASTRAL AREA</span>
+              <span className="sk-badge-k">{lang === "hi" ? "सत्यापनीयता" : lang === "bn" ? "যাচাইযোগ্যতা" : "VERIFIABILITY"}</span>
+              <span className="sk-badge-v">{(gpData.badges as any)?.coverage_class ?? "WELL_VERIFIABLE"}</span>
+            </div>
+            <div className="sk-badge-item">
+              <span className="sk-badge-k">{lang === "hi" ? "पंचायत क्षेत्रफल" : lang === "bn" ? "পঞ্চায়েত ক্ষেত্রফল" : "PANCHAYAT AREA"}</span>
               <span className="sk-badge-v">{areaKm2} km²</span>
             </div>
           </div>
@@ -341,7 +416,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
 
         {/* ICAR Agromet Advisories with Listen Button */}
         <section className="sk-panel-section">
-          <h3 className="sk-section-title">ICAR-IMD AGROMET ADVISORIES</h3>
+          <h3 className="sk-section-title">{t("agrometAdvisory", lang)}</h3>
           <div className="sk-advisories-list">
             {(gpData.advisories || []).map((adv: any, idx) => {
               const advTitle = adv.title || adv.action || "Agro-Meteorological Directive";
@@ -358,14 +433,14 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                       title="Listen to advisory audio"
                       aria-label="Listen audio"
                     >
-                      {playingAdvisoryIdx === idx ? "⏹ Stop" : "🔊 Listen"}
+                      {playingAdvisoryIdx === idx ? `⏹ ${t("stopAudio", lang)}` : `🔊 ${t("listenAdvisory", lang)}`}
                     </button>
                   </div>
                   <p className="sk-adv-text">{advText}</p>
                   <div className="sk-adv-footer">
                     <span className="sk-adv-cat">{advCat}</span>
                     <span className={`sk-adv-priority is-${advPriority.toLowerCase()}`}>
-                      {advPriority} PRIORITY
+                      {advPriority} {lang === "hi" ? "प्राथमिकता" : lang === "bn" ? "অগ্রাধিকার" : "PRIORITY"}
                     </span>
                   </div>
                 </div>

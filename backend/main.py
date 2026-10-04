@@ -72,6 +72,8 @@ from backend.database import (
     CrowdReport
 )
 from backend.ui_api import router as ui_api_router
+from backend.ui_hierarchy import router as ui_hierarchy_router
+from backend.ui_advisory_api import router as ui_advisory_router
 from backend.api_v1 import router as api_v1_router
 from backend.schemas import (
     StateItem,
@@ -141,6 +143,8 @@ app.include_router(sms_router)
 app.include_router(ivr_router)
 app.include_router(api_v1_router)
 app.include_router(ui_api_router, prefix="/api/ui")
+app.include_router(ui_hierarchy_router, prefix="/api/ui")
+app.include_router(ui_advisory_router, prefix="/api")
 
 @app.get("/api/regions")
 def get_regions_alias(lead_time_days: int = Query(1, ge=1, le=10)):
@@ -152,6 +156,12 @@ def get_regions_alias(lead_time_days: int = Query(1, ge=1, le=10)):
 def get_regions_all_alias():
     from backend.ui_api import get_ui_overview_all
     return get_ui_overview_all()
+
+@app.get("/api/v1/widget/panchayat/{gp_code}.html")
+def get_v1_widget_alias(gp_code: int):
+    from backend.ui_api import get_ui_panchayat_widget_html
+    return get_ui_panchayat_widget_html(gp_code)
+
 
 from backend.spatial_index import spatial_index_service
 

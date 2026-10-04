@@ -12,6 +12,8 @@ interface NavbarProps {
   alertCount?: number;
   farmerMode?: boolean;
   onToggleFarmerMode?: () => void;
+  lowBandwidth?: boolean;
+  onToggleLowBandwidth?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -24,14 +26,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   alertCount = 14,
   farmerMode = false,
   onToggleFarmerMode,
+  lowBandwidth = false,
+  onToggleLowBandwidth,
 }) => {
   const tabs = [
-    { id: "forecast", label: lang === "hi" ? "संचालन" : "Operations", sub: null },
-    { id: "alerts", label: lang === "hi" ? "चेतावनी" : "Alerts", sub: null },
-    { id: "evidence", label: lang === "hi" ? "प्रमाण व मॉडल" : "Evidence", sub: null },
-    { id: "past-events", label: lang === "hi" ? "रीप्ले" : "Replay", sub: lang === "hi" ? "विगत घटना" : "a real event" },
-    { id: "methodology", label: lang === "hi" ? "परिचय" : "About", sub: null },
+    { id: "forecast", label: t("tabOperations", lang), sub: null },
+    { id: "alerts", label: t("tabAlerts", lang), sub: null },
+    { id: "command", label: t("tabCommand", lang), sub: null },
+    { id: "evidence", label: t("tabEvidence", lang), sub: null },
+    { id: "past-events", label: t("tabReplay", lang), sub: t("tabReplaySub", lang) },
+    { id: "health", label: t("tabHealth", lang), sub: null },
+    { id: "api-widget", label: t("tabApiWidget", lang), sub: null },
+    { id: "methodology", label: t("tabAbout", lang), sub: null },
   ];
+
 
   const cycleDate = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
 
@@ -51,21 +59,26 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header className="sk-topbar">
         <div className="sk-topbar-inner">
           {/* Brand with 32px SVG Glyph, Wordmark, and Subtitle */}
+          {/* Brand with Pragyan Logo and Wordmark */}
           <button
             className="sk-brand"
             onClick={() => onTabChange("forecast")}
             aria-label="Pragyan Home"
+            style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: "pointer", padding: 0 }}
           >
-            <div className="sk-brand-glyph" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3v3M12 18v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M3 12h3M18 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="#2b4eff" strokeWidth="2.2" strokeLinecap="round" />
-                <circle cx="12" cy="12" r="4.5" fill="#2b4eff" />
-              </svg>
-            </div>
+            <img
+              src="/logo_icon.png"
+              alt="Pragyan"
+              width="36"
+              height="36"
+              style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0 }}
+            />
             <div className="sk-brand-text">
-              <span className="sk-brand-wordmark">Pragyan</span>
+              <span className="sk-brand-wordmark" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "0.04em", color: "#0B1220" }}>
+                {t("brandName", lang)}
+              </span>
               <span className="sk-brand-divider" aria-hidden="true">/</span>
-              <span className="sk-brand-subtitle">Madhya Pradesh Pilot · Panchayat Weather Intelligence</span>
+              <span className="sk-brand-subtitle">{t("pilotBadge", lang)}</span>
             </div>
           </button>
 
@@ -93,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Cycle / Valid Pill (White with steady green dot) */}
             <div className="sk-pill sk-pill-cycle" title="Model Initialization & Valid Day">
               <span className="sk-dot-green" aria-hidden="true" />
-              <span className="sk-pill-mono">ISSUED {cycleDate} · VALID {cycleDate} (DAY {leadDay})</span>
+              <span className="sk-pill-mono">{t("statusIssued", lang)} {cycleDate} · {t("statusValid", lang)} {cycleDate} ({t("statusDay", lang)} {leadDay})</span>
             </div>
 
             {/* Alert Count Pill (Solid Red with Pulsing White Dot) */}
@@ -103,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title={`${alertCount} Panchayats in ALERT band today`}
             >
               <span className="sk-dot-pulse" aria-hidden="true" />
-              <span className="sk-pill-mono">{alertCount} ALERT · DAY {leadDay}</span>
+              <span className="sk-pill-mono">{alertCount} {t("statusAlert", lang)} · {t("statusDay", lang)} {leadDay}</span>
             </button>
 
             {/* Farmer Mode Toggle Switch */}
@@ -115,12 +128,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-pressed={farmerMode}
               >
                 <span className="sk-farmer-icon">🌾</span>
-                <span className="sk-farmer-text">{farmerMode ? (lang === "hi" ? "किसान मोड सक्रिय" : "Farmer Mode Active") : (lang === "hi" ? "किसान मोड" : "Farmer Mode")}</span>
+                <span className="sk-farmer-text">{farmerMode ? t("farmerModeActive", lang) : t("farmerMode", lang)}</span>
+              </button>
+            )}
+
+            {/* Low Bandwidth Toggle */}
+            {onToggleLowBandwidth && (
+              <button
+                className={`sk-farmer-toggle ${lowBandwidth ? "is-active" : ""}`}
+                onClick={onToggleLowBandwidth}
+                title="Toggle Accessible Low-Bandwidth Mode"
+                aria-pressed={lowBandwidth}
+                style={{ marginLeft: "4px" }}
+              >
+                <span>📶</span>
+                <span className="sk-farmer-text">{t("lowBandwidth", lang)}</span>
               </button>
             )}
 
             {/* Language Switcher */}
             <button
+
               className="sk-lang-btn"
               onClick={onLangToggle}
               title="Switch Language: English / हिन्दी / বাংলা"

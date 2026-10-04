@@ -1,0 +1,44 @@
+rules:
+  - id: "soybean.heat_flower_drop"
+    crops: ["soybean"]
+    stages: ["flowering"]
+    trigger: "temp_max >= 35.0 and humidity_mean < 45.0"
+    action: "Provide light furrow irrigation to alleviate thermal stress; conserve canopy humidity."
+    why: "Sustained temperature above 35°C during peak flowering causes extensive pollen desiccation and flower abscission."
+    when: "Apply during early morning before midday heat peak."
+    severity: "watch"
+    verifiable_event: "temp_max_ge_35C"
+    source: "ICAR-IISR Indore Technical Bulletin 42, p. 15"
+    status: "ACTIVE"
+    reviewed_by: "Dr. S.D. Billore (Principal Scientist, Agronomy, ICAR-IISR Indore)"
+    translations:
+      hi:
+        action: "तापमान के प्रभाव को कम करने के लिए खेत में हल्की नाली सिंचाई करें।"
+        why: "फूल आने की अवस्था में 35 डिग्री से अधिक तापमान रहने पर फूल झड़ने और पैदावार घटने की संभावना रहती है।"
+        when: "सुबह के समय खेत में नमी बनाए रखने हेतु सिंचाई करें।"
+      bn:
+        action: "অতিরিক্ত তাপের প্রভাব কমাতে জমিতে হালকা সেচ দিন।"
+        why: "ফুল ফোটার সময় তাপমাত্রা ৩৫ ডিগ্রি সেলসিয়াস অতিক্রম করলে ফুল ঝরে যাওয়ার আশঙ্কা থাকে।"
+        when: "সকালের দিকে সেচ প্রয়োগ করুন।"
+
+  - id: "soybean.harvest_rain_defense"
+    crops: ["soybean"]
+    stages: ["maturity"]
+    trigger: "rainfall_48h >= 10.0"
+    action: "Accelerate harvesting of matured pods; move harvested produce to covered threshing floors immediately."
+    why: "Unseasonal rain on mature standing crop causes in-situ pod shattering, seed discoloration, and loss of germination viability."
+    when: "Complete harvest and covering operations 24 hours prior to forecast rain."
+    severity: "alert"
+    verifiable_event: "rainfall_48h_ge_10mm"
+    source: "ICAR-IISR Indore Technical Bulletin 42, p. 22"
+    status: "ACTIVE"
+    reviewed_by: "Dr. S.D. Billore (Principal Scientist, Agronomy, ICAR-IISR Indore)"
+    translations:
+      hi:
+        action: "पकी हुई फसल की कटाई में तेजी लाएं और कटी हुई फसल को तिरपाल से सुरक्षित स्थान पर ढकें।"
+        why: "कटाई योग्य फसल पर बेमौसम बारिश से फलियां चटकने, दानों में फफूंद लगने और अंकुरण क्षमता नष्ट होने का खतरा होता है।"
+        when: "बारिश शुरू होने से 24 घंटे पहले फसल सुरक्षित कर लें।"
+      bn:
+        action: "পাকা ফসল দ্রুত কেটে নিরাপদ স্থানে ত্রিপল দিয়ে ঢেকে রাখুন।"
+        why: "পাকা ফসলে অসময়ের বৃষ্টিতে শুঁটি ফেটে যাওয়া এবং বীজ নষ্ট হওয়ার ঝুঁকি থাকে।"
+        when: "বৃষ্টির পূর্বাভাসের ২৪ ঘণ্টা পূর্বেই কাজ সম্পন্ন করুন।"

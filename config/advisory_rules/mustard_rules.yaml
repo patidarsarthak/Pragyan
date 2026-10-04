@@ -1,0 +1,44 @@
+rules:
+  - id: "mustard.aphid_weather_risk"
+    crops: ["mustard"]
+    stages: ["flowering", "maturity"]
+    trigger: "humidity_mean >= 75.0 and temp_mean <= 26.0 and wind_mean < 3.0"
+    action: "Monitor apical inflorescences daily for aphid colony buildup; prepare yellow sticky traps (15-20 traps/ha)."
+    why: "Continuous overcast conditions with dense relative humidity and mild temperatures create ideal microclimate for rapid aphid multiplication."
+    when: "Inspect during morning scouting between 08:00 AM and 11:00 AM."
+    severity: "watch"
+    verifiable_event: "aphid_weather_favorability_index"
+    source: "ICAR-DRMR Bharatpur Mustard Production Guidelines, p. 41"
+    status: "ACTIVE"
+    reviewed_by: "Dr. R.S. Tomar (Entomologist, RVSKVV Gwalior)"
+    translations:
+      hi:
+        action: "माहू (एफिड) कीट की निगरानी करें और खेत में पीले चिपचिपे ट्रैप (15-20 प्रति हेक्टेयर) लगाएं।"
+        why: "बादल छाए रहने और उच्च आर्द्रता के कारण सरसों में माहू कीट की संख्या में तेजी से वृद्धि की संभावना है।"
+        when: "सुबह 8:00 से 11:00 बजे के बीच फसल का निरीक्षण करें।"
+      bn:
+        action: "জাবপোকার আক্রমণ পর্যবেক্ষণে রাখুন এবং হলুদ ফাঁদ (১৫-২০টি প্রতি হেক্টর) স্থাপন করুন।"
+        why: "মেঘলা আকাশ ও আর্দ্র আবহাওয়ায় সরিষার জমিতে জাবপোকা দ্রুত বংশবৃদ্ধি করে।"
+        when: "সকাল ৮:০০ থেকে ১১:০০ টার মধ্যে জমি পরিদর্শন করুন।"
+
+  - id: "mustard.frost_risk"
+    crops: ["mustard"]
+    stages: ["flowering", "maturity"]
+    trigger: "temp_min <= 4.0 and humidity_mean >= 85.0"
+    action: "Provide light sprinkler irrigation or create evening perimeter smoke screens on the northern boundary."
+    why: "Night-time temperature drop below 4°C with clear skies causes frost injury, freezing pollen and bursting siliqua pods."
+    when: "Commence smoke generation from 09:00 PM to midnight on nights with freeze forecasts."
+    severity: "alert"
+    verifiable_event: "temp_min_le_4C"
+    source: "ICAR-DRMR Bharatpur Mustard Production Guidelines, p. 44"
+    status: "ACTIVE"
+    reviewed_by: "Dr. R.S. Tomar (Entomologist, RVSKVV Gwalior)"
+    translations:
+      hi:
+        action: "पाला (तुषार) से बचाव के लिए खेत के उत्तरी छोर पर शाम को धुआं करें अथवा हल्की सिंचाई करें।"
+        why: "रात का तापमान 4 डिग्री सेल्सियस से नीचे गिरने पर सरसों के फूलों और फलियों में पाला लगने से भारी नुकसान होता है।"
+        when: "पाला पड़ने की संभावना वाली रात को रात 9:00 बजे से धुआं करें।"
+      bn:
+        action: "কুয়াশা ও শৈত্যপ্রবাহ থেকে রক্ষা পেতে জমিতে হালকা সেচ বা উত্তর সীমানায় ধোঁয়ার ব্যবস্থা করুন।"
+        why: "রাতের তাপমাত্রা ৪ ডিগ্রি সেলসিয়াসের নিচে নামলে সরিষার কুঁড়ি ও শুঁটি মারাত্মক ক্ষতিগ্রস্ত হয়।"
+        when: "রাত ৯:০০টা থেকে ধোঁয়ার সৃষ্টি করুন।"

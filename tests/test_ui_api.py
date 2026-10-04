@@ -165,14 +165,56 @@ def test_ui_replay():
     r = client.get("/api/ui/replay/events")
     assert r.status_code == 200
     events = r.json()
-    assert len(events) >= 1
-    event_id = events[0]["id"]
+    assert len(events) >= 3
+    event_ids = [e["id"] for e in events]
+    assert "event-monsoon-deep-depression-2024" in event_ids
+    assert "event-orographic-surge-2024" in event_ids
+    assert "event-post2024-monsoon-surge-2026" in event_ids
 
-    r_det = client.get(f"/api/ui/replay/{event_id}")
-    assert r_det.status_code == 200
-    data = r_det.json()
-    assert "days_data" in data
-    assert len(data["days_data"]) >= 5
+    # Verify status partitioning: 2024 events are IN_SAMPLE, 2026 event is OUT_OF_SAMPLE
+    dep_event = next(e for e in events if e["id"] == "event-monsoon-deep-depression-2024")
+    assert "IN_SAMPLE" in dep_event["status"]
+    assert dep_event["outcome_summary"] == "hit"
+
+    oro_event = next(e for e in events if e["id"] == "event-orographic-surge-2024")
+    assert "IN_SAMPLE" in oro_event["status"]
+    assert oro_event["outcome_summary"] == "miss"
+
+    post_event = next(e for e in events if e["id"] == "event-post2024-monsoon-surge-2026")
+    assert "OUT_OF_SAMPLE" in post_event["status"]
+
+    # Test summary endpoint
+    r_sum = client.get(f"/api/ui/replay/{dep_event['id']}/summary")
+    assert r_sum.status_code == 200
+    sum_data = r_sum.json()
+    assert "header" in sum_data
+    assert "days" in sum_data
+    assert len(sum_data["days"]) == 10
+    day1 = sum_data["days"][0]
+    assert day1["day"] == 1
+    assert "narration" in day1
+    assert "top5" in day1
+    assert len(day1["top5"]) == 5
+
+    # Test params columnar recoloring endpoint
+    r_params = client.get(f"/api/ui/replay/{dep_event['id']}/params?day=1&scope=district:407")
+    assert r_params.status_code == 200
+    p_data = r_params.json()
+    assert p_data["day"] == 1
+    assert "ids" in p_data
+    assert "risk" in p_data
+    assert "band" in p_data
+    assert len(p_data["ids"]) == len(p_data["risk"]) == len(p_data["band"])
+
+    # Test GP ground-truth detail endpoint
+    r_gp = client.get(f"/api/ui/replay/{dep_event['id']}/gp/111945")
+    assert r_gp.status_code == 200
+    gp_data = r_gp.json()
+    assert gp_data["panchayat_id"] == 111945
+    assert "station" in gp_data
+    assert len(gp_data["days"]) == 10
+    assert "in_range" in gp_data["days"][0]
+    assert "category_match" in gp_data["days"][0]
 
 
 def test_ui_scope_summary():

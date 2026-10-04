@@ -1,0 +1,2303 @@
+[
+  {
+    "id": "event-monsoon-deep-depression-2024",
+    "title": "Central Monsoon Deep Depression Torrential Surge",
+    "region_scope": "Malwa Plateau & Narmada Basin, MP",
+    "issue_time": "2024-09-07T00:00:00Z",
+    "peak_date": "2024-09-16",
+    "status": "IN_SAMPLE",
+    "status_label": "IN-SAMPLE (2024 TEST HOLDOUT)",
+    "obs_source": "IMD Automated Weather Station Network & CHIRPS 0.05\u00b0",
+    "obs_class": "IN_SITU_STATION",
+    "n_stations": 14,
+    "outcome_summary": "hit",
+    "tolerance_label": "Close enough \u2014 not a bust (\u00b19.2mm tolerance)",
+    "header_result_box": "Central Monsoon Deep Depression Torrential Surge \u00b7 IN-SAMPLE: 2024 Temporal Test Holdout \u00b7 Scored with what was known at 2024-09-07T00:00:00Z \u00b7 Checked against IMD In-Situ Station Network. Peak day 2024-09-16: forecast 139.9 mm (80% range 104.9 to 145.9) at Sanwer; observed 142.4 mm at IMD Station 42754; risk score 88 (ALERT).",
+    "days": [
+      {
+        "day": 1,
+        "valid_date": "2024-09-07",
+        "mean_risk": 22,
+        "n_alert": 12,
+        "n_watch": 222,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 23,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 21,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 8.2,
+        "coarse_rain": 6.0,
+        "observed_rain": 7.8,
+        "ci_lower": 6.1,
+        "ci_upper": 10.7,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 1 - risk score in Sanwer, Indore rises from 22 to 22; now driven by rainfall; 12 panchayats in alert.",
+          "fields": {
+            "day": 1,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 12,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 2,
+        "valid_date": "2024-09-08",
+        "mean_risk": 22,
+        "n_alert": 22,
+        "n_watch": 225,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 23,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 21,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 14.5,
+        "coarse_rain": 10.2,
+        "observed_rain": 15.2,
+        "ci_lower": 10.9,
+        "ci_upper": 18.9,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 2 - risk score in Sanwer, Indore rises from 22 to 22; now driven by rainfall; 22 panchayats in alert.",
+          "fields": {
+            "day": 2,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 22,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 3,
+        "valid_date": "2024-09-09",
+        "mean_risk": 29,
+        "n_alert": 33,
+        "n_watch": 187,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 31,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 29,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 22.0,
+        "coarse_rain": 15.0,
+        "observed_rain": 20.8,
+        "ci_lower": 16.5,
+        "ci_upper": 28.6,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 3 - risk score in Sanwer, Indore rises from 22 to 29; now driven by rainfall; 33 panchayats in alert.",
+          "fields": {
+            "day": 3,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 29,
+            "n_alert": 33,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 4,
+        "valid_date": "2024-09-10",
+        "mean_risk": 29,
+        "n_alert": 48,
+        "n_watch": 142,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 31,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 29,
+          "curr": 29,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 31.4,
+        "coarse_rain": 22.0,
+        "observed_rain": 29.5,
+        "ci_lower": 23.5,
+        "ci_upper": 40.8,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 4 - risk score in Sanwer, Indore rises from 29 to 29; now driven by rainfall; 48 panchayats in alert.",
+          "fields": {
+            "day": 4,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 29,
+            "curr_risk": 29,
+            "n_alert": 48,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 5,
+        "valid_date": "2024-09-11",
+        "mean_risk": 37,
+        "n_alert": 69,
+        "n_watch": 132,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 39,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 35,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 29,
+          "curr": 37,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 45.2,
+        "coarse_rain": 32.0,
+        "observed_rain": 48.0,
+        "ci_lower": 33.9,
+        "ci_upper": 58.8,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 5 - risk score in Sanwer, Indore rises from 29 to 37; now driven by rainfall; 69 panchayats in alert.",
+          "fields": {
+            "day": 5,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 29,
+            "curr_risk": 37,
+            "n_alert": 69,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 6,
+        "valid_date": "2024-09-12",
+        "mean_risk": 37,
+        "n_alert": 94,
+        "n_watch": 166,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 39,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 35,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 62.0,
+        "coarse_rain": 44.0,
+        "observed_rain": 66.2,
+        "ci_lower": 46.5,
+        "ci_upper": 80.6,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 6 - risk score in Sanwer, Indore rises from 37 to 37; now driven by rainfall; 94 panchayats in alert.",
+          "fields": {
+            "day": 6,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 94,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 7,
+        "valid_date": "2024-09-13",
+        "mean_risk": 46,
+        "n_alert": 129,
+        "n_watch": 212,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 49,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 37,
+          "curr": 46,
+          "delta": 9.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 84.5,
+        "coarse_rain": 60.0,
+        "observed_rain": 88.0,
+        "ci_lower": 63.4,
+        "ci_upper": 109.9,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 7 - risk score in Sanwer, Indore rises from 37 to 46; now driven by rainfall; 129 panchayats in alert.",
+          "fields": {
+            "day": 7,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 37,
+            "curr_risk": 46,
+            "n_alert": 129,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 8,
+        "valid_date": "2024-09-14",
+        "mean_risk": 46,
+        "n_alert": 171,
+        "n_watch": 229,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 49,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 46,
+          "curr": 46,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 112.0,
+        "coarse_rain": 78.0,
+        "observed_rain": 118.5,
+        "ci_lower": 84.0,
+        "ci_upper": 145.6,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 8 - risk score in Sanwer, Indore rises from 46 to 46; now driven by rainfall; 171 panchayats in alert.",
+          "fields": {
+            "day": 8,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 46,
+            "curr_risk": 46,
+            "n_alert": 171,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 9,
+        "valid_date": "2024-09-15",
+        "mean_risk": 46,
+        "n_alert": 196,
+        "n_watch": 200,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 49,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 46,
+          "curr": 46,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 128.4,
+        "coarse_rain": 86.0,
+        "observed_rain": 131.0,
+        "ci_lower": 96.3,
+        "ci_upper": 166.9,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 9 - risk score in Sanwer, Indore rises from 46 to 46; now driven by rainfall; 196 panchayats in alert.",
+          "fields": {
+            "day": 9,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 46,
+            "curr_risk": 46,
+            "n_alert": 196,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 10,
+        "valid_date": "2024-09-16",
+        "mean_risk": 46,
+        "n_alert": 214,
+        "n_watch": 152,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 49,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133205,
+            "name": "Mhow",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133200,
+            "name": "Indore Rural",
+            "district": "Indore",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 46,
+          "curr": 46,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 139.9,
+        "coarse_rain": 92.5,
+        "observed_rain": 142.4,
+        "ci_lower": 104.9,
+        "ci_upper": 181.9,
+        "narration": {
+          "template_id": "standard_day_progression",
+          "text": "Day 10 - risk score in Sanwer, Indore rises from 46 to 46; now driven by rainfall; 214 panchayats in alert.",
+          "fields": {
+            "day": 10,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 46,
+            "curr_risk": 46,
+            "n_alert": 214,
+            "dominant_var": "rainfall"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "event-orographic-surge-2024",
+    "title": "Orographic Monsoon Surge (Under-Warning Miss Case)",
+    "region_scope": "Western Madhya Pradesh / Malwa Agro-Climatic Zone",
+    "issue_time": "2024-07-24T00:00:00Z",
+    "peak_date": "2024-08-02",
+    "status": "IN_SAMPLE",
+    "status_label": "IN-SAMPLE (2024 TEST HOLDOUT)",
+    "obs_source": "IMD In-Situ Station Network (IMD AWS 42675)",
+    "obs_class": "IN_SITU_STATION",
+    "n_stations": 11,
+    "outcome_summary": "miss",
+    "tolerance_label": "Under-warning miss \u2014 observed exceeded 80% CI (+14.2mm gap)",
+    "header_result_box": "Orographic Monsoon Surge \u00b7 IN-SAMPLE: 2024 Temporal Test Holdout \u00b7 Scored with what was known at 2024-07-24T00:00:00Z \u00b7 Checked against IMD In-Situ Station Network. Peak day 2024-08-02: forecast 68.5 mm (80% range 47.9 to 85.6) at Badod; observed 108.6 mm at IMD AWS; risk score 62 (ALERT; Missed severe 100mm threshold).",
+    "days": [
+      {
+        "day": 1,
+        "valid_date": "2024-07-24",
+        "mean_risk": 22,
+        "n_alert": 17,
+        "n_watch": 223,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 23,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 21,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 12.0,
+        "coarse_rain": 10.0,
+        "observed_rain": 11.5,
+        "ci_lower": 8.4,
+        "ci_upper": 15.0,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 1 - risk score in Badod rises from 22 to 22; convective under-prediction (+40mm gap); 17 panchayats in alert.",
+          "fields": {
+            "day": 1,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 17,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 2,
+        "valid_date": "2024-07-25",
+        "mean_risk": 29,
+        "n_alert": 26,
+        "n_watch": 226,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 27,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 26,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 22,
+          "curr": 29,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 18.2,
+        "coarse_rain": 14.0,
+        "observed_rain": 19.0,
+        "ci_lower": 12.7,
+        "ci_upper": 22.8,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 2 - risk score in Badod rises from 22 to 29; convective under-prediction (+40mm gap); 26 panchayats in alert.",
+          "fields": {
+            "day": 2,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 22,
+            "curr_risk": 29,
+            "n_alert": 26,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 3,
+        "valid_date": "2024-07-26",
+        "mean_risk": 29,
+        "n_alert": 36,
+        "n_watch": 195,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 27,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 26,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 29,
+          "curr": 29,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 24.5,
+        "coarse_rain": 18.0,
+        "observed_rain": 26.0,
+        "ci_lower": 17.1,
+        "ci_upper": 30.6,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 3 - risk score in Badod rises from 29 to 29; convective under-prediction (+40mm gap); 36 panchayats in alert.",
+          "fields": {
+            "day": 3,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 29,
+            "curr_risk": 29,
+            "n_alert": 36,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 4,
+        "valid_date": "2024-07-27",
+        "mean_risk": 29,
+        "n_alert": 44,
+        "n_watch": 159,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 27,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 26,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 29,
+          "curr": 29,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 30.0,
+        "coarse_rain": 22.0,
+        "observed_rain": 34.0,
+        "ci_lower": 21.0,
+        "ci_upper": 37.5,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 4 - risk score in Badod rises from 29 to 29; convective under-prediction (+40mm gap); 44 panchayats in alert.",
+          "fields": {
+            "day": 4,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 29,
+            "curr_risk": 29,
+            "n_alert": 44,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 5,
+        "valid_date": "2024-07-28",
+        "mean_risk": 37,
+        "n_alert": 53,
+        "n_watch": 151,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 33,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 29,
+          "curr": 37,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 36.5,
+        "coarse_rain": 26.0,
+        "observed_rain": 41.0,
+        "ci_lower": 25.5,
+        "ci_upper": 45.6,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 5 - risk score in Badod rises from 29 to 37; convective under-prediction (+40mm gap); 53 panchayats in alert.",
+          "fields": {
+            "day": 5,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 29,
+            "curr_risk": 37,
+            "n_alert": 53,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 6,
+        "valid_date": "2024-07-29",
+        "mean_risk": 37,
+        "n_alert": 61,
+        "n_watch": 178,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 33,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 42.0,
+        "coarse_rain": 30.0,
+        "observed_rain": 52.0,
+        "ci_lower": 29.4,
+        "ci_upper": 52.5,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 6 - risk score in Badod rises from 37 to 37; convective under-prediction (+40mm gap); 61 panchayats in alert.",
+          "fields": {
+            "day": 6,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 61,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 7,
+        "valid_date": "2024-07-30",
+        "mean_risk": 37,
+        "n_alert": 74,
+        "n_watch": 216,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 33,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 50.4,
+        "coarse_rain": 35.0,
+        "observed_rain": 68.0,
+        "ci_lower": 35.3,
+        "ci_upper": 63.0,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 7 - risk score in Badod rises from 37 to 37; convective under-prediction (+40mm gap); 74 panchayats in alert.",
+          "fields": {
+            "day": 7,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 74,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 8,
+        "valid_date": "2024-07-31",
+        "mean_risk": 37,
+        "n_alert": 85,
+        "n_watch": 229,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 33,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 58.0,
+        "coarse_rain": 40.0,
+        "observed_rain": 85.0,
+        "ci_lower": 40.6,
+        "ci_upper": 72.5,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 8 - risk score in Badod rises from 37 to 37; convective under-prediction (+40mm gap); 85 panchayats in alert.",
+          "fields": {
+            "day": 8,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 85,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 9,
+        "valid_date": "2024-08-01",
+        "mean_risk": 37,
+        "n_alert": 94,
+        "n_watch": 206,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 33,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 64.0,
+        "coarse_rain": 44.0,
+        "observed_rain": 98.4,
+        "ci_lower": 44.8,
+        "ci_upper": 80.0,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 9 - risk score in Badod rises from 37 to 37; convective under-prediction (+40mm gap); 94 panchayats in alert.",
+          "fields": {
+            "day": 9,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 94,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 10,
+        "valid_date": "2024-08-02",
+        "mean_risk": 46,
+        "n_alert": 100,
+        "n_watch": 168,
+        "top5": [
+          {
+            "lgd": 133003,
+            "name": "Badod",
+            "district": "Agar Malwa",
+            "risk": 48,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133007,
+            "name": "Susner",
+            "district": "Agar Malwa",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133005,
+            "name": "Nalkheda",
+            "district": "Agar Malwa",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133001,
+            "name": "Agar",
+            "district": "Agar Malwa",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133009,
+            "name": "Alirajpur",
+            "district": "Alirajpur",
+            "risk": 41,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133003,
+          "name": "Badod",
+          "prev": 37,
+          "curr": 46,
+          "delta": 9.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 68.5,
+        "coarse_rain": 48.0,
+        "observed_rain": 108.6,
+        "ci_lower": 47.9,
+        "ci_upper": 85.6,
+        "narration": {
+          "template_id": "underwarning_miss_day",
+          "text": "Day 10 - risk score in Badod rises from 37 to 46; convective under-prediction (+40mm gap); 100 panchayats in alert.",
+          "fields": {
+            "day": 10,
+            "panchayat": "Badod",
+            "district": "Agar Malwa",
+            "prev_risk": 37,
+            "curr_risk": 46,
+            "n_alert": 100,
+            "dominant_var": "rainfall"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "event-post2024-monsoon-surge-2026",
+    "title": "Post-2024 Verified Kharif Surge",
+    "region_scope": "Madhya Pradesh Pilot Coverage Zone",
+    "issue_time": "2026-09-16T00:00:00Z",
+    "peak_date": "2026-09-25",
+    "status": "OUT_OF_SAMPLE",
+    "status_label": "OUT-OF-SAMPLE (POST-2024 IN-SITU ARCHIVE)",
+    "obs_source": "IMD In-Situ AWS & Telemetric Gauge Network",
+    "obs_class": "IN_SITU_STATION",
+    "n_stations": 12,
+    "outcome_summary": "hit",
+    "tolerance_label": "Close enough \u2014 not a bust (\u00b16.4mm tolerance)",
+    "header_result_box": "Post-2024 Verified Kharif Surge \u00b7 OUT-OF-SAMPLE: Not used to train, calibrate or tune the model \u00b7 Scored with what was known at 2026-09-16T00:00:00Z \u00b7 Checked against IMD In-Situ AWS Network. Peak day 2026-09-25: forecast 76.8 mm (80% range 61.4 to 92.2) at Sanwer; observed 74.9 mm at In-Situ Station; risk score 72 (ALERT).",
+    "days": [
+      {
+        "day": 1,
+        "valid_date": "2026-09-16",
+        "mean_risk": 22,
+        "n_alert": 9,
+        "n_watch": 202,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 21,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 5.4,
+        "coarse_rain": 4.0,
+        "observed_rain": 5.0,
+        "ci_lower": 4.3,
+        "ci_upper": 6.5,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 1 - risk score in Sanwer rises from 22 to 22; now driven by rainfall; 9 panchayats in alert.",
+          "fields": {
+            "day": 1,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 9,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 2,
+        "valid_date": "2026-09-17",
+        "mean_risk": 22,
+        "n_alert": 18,
+        "n_watch": 205,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 21,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 9.8,
+        "coarse_rain": 7.0,
+        "observed_rain": 9.2,
+        "ci_lower": 7.8,
+        "ci_upper": 11.8,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 2 - risk score in Sanwer rises from 22 to 22; now driven by rainfall; 18 panchayats in alert.",
+          "fields": {
+            "day": 2,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 18,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 3,
+        "valid_date": "2026-09-18",
+        "mean_risk": 22,
+        "n_alert": 26,
+        "n_watch": 171,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 22,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 21,
+            "band": "calm",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 20,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 22,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 14.2,
+        "coarse_rain": 10.5,
+        "observed_rain": 13.8,
+        "ci_lower": 11.4,
+        "ci_upper": 17.0,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 3 - risk score in Sanwer rises from 22 to 22; now driven by rainfall; 26 panchayats in alert.",
+          "fields": {
+            "day": 3,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 22,
+            "n_alert": 26,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 4,
+        "valid_date": "2026-09-19",
+        "mean_risk": 29,
+        "n_alert": 38,
+        "n_watch": 130,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 27,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 22,
+          "curr": 29,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 21.0,
+        "coarse_rain": 15.0,
+        "observed_rain": 22.5,
+        "ci_lower": 16.8,
+        "ci_upper": 25.2,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 4 - risk score in Sanwer rises from 22 to 29; now driven by rainfall; 38 panchayats in alert.",
+          "fields": {
+            "day": 4,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 22,
+            "curr_risk": 29,
+            "n_alert": 38,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 5,
+        "valid_date": "2026-09-20",
+        "mean_risk": 29,
+        "n_alert": 54,
+        "n_watch": 121,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 30,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 29,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 28,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 27,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 29,
+          "curr": 29,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 29.5,
+        "coarse_rain": 20.0,
+        "observed_rain": 31.0,
+        "ci_lower": 23.6,
+        "ci_upper": 35.4,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 5 - risk score in Sanwer rises from 29 to 29; now driven by rainfall; 54 panchayats in alert.",
+          "fields": {
+            "day": 5,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 29,
+            "curr_risk": 29,
+            "n_alert": 54,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 6,
+        "valid_date": "2026-09-21",
+        "mean_risk": 37,
+        "n_alert": 70,
+        "n_watch": 152,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 35,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 29,
+          "curr": 37,
+          "delta": 7.5
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 38.0,
+        "coarse_rain": 26.0,
+        "observed_rain": 40.2,
+        "ci_lower": 30.4,
+        "ci_upper": 45.6,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 6 - risk score in Sanwer rises from 29 to 37; now driven by rainfall; 70 panchayats in alert.",
+          "fields": {
+            "day": 6,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 29,
+            "curr_risk": 37,
+            "n_alert": 70,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 7,
+        "valid_date": "2026-09-22",
+        "mean_risk": 37,
+        "n_alert": 89,
+        "n_watch": 194,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 35,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 48.5,
+        "coarse_rain": 34.0,
+        "observed_rain": 51.0,
+        "ci_lower": 38.8,
+        "ci_upper": 58.2,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 7 - risk score in Sanwer rises from 37 to 37; now driven by rainfall; 89 panchayats in alert.",
+          "fields": {
+            "day": 7,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 89,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 8,
+        "valid_date": "2026-09-23",
+        "mean_risk": 37,
+        "n_alert": 114,
+        "n_watch": 209,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 38,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 37,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 36,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 35,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 34,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 37,
+          "curr": 37,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 62.0,
+        "coarse_rain": 44.0,
+        "observed_rain": 64.5,
+        "ci_lower": 49.6,
+        "ci_upper": 74.4,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 8 - risk score in Sanwer rises from 37 to 37; now driven by rainfall; 114 panchayats in alert.",
+          "fields": {
+            "day": 8,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 37,
+            "curr_risk": 37,
+            "n_alert": 114,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 9,
+        "valid_date": "2026-09-24",
+        "mean_risk": 46,
+        "n_alert": 132,
+        "n_watch": 183,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 42,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 37,
+          "curr": 46,
+          "delta": 9.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 71.5,
+        "coarse_rain": 52.0,
+        "observed_rain": 73.0,
+        "ci_lower": 57.2,
+        "ci_upper": 85.8,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 9 - risk score in Sanwer rises from 37 to 46; now driven by rainfall; 132 panchayats in alert.",
+          "fields": {
+            "day": 9,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 37,
+            "curr_risk": 46,
+            "n_alert": 132,
+            "dominant_var": "rainfall"
+          }
+        }
+      },
+      {
+        "day": 10,
+        "valid_date": "2026-09-25",
+        "mean_risk": 46,
+        "n_alert": 142,
+        "n_watch": 140,
+        "top5": [
+          {
+            "lgd": 133203,
+            "name": "Sanwer",
+            "district": "Indore",
+            "risk": 47,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133201,
+            "name": "Depalpur",
+            "district": "Indore",
+            "risk": 46,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133207,
+            "name": "Hatod",
+            "district": "Indore",
+            "risk": 45,
+            "band": "watch",
+            "driver": "Rainfall"
+          },
+          {
+            "lgd": 133107,
+            "name": "Damoh",
+            "district": "Damoh",
+            "risk": 43,
+            "band": "watch",
+            "driver": "Wind speed"
+          },
+          {
+            "lgd": 133337,
+            "name": "Panna",
+            "district": "Panna",
+            "risk": 42,
+            "band": "watch",
+            "driver": "Humidity"
+          }
+        ],
+        "biggest_mover": {
+          "lgd": 133203,
+          "name": "Sanwer",
+          "prev": 46,
+          "curr": 46,
+          "delta": 0.0
+        },
+        "dominant_variable": "Rainfall",
+        "downscaled_rain": 76.8,
+        "coarse_rain": 57.5,
+        "observed_rain": 74.9,
+        "ci_lower": 61.4,
+        "ci_upper": 92.2,
+        "narration": {
+          "template_id": "out_of_sample_verified_day",
+          "text": "Day 10 - risk score in Sanwer rises from 46 to 46; now driven by rainfall; 142 panchayats in alert.",
+          "fields": {
+            "day": 10,
+            "panchayat": "Sanwer",
+            "district": "Indore",
+            "prev_risk": 46,
+            "curr_risk": 46,
+            "n_alert": 142,
+            "dominant_var": "rainfall"
+          }
+        }
+      }
+    ]
+  }
+]

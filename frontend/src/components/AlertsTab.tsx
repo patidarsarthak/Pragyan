@@ -185,9 +185,9 @@ export const AlertsTab: React.FC<AlertsTabProps> = ({ lang, onNavigateToGP }) =>
       <div className="sk-page-header">
         <div>
           <div className="sk-page-kicker">OASIS CAP 1.2 ACCREDITED DISASTER ADVISORY ENGINE</div>
-          <h1 className="sk-page-title">Panchayat Agromet Alerts</h1>
+          <h1 className="sk-page-title">{t("alertsTitle", lang)}</h1>
           <p className="sk-page-desc">
-            Standardized agro-meteorological bulletins downscaled to cadastral boundaries. Directly exportable to the National Disaster Management Authority (NDMA) via OASIS CAP 1.2 XML.
+            {t("alertsSubtitle", lang)}
           </p>
         </div>
 
@@ -208,36 +208,36 @@ export const AlertsTab: React.FC<AlertsTabProps> = ({ lang, onNavigateToGP }) =>
       <div className="sk-kpi-grid">
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.alert }} />
-          <span className="sk-kpi-label">SEVERE ALERTS</span>
+          <span className="sk-kpi-label">{lang === "hi" ? "गंभीर चेतावनियाँ" : lang === "bn" ? "তীব্র সতর্কতা" : "SEVERE ALERTS"}</span>
           <div className="sk-kpi-val" style={{ color: THEME.alert }}>
             {alertCount} <span className="sk-kpi-unit">GPs</span>
           </div>
-          <span className="sk-kpi-note">Urgent agronomic intervention required</span>
+          <span className="sk-kpi-note">{lang === "hi" ? "तत्काल कृषि हस्तक्षेप आवश्यक" : lang === "bn" ? "জরুরি পদক্ষেপ প্রয়োজন" : "Urgent agronomic intervention required"}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.watch }} />
-          <span className="sk-kpi-label">PRECAUTIONARY WATCHES</span>
+          <span className="sk-kpi-label">{lang === "hi" ? "सावधानी निगरानी" : lang === "bn" ? "সতর্কতামূলক নজরদারি" : "PRECAUTIONARY WATCHES"}</span>
           <div className="sk-kpi-val" style={{ color: THEME.watch }}>
             {watchCount} <span className="sk-kpi-unit">GPs</span>
           </div>
-          <span className="sk-kpi-note">Elevated convective or thermal risk</span>
+          <span className="sk-kpi-note">{lang === "hi" ? "बढ़ा हुआ मौसम या तापमान जोखिम" : lang === "bn" ? "উচ্চ আবহাওয়া ঝুঁকি" : "Elevated convective or thermal risk"}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.calm }} />
-          <span className="sk-kpi-label">ROUTINE ADVISORIES</span>
+          <span className="sk-kpi-label">{lang === "hi" ? "नियमित परामर्श" : lang === "bn" ? "নিয়মিত পরামর্শ" : "ROUTINE ADVISORIES"}</span>
           <div className="sk-kpi-val">
             {advisoryCount} <span className="sk-kpi-unit">Bulletins</span>
           </div>
-          <span className="sk-kpi-note">Normal field operation windows</span>
+          <span className="sk-kpi-note">{lang === "hi" ? "सामान्य कृषि परिचालन खिड़की" : lang === "bn" ? "স্বাভাবিক কৃষিকাজ সময়" : "Normal field operation windows"}</span>
         </div>
 
         <div className="sk-kpi-card">
           <div className="sk-kpi-bar" style={{ background: THEME.blue }} />
-          <span className="sk-kpi-label">PRIMARY HAZARD VECTOR</span>
+          <span className="sk-kpi-label">{lang === "hi" ? "प्रमुख संकट कारक" : lang === "bn" ? "প্রধান বিপদ উপাদান" : "PRIMARY HAZARD VECTOR"}</span>
           <div className="sk-kpi-val" style={{ fontSize: "1.35rem" }}>
-            Heavy Rain <span className="sk-kpi-unit">(58%)</span>
+            {lang === "hi" ? "भारी वर्षा" : lang === "bn" ? "ভারী বৃষ্টি" : "Heavy Rain"} <span className="sk-kpi-unit">(58%)</span>
           </div>
           <span className="sk-kpi-note">Central Narmada Basin Trough Line</span>
         </div>
@@ -247,13 +247,18 @@ export const AlertsTab: React.FC<AlertsTabProps> = ({ lang, onNavigateToGP }) =>
       <div className="sk-card sk-alerts-toolbar">
         <div className="sk-alerts-filters">
           <div className="sk-toggle-group" role="group" aria-label="Filter by Severity">
-            {["ALL", "ALERT", "WATCH", "ADVISORY"].map((sev) => (
+            {[
+              { id: "ALL", label: t("filterSeverityAll", lang) },
+              { id: "ALERT", label: t("statusAlert", lang) },
+              { id: "WATCH", label: t("statusWatch", lang) },
+              { id: "ADVISORY", label: t("statusAdvisory", lang) },
+            ].map((sev) => (
               <button
-                key={sev}
-                className={`sk-toggle-btn ${severityFilter === sev ? "is-active" : ""}`}
-                onClick={() => setSeverityFilter(sev)}
+                key={sev.id}
+                className={`sk-toggle-btn ${severityFilter === sev.id ? "is-active" : ""}`}
+                onClick={() => setSeverityFilter(sev.id)}
               >
-                {sev}
+                {sev.label}
               </button>
             ))}
           </div>
@@ -264,14 +269,14 @@ export const AlertsTab: React.FC<AlertsTabProps> = ({ lang, onNavigateToGP }) =>
               checked={oneRowPerGP}
               onChange={(e) => setOneRowPerGP(e.target.checked)}
             />
-            <span>One row per Gram Panchayat</span>
+            <span>{t("oneRowPerGp", lang)}</span>
           </label>
         </div>
 
         <div className="sk-alerts-search">
           <input
             type="search"
-            placeholder="Search Panchayat, District, or Hazard..."
+            placeholder={t("searchAlertsPlaceholder", lang)}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="sk-search-input"
@@ -288,13 +293,13 @@ export const AlertsTab: React.FC<AlertsTabProps> = ({ lang, onNavigateToGP }) =>
             <table className="sk-accessible-table" aria-label="Active Panchayat Weather Bulletins">
               <thead>
                 <tr>
-                  <th scope="col">Severity</th>
-                  <th scope="col">Gram Panchayat</th>
-                  <th scope="col">District / Block</th>
-                  <th scope="col">Hazard Vector</th>
-                  <th scope="col">Headline &amp; Action</th>
-                  <th scope="col">Effective Window</th>
-                  <th scope="col">CAP 1.2 Payload</th>
+                  <th scope="col">{t("colSeverity", lang)}</th>
+                  <th scope="col">{t("colPanchayat", lang)}</th>
+                  <th scope="col">{t("colDistrict", lang)}</th>
+                  <th scope="col">{t("colHazard", lang)}</th>
+                  <th scope="col">{t("actionLabel", lang)}</th>
+                  <th scope="col">{t("colEffective", lang)}</th>
+                  <th scope="col">{t("colCapXml", lang)}</th>
                 </tr>
               </thead>
               <tbody>

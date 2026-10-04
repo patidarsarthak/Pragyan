@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Language } from "../../lib/i18n";
+import React, { useState, useEffect } from "react";
+import { Language, t } from "../../lib/i18n";
 import { THEME } from "../../theme";
 
 interface FarmerModeCardProps {
@@ -27,6 +27,22 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Close on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && onClose) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [onClose]);
+
   const fullText = `${panchayatName} के किसान भाइयों के लिए सलाह: ${actionText} कारण: ${reasonText} समय: ${windowText}`;
 
   const handleSpeak = () => {
@@ -41,7 +57,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(fullText);
-    utterance.lang = lang === "hi" ? "hi-IN" : "en-IN";
+    utterance.lang = lang === "hi" ? "hi-IN" : lang === "bn" ? "bn-IN" : "en-IN";
     utterance.rate = 0.9;
     utterance.onend = () => setIsPlaying(false);
     utterance.onerror = () => setIsPlaying(false);
@@ -61,13 +77,23 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
   };
 
   return (
-    <div className="sk-farmer-overlay" role="dialog" aria-modal="true" aria-label="Farmer Mode Agro-Advisory">
+    <div
+      className="sk-farmer-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Farmer Mode Agro-Advisory"
+      onClick={(e) => {
+        if (e.target === e.currentTarget && onClose) {
+          onClose();
+        }
+      }}
+    >
       <div className="sk-farmer-card">
         {/* Top Header */}
         <div className="sk-farmer-header">
           <div className="sk-farmer-badge">
             <span className="sk-farmer-glyph">🌾</span>
-            <span>{lang === "hi" ? "किसान परामर्श कार्ड" : "Farmer Agromet Card"}</span>
+            <span>{t("farmerCardTitle", lang)}</span>
           </div>
 
           <div style={{ display: "flex", gap: "8px" }}>
@@ -78,7 +104,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
                 aria-label="Exit Farmer Mode"
                 title="Exit Farmer Mode"
               >
-                ✕ {lang === "hi" ? "वापस जाएं" : "Close"}
+                ✕ {t("close", lang)}
               </button>
             )}
           </div>
@@ -87,7 +113,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
         {/* Location Banner */}
         <div className="sk-farmer-location">
           <h2>{panchayatName}</h2>
-          <span className="sk-farmer-sub">{blockName}, {districtName} · फसल: {cropName}</span>
+          <span className="sk-farmer-sub">{blockName}, {districtName} · {lang === "hi" ? "फसल: " : lang === "bn" ? "ফসল: " : "Crop: "}{cropName}</span>
         </div>
 
         {/* 3-Line High Contrast Vernacular Cards */}
@@ -96,7 +122,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
           <div className="sk-farmer-line-item is-action">
             <div className="sk-farmer-line-icon">🚜</div>
             <div className="sk-farmer-line-content">
-              <span className="sk-farmer-line-label">{lang === "hi" ? "1. क्या करें (कार्रवाई)" : "1. What To Do (Action)"}</span>
+              <span className="sk-farmer-line-label">{t("farmerWhatToDo", lang)}</span>
               <p className="sk-farmer-line-main">{actionText}</p>
             </div>
           </div>
@@ -105,7 +131,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
           <div className="sk-farmer-line-item is-reason">
             <div className="sk-farmer-line-icon">🌧️</div>
             <div className="sk-farmer-line-content">
-              <span className="sk-farmer-line-label">{lang === "hi" ? "2. मौसम का कारण (चेतावनी)" : "2. Weather Reason (Warning)"}</span>
+              <span className="sk-farmer-line-label">{t("farmerWeatherReason", lang)}</span>
               <p className="sk-farmer-line-main">{reasonText}</p>
             </div>
           </div>
@@ -114,7 +140,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
           <div className="sk-farmer-line-item is-window">
             <div className="sk-farmer-line-icon">⏱️</div>
             <div className="sk-farmer-line-content">
-              <span className="sk-farmer-line-label">{lang === "hi" ? "3. सुरक्षित समय (कब करें)" : "3. Safe Window"}</span>
+              <span className="sk-farmer-line-label">{t("farmerSafeWindow", lang)}</span>
               <p className="sk-farmer-line-main">{windowText}</p>
             </div>
           </div>
@@ -127,7 +153,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
             onClick={handleSpeak}
           >
             <span className="sk-audio-icon">{isPlaying ? "⏹" : "🔊"}</span>
-            <span>{isPlaying ? (lang === "hi" ? "ऑडियो रोकें" : "Stop Audio") : (lang === "hi" ? "परामर्श सुनें (Audio)" : "Listen to Advisory")}</span>
+            <span>{isPlaying ? t("farmerAudioStop", lang) : t("farmerAudioListen", lang)}</span>
           </button>
 
           <button
@@ -135,7 +161,7 @@ export const FarmerModeCard: React.FC<FarmerModeCardProps> = ({
             onClick={handleWhatsAppShare}
           >
             <span className="sk-wa-icon">💬</span>
-            <span>{lang === "hi" ? "व्हाट्सएप पर साझा करें" : "Share on WhatsApp"}</span>
+            <span>{t("farmerShareWa", lang)}</span>
           </button>
         </div>
       </div>

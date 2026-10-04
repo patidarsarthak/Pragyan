@@ -70,6 +70,26 @@ vi.mock("../api/client", () => ({
     })),
   }),
   fetchRegionsByLeadDay: vi.fn().mockResolvedValue([]),
+  fetchUIChildren: vi.fn().mockResolvedValue([
+    {
+      id: "district:407",
+      level: "district",
+      name: "Indore",
+      lgd: 407,
+      n_children: 4,
+      n_gp_total: 335,
+      n_gp_scored: 12,
+      validated: true,
+      has_geometry: true,
+    },
+  ]),
+  fetchUISearchV2: vi.fn().mockResolvedValue([]),
+  fetchCropLayers: vi.fn().mockResolvedValue([]),
+  fetchCrops: vi.fn().mockResolvedValue([]),
+  fetchAdvisoryDossier: vi.fn().mockResolvedValue(null),
+  fetchAdvisoryCohorts: vi.fn().mockResolvedValue(null),
+  fetchAdvisoryExplain: vi.fn().mockResolvedValue(null),
+  saveFarmerProfile: vi.fn().mockResolvedValue({ status: "success" }),
 }));
 
 describe("ForecastTab Component", () => {

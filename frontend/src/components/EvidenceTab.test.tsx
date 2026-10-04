@@ -38,6 +38,23 @@ vi.mock("../api/client", () => ({
     },
   ]),
   fetchUIModel: vi.fn().mockResolvedValue(null),
+  fetchUILedger: vi.fn().mockResolvedValue({
+    status: "VALID",
+    total_blocks: 7,
+    latest_hash: "240e16b19cfdd383...",
+    blocks: [],
+  }),
+  fetchUICoverage: vi.fn().mockResolvedValue({
+    total_panchayats: 603,
+    tier_summary: { well_verifiable: 95, partially_verifiable: 163, poorly_verifiable: 345 },
+  }),
+  fetchUIReportCard: vi.fn().mockResolvedValue({
+    eval_mode: "HINDCAST",
+    has_enough_data: true,
+    sample_size: 90,
+    contingency_table: { hits: 76, false_alarms: 8, misses: 6, correct_negatives: 120, pod: 0.927, far: 0.095, csi: 0.844 },
+    rules: [],
+  }),
 }));
 
 describe("EvidenceTab Component", () => {

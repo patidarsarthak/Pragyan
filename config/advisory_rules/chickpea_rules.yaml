@@ -1,0 +1,44 @@
+rules:
+  - id: "chickpea.moisture.excess_rain"
+    crops: ["chickpea"]
+    stages: ["flowering", "podding"]
+    trigger: "rainfall_24h >= 15.0 or (humidity_mean >= 80.0 and temp_mean >= 20.0)"
+    action: "Ensure furrows are free of standing water and avoid field entry while foliage remains wet."
+    why: "Excess soil moisture and dense canopy humidity during the reproductive phase trigger Ascochyta blight and Fusarium wilt outbreak."
+    when: "Clear surface drains immediately following rainfall."
+    severity: "watch"
+    verifiable_event: "rainfall_24h_ge_15mm"
+    source: "ICAR-IIPR Kanpur Chickpea Production Technology Bulletin, p. 14"
+    status: "ACTIVE"
+    reviewed_by: "Dr. P.K. Mishra (Senior Scientist, Pulses, RVSKVV)"
+    translations:
+      hi:
+        action: "खेत से पानी निकासी सुनिश्चित करें और पत्तियां गीली रहने के दौरान खेत में आवाजाही से बचें।"
+        why: "फूल व फली बनते समय अत्यधिक नमी से उकठा (विल्ट) और एस्कोकाइटा ब्लाइट रोग का प्रकोप बढ़ता है।"
+        when: "बारिश के तुरंत बाद जल निकासी सुनिश्चित करें।"
+      bn:
+        action: "জমিতে জল জমে থাকা রোধ করুন এবং পাতা ভেজা থাকা অবস্থায় জমিতে প্রবেশ এড়িয়ে চলুন।"
+        why: "ফুল ও শুঁটি ধরার সময় অতিরিক্ত আর্দ্রতায় ছোলা ফসলে উইল্ট ও ব্লাইট রোগের বিস্তার ঘটে।"
+        when: "বৃষ্টির পরপরই নালা পরিষ্কার করুন।"
+
+  - id: "chickpea.irrigation.pre_flowering"
+    crops: ["chickpea"]
+    stages: ["vegetative"]
+    trigger: "soil_water_depletion >= 0.55 and rainfall_48h < 2.0"
+    action: "Apply a single light branching irrigation (40 mm); avoid heavy flooding."
+    why: "Adequate moisture prior to flower initiation promotes profuse secondary branching and pod sites."
+    when: "Apply during calm hours at 40-45 DAS."
+    severity: "calm"
+    verifiable_event: "soil_depletion_ge_0.55"
+    source: "ICAR-IIPR Kanpur Chickpea Production Technology Bulletin, p. 11"
+    status: "ACTIVE"
+    reviewed_by: "Dr. P.K. Mishra (Senior Scientist, Pulses, RVSKVV)"
+    translations:
+      hi:
+        action: "शाखाएं निकलने की अवस्था पर एक हल्की सिंचाई (40 मिमी) करें; खेत में पानी न भरने दें।"
+        why: "फूल आने से पहले हल्की नमी से शाखाओं का समुचित विकास होता है और फलियों की संख्या बढ़ती है।"
+        when: "बुवाई के 40-45 दिन बाद शांत मौसम में सिंचाई करें।"
+      bn:
+        action: "ডালপালা গজানোর সময় একটি হালকা সেচ (৪০ মিমি) দিন; অতিরিক্ত জল দেবেন না।"
+        why: "ফুল আসার পূর্বে সঠিক আর্দ্রতা ফলন বাড়াতে সাহায্য করে।"
+        when: "বপনের ৪০-৪৫ দিন পর সেচ প্রয়োগ করুন।"

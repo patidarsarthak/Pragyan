@@ -223,6 +223,103 @@ export interface ReplayEventItem {
   summary: string;
   days_data: ReplayDayStep[];
   focus_day_idx: number;
+  region_scope?: string;
+  issue_time?: string;
+  peak_date?: string;
+  status?: string;
+  status_label?: string;
+  obs_source?: string;
+  obs_class?: string;
+  n_stations?: number;
+  outcome_summary?: string;
+  header_result_box?: string;
+}
+
+export interface ReplayDayData {
+  day: number;
+  valid_date: string;
+  mean_risk: number;
+  coarse_rain: number;
+  downscaled_rain: number;
+  ci_lower: number;
+  ci_upper: number;
+  observed_rain: number;
+  n_alert: number;
+  n_watch: number;
+  narration: {
+    text: string;
+    driver: string;
+  };
+  top5: Array<{
+    rank: number;
+    gp_code: number;
+    name: string;
+    district: string;
+    risk_score: number;
+    band: "alert" | "watch" | "calm";
+    driver: string;
+  }>;
+}
+
+export interface ReplayEventSummary {
+  header: {
+    id: string;
+    title: string;
+    region_scope: string;
+    issue_time: string;
+    peak_date: string;
+    status: string;
+    status_label: string;
+    obs_source: string;
+    obs_class: string;
+    outcome_summary: string;
+    header_result_box: string;
+    tolerance_label: string;
+  };
+  days: ReplayDayData[];
+}
+
+export interface ReplayGPDayDetail {
+  day: number;
+  valid_date: string;
+  coarse: number;
+  downscaled: number;
+  lower: number;
+  upper: number;
+  observed: number;
+  observed_class: string;
+  in_range: boolean;
+  category_forecast: string;
+  category_observed: string;
+  category_match: boolean;
+  risk_as_issued: number;
+  band_as_issued: "alert" | "watch" | "calm";
+}
+
+export interface ReplayGPDetail {
+  event_id: string;
+  panchayat_id: number;
+  issue_time: string;
+  peak_date: string;
+  station: {
+    id: string;
+    name: string;
+    km_from_gp: number;
+  };
+  days: ReplayGPDayDetail[];
+}
+
+export interface ReplayColumnarParams {
+  event_id: string;
+  day: number;
+  valid_date: string;
+  scope: string;
+  n_scored: number;
+  ids: number[];
+  risk: number[];
+  band: Array<"alert" | "watch" | "calm">;
+  drivers: string[];
+  reasons: string[];
 }
 
 export type RiskBand = "low" | "medium" | "high";
@@ -452,4 +549,138 @@ export interface UIModelResponse {
     economic_value: number;
   }>;
 }
+
+// -----------------------------------------------------------------------------
+// 4-Level Admin Hierarchy & Search Types (Prompt 09)
+// -----------------------------------------------------------------------------
+
+export interface UIChildItem {
+  id: string;
+  level: "state" | "district" | "block" | "gp";
+  name: string;
+  lgd: number;
+  parent_path: string;
+  n_children: number;
+  n_gp_total: number;
+  n_gp_scored: number;
+  validated: boolean;
+  has_geometry: boolean;
+  boundary_note?: string;
+}
+
+export interface UISearchV2Result {
+  level: "state" | "district" | "block" | "gp";
+  id: string;
+  name: string;
+  lgd: number;
+  parent_path: string;
+  path: Array<{ level: string; id: string; name: string }>;
+  validated: boolean;
+  scored: number;
+  total: number;
+  bbox?: [number, number, number, number];
+}
+
+// -----------------------------------------------------------------------------
+// Crop-Wise Advisory Types (Prompt 10)
+// -----------------------------------------------------------------------------
+
+export interface CropInfo {
+  crop_id: string;
+  name: string;
+  hindi_name: string;
+  season: string;
+  sowing_window: string;
+  duration_days: number;
+  gdd_target: number;
+  base_temp_c: number;
+  mad_fraction: number;
+  is_mp_priority: boolean;
+}
+
+export interface CropStageInfo {
+  crop_id: string;
+  crop_name: string;
+  sowing_date: string;
+  das: number;
+  gdd_accumulated: number;
+  current_stage: string;
+  stage_name_hi?: string;
+  kc?: number;
+  is_water_sensitive?: boolean;
+  next_stage_window: {
+    earliest: string;
+    likely: string;
+    latest: string;
+  };
+}
+
+export interface CropAdvisoryDossier {
+  panchayat_id: number;
+  panchayat_name: string;
+  block_name?: string;
+  district_name?: string;
+  state_name?: string;
+  date: string;
+  crop_profile?: CropStageInfo;
+  soil_water_storage_mm?: number;
+  root_zone_depletion_mm?: number;
+  irrigation_urgency?: "Urgent" | "Postpone" | "Adequate" | string;
+  irrigation_schedule?: string;
+  actions: Array<{
+    action: string;
+    why: string;
+    timing: string;
+    confidence: "High" | "Medium" | "Low";
+    event_type?: string;
+    scientific_basis?: string;
+    ipm_reference?: string;
+  }>;
+  kvk_contact?: {
+    district: string;
+    institution: string;
+    toll_free: string;
+    officer_email: string;
+  };
+  verified_accuracy_provenance?: {
+    overall_advisory_hit_rate: string;
+    false_alarm_rate: string;
+    evaluated_cases: number;
+    dataset: string;
+  };
+  disclaimer?: string;
+}
+
+export interface AdvisoryCohortResponse {
+  panchayat_id: number;
+  crop_id: string;
+  cohorts: Array<{
+    cohort: "early" | "normal" | "late";
+    sowing_date: string;
+    stage: string;
+    irrigation_advice: string;
+    urgency: string;
+  }>;
+}
+
+export interface AdvisoryExplainResponse {
+  panchayat_id: number;
+  crop_id: string;
+  elevation_diff_m: number;
+  panchayat_rain_10d_mm: number;
+  block_mean_rain_10d_mm: number;
+  panchayat_irrigation: string;
+  block_irrigation: string;
+  divergence_reason: string;
+}
+
+export interface CropLayerItem {
+  gp_code: number;
+  gp_name: string;
+  lat: number;
+  lon: number;
+  value: number;
+  status: string;
+}
+
 

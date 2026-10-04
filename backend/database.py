@@ -301,6 +301,109 @@ class TerrainSkill(Base):
     )
 
 
+class Crop(Base):
+    __tablename__ = "crops"
+    id = Column(String(50), primary_key=True) # e.g. 'wheat', 'chickpea', 'soybean'
+    canonical_name = Column(String(100), nullable=False)
+    name_hi = Column(String(100), nullable=False)
+    name_bn = Column(String(100), nullable=True)
+    scientific_name = Column(String(150), nullable=False)
+    season = Column(String(20), nullable=False) # 'Kharif', 'Rabi', 'Zaid'
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+
+class AgroZone(Base):
+    __tablename__ = "agro_zones"
+    id = Column(String(50), primary_key=True) # e.g. 'mp_malwa_plateau'
+    zone_code = Column(String(20), nullable=False, unique=True)
+    zone_name = Column(String(150), nullable=False)
+    state_code = Column(Integer, default=23)
+    districts_json = Column(Text, nullable=False) # JSON array of district names
+    source = Column(String(200), default="JNKVV / RVSKVV Agro-Climatic Zones of MP")
+
+
+class SoilClass(Base):
+    __tablename__ = "soil_classes"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    gp_code = Column(Integer, nullable=True, index=True)
+    district_code = Column(Integer, nullable=False, index=True)
+    district_name = Column(String(100), nullable=False)
+    soil_order = Column(String(50), nullable=False) # 'Vertisol', 'Inceptisol', 'Alfisol', 'Entisol'
+    soil_name = Column(String(150), nullable=False) # 'Deep Black Vertisol', 'Medium Black Soil', etc.
+    field_capacity_mm = Column(Float, nullable=False)
+    wilting_point_mm = Column(Float, nullable=False)
+    source = Column(String(200), default="NBSS&LUP ICAR Soil Survey of Madhya Pradesh")
+
+    __table_args__ = (
+        Index("idx_soil_dist_gp", "district_code", "gp_code"),
+    )
+
+
+class FarmerProfile(Base):
+    __tablename__ = "farmer_profiles"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    profile_id = Column(String(64), unique=True, nullable=False, index=True)
+    consent = Column(Boolean, default=True, nullable=False)
+    gp_code = Column(Integer, ForeignKey("panchayats.gp_code"), nullable=False, index=True)
+    crop = Column(String(50), nullable=False)
+    sowing_date = Column(String(10), nullable=False) # YYYY-MM-DD
+    duration_class = Column(String(50), default="normal") # 'early', 'normal', 'late'
+    soil_type = Column(String(50), nullable=True)
+    irrigation_source = Column(String(50), default="rainfed") # 'canal', 'borewell', 'rainfed'
+    device_id_hash = Column(String(64), nullable=True, index=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+
+class AdvisoriesIssued(Base):
+    __tablename__ = "advisories_issued"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    advisory_id = Column(String(64), unique=True, nullable=False, index=True)
+    gp_code = Column(Integer, ForeignKey("panchayats.gp_code"), nullable=False, index=True)
+    valid_date = Column(String(10), nullable=False, index=True)
+    issued_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    crop = Column(String(50), nullable=False)
+    stage = Column(String(100), nullable=False)
+    rule_id = Column(String(100), nullable=False)
+    severity = Column(String(20), nullable=False) # 'calm', 'watch', 'alert'
+    action = Column(Text, nullable=False)
+    why = Column(Text, nullable=False)
+    when = Column(Text, nullable=False)
+    confidence_label = Column(String(20), default="Likely") # 'Likely', 'Uncertain'
+    confidence_score = Column(Float, default=0.80)
+    panchayat_effect_json = Column(Text, nullable=True) # {variable, gp_val, block_val, diff}
+    source_title = Column(String(200), nullable=False)
+    status = Column(String(20), default="ACTIVE") # 'ACTIVE', 'NEEDS_EXPERT_REVIEW'
+    reviewed_by = Column(String(100), default="ICAR-KVK / JNKVV Agromet Panel")
+
+    __table_args__ = (
+        Index("idx_adv_issued_lookup", "gp_code", "crop", "valid_date"),
+    )
+
+
+class AdvisoryFeedback(Base):
+    __tablename__ = "advisory_feedback"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    advisory_id = Column(String(64), ForeignKey("advisories_issued.advisory_id"), nullable=False, index=True)
+    followed = Column(Boolean, nullable=False)
+    outcome = Column(String(100), nullable=True) # 'effective', 'crop_loss_prevented', 'no_effect'
+    stage_reported = Column(String(100), nullable=True)
+    photo_url = Column(String(512), nullable=True)
+    reported_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+
+class KVKDirectory(Base):
+    __tablename__ = "kvk_directory"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    district_code = Column(Integer, nullable=False, index=True)
+    district_name = Column(String(100), nullable=False)
+    kvk_name = Column(String(150), nullable=False)
+    phone = Column(String(50), nullable=False)
+    email = Column(String(100), nullable=True)
+    url = Column(String(255), nullable=True)
+    source = Column(String(200), default="ICAR-ATARI Zone IX Jabalpur (MP)")
+
+
+
 # ============================================================================
 # Database Initializer & Seed Function
 # ============================================================================

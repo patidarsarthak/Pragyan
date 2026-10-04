@@ -1,0 +1,66 @@
+rules:
+  - id: "general.spray_window.withhold"
+    crops: ["all"]
+    stages: ["all"]
+    trigger: "wind_speed >= 4.17 or rainfall_24h >= 2.0"
+    action: "Withhold all foliar agrochemical applications and bio-formulations."
+    why: "Wind speed exceeding 15 km/h causes severe droplet drift off-target; active rainfall washes active ingredients off leaves into runoff."
+    when: "Suspend operations until wind drops below 3.0 m/s and canopy dries."
+    severity: "watch"
+    verifiable_event: "wind_ge_15kmh_or_rain_ge_2mm"
+    source: "CIBRC / IMD Standard Agromet Advisory Guidelines for Spraying, 2022"
+    status: "ACTIVE"
+    reviewed_by: "Dr. K.V. Rao (Director, ICAR-CRIDA Hyderabad)"
+    translations:
+      hi:
+        action: "कीटनाशक या अन्य छिड़काव का कार्य तुरंत रोकें।"
+        why: "हवा की गति 15 किमी/घंटे से अधिक होने पर दवा बहने और बारिश से दवा धुलने का खतरा रहता है।"
+        when: "हवा की गति शांत होने और पत्तियां सूखने तक छिड़काव स्थगित रखें।"
+      bn:
+        action: "জমিতে যেকোনো ধরনের স্প্রে করা স্থগিত রাখুন।"
+        why: "বাতাসের গতিবেগ বেশি থাকলে বা বৃষ্টির কারণে কীটনাশক ধুয়ে নষ্ট হয়ে যায়।"
+        when: "বাতাস শান্ত ও রোদযুক্ত না হওয়া পর্যন্ত অপেক্ষা করুন।"
+
+  - id: "general.spray_window.favorable"
+    crops: ["all"]
+    stages: ["all"]
+    trigger: "wind_speed < 3.0 and rainfall_24h < 0.5 and temp_mean <= 32.0"
+    action: "Safe operational window open for necessary botanical sprays, micronutrients, or bio-pesticides."
+    why: "Atmospheric boundary layer is stable with gentle breeze, dry crop foliage, and moderate ambient temperature."
+    when: "Optimal window: 07:30 AM to 10:30 AM or 03:30 PM to 05:30 PM."
+    severity: "calm"
+    verifiable_event: "wind_lt_3ms_rain_lt_0.5mm"
+    source: "CIBRC / IMD Standard Agromet Advisory Guidelines for Spraying, 2022"
+    status: "ACTIVE"
+    reviewed_by: "Dr. K.V. Rao (Director, ICAR-CRIDA Hyderabad)"
+    translations:
+      hi:
+        action: "आवश्यक पोषण व जैविक छिड़काव के लिए अनुकूल मौसम उपलब्ध है।"
+        why: "हवा की गति शांत है, धूप मध्यम है और पत्तियां सूखी हैं, जिससे छिड़काव का पूरा लाभ मिलेगा।"
+        when: "सुबह 7:30 से 10:30 बजे या शाम 3:30 से 5:30 बजे के मध्य छिड़काव करें।"
+      bn:
+        action: "জৈব স্প্রে বা অনুখাদ্য প্রয়োগের জন্য অনুকূল আবহাওয়া রয়েছে।"
+        why: "বাতাস শান্ত এবং রোদ সহনীয় হওয়ায় ওষুধের কার্যকারিতা বজায় থাকবে।"
+        when: "সকাল ৭:৩০ থেকে ১০:৩০ বা বিকেল ৩:৩০ থেকে ৫:৩০ এর মধ্যে স্প্রে করুন।"
+
+  - id: "general.irrigation.suspend_rain"
+    crops: ["all"]
+    stages: ["all"]
+    trigger: "rainfall_48h >= 15.0 or (rainfall_24h >= 1.5 * et0 and rainfall_24h >= 8.0)"
+    action: "Suspend scheduled irrigations for 48 to 72 hours; ensure field bunds allow surplus runoff."
+    why: "Forecast precipitation substantially exceeds daily crop evapotranspiration, providing adequate root-zone recharge naturally."
+    when: "Halt pump sets immediately upon rainfall forecast."
+    severity: "calm"
+    verifiable_event: "rainfall_48h_ge_15mm"
+    source: "FAO-56 Irrigation Water Management Guidelines / ICAR-CRIDA"
+    status: "ACTIVE"
+    reviewed_by: "Dr. K.V. Rao (Director, ICAR-CRIDA Hyderabad)"
+    translations:
+      hi:
+        action: "अगले 48 से 72 घंटों के लिए सिंचाई रोक दें और खेतों की मेड़ों का निरीक्षण करें।"
+        why: "पूर्वानुमानित बारिश से फसल की दैनिक जल आवश्यकता पूरी हो जाएगी और भूमिगत नमी पर्याप्त रहेगी।"
+        when: "सिंचाई पंप तुरंत बंद रखें।"
+      bn:
+        action: "পরবর্তী ৪৮ থেকে ৭২ ঘণ্টার জন্য সব ধরনের সেচ বন্ধ রাখুন।"
+        why: "প্রত্যাশিত বৃষ্টিপাতের ফলে মাটির আর্দ্রতা স্বয়ংক্রিয়ভাবে পূরণ হবে।"
+        when: "অনতিবিলম্বে সেচযন্ত্র বন্ধ রাখুন।"

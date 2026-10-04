@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "genesis_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "chain_length": 7,
+  "last_updated": "2026-10-04T15:54:35.838100+00:00",
+  "entries": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-09-28T06:00:00Z",
+      "run_type": "HINDCAST",
+      "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "entry_hash": "99d2d91ebfb0162dc4aade4a4d546ac112b8262d3c81b097a3e7498e3382af92",
+      "manifest_sha256": "f090a92b998d9a9cd839d6e797fa518b5786ebabee1bf131117305ac33a95479",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 29.5,
+        "alert_count": 10
+      }
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-09-29T06:00:00Z",
+      "run_type": "HINDCAST",
+      "prev_hash": "99d2d91ebfb0162dc4aade4a4d546ac112b8262d3c81b097a3e7498e3382af92",
+      "entry_hash": "7be4c690acb3e95ac4db338c932aaed1f48e0adced0370528a26bfee4d7c91f5",
+      "manifest_sha256": "01ac9c99ff2bfd297bf2c4c5b9d3dfb815b87bb0859ae805027bd066280d8975",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 31.0,
+        "alert_count": 12
+      }
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-09-30T06:00:00Z",
+      "run_type": "HINDCAST",
+      "prev_hash": "7be4c690acb3e95ac4db338c932aaed1f48e0adced0370528a26bfee4d7c91f5",
+      "entry_hash": "796dc81bae3ad877b4310b62dfff70a320443bfe76e354367ba5022df5793b6a",
+      "manifest_sha256": "e783aa11a491d28587908e2b3c27355652dcb1fe9849545f711f3efe6b99de5a",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 32.5,
+        "alert_count": 14
+      }
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-10-01T06:00:00Z",
+      "run_type": "HINDCAST",
+      "prev_hash": "796dc81bae3ad877b4310b62dfff70a320443bfe76e354367ba5022df5793b6a",
+      "entry_hash": "ddaaa91ee3bc45a255e14e307639a0e9b5acab17187fe24941f1dd7a5d59bfeb",
+      "manifest_sha256": "531192fedf4a0e1e5537687474e7b1ffd1474520385ef24b6ce8246cea763d09",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 34.0,
+        "alert_count": 16
+      }
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-10-02T06:00:00Z",
+      "run_type": "LIVE",
+      "prev_hash": "ddaaa91ee3bc45a255e14e307639a0e9b5acab17187fe24941f1dd7a5d59bfeb",
+      "entry_hash": "79b973b664bcf3a0fe73afd458b43c7c555a5643c5b493bebbb7069ca2a6940d",
+      "manifest_sha256": "a49afff93910086bb885cebd7634bde2cc30247ad5f708e87147018f44cd7b89",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 35.5,
+        "alert_count": 18
+      }
+    },
+    {
+      "sequence": 6,
+      "timestamp": "2026-10-03T06:00:00Z",
+      "run_type": "LIVE",
+      "prev_hash": "79b973b664bcf3a0fe73afd458b43c7c555a5643c5b493bebbb7069ca2a6940d",
+      "entry_hash": "b46e63fdf4e16a674e61c61d5dabb759d7d4f67ba9087cd2547c4fd9a1abdf5a",
+      "manifest_sha256": "2164515ada43c52a1759bb551a1a4ff524b4d784ee34d8283a50234ff8e513b1",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 37.0,
+        "alert_count": 20
+      }
+    },
+    {
+      "sequence": 7,
+      "timestamp": "2026-10-04T06:00:00Z",
+      "run_type": "LIVE",
+      "prev_hash": "b46e63fdf4e16a674e61c61d5dabb759d7d4f67ba9087cd2547c4fd9a1abdf5a",
+      "entry_hash": "240e16b19cfdd38375ab06fa6c99924f1752f169c13d13174d382b3677a42c52",
+      "manifest_sha256": "2de807b926179fcb971c4ca73c928b9eb40ca2be8e38e89ac790cac67a9965cc",
+      "model_version": "MP-Downscaler-v1.0.4",
+      "model_version_hash": "7ad443c6cff31bc5a337ce626de01eda1bc40bf432a3987f3b54d4403dcb4359",
+      "git_commit_sha": "80198b599e41a650f173486dcec481d2e7a19c5b",
+      "n_panchayats": 603,
+      "summary": {
+        "mean_risk": 38.5,
+        "alert_count": 22
+      }
+    }
+  ]
+}

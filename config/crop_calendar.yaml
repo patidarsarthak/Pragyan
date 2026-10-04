@@ -1,0 +1,360 @@
+# Authoritative Agro-Climatic Crop Calendar for Madhya Pradesh
+# Citing:
+# 1. JNKVV Jabalpur & RVSKVV Gwalior: Package of Practices for Field Crops of Madhya Pradesh (Rabi & Kharif)
+# 2. ICAR-Indian Institute of Soybean Research (IISR), Indore: Technical Bulletin on Soybean Production Technology
+# 3. ICAR-Indian Institute of Pulses Research (IIPR), Kanpur: Chickpea Production Technology & Weather Sensitivity
+# 4. ICAR-Directorate of Rapeseed-Mustard Research (DRMR), Bharatpur: Agro-Meteorological Advisory Protocol
+# 5. FAO Irrigation and Drainage Paper No. 56: Crop Evapotranspiration (Kc and Depletion Fraction MAD)
+
+version: "2.0"
+state: "Madhya Pradesh"
+primary_zones: ["ACZ-MP-06 (Malwa Plateau)", "ACZ-MP-07 (Central Narmada Valley)", "ACZ-MP-05 (Vindhyan Plateau)"]
+
+crops:
+  wheat:
+    canonical_name: "Wheat"
+    scientific_name: "Triticum aestivum"
+    season: "Rabi"
+    base_temperature_c: 4.5 # Sourced: Porter & Gawith (1999), JNKVV Wheat Agromet Bulletin
+    sowing_window:
+      early: "25 Oct - 05 Nov"
+      normal: "05 Nov - 25 Nov"
+      late: "25 Nov - 15 Dec"
+    total_duration_days: 120
+    gdd_total: 1850 # Accumulated GDD (base 4.5C) to maturity
+    kc_mid: 1.15 # FAO-56 Table 12
+    root_depth_cm: 90
+    mad: 0.55 # Management Allowed Depletion (FAO-56)
+    source: "JNKVV Package of Practices for Rabi Crops (Wheat), pp. 12-28; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "crown_root_initiation"
+        name: "Crown Root Initiation (CRI)"
+        start_day: 0
+        end_day: 25
+        gdd_req: 280
+        kc: 0.70
+        critical: true
+        water_requirement: "Critical (Mandatory 1st Irrigation at 21 DAS)"
+        source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 16"
+        status: "ACTIVE"
+      - id: "tillering"
+        name: "Tillering & Jointing"
+        start_day: 26
+        end_day: 50
+        gdd_req: 650
+        kc: 0.95
+        critical: false
+        water_requirement: "Moderate"
+        source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 18"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Booting, Heading & Anthesis"
+        start_day: 51
+        end_day: 80
+        gdd_req: 1200
+        kc: 1.15
+        critical: true
+        water_requirement: "Critical (Terminal Heat Sensitivity)"
+        source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 21"
+        status: "ACTIVE"
+      - id: "grain_filling"
+        name: "Milking, Dough & Maturation"
+        start_day: 81
+        end_day: 120
+        gdd_req: 1850
+        kc: 0.65
+        critical: false
+        water_requirement: "Low"
+        source: "JNKVV Package of Practices for Rabi Crops (Wheat), p. 24"
+        status: "ACTIVE"
+
+  chickpea:
+    canonical_name: "Chickpea (Gram)"
+    scientific_name: "Cicer arietinum"
+    season: "Rabi"
+    base_temperature_c: 8.0 # Sourced: Singh & Virmani (1996), ICAR-IIPR
+    sowing_window:
+      early: "15 Oct - 25 Oct"
+      normal: "25 Oct - 15 Nov"
+      late: "15 Nov - 05 Dec"
+    total_duration_days: 115
+    gdd_total: 1650
+    kc_mid: 1.00 # FAO-56 Table 12
+    root_depth_cm: 80
+    mad: 0.60
+    source: "ICAR-IIPR Kanpur / RVSKVV Package of Practices for Pulses, pp. 5-18; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "establishment"
+        name: "Establishment & Early Vegetative"
+        start_day: 0
+        end_day: 25
+        gdd_req: 310
+        kc: 0.50
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-IIPR Pulses Advisory, p. 8"
+        status: "ACTIVE"
+      - id: "vegetative"
+        name: "Branching & Pre-Flowering"
+        start_day: 26
+        end_day: 50
+        gdd_req: 680
+        kc: 0.85
+        critical: false
+        water_requirement: "Moderate"
+        source: "ICAR-IIPR Pulses Advisory, p. 11"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Flowering & Pod Initiation"
+        start_day: 51
+        end_day: 85
+        gdd_req: 1250
+        kc: 1.00
+        critical: true
+        water_requirement: "Critical (Moisture stress causes flower abortion; excess causes collar rot)"
+        source: "RVSKVV Chickpea Bulletin, p. 14"
+        status: "ACTIVE"
+      - id: "maturity"
+        name: "Pod Hardening & Senescence"
+        start_day: 86
+        end_day: 115
+        gdd_req: 1650
+        kc: 0.45
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-IIPR Pulses Advisory, p. 16"
+        status: "ACTIVE"
+
+  mustard:
+    canonical_name: "Mustard"
+    scientific_name: "Brassica juncea"
+    season: "Rabi"
+    base_temperature_c: 5.0 # Sourced: Morrison et al. (1989), ICAR-DRMR
+    sowing_window:
+      early: "25 Sep - 10 Oct"
+      normal: "10 Oct - 25 Oct"
+      late: "25 Oct - 10 Nov"
+    total_duration_days: 110
+    gdd_total: 1550
+    kc_mid: 1.05
+    root_depth_cm: 80
+    mad: 0.60
+    source: "ICAR-DRMR Bharatpur / RVSKVV Package of Practices for Oilseeds, pp. 31-48; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "seedling"
+        name: "Seedling & Rosette"
+        start_day: 0
+        end_day: 25
+        gdd_req: 290
+        kc: 0.45
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-DRMR Mustard Production Guidelines, p. 34"
+        status: "ACTIVE"
+      - id: "vegetative"
+        name: "Vegetative Branching"
+        start_day: 26
+        end_day: 45
+        gdd_req: 620
+        kc: 0.80
+        critical: false
+        water_requirement: "Moderate"
+        source: "ICAR-DRMR Mustard Production Guidelines, p. 37"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Flowering & Siliqua Formation"
+        start_day: 46
+        end_day: 75
+        gdd_req: 1120
+        kc: 1.05
+        critical: true
+        water_requirement: "Critical (Aphid & Frost Susceptibility Window)"
+        source: "ICAR-DRMR Mustard Production Guidelines, p. 41"
+        status: "ACTIVE"
+      - id: "maturity"
+        name: "Pod Maturation & Seed Hardening"
+        start_day: 76
+        end_day: 110
+        gdd_req: 1550
+        kc: 0.40
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-DRMR Mustard Production Guidelines, p. 45"
+        status: "ACTIVE"
+
+  soybean:
+    canonical_name: "Soybean"
+    scientific_name: "Glycine max"
+    season: "Kharif"
+    base_temperature_c: 10.0 # Sourced: Major et al. (1975), ICAR-IISR Indore
+    sowing_window:
+      early: "15 Jun - 25 Jun"
+      normal: "25 Jun - 10 Jul"
+      late: "10 Jul - 20 Jul"
+    total_duration_days: 105
+    gdd_total: 1600
+    kc_mid: 1.15
+    root_depth_cm: 70
+    mad: 0.50
+    source: "ICAR-IISR Indore Technical Bulletin 42 (Soybean Production Technology for Central India), pp. 8-22; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "emergence"
+        name: "Emergence & Early Vegetative"
+        start_day: 0
+        end_day: 15
+        gdd_req: 210
+        kc: 0.40
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-IISR Technical Bulletin 42, p. 11"
+        status: "ACTIVE"
+      - id: "vegetative"
+        name: "Canopy Branching"
+        start_day: 16
+        end_day: 35
+        gdd_req: 540
+        kc: 0.85
+        critical: false
+        water_requirement: "Moderate"
+        source: "ICAR-IISR Technical Bulletin 42, p. 13"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Flowering & Pod Initiation"
+        start_day: 36
+        end_day: 60
+        gdd_req: 980
+        kc: 1.15
+        critical: true
+        water_requirement: "Critical (Moisture stress induces flower drop)"
+        source: "ICAR-IISR Technical Bulletin 42, p. 15"
+        status: "ACTIVE"
+      - id: "pod_filling"
+        name: "Pod Bulking & Seed Filling"
+        start_day: 61
+        end_day: 85
+        gdd_req: 1350
+        kc: 1.10
+        critical: true
+        water_requirement: "High"
+        source: "ICAR-IISR Technical Bulletin 42, p. 18"
+        status: "ACTIVE"
+      - id: "maturity"
+        name: "Pod Ripening & Defoliation"
+        start_day: 86
+        end_day: 105
+        gdd_req: 1600
+        kc: 0.45
+        critical: false
+        water_requirement: "Low"
+        source: "ICAR-IISR Technical Bulletin 42, p. 20"
+        status: "ACTIVE"
+
+  maize:
+    canonical_name: "Maize"
+    scientific_name: "Zea mays"
+    season: "Kharif"
+    base_temperature_c: 10.0 # Sourced: Gilmore & Rogers (1958)
+    sowing_window:
+      early: "15 Jun - 25 Jun"
+      normal: "25 Jun - 05 Jul"
+      late: "05 Jul - 15 Jul"
+    total_duration_days: 90
+    gdd_total: 1450
+    kc_mid: 1.15
+    root_depth_cm: 80
+    mad: 0.50
+    source: "JNKVV Package of Practices for Kharif Crops (Maize), pp. 45-56; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "seedling"
+        name: "Germination & Seedling"
+        start_day: 0
+        end_day: 15
+        gdd_req: 190
+        kc: 0.40
+        critical: false
+        water_requirement: "Low"
+        source: "JNKVV Kharif Maize Guide, p. 48"
+        status: "ACTIVE"
+      - id: "vegetative"
+        name: "Knee-high Vegetative"
+        start_day: 16
+        end_day: 35
+        gdd_req: 520
+        kc: 0.85
+        critical: false
+        water_requirement: "Moderate"
+        source: "JNKVV Kharif Maize Guide, p. 50"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Tasseling & Silking"
+        start_day: 36
+        end_day: 60
+        gdd_req: 950
+        kc: 1.15
+        critical: true
+        water_requirement: "Critical (Tassel Blast & Silk Desiccation Risk)"
+        source: "JNKVV Kharif Maize Guide, p. 52"
+        status: "ACTIVE"
+      - id: "maturity"
+        name: "Grain Filling & Cob Maturation"
+        start_day: 61
+        end_day: 90
+        gdd_req: 1450
+        kc: 0.55
+        critical: false
+        water_requirement: "Low (Requires dry weather for drying)"
+        source: "JNKVV Kharif Maize Guide, p. 55"
+        status: "ACTIVE"
+
+  cotton:
+    canonical_name: "Cotton"
+    scientific_name: "Gossypium hirsutum"
+    season: "Kharif"
+    base_temperature_c: 15.0 # Sourced: Constable & Bange (2015), CICR Nagpur
+    sowing_window:
+      early: "20 May - 05 Jun"
+      normal: "05 Jun - 25 Jun"
+      late: "25 Jun - 05 Jul"
+    total_duration_days: 160
+    gdd_total: 2100
+    kc_mid: 1.20
+    root_depth_cm: 100
+    mad: 0.65
+    source: "ICAR-Central Institute for Cotton Research (CICR) Nagpur / RVSKVV Nimar Cotton Guide, pp. 10-35; FAO-56 Table 12"
+    status: "ACTIVE"
+    stages:
+      - id: "seedling"
+        name: "Germination & Square Formation"
+        start_day: 0
+        end_day: 45
+        gdd_req: 550
+        kc: 0.45
+        critical: false
+        water_requirement: "Low"
+        source: "CICR Cotton Agromet Guide, p. 14"
+        status: "ACTIVE"
+      - id: "flowering"
+        name: "Peak Flowering & Boll Development"
+        start_day: 46
+        end_day: 110
+        gdd_req: 1450
+        kc: 1.20
+        critical: true
+        water_requirement: "Critical (Moisture stress induces boll shedding)"
+        source: "CICR Cotton Agromet Guide, p. 22"
+        status: "ACTIVE"
+      - id: "maturity"
+        name: "Boll Opening & Harvesting"
+        start_day: 111
+        end_day: 160
+        gdd_req: 2100
+        kc: 0.65
+        critical: false
+        water_requirement: "Low (Rain causes lint staining)"
+        source: "CICR Cotton Agromet Guide, p. 30"
+        status: "ACTIVE"

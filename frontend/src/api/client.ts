@@ -17,11 +17,14 @@ import type {
   BaselineComparisonRecord,
   StationValidationRecord,
   ReplayEventItem,
+  ReplayEventSummary,
+  ReplayGPDetail,
+  ReplayColumnarParams,
 } from "./types";
 
 const BASE_URL = import.meta.env.VITE_API_URL !== undefined 
   ? import.meta.env.VITE_API_URL 
-  : (import.meta.env.PROD ? "" : "http://127.0.0.1:8000");
+  : "";
 const REQUEST_TIMEOUT_MS = 2500;
 
 export interface SnapshotMeta {
@@ -146,8 +149,8 @@ export async function fetchPanchayatWeather(gpCode: number): Promise<PanchayatWe
       return {
         gp_code: data.gp_code || data.gpcode || gpCode,
         panchayat_name: data.panchayat_name || data.panchayat || `Panchayat ${gpCode}`,
-        block_name: data.block_name || data.block || "Dhanbad Block",
-        district_name: data.district_name || data.district || "Dhanbad",
+        block_name: data.block_name || data.block || "Indore",
+        district_name: data.district_name || data.district || "Indore",
         elevation_m: data.elevation_m || 220,
         run_timestamp: data.run_timestamp || new Date().toISOString(),
         current_conditions: {
@@ -196,8 +199,8 @@ export async function fetchPanchayatWeather(gpCode: number): Promise<PanchayatWe
   return {
     gp_code: gpCode,
     panchayat_name: s?.panchayat || `Panchayat ${gpCode}`,
-    block_name: s?.block || "Topchanchi",
-    district_name: "Dhanbad",
+    block_name: s?.block || "Sanwer",
+    district_name: "Indore",
     elevation_m: 245,
     run_timestamp: snapshotData.meta.generated_at,
     current_conditions: {
@@ -305,8 +308,8 @@ export async function fetchPanchayatAdvisory(gpCode: number): Promise<PanchayatA
   const s = (snapshotData as any).sample_panchayat_advisory;
   return {
     gp_code: gpCode,
-    panchayat_name: s?.panchayat || "Topchanchi",
-    block_name: s?.block || "Topchanchi",
+    panchayat_name: s?.panchayat || "Sanwer",
+    block_name: s?.block || "Sanwer",
     date: "2024-09-15",
     actions: (s?.advisories || []).map((a: any) => ({
       action: a.advisory_text?.split(".")[0] || "Withhold Chemical Foliar Spray",
@@ -335,12 +338,12 @@ export async function fetchPanchayatAlerts(gpCode: number): Promise<PanchayatAle
     {
       alert_id: `ALT-${gpCode}-01`,
       gp_code: gpCode,
-      panchayat_name: "Topchanchi",
-      block_name: "Topchanchi",
+      panchayat_name: "Sanwer",
+      block_name: "Sanwer",
       severity: "Watch",
       hazard_type: "Heavy Rainfall",
       headline: "Moderate to Heavy Rainfall Warning",
-      description: "Localized downpour expected (25–45 mm). Ensure adequate drainage in standing paddy crops.",
+      description: "Localized downpour expected (25–45 mm). Ensure adequate drainage in standing paddy and soybean crops.",
       effective_from: "2024-09-15T06:00:00Z",
       expires_at: "2024-09-16T18:00:00Z",
       cap_xml_url: `${BASE_URL}/panchayats/${gpCode}/cap-alert.xml`,
@@ -348,8 +351,8 @@ export async function fetchPanchayatAlerts(gpCode: number): Promise<PanchayatAle
     {
       alert_id: `ALT-${gpCode}-02`,
       gp_code: gpCode,
-      panchayat_name: "Topchanchi",
-      block_name: "Topchanchi",
+      panchayat_name: "Sanwer",
+      block_name: "Sanwer",
       severity: "Advisory",
       hazard_type: "Pest/Disease",
       headline: "Foliar Blast & Sheath Rot Advisory",
@@ -549,7 +552,7 @@ export async function fetchUIModel(): Promise<import("./types").UIModelResponse 
   return null;
 }
 
-export async function fetchUIReplayEvents(): Promise<any[]> {
+export async function fetchUIReplayEvents(): Promise<ReplayEventItem[]> {
   try {
     const res = await fetchWithTimeout(`${BASE_URL}/api/ui/replay/events`);
     if (res.ok) {
@@ -558,6 +561,36 @@ export async function fetchUIReplayEvents(): Promise<any[]> {
     }
   } catch {}
   return [];
+}
+
+export async function fetchUIReplaySummary(eventId: string): Promise<ReplayEventSummary | null> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/replay/${encodeURIComponent(eventId)}/summary`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchUIReplayGP(eventId: string, lgd: number): Promise<ReplayGPDetail | null> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/replay/${encodeURIComponent(eventId)}/gp/${lgd}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchUIReplayParams(
+  eventId: string,
+  day: number = 1,
+  scope: string = "district:407"
+): Promise<ReplayColumnarParams | null> {
+  try {
+    const res = await fetchWithTimeout(
+      `${BASE_URL}/api/ui/replay/${encodeURIComponent(eventId)}/params?day=${day}&scope=${encodeURIComponent(scope)}`
+    );
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
 }
 
 export async function fetchUIReplayDetail(eventId: string): Promise<any | null> {
@@ -602,3 +635,258 @@ export async function fetchUISearch(query: string): Promise<any[]> {
   return [];
 }
 
+// -----------------------------------------------------------------------------
+// 4-Level Admin Hierarchy & Search-V2 (Prompt 09)
+// -----------------------------------------------------------------------------
+
+export async function fetchUIChildren(
+  level: "state" | "district" | "block" | "gp" = "state",
+  id?: string | number
+): Promise<import("./types").UIChildItem[]> {
+  try {
+    const q = new URLSearchParams({ level });
+    if (id !== undefined && id !== null) q.set("id", String(id));
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/children?${q.toString()}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return [];
+}
+
+export async function fetchUISearchV2(
+  query: string,
+  limit: number = 10
+): Promise<import("./types").UISearchV2Result[]> {
+  try {
+    if (!query || query.trim().length < 1) return [];
+    const res = await fetchWithTimeout(
+      `${BASE_URL}/api/ui/search-v2?q=${encodeURIComponent(query.trim())}&limit=${limit}`
+    );
+    if (res.ok) return await res.json();
+  } catch {}
+  return [];
+}
+
+export async function fetchUIAdminGeojson(
+  level: "state" | "district" | "gp",
+  id?: string | number
+): Promise<any | null> {
+  try {
+    const q = new URLSearchParams({ level });
+    if (id !== undefined && id !== null) q.set("id", String(id));
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/admin-geojson?${q.toString()}`, 4000);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+// -----------------------------------------------------------------------------
+// Crop-Wise Advisory Endpoints (Prompt 10)
+// -----------------------------------------------------------------------------
+
+export async function fetchCrops(stateCode: number = 23): Promise<import("./types").CropInfo[]> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/crops?state_code=${stateCode}`);
+    if (res.ok) {
+      const data = await res.json();
+      return data.crops || [];
+    }
+  } catch {}
+  // Sourced Fallback for MP crops
+  return [
+    {
+      crop_id: "soybean",
+      name: "Soybean",
+      hindi_name: "सोयाबीन",
+      season: "Kharif",
+      sowing_window: "15 June - 05 July",
+      duration_days: 95,
+      gdd_target: 1550,
+      base_temp_c: 10.0,
+      mad_fraction: 0.5,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "durum_wheat",
+      name: "Wheat (Durum)",
+      hindi_name: "गेहूं (मालवी/कठिया)",
+      season: "Rabi",
+      sowing_window: "25 October - 15 November",
+      duration_days: 115,
+      gdd_target: 1750,
+      base_temp_c: 4.5,
+      mad_fraction: 0.55,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "bread_wheat",
+      name: "Wheat (Bread/Sharbati)",
+      hindi_name: "गेहूं (शरबती)",
+      season: "Rabi",
+      sowing_window: "01 November - 25 November",
+      duration_days: 125,
+      gdd_target: 1850,
+      base_temp_c: 4.5,
+      mad_fraction: 0.55,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "chickpea",
+      name: "Chickpea (Gram)",
+      hindi_name: "चना",
+      season: "Rabi",
+      sowing_window: "10 October - 10 November",
+      duration_days: 105,
+      gdd_target: 1600,
+      base_temp_c: 8.0,
+      mad_fraction: 0.6,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "mustard",
+      name: "Mustard",
+      hindi_name: "सरसों",
+      season: "Rabi",
+      sowing_window: "25 September - 20 October",
+      duration_days: 110,
+      gdd_target: 1500,
+      base_temp_c: 5.0,
+      mad_fraction: 0.6,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "maize",
+      name: "Maize",
+      hindi_name: "मक्का",
+      season: "Kharif",
+      sowing_window: "15 June - 05 July",
+      duration_days: 100,
+      gdd_target: 1650,
+      base_temp_c: 10.0,
+      mad_fraction: 0.55,
+      is_mp_priority: true,
+    },
+    {
+      crop_id: "cotton",
+      name: "Cotton",
+      hindi_name: "कपास",
+      season: "Kharif",
+      sowing_window: "25 May - 20 June",
+      duration_days: 160,
+      gdd_target: 2200,
+      base_temp_c: 15.0,
+      mad_fraction: 0.65,
+      is_mp_priority: true,
+    },
+  ];
+}
+
+export async function fetchAdvisoryDossier(
+  lgd: number,
+  params?: {
+    crop_id?: string;
+    sowing_date?: string;
+    soil_class?: string;
+    irrigation_source?: string;
+  }
+): Promise<import("./types").CropAdvisoryDossier | null> {
+  try {
+    const q = new URLSearchParams();
+    if (params?.crop_id) q.set("crop_id", params.crop_id);
+    if (params?.sowing_date) q.set("sowing_date", params.sowing_date);
+    if (params?.soil_class) q.set("soil_class", params.soil_class);
+    if (params?.irrigation_source) q.set("irrigation_source", params.irrigation_source);
+
+    const queryStr = q.toString() ? `?${q.toString()}` : "";
+    const res = await fetchWithTimeout(`${BASE_URL}/api/advisory/${lgd}${queryStr}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchAdvisoryCohorts(
+  lgd: number,
+  cropId?: string
+): Promise<import("./types").AdvisoryCohortResponse | null> {
+  try {
+    const q = cropId ? `?crop_id=${encodeURIComponent(cropId)}` : "";
+    const res = await fetchWithTimeout(`${BASE_URL}/api/advisory/${lgd}/cohorts${q}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchAdvisoryExplain(
+  lgd: number,
+  cropId?: string
+): Promise<import("./types").AdvisoryExplainResponse | null> {
+  try {
+    const q = cropId ? `?crop_id=${encodeURIComponent(cropId)}` : "";
+    const res = await fetchWithTimeout(`${BASE_URL}/api/advisory/${lgd}/explain${q}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchCropLayers(
+  leadDay: number = 1,
+  cropId: string = "durum_wheat",
+  metric: string = "irrigation_due_days"
+): Promise<import("./types").CropLayerItem[]> {
+  try {
+    const res = await fetchWithTimeout(
+      `${BASE_URL}/api/ui/crop-layers?lead_day=${leadDay}&crop_id=${cropId}&metric=${metric}`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      return data.features || [];
+    }
+  } catch {}
+  return [];
+}
+
+export async function saveFarmerProfile(payload: {
+  phone_number?: string;
+  panchayat_id: number;
+  crop_id: string;
+  sowing_date: string;
+  soil_class?: string;
+  irrigation_source?: string;
+  field_area_acres?: number;
+}): Promise<any | null> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/profile`, 2500);
+    // POST request
+    const postRes = await fetch(`${BASE_URL}/api/profile`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (postRes.ok) return await postRes.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchUILedger(): Promise<any | null> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/ledger`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchUIReportCard(mode: "hindcast" | "live" = "hindcast"): Promise<any | null> {
+  try {
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/report-card?mode=${mode}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
+
+export async function fetchUICoverage(districtId?: number): Promise<any | null> {
+  try {
+    const q = districtId ? `?district_id=${districtId}` : "";
+    const res = await fetchWithTimeout(`${BASE_URL}/api/ui/coverage${q}`);
+    if (res.ok) return await res.json();
+  } catch {}
+  return null;
+}
