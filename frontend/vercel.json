@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!api|states|districts|blocks|panchayats|map|health|config|advisory|verification|replay|analytics|reporter).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

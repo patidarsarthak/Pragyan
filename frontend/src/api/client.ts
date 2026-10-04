@@ -19,7 +19,9 @@ import type {
   ReplayEventItem,
 } from "./types";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+const BASE_URL = import.meta.env.VITE_API_URL !== undefined 
+  ? import.meta.env.VITE_API_URL 
+  : (import.meta.env.PROD ? "" : "http://127.0.0.1:8000");
 const REQUEST_TIMEOUT_MS = 2500;
 
 export interface SnapshotMeta {
