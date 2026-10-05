@@ -1192,17 +1192,16 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 }
 
 .sk-topbar-inner {
-  max-width: 1600px;
+  max-width: 1680px;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: nowrap;
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow: hidden;
 }
 .sk-topbar-inner::-webkit-scrollbar {
   display: none;
@@ -1239,8 +1238,8 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .sk-brand-wordmark {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 18px;
-  letter-spacing: -0.02em;
+  font-size: 22px;
+  letter-spacing: -0.025em;
   color: var(--ink);
   line-height: 1;
   display: inline-flex;
@@ -1393,13 +1392,10 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   flex-shrink: 0;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
   .sk-navtab {
-    padding: 0 8px;
-    font-size: 11.5px;
-  }
-  .sk-pill-cycle {
-    display: none; /* Hide date pill on standard laptops so all 8 tabs fit completely and cleanly! */
+    padding: 0 9px;
+    font-size: 12px;
   }
 }
 
@@ -1409,11 +1405,11 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
     display: none;
   }
   .sk-navtab {
-    padding: 0 6px;
-    font-size: 11px;
+    padding: 0 7px;
+    font-size: 11.5px;
   }
   .sk-pill {
-    padding: 0 7px;
+    padding: 0 8px;
     font-size: 10px;
   }
 }

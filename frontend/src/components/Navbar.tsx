@@ -41,8 +41,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: "methodology", label: t("tabAbout", lang), title: "Methodology & Architecture Overview" },
   ];
 
-  const cycleDate = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
-
   return (
     <>
       {isSnapshot && (
@@ -103,14 +101,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right-Side Status Pills & Compact Controls */}
           <div className="sk-topbar-right">
-            {/* Cycle Status Pill (White pill with green dot) */}
-            <span className="sk-pill sk-pill-cycle" title="Active Forecast Initialization Cycle">
-              <span className="sk-dot-green" aria-hidden="true" />
-              <span className="sk-pill-mono">
-                {t("statusIssued", lang)} {cycleDate} · {t("statusValid", lang)} {cycleDate} ({t("statusDay", lang)} {leadDay})
-              </span>
-            </span>
-
             {/* Bust / Alert Count Pill (Solid Red with Pulsing White Dot) */}
             <button
               className="sk-pill sk-pill-alert"
