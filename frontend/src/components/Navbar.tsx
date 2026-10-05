@@ -31,11 +31,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleLowBandwidth,
 }) => {
   const tabs = [
-    { id: "forecast", label: t("tabOperations", lang) }, // "Operations"
-    { id: "alerts", label: t("tabAlerts", lang) }, // "Alerts"
-    { id: "evidence", label: lang === "en" ? "Model" : t("tabModel", lang), alt: "Evidence" }, // "Model"
-    { id: "past-events", label: lang === "en" ? "Replay a real bust" : t("tabPastEvents", lang) }, // "Replay a real bust"
-    { id: "methodology", label: t("tabAbout", lang) }, // "About"
+    { id: "forecast", label: t("tabOperations", lang), title: "Operational 1km Micro-Climate & Risk" },
+    { id: "alerts", label: t("tabAlerts", lang), title: "Real-Time Panchayats in Alert/Bust Band" },
+    { id: "command", label: t("tabCommand", lang), title: "Emergency Command Centre, SDRF & SOP Protocol" },
+    { id: "evidence", label: lang === "en" ? "Model" : t("tabModel", lang), alt: "Evidence", title: "Downscaling Physics & SHAP Explainability" },
+    { id: "past-events", label: lang === "en" ? "Replay" : t("tabReplay", lang), alt: "Past Events", title: "Extreme Weather Historical Counterfactual Replay" },
+    { id: "health", label: lang === "en" ? "Health" : t("tabHealth", lang), title: "System Health & Cryptographic Merkle Ledger Audit" },
+    { id: "api-widget", label: lang === "en" ? "API & Data" : t("tabApiWidget", lang), title: "REST Endpoints, JSON Export & Embeddable Widget" },
+    { id: "methodology", label: t("tabAbout", lang), title: "Methodology & Architecture Overview" },
   ];
 
   const cycleDate = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
@@ -78,10 +81,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Center Navigation Tabs (Exact visual layout from screenshot) */}
+          {/* Center Navigation Tabs (All options directly in header) */}
           <nav className="sk-navtabs" aria-label="Main Navigation">
             {tabs.map((tab) => {
-              const isActive = currentTab === tab.id;
+              const isActive = !farmerMode && currentTab === tab.id;
               return (
                 <button
                   key={tab.id}
@@ -89,6 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => onTabChange(tab.id)}
                   aria-selected={isActive}
                   role="tab"
+                  title={tab.title}
                   aria-label={tab.alt ? `${tab.label} (${tab.alt})` : tab.label}
                 >
                   <span className="sk-tab-label">{tab.label}</span>

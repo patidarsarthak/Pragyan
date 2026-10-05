@@ -54,6 +54,7 @@ export const App: React.FC = () => {
   }, []);
 
   const handleTabChange = (tab: string) => {
+    setFarmerMode(false);
     setCurrentTab(tab);
     const url = new URL(window.location.href);
     url.searchParams.set("tab", tab);
