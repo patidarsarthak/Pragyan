@@ -35,14 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const tabs = [
     { id: "forecast", label: t("tabOperations", lang), sub: null },
     { id: "alerts", label: t("tabAlerts", lang), sub: null },
-    { id: "command", label: t("tabCommand", lang), sub: null },
     { id: "evidence", label: t("tabEvidence", lang), sub: null },
-    { id: "past-events", label: t("tabReplay", lang), sub: t("tabReplaySub", lang) },
-    { id: "health", label: t("tabHealth", lang), sub: null },
-    { id: "api-widget", label: t("tabApiWidget", lang), sub: null },
-    { id: "methodology", label: t("tabAbout", lang), sub: null },
   ];
-
 
   const cycleDate = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
 
@@ -61,18 +55,24 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       <header className="sk-topbar">
         <div className="sk-topbar-inner">
-          {/* Brand with Pragyan Leaf Logo and Wordmark */}
+          {/* Brand with Logo Icon and Wordmark (restored as originally styled) */}
           <button
             className="sk-brand"
             onClick={() => onTabChange("forecast")}
             aria-label="Pragyan Home"
             style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: "pointer", padding: 0, flexShrink: 0 }}
           >
-            <PragyanLogo height={26} showTagline={false} />
-            <span style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0,0,0,0)", border: 0 }}>
-              Pragyan
-            </span>
+            <img
+              src="/logo_icon.png"
+              alt="Pragyan"
+              width="36"
+              height="36"
+              style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0, display: "block" }}
+            />
             <div className="sk-brand-text">
+              <span className="sk-brand-wordmark">
+                {t("brandName", lang)}
+              </span>
               <span className="sk-brand-divider" aria-hidden="true">/</span>
               <span className="sk-brand-subtitle">{t("pilotBadge", lang)}</span>
             </div>
@@ -157,14 +157,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 className="sk-drawer-toggle-btn"
                 onClick={onOpenDrawer}
-                title="Open Pragyan Directory & Tools"
-                aria-label="Open Pragyan Directory & Tools"
+                title="Open Pragyan Directory & System Sections"
+                aria-label="Open Pragyan Directory & System Sections"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <line x1="3" y1="12" x2="21" y2="12" />
                   <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
+                <span className="sk-drawer-toggle-label">
+                  {lang === "hi" ? "मेन्यू" : "Sections"}
+                </span>
               </button>
             )}
           </div>

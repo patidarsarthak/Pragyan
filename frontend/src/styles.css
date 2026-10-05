@@ -3485,4 +3485,237 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   align-items: center;
 }
 
+/* Drawer Section Tabs */
+.sk-drawer-nav-tabs {
+  display: flex;
+  background: #F1F5F9;
+  padding: 6px 12px;
+  gap: 6px;
+  overflow-x: auto;
+  border-bottom: 1px solid #E2E8F0;
+  scrollbar-width: thin;
+}
 
+.sk-drawer-nav-tab {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #475569;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.sk-drawer-nav-tab:hover {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+.sk-drawer-nav-tab.is-active {
+  background: #FFFFFF;
+  color: #1D4ED8;
+  border-color: #CBD5E1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Full Info Container */
+.sk-drawer-full-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sk-drawer-info-hero {
+  background: linear-gradient(135deg, #EFF6FF, #F8FAFC);
+  border: 1px solid #DBEAFE;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.sk-drawer-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #1D4ED8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sk-drawer-hero-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 4px 0 6px 0;
+  line-height: 1.35;
+}
+
+.sk-drawer-hero-p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+}
+
+.sk-drawer-section-block {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.sk-drawer-block-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+}
+
+.sk-drawer-desc-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0;
+}
+
+.sk-drawer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.sk-drawer-stat-item {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sk-stat-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2563EB;
+}
+
+.sk-stat-lbl {
+  font-size: 10px;
+  color: #64748B;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.sk-drawer-bullet-list {
+  margin: 6px 0 0 0;
+  padding-left: 18px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.sk-drawer-bullet-list li {
+  margin-bottom: 4px;
+}
+
+/* API Cards */
+.sk-api-endpoint-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.sk-api-method-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.sk-api-method-badge.GET {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.sk-api-path {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.sk-api-desc {
+  font-size: 11px;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sk-drawer-code-preview {
+  background: #0F172A;
+  border-radius: 6px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.sk-drawer-code-preview pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 10.5px;
+  color: #7DD3FC;
+  line-height: 1.4;
+}
+
+/* Widget Preview */
+.sk-widget-preview-box {
+  background: #F8FAFC;
+  border: 1px dashed #93C5FD;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.sk-widget-mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header Drawer Toggle Button */
+.sk-drawer-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #0F172A;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.sk-drawer-toggle-btn:hover {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  color: #1D4ED8;
+}
+
+.sk-drawer-toggle-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: inherit;
+}
