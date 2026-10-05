@@ -64,17 +64,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="sk-brand"
             onClick={() => onTabChange("forecast")}
             aria-label="Pragyan Home"
-            style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: "pointer", padding: 0, flexShrink: 0 }}
           >
             <img
               src="/logo_icon.png"
               alt="Pragyan"
               width="36"
               height="36"
-              style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0 }}
+              style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0, display: "block" }}
             />
             <div className="sk-brand-text">
-              <span className="sk-brand-wordmark" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "0.04em", color: "#0B1220" }}>
+              <span className="sk-brand-wordmark">
                 {t("brandName", lang)}
               </span>
               <span className="sk-brand-divider" aria-hidden="true">/</span>

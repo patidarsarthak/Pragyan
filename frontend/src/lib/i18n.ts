@@ -14,9 +14,9 @@ export const DICTIONARY = {
     bn: "গ্রাম পঞ্চায়েত স্তরের মাইক্রো-আবহাওয়া ও কৃষি পরামর্শ ব্যবস্থা",
   },
   pilotBadge: {
-    en: "Madhya Pradesh Pilot · Panchayat Weather Intelligence",
-    hi: "मध्य प्रदेश पायलट · ग्राम पंचायत मौसम प्रज्ञान",
-    bn: "মধ্যপ্রদেশ পাইলট · পঞ্চায়েত আবহাওয়া বুদ্ধিমত্তা",
+    en: "Madhya Pradesh Pilot",
+    hi: "मध्य प्रदेश पायलट",
+    bn: "মধ্যপ্রদেশ পাইলট",
   },
   dataVintage: {
     en: "Archived 2024 Test-Period Data",
