@@ -99,12 +99,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right-Side Status Pills & Controls */}
           <div className="sk-topbar-right">
-            {/* Cycle / Valid Pill (White with steady green dot) */}
-            <div className="sk-pill sk-pill-cycle" title="Model Initialization & Valid Day">
-              <span className="sk-dot-green" aria-hidden="true" />
-              <span className="sk-pill-mono">{t("statusIssued", lang)} {cycleDate} · {t("statusValid", lang)} {cycleDate} ({t("statusDay", lang)} {leadDay})</span>
-            </div>
-
             {/* Alert Count Pill (Solid Red with Pulsing White Dot) */}
             <button
               className="sk-pill sk-pill-alert"
