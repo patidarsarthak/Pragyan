@@ -11,7 +11,6 @@ import { SystemHealthTab } from "./components/SystemHealthTab";
 import { ApiWidgetTab } from "./components/ApiWidgetTab";
 import { LowBandwidthView } from "./components/LowBandwidthView";
 import { FarmerModeCard } from "./components/farmer/FarmerModeCard";
-import { RightSlideDrawer } from "./components/RightSlideDrawer";
 import { Language } from "./lib/i18n";
 import { fetchHealth, currentSnapshotState } from "./api/client";
 
@@ -21,7 +20,6 @@ export const App: React.FC = () => {
   const [isSnapshot, setIsSnapshot] = useState<boolean>(false);
   const [farmerMode, setFarmerMode] = useState<boolean>(false);
   const [lowBandwidthMode, setLowBandwidthMode] = useState<boolean>(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
   // Sync tab and language with URL search parameter
   useEffect(() => {
@@ -134,14 +132,6 @@ export const App: React.FC = () => {
         onToggleFarmerMode={handleToggleFarmerMode}
         lowBandwidth={lowBandwidthMode}
         onToggleLowBandwidth={handleToggleLowBandwidth}
-        onOpenDrawer={() => setIsDrawerOpen(true)}
-      />
-
-      <RightSlideDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        onTabChange={handleTabChange}
-        lang={lang}
       />
 
       {farmerMode && (

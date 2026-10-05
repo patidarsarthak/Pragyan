@@ -1192,13 +1192,20 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 }
 
 .sk-topbar-inner {
-  max-width: 1560px;
+  max-width: 1600px;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sk-topbar-inner::-webkit-scrollbar {
+  display: none;
 }
 
 .sk-brand {
@@ -1210,6 +1217,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   cursor: pointer;
   padding: 0;
   text-align: left;
+  flex-shrink: 0;
 }
 
 .sk-brand-glyph {
@@ -1264,21 +1272,21 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .sk-navtabs {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   flex-shrink: 0;
 }
 
 .sk-navtab {
   background: transparent;
   border: none;
-  height: 36px;
+  height: 32px;
   padding: 0 12px;
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: 9999px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: var(--ink-2);
+  color: #374151;
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1289,15 +1297,15 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 }
 
 .sk-navtab:hover {
-  background: rgba(11, 18, 32, 0.05);
-  color: var(--ink);
+  background: rgba(15, 23, 42, 0.06);
+  color: #0F172A;
 }
 
 .sk-navtab.is-active {
-  background: var(--ink);
+  background: #0B1220;
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 1px 3px rgba(11, 18, 32, 0.12);
+  box-shadow: 0 1px 3px rgba(11, 18, 32, 0.16);
 }
 
 .sk-tab-sub {
@@ -1312,25 +1320,28 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .sk-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 34px;
-  padding: 0 12px;
+  gap: 7px;
+  height: 30px;
+  padding: 0 11px;
   border-radius: 9999px;
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-family: var(--font-mono);
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   white-space: nowrap;
   line-height: 1;
 }
 
 .sk-pill-cycle {
   background: #ffffff;
-  color: var(--ink);
+  color: #334155;
   border: 1px solid var(--rule);
 }
 
@@ -1338,16 +1349,18 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--calm);
+  background: #00A389;
+  flex-shrink: 0;
 }
 
 .sk-pill-alert {
-  background: var(--alert);
+  background: #F5254A;
   color: #ffffff;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px -2px rgba(245, 37, 74, 0.35);
-  transition: transform 0.18s;
+  font-weight: 700;
+  box-shadow: 0 2px 8px -1px rgba(245, 37, 74, 0.35);
+  transition: transform 0.16s ease;
 }
 
 .sk-pill-alert:hover {
@@ -1359,6 +1372,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   height: 7px;
   border-radius: 50%;
   background: #ffffff;
+  flex-shrink: 0;
   animation: sk-beat 1.8s infinite;
 }
 
@@ -1366,15 +1380,32 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   background: #ffffff;
   border: 1px solid var(--rule);
   border-radius: 9999px;
-  padding: 5px 12px;
-  font-size: 12px;
+  padding: 4px 10px;
+  font-size: 11.5px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   color: var(--ink);
-  transition: all 0.18s;
+  transition: all 0.16s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1200px) {
+  .sk-brand-subtitle,
+  .sk-brand-divider {
+    display: none;
+  }
+  .sk-navtab {
+    padding: 0 9px;
+    font-size: 12px;
+  }
+  .sk-pill {
+    padding: 0 8px;
+    font-size: 10px;
+  }
 }
 
 .sk-farmer-toggle.is-active {

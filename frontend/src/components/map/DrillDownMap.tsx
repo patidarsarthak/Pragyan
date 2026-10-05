@@ -274,21 +274,27 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           activeStateId={null}
           hideHeader={true}
           onHoverFeature={onHoverFeature}
-          onSelectState={(stateId) => {
-            onNavigateScope({ level: "state", id: "IN-MP", name: "Madhya Pradesh" });
+          onSelectState={(stateId, stateName) => {
+            if (!stateId) {
+              onNavigateScope({ level: "india", id: "IN", name: "India" });
+            } else {
+              const name = stateName || (stateId === "IN-MP" ? "Madhya Pradesh" : stateId);
+              onNavigateScope({ level: "state", id: stateId, name });
+            }
           }}
         />
       </div>
     );
   }
 
-  // LEVEL 2: State (Madhya Pradesh) 55-Districts Geographic Map
+  // LEVEL 2: State Geographic Map (e.g. Madhya Pradesh 55-Districts)
   if (currentScope.level === "state") {
+    const activeState = typeof currentScope.id === "string" && currentScope.id.startsWith("IN-") ? currentScope.id : "IN-MP";
     return (
       <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "520px" }}>
         <IndiaChoroplethMap
           regions={regions}
-          activeStateId="IN-MP"
+          activeStateId={activeState}
           hideHeader={true}
           onHoverFeature={onHoverFeature}
           onSelectState={() => {

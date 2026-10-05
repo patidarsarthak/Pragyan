@@ -15,7 +15,6 @@ interface NavbarProps {
   onToggleFarmerMode?: () => void;
   lowBandwidth?: boolean;
   onToggleLowBandwidth?: () => void;
-  onOpenDrawer?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -30,12 +29,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleFarmerMode,
   lowBandwidth = false,
   onToggleLowBandwidth,
-  onOpenDrawer,
 }) => {
   const tabs = [
-    { id: "forecast", label: t("tabOperations", lang), sub: null },
-    { id: "alerts", label: t("tabAlerts", lang), sub: null },
-    { id: "evidence", label: t("tabEvidence", lang), sub: null },
+    { id: "forecast", label: t("tabOperations", lang) }, // "Operations"
+    { id: "alerts", label: t("tabAlerts", lang) }, // "Alerts"
+    { id: "evidence", label: lang === "en" ? "Model" : t("tabModel", lang), alt: "Evidence" }, // "Model"
+    { id: "past-events", label: lang === "en" ? "Replay a real bust" : t("tabPastEvents", lang) }, // "Replay a real bust"
+    { id: "methodology", label: t("tabAbout", lang) }, // "About"
   ];
 
   const cycleDate = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       <header className="sk-topbar">
         <div className="sk-topbar-inner">
-          {/* Brand with Logo Icon and Wordmark (restored as originally styled) */}
+          {/* Brand with Logo Icon and Wordmark */}
           <button
             className="sk-brand"
             onClick={() => onTabChange("forecast")}
@@ -65,8 +65,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             <img
               src="/logo_icon.png"
               alt="Pragyan"
-              width="36"
-              height="36"
+              width="34"
+              height="34"
               style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0, display: "block" }}
             />
             <div className="sk-brand-text">
@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Center Navtabs */}
+          {/* Center Navigation Tabs (Exact visual layout from screenshot) */}
           <nav className="sk-navtabs" aria-label="Main Navigation">
             {tabs.map((tab) => {
               const isActive = currentTab === tab.id;
@@ -89,24 +89,34 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => onTabChange(tab.id)}
                   aria-selected={isActive}
                   role="tab"
+                  aria-label={tab.alt ? `${tab.label} (${tab.alt})` : tab.label}
                 >
                   <span className="sk-tab-label">{tab.label}</span>
-                  {tab.sub && <span className="sk-tab-sub">"{tab.sub}"</span>}
                 </button>
               );
             })}
           </nav>
 
-          {/* Right-Side Status Pills & Controls */}
+          {/* Right-Side Status Pills & Compact Controls */}
           <div className="sk-topbar-right">
-            {/* Alert Count Pill (Solid Red with Pulsing White Dot) */}
+            {/* Cycle Status Pill (White pill with green dot) */}
+            <span className="sk-pill sk-pill-cycle" title="Active Forecast Initialization Cycle">
+              <span className="sk-dot-green" aria-hidden="true" />
+              <span className="sk-pill-mono">
+                {t("statusIssued", lang)} {cycleDate} · {t("statusValid", lang)} {cycleDate} ({t("statusDay", lang)} {leadDay})
+              </span>
+            </span>
+
+            {/* Bust / Alert Count Pill (Solid Red with Pulsing White Dot) */}
             <button
               className="sk-pill sk-pill-alert"
               onClick={() => onTabChange("alerts")}
-              title={`${alertCount} Panchayats in ALERT band today`}
+              title={`${alertCount} Panchayats in ALERT / BUST band today`}
             >
               <span className="sk-dot-pulse" aria-hidden="true" />
-              <span className="sk-pill-mono">{alertCount} {t("statusAlert", lang)} · {t("statusDay", lang)} {leadDay}</span>
+              <span className="sk-pill-mono">
+                {alertCount} {lang === "en" ? "BUST" : t("statusAlert", lang)} · {t("statusDay", lang)} {leadDay}
+              </span>
             </button>
 
             {/* Farmer Mode Toggle Switch */}
@@ -129,7 +139,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onToggleLowBandwidth}
                 title="Toggle Accessible Low-Bandwidth Mode"
                 aria-pressed={lowBandwidth}
-                style={{ marginLeft: "4px" }}
               >
                 <span>📶</span>
                 <span className="sk-farmer-text">{t("lowBandwidth", lang)}</span>
@@ -145,25 +154,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {lang === "en" ? "हिन्दी" : lang === "hi" ? "বাংলা" : "English"}
             </button>
-
-            {/* 3-Line Hamburger Drawer Button */}
-            {onOpenDrawer && (
-              <button
-                className="sk-drawer-toggle-btn"
-                onClick={onOpenDrawer}
-                title="Open Pragyan Directory & System Sections"
-                aria-label="Open Pragyan Directory & System Sections"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-                <span className="sk-drawer-toggle-label">
-                  {lang === "hi" ? "मेन्यू" : "Sections"}
-                </span>
-              </button>
-            )}
           </div>
         </div>
       </header>

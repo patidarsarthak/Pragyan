@@ -68,7 +68,7 @@ interface IndiaChoroplethMapProps {
   regions?: RegionSummary[];
   selectedRegionId?: string | null;
   onSelectRegion?: (regionId: string, regionName?: string) => void;
-  onSelectState?: (stateId: string | null) => void;
+  onSelectState?: (stateId: string | null, stateName?: string) => void;
   activeStateId?: string | null;
   hideHeader?: boolean;
   onHoverFeature?: (info: { name: string; level: string; riskScore?: number; riskBand?: string } | null) => void;
@@ -96,9 +96,9 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
   const activeState = activeStateId ?? localActiveState;
 
   // Handle active state changes
-  const handleSetActiveState = (stateId: string | null) => {
+  const handleSetActiveState = (stateId: string | null, stateName?: string) => {
     setLocalActiveState(stateId);
-    if (onSelectState) onSelectState(stateId);
+    if (onSelectState) onSelectState(stateId, stateName);
     setHover(null);
   };
 
@@ -542,11 +542,11 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
                   tabIndex={0}
                   role="button"
                   aria-label={`${f.properties.state_name}${band ? `, ${bandLabel(band)}` : ""}`}
-                  onClick={() => handleSetActiveState(f.properties.state_id)}
+                  onClick={() => handleSetActiveState(f.properties.state_id, f.properties.state_name)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
-                      handleSetActiveState(f.properties.state_id);
+                      handleSetActiveState(f.properties.state_id, f.properties.state_name);
                     }
                   }}
                   onMouseMove={track({ kind: "state", id: f.properties.state_id })}
