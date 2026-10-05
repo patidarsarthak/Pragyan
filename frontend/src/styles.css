@@ -3915,3 +3915,177 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
     transform: translateY(0);
   }
 }
+
+/* Image 1 Ranked Leaderboard Styling */
+.sk-worst-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.sk-worst-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.16s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.sk-worst-item:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sk-worst-rank {
+  font-family: var(--font-mono, monospace);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #64748B;
+  width: 34px;
+  flex-shrink: 0;
+}
+
+.sk-worst-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sk-worst-name {
+  font-family: var(--font-display, inherit);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-worst-dot {
+  color: #94A3B8;
+  font-weight: 800;
+}
+
+.sk-worst-meta {
+  font-size: 11px;
+  color: #64748B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-worst-capsule {
+  width: 14px;
+  height: 18px;
+  background: #F1F5F9;
+  border-radius: 4px;
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.sk-worst-score {
+  font-family: var(--font-display, inherit);
+  font-size: 16px;
+  font-weight: 800;
+  color: #00A389 !important; /* Bold Emerald Green from Image 1 */
+  min-width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Image 2 Observed Pills and Trajectory Chart Styling */
+.sk-observed-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sk-observed-label {
+  font-size: 11.5px;
+  color: #64748B;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.sk-observed-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sk-observed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: 9999px;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.sk-observed-pill:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+}
+
+.sk-observed-pill.is-active {
+  background: #0B1220;
+  color: #FFFFFF;
+  border-color: #0B1220;
+}
+
+.sk-observed-driver-chip {
+  font-size: 9.5px;
+  font-weight: 700;
+  background: #FDA4AF;
+  color: #9F1239;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: lowercase;
+}
+
+.sk-observed-pill.is-active .sk-observed-driver-chip {
+  background: #FB7185;
+  color: #881337;
+}
+
+.sk-trajectory-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.sk-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sk-legend-item.blue {
+  color: #2563EB;
+}
+
+.sk-legend-item.red {
+  color: #EF4444;
+}
