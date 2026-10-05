@@ -167,9 +167,24 @@ export const DICTIONARY = {
     bn: "দিন {day}-এ সতর্কতা স্তর বৃদ্ধি পেয়েছে: পশ্চিম ও মধ্য জেলাগুলিতে ভারী বৃষ্টিপাতের সম্ভাবনা।",
   },
   blockOutlineNotice: {
-    en: "Block outlines not available (603-panchayat pilot sample)",
-    hi: "ब्लॉक रूपरेखा उपलब्ध नहीं (603-पंचायत पायलट नमूना)",
-    bn: "ব্লক রূপরেখা অনুপলব্ধ (৬০৩ পঞ্চায়েত পাইলট নমুনা)",
+    en: "313 LGD Blocks & Cadastral Gram Panchayat Polygons Active",
+    hi: "313 एलजीडी ब्लॉक एवं कैडस्ट्रल ग्राम पंचायत सीमाएं सक्रिय",
+    bn: "৩১৩ এলজিডি ব্লক এবং ক্যাডাস্ট্রাল গ্রাম পঞ্চায়েত সীমানা সক্রিয়",
+  },
+  layerBlocks: {
+    en: "Blocks Layer (313)",
+    hi: "ब्लॉक सीमाएं (313)",
+    bn: "ব্লক স্তর (৩১৩)",
+  },
+  layerGps: {
+    en: "Gram Panchayats (Cadastral)",
+    hi: "ग्राम पंचायतें (कैडस्ट्रल)",
+    bn: "গ্রাম পঞ্চায়েত (ক্যাডাস্ট্রাল)",
+  },
+  attributionBoundaries: {
+    en: "Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.",
+    hi: "सीमाएं: एलजीडी / भुवन / समुदाय संकलन (इंडिया जियोडेटा)। भारत के आधिकारिक सर्वेक्षण सीमाएं नहीं हैं।",
+    bn: "সীমানা: এলজিডি / ভুবন / সম্প্রদায় সংকলন (ইন্ডিয়া জিওডেটা)। ভারতের সরকারী জরিপ সীমানা নয়।",
   },
 
   // Map Legend

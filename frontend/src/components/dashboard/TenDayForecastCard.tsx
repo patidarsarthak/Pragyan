@@ -22,6 +22,11 @@ interface TenDayForecastCardProps {
   selectedDay: number;
   onSelectDay: (day: number) => void;
   lang?: Language;
+  scopeName?: string;
+  scopeLevel?: string;
+  selectedGpName?: string;
+  selectedBlockName?: string;
+  selectedDistrictName?: string;
 }
 
 export const TenDayForecastCard: React.FC<TenDayForecastCardProps> = ({
@@ -29,6 +34,11 @@ export const TenDayForecastCard: React.FC<TenDayForecastCardProps> = ({
   selectedDay,
   onSelectDay,
   lang = "en",
+  scopeName,
+  scopeLevel,
+  selectedGpName,
+  selectedBlockName,
+  selectedDistrictName,
 }) => {
   const [activeVariable, setActiveVariable] = useState<ForecastVariable>("rainfall");
   const [viewMode, setViewMode] = useState<"focused" | "multiples">("focused");
@@ -115,9 +125,25 @@ export const TenDayForecastCard: React.FC<TenDayForecastCardProps> = ({
     };
   });
 
-  const gpName = tenDayData?.gp_name || (tenDayData as any)?.identity?.name || "Sanwer";
-  const blockName = tenDayData?.block_name || (tenDayData as any)?.identity?.block || "Sanwer Block";
-  const distName = tenDayData?.district_name || (tenDayData as any)?.identity?.district || "Indore";
+  const gpName =
+    tenDayData?.gp_name ||
+    (tenDayData as any)?.identity?.name ||
+    selectedGpName ||
+    (scopeLevel === "gp" ? scopeName : undefined) ||
+    "Sanwer Gram Panchayat";
+
+  const blockName =
+    tenDayData?.block_name ||
+    (tenDayData as any)?.identity?.block ||
+    selectedBlockName ||
+    (scopeLevel === "block" ? scopeName : undefined) ||
+    "Sanwer Block";
+
+  const distName =
+    tenDayData?.district_name ||
+    (tenDayData as any)?.identity?.district ||
+    selectedDistrictName ||
+    (scopeLevel === "district" ? scopeName : "Indore");
 
   // Export CSV
   const handleExportCSV = () => {

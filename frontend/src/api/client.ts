@@ -485,25 +485,68 @@ export async function fetchUITenDay(lgdCode: number): Promise<import("./types").
     const res = await fetchWithTimeout(`${BASE_URL}/api/ui/ten-day/${lgdCode}`);
     if (res.ok) {
       const data = await res.json();
-      if (!data) return null;
-      const ident = data.identity || {};
-      const rows = (data.rows || []).map((r: any) => ({
-        day: Number(r.day ?? 1),
-        date: String(r.date ?? `Day ${r.day ?? 1}`),
-        rain_mm: Number(r.rain_mm ?? r.rainfall ?? 0),
-        temp_max_c: Number(r.temp_max_c ?? r.temp_max ?? 30),
-        temp_min_c: Number(r.temp_min_c ?? r.temp_min ?? (Number(r.temp_max ?? 30) - 7)),
-        rh_pct: Number(r.rh_pct ?? r.humidity ?? 70),
-        wind_kmh: Number(r.wind_kmh ?? r.wind_speed ?? 12),
-        et0_mm: Number(r.et0_mm ?? r.et0 ?? 3.5),
-        risk_pct: Number(r.risk_pct ?? r.risk ?? Math.min(99, Math.round(Number(r.rainfall ?? 0) * 1.8 + 10))),
-        band: (r.band ?? (Number(r.rainfall ?? 0) > 30 ? "alert" : Number(r.rainfall ?? 0) > 15 ? "watch" : "calm")) as any,
-      }));
+      if (data && (data.rows || data.identity)) {
+        const ident = data.identity || {};
+        const rows = (data.rows || []).map((r: any) => ({
+          day: Number(r.day ?? 1),
+          date: String(r.date ?? `Day ${r.day ?? 1}`),
+          rain_mm: Number(r.rain_mm ?? r.rainfall ?? 0),
+          temp_max_c: Number(r.temp_max_c ?? r.temp_max ?? 30),
+          temp_min_c: Number(r.temp_min_c ?? r.temp_min ?? (Number(r.temp_max ?? 30) - 7)),
+          rh_pct: Number(r.rh_pct ?? r.humidity ?? 70),
+          wind_kmh: Number(r.wind_kmh ?? r.wind_speed ?? 12),
+          et0_mm: Number(r.et0_mm ?? r.et0 ?? 3.5),
+          risk_pct: Number(r.risk_pct ?? r.risk ?? Math.min(99, Math.round(Number(r.rainfall ?? 0) * 1.8 + 10))),
+          band: (r.band ?? (Number(r.rainfall ?? 0) > 30 ? "alert" : Number(r.rainfall ?? 0) > 15 ? "watch" : "calm")) as any,
+        }));
+        return {
+          gp_code: Number(data.gp_code ?? ident.lgd_code ?? lgdCode),
+          gp_name: String(data.gp_name ?? ident.name ?? "Panchayat"),
+          block_name: String(data.block_name ?? ident.block ?? ""),
+          district_name: String(data.district_name ?? ident.district ?? ""),
+          rows,
+        };
+      }
+    }
+  } catch {}
+
+  // Fallback: derive 10-day downscaled matrix from fetchUIGP
+  try {
+    const gp = await fetchUIGP(lgdCode);
+    if (gp) {
+      const rawVars: any = gp.variables;
+      const rainArr = Array.isArray(rawVars) ? rawVars.find((v: any) => v.variable === "rainfall")?.points : rawVars?.rain || [];
+      const tempArr = Array.isArray(rawVars) ? rawVars.find((v: any) => v.variable === "temperature")?.points : rawVars?.temp || [];
+      const humArr = Array.isArray(rawVars) ? rawVars.find((v: any) => v.variable === "humidity")?.points : rawVars?.humidity || [];
+      const windArr = Array.isArray(rawVars) ? rawVars.find((v: any) => v.variable === "wind")?.points : rawVars?.wind || [];
+      const et0Arr = Array.isArray(rawVars) ? rawVars.find((v: any) => v.variable === "et0")?.points : rawVars?.et0 || [];
+
+      const rows = Array.from({ length: 10 }, (_, idx) => {
+        const d = idx + 1;
+        const rainPt = rainArr?.[idx];
+        const tempPt = tempArr?.[idx];
+        const humPt = humArr?.[idx];
+        const windPt = windArr?.[idx];
+        const et0Pt = et0Arr?.[idx];
+        const rainVal = Number(rainPt?.downscaled ?? 10);
+        return {
+          day: d,
+          date: rainPt?.date || `Day ${d}`,
+          rain_mm: rainVal,
+          temp_max_c: Number(tempPt?.downscaled ?? 31),
+          temp_min_c: Number(tempPt?.downscaled ?? 31) - 7,
+          rh_pct: Number(humPt?.downscaled ?? 75),
+          wind_kmh: Math.round(Number(windPt?.downscaled ?? 3.5) * 3.6),
+          et0_mm: Number(et0Pt?.downscaled ?? 3.8),
+          risk_pct: Math.min(99, Math.round(rainVal * 1.8 + 12)),
+          band: (rainVal > 30 ? "alert" : rainVal > 15 ? "watch" : "calm") as any,
+        };
+      });
       return {
-        gp_code: Number(data.gp_code ?? ident.lgd_code ?? lgdCode),
-        gp_name: String(data.gp_name ?? ident.name ?? "Panchayat"),
-        block_name: String(data.block_name ?? ident.block ?? ""),
-        district_name: String(data.district_name ?? ident.district ?? ""),
+        gp_code: gp.gp_code,
+        gp_name: gp.gp_name,
+        block_name: gp.block_name,
+        district_name: gp.district_name,
         rows,
       };
     }

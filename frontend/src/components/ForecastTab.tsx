@@ -185,7 +185,15 @@ export const ForecastTab: React.FC<ForecastTabProps> = ({ lang }) => {
 
   // Handle Map Scope Navigation Drill-down (strictly enforces single-level hierarchy without duplicates)
   const handleNavigateScope = (nextItem: BreadcrumbItem) => {
-    setSelectedGpCode(null);
+    if (nextItem.level === "gp") {
+      const code = Number(String(nextItem.id).replace("gp:", "")) || null;
+      if (code) {
+        setSelectedGpCode(code);
+        updateUrlParams(activeLeadDay, code);
+      }
+    } else {
+      setSelectedGpCode(null);
+    }
 
     setBreadcrumbs((prev) => {
       const current = prev[prev.length - 1];
@@ -234,10 +242,21 @@ export const ForecastTab: React.FC<ForecastTabProps> = ({ lang }) => {
     if (result.level === "gp") {
       setSelectedGpCode(result.lgd);
       updateUrlParams(activeLeadDay, result.lgd);
+    } else if (result.level === "block" || result.level === "district") {
+      // Find a constituent GP from worst list matching this block/district
+      const match = worstList.find(
+        (w) =>
+          (result.level === "block" && w.block_name.toLowerCase() === result.name.toLowerCase()) ||
+          (result.level === "district" && w.district_name.toLowerCase() === result.name.toLowerCase())
+      );
+      if (match) {
+        setSelectedGpCode(match.gp_code);
+        updateUrlParams(activeLeadDay, match.gp_code);
+      }
     }
   };
 
-  // Handle Panchayat Click (from worst list or search)
+  // Handle Panchayat Click (from worst list, map, or search)
   const handleSelectPanchayat = (lgdCode: number) => {
     setSelectedGpCode(lgdCode);
     updateUrlParams(activeLeadDay, lgdCode);
@@ -609,6 +628,11 @@ export const ForecastTab: React.FC<ForecastTabProps> = ({ lang }) => {
           selectedDay={activeLeadDay}
           onSelectDay={handleSelectDay}
           lang={lang}
+          scopeName={currentScope.name}
+          scopeLevel={currentScope.level}
+          selectedGpName={gpData?.gp_name}
+          selectedBlockName={gpData?.block_name}
+          selectedDistrictName={gpData?.district_name}
         />
       </section>
 
