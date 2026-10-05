@@ -15,7 +15,7 @@ describe("Navbar Component", () => {
       />
     );
     expect(screen.getByText("Pragyan")).toBeInTheDocument();
-    expect(screen.getByText(/Madhya Pradesh Pilot/i)).toBeInTheDocument();
+    expect(screen.getByText(/Panchayat-Level Forecast/i)).toBeInTheDocument();
   });
 
   it("handles tab switching and language toggle clicks", () => {

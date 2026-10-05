@@ -14,9 +14,9 @@ export const DICTIONARY = {
     bn: "গ্রাম পঞ্চায়েত স্তরের মাইক্রো-আবহাওয়া ও কৃষি পরামর্শ ব্যবস্থা",
   },
   pilotBadge: {
-    en: "Madhya Pradesh Pilot",
-    hi: "मध्य प्रदेश पायलट",
-    bn: "মধ্যপ্রদেশ পাইলট",
+    en: "Panchayat-Level Forecast",
+    hi: "पंचायत-स्तरीय पूर्वानुमान",
+    bn: "পঞ্চায়েত-স্তরের পূর্বাভাস",
   },
   dataVintage: {
     en: "Archived 2024 Test-Period Data",

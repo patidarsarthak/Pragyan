@@ -1263,22 +1263,29 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 
 .sk-navtabs {
   display: flex;
+  align-items: center;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .sk-navtab {
   background: transparent;
   border: none;
-  padding: 6px 14px;
-  border-radius: 7px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   color: var(--ink-2);
   cursor: pointer;
   transition: all 0.16s ease;
   display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .sk-navtab:hover {
@@ -1289,29 +1296,36 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .sk-navtab.is-active {
   background: var(--ink);
   color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(11, 18, 32, 0.12);
 }
 
 .sk-tab-sub {
   font-size: 10.5px;
   opacity: 0.7;
   font-style: italic;
+  white-space: nowrap;
 }
 
 .sk-topbar-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .sk-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
+  height: 34px;
+  padding: 0 12px;
   border-radius: 9999px;
   font-size: 11.5px;
   font-family: var(--font-mono);
   font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .sk-pill-cycle {
