@@ -472,6 +472,14 @@ export async function fetchUIGP(lgdCode: number): Promise<import("./types").UIGP
   return null;
 }
 
+/**
+ * Authoritative forecast connector for a Gram Panchayat polygon.
+ * Joins polygon gp_code with Pragyan 10-day downscaled weather & agromet advisory model.
+ */
+export async function getForecastForGP(gpCode: number): Promise<import("./types").UIGPDetailResponse | null> {
+  return fetchUIGP(gpCode);
+}
+
 export async function fetchUITenDay(lgdCode: number): Promise<import("./types").UITenDayCompactResponse | null> {
   try {
     const res = await fetchWithTimeout(`${BASE_URL}/api/ui/ten-day/${lgdCode}`);
