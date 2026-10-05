@@ -1836,8 +1836,7 @@ def get_ui_decision(
             block_weather=block_weather,
             crop_id=crop,
             cost_setting=cost,
-            custom_cost_ratio=custom_cost_ratio,
-            day=day
+            custom_cost_ratio=custom_cost_ratio
         )
         decision_data["lgd_code"] = lgd
         decision_data["gp_name"] = p.gp_name

@@ -467,6 +467,13 @@ export interface UIGPDetailResponse {
     wind: Array<{ day: number; date: string; downscaled: number; coarse: number }>;
     et0: Array<{ day: number; date: string; downscaled: number; coarse: number }>;
   };
+  today?: {
+    rainfall_mm: number;
+    temp_max: number;
+    temp_min: number;
+    humidity_pct: number;
+    wind_speed_kmh: number;
+  };
   advisories: Array<{
     title: string;
     advice: string;
@@ -566,6 +573,10 @@ export interface UIChildItem {
   validated: boolean;
   has_geometry: boolean;
   boundary_note?: string;
+  centroid_lat?: number;
+  centroid_lon?: number;
+  area_sq_km?: number;
+  geometry_json?: any;
 }
 
 export interface UISearchV2Result {

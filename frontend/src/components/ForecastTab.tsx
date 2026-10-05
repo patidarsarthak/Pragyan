@@ -133,7 +133,12 @@ export const ForecastTab: React.FC<ForecastTabProps> = ({ lang }) => {
     ]).then(([overview, worst]) => {
       if (!mounted) return;
       if (overview) setOverviewData(overview);
-      if (worst) setWorstList(worst);
+      if (worst) {
+        setWorstList(worst);
+        if (!selectedGpCode && worst.length > 0) {
+          setSelectedGpCode(worst[0].gp_code);
+        }
+      }
     });
 
     return () => {

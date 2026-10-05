@@ -11,6 +11,7 @@ import { SystemHealthTab } from "./components/SystemHealthTab";
 import { ApiWidgetTab } from "./components/ApiWidgetTab";
 import { LowBandwidthView } from "./components/LowBandwidthView";
 import { FarmerModeCard } from "./components/farmer/FarmerModeCard";
+import { FarmerAdvisoryPortal } from "./components/farmer/FarmerAdvisoryPortal";
 import { Language } from "./lib/i18n";
 import { fetchHealth, currentSnapshotState } from "./api/client";
 
@@ -134,25 +135,25 @@ export const App: React.FC = () => {
         onToggleLowBandwidth={handleToggleLowBandwidth}
       />
 
-      {farmerMode && (
-        <FarmerModeCard
+      {farmerMode ? (
+        <FarmerAdvisoryPortal
           lang={lang}
-          onClose={handleCloseFarmerMode}
+          onExit={handleCloseFarmerMode}
         />
+      ) : (
+        <main style={{ flex: "1 0 auto" }}>
+          {currentTab === "forecast" && <ForecastTab lang={lang} />}
+          {currentTab === "alerts" && (
+            <AlertsTab lang={lang} onNavigateToGP={handleNavigateToGPFromAlert} />
+          )}
+          {currentTab === "command" && <CommandCentreTab lang={lang} />}
+          {currentTab === "evidence" && <EvidenceTab lang={lang} />}
+          {currentTab === "past-events" && <PastEventsTab lang={lang} />}
+          {currentTab === "health" && <SystemHealthTab lang={lang} />}
+          {currentTab === "api-widget" && <ApiWidgetTab lang={lang} />}
+          {currentTab === "methodology" && <MethodologyTab lang={lang} />}
+        </main>
       )}
-
-      <main style={{ flex: "1 0 auto" }}>
-        {currentTab === "forecast" && <ForecastTab lang={lang} />}
-        {currentTab === "alerts" && (
-          <AlertsTab lang={lang} onNavigateToGP={handleNavigateToGPFromAlert} />
-        )}
-        {currentTab === "command" && <CommandCentreTab lang={lang} />}
-        {currentTab === "evidence" && <EvidenceTab lang={lang} />}
-        {currentTab === "past-events" && <PastEventsTab lang={lang} />}
-        {currentTab === "health" && <SystemHealthTab lang={lang} />}
-        {currentTab === "api-widget" && <ApiWidgetTab lang={lang} />}
-        {currentTab === "methodology" && <MethodologyTab lang={lang} />}
-      </main>
 
 
       <MobileNav

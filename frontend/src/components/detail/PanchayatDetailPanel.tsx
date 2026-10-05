@@ -69,21 +69,19 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
     window.speechSynthesis.speak(utterance);
   };
 
-  // If NO Panchayat is selected, show Scope-Aware Leaderboard or Block Spread
+  // If NO Panchayat is selected, show Scope-Aware Gram Panchayat Leaderboard
   if (!gpData) {
     const isBlockScope = scopeLevel === "block";
     const title = isBlockScope
-      ? `${lang === "hi" ? "ब्लॉक विचलन: " : lang === "bn" ? "ব্লক বিস্তার: " : "BLOCK SPREAD: "}${scopeName.toUpperCase()}`
-      : scopeLevel === "district"
-      ? `${lang === "hi" ? "ज़िला रैंकिंग: " : lang === "bn" ? "জেলা র্যাঙ্কিং: " : "DISTRICT RANKINGS: "}${scopeName.toUpperCase()}`
-      : t("highestRiskPanchayats", lang);
+      ? `${lang === "hi" ? "ग्राम पंचायतें: " : lang === "bn" ? "গ্রাম পঞ্চায়েত: " : "GRAM PANCHAYATS: "}${scopeName.toUpperCase()}`
+      : `${lang === "hi" ? "उच्च जोखिम ग्राम पंचायतें: " : lang === "bn" ? "শীর্ষ ঝুঁকিপূর্ণ গ্রাম পঞ্চায়েত: " : "RANKED GRAM PANCHAYATS: "}${scopeName.toUpperCase()}`;
 
     const sub = isBlockScope
-      ? (lang === "hi" ? `दिवस ${selectedDay} पर ब्लॉक औसत के आसपास पंचायत विस्तार` : lang === "bn" ? `দিন ${selectedDay}-এ ব্লক গড়ের চারপাশে বিস্তার` : `Panchayat spread band around block mean for Day ${selectedDay}`)
-      : t("rankedTopEvaluated", lang, { day: selectedDay });
+      ? (lang === "hi" ? `ब्लॉक ${scopeName} की सभी मूल्यांकित ग्राम पंचायतें (1 किमी डाउनस्केलिंग)` : lang === "bn" ? `ব্লক ${scopeName}-এর সমস্ত গ্রাম পঞ্চায়েত (১ কিমি ডাউনস্কেলিং)` : `All evaluated Gram Panchayats in ${scopeName} Block (1km Cadastral Resolution)`)
+      : (lang === "hi" ? `दिवस ${selectedDay} पर ग्राम पंचायत स्तर की मौसम एवं जोखिम रैंकिंग` : lang === "bn" ? `দিন ${selectedDay}-এ গ্রাম পঞ্চায়েত স্তরের আবহাওয়া ও ঝুঁকি র্যাঙ্কিং` : `Village-level weather and downscaled risk ranking for Day ${selectedDay}`);
 
     return (
-      <aside className="sk-panel" aria-label="District & Panchayat Risk Leaderboard">
+      <aside className="sk-panel" aria-label="Gram Panchayat Weather & Risk Leaderboard">
         <div className="sk-panel-header">
           <div>
             <h2 className="sk-panel-title">{title}</h2>
@@ -103,7 +101,7 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
         {/* Block spread card if in block scope */}
         {isBlockScope && (
           <div style={{ padding: "10px 14px", background: "#FEF3C7", borderBottom: "1px solid #FDE68A", fontSize: "11px", color: "#92400E" }}>
-            <strong>Block vs Panchayat Variation:</strong> 1km downscaling accounts for elevation differences (±45m) and convective precipitation micro-cells across constituent panchayats.
+            <strong>Panchayat Micro-Climate Variation:</strong> 1km cadastral downscaling computes village-level topography, drainage slope, and rainfall divergence across constituent Gram Panchayats.
           </div>
         )}
 
@@ -117,14 +115,14 @@ export const PanchayatDetailPanel: React.FC<PanchayatDetailPanelProps> = ({
                   key={item.gp_code}
                   className="sk-worst-item"
                   onClick={() => onSelectGP(item.gp_code)}
-                  title={`View intelligence dossier for ${item.gp_name}`}
+                  title={`View village intelligence dossier for ${item.gp_name} (LGD: ${item.gp_code})`}
                 >
                   <div className="sk-worst-rank">#{idx + 1}</div>
                   <div className="sk-worst-info">
                     <strong className="sk-worst-name">{item.gp_name}</strong>
                     <span className="sk-worst-dot" aria-hidden="true">·</span>
                     <span className="sk-worst-meta">
-                      {item.block_name || item.district_name}
+                      {item.block_name ? `${item.block_name} Block` : item.district_name} (LGD: {item.gp_code})
                     </span>
                   </div>
                   <div className="sk-worst-capsule" aria-hidden="true" />

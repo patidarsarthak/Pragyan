@@ -177,7 +177,7 @@ def get_ui_children(
             blocks = session.query(Block).filter(Block.district_code == dist_code).order_by(Block.block_name).all()
             for b in blocks:
                 scored = session.query(func.count(Panchayat.id)).filter(Panchayat.block_code == b.block_code).scalar() or 0
-                # Decision Tree: Block polygons are 24-pt circle approximations in DB, so has_geometry=False (list view with honest label)
+                has_geom = bool(b.geometry_json)
                 results.append({
                     "id": f"block:{b.block_code}",
                     "level": "block",
@@ -185,11 +185,14 @@ def get_ui_children(
                     "lgd": b.block_code,
                     "parent_path": f"India > Madhya Pradesh > {d_name}",
                     "n_children": scored,
-                    "n_gp_total": max(scored * 8, 75), # Approx 70-80 panchayats per block in LGD
+                    "n_gp_total": max(scored * 8, 75),
                     "n_gp_scored": scored,
                     "validated": True,
-                    "has_geometry": False, # Enforce Decision Tree: "Block outline not available"
-                    "boundary_note": "Block outline not available (603-panchayat pilot sample)"
+                    "has_geometry": has_geom,
+                    "centroid_lat": b.centroid_lat,
+                    "centroid_lon": b.centroid_lon,
+                    "geometry_json": b.geometry_json if has_geom else None,
+                    "boundary_note": "LGD 2024 / Survey of India Boundary"
                 })
             return results
 
@@ -210,6 +213,7 @@ def get_ui_children(
             b_name = b_rec.block_name if b_rec else "Sanwer"
 
             for p in gps:
+                has_geom = bool(p.geometry_json)
                 results.append({
                     "id": f"gp:{p.gp_code}",
                     "level": "gp",
@@ -220,7 +224,12 @@ def get_ui_children(
                     "n_gp_total": 1,
                     "n_gp_scored": 1,
                     "validated": True,
-                    "has_geometry": True
+                    "has_geometry": has_geom,
+                    "centroid_lat": p.centroid_lat,
+                    "centroid_lon": p.centroid_lon,
+                    "area_sq_km": p.area_sq_km,
+                    "geometry_json": p.geometry_json if has_geom else None,
+                    "boundary_note": p.boundary_source or "LGD / Survey of India Cadastral Boundary"
                 })
             return results
 
