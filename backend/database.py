@@ -403,6 +403,29 @@ class KVKDirectory(Base):
     source = Column(String(200), default="ICAR-ATARI Zone IX Jabalpur (MP)")
 
 
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    full_name = Column(String(150), nullable=False)
+    email = Column(String(150), unique=True, nullable=False, index=True)
+    phone = Column(String(20), unique=True, nullable=True, index=True)
+    password_hash = Column(String(128), nullable=False)
+    salt = Column(String(64), nullable=False)
+    role = Column(String(50), nullable=False, default="farmer") # 'farmer', 'sarpanch', 'bdo', 'ddma', 'scientist', 'admin'
+    designation = Column(String(150), nullable=True)
+    department = Column(String(150), nullable=True)
+    state_name = Column(String(100), default="Madhya Pradesh")
+    district_name = Column(String(100), nullable=True)
+    block_name = Column(String(100), nullable=True)
+    gp_name = Column(String(150), nullable=True)
+    gp_code = Column(Integer, nullable=True)
+    is_active = Column(Boolean, default=True)
+    is_verified = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    last_login = Column(DateTime, nullable=True)
+
+
+
 
 # ============================================================================
 # Database Initializer & Seed Function

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Language, t } from "../lib/i18n";
 import { currentSnapshotState } from "../api/client";
 import { PragyanLogo } from "./PragyanLogo";
+import { UserProfile } from "../api/auth";
 
 interface NavbarProps {
   currentTab: string;
@@ -15,6 +16,9 @@ interface NavbarProps {
   onToggleFarmerMode?: () => void;
   lowBandwidth?: boolean;
   onToggleLowBandwidth?: () => void;
+  currentUser?: UserProfile | null;
+  onOpenAuth?: (mode?: "login" | "register") => void;
+  onLogout?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -29,7 +33,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleFarmerMode,
   lowBandwidth = false,
   onToggleLowBandwidth,
+  currentUser,
+  onOpenAuth,
+  onLogout,
 }) => {
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
   const tabs = [
     { id: "forecast", label: t("tabOperations", lang), title: "Operational 1km Micro-Climate & Risk" },
     { id: "alerts", label: t("tabAlerts", lang), title: "Real-Time Panchayats in Alert/Bust Band" },
@@ -64,10 +72,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             style={{ display: "flex", alignItems: "center", gap: "10px", background: "none", border: "none", cursor: "pointer", padding: 0, flexShrink: 0 }}
           >
             <img
-              src="/logo_icon.png"
+              src="/logo.png"
               alt="Pragyan"
-              width="34"
-              height="34"
+              width="36"
+              height="36"
               style={{ borderRadius: "8px", objectFit: "contain", flexShrink: 0, display: "block" }}
             />
             <div className="sk-brand-text">
@@ -148,6 +156,111 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {lang === "en" ? "हिन्दी" : lang === "hi" ? "বাংলা" : "English"}
             </button>
+
+            {/* User Account / Sign In CTA */}
+            {currentUser ? (
+              <div style={{ position: "relative" }}>
+                <button
+                  type="button"
+                  className="sk-user-pill"
+                  onClick={() => setShowUserDropdown(!showUserDropdown)}
+                  title={`${currentUser.fullName} (${currentUser.role})`}
+                  aria-expanded={showUserDropdown}
+                >
+                  <span className="sk-user-avatar">{currentUser.avatar || "👤"}</span>
+                  <span className="sk-user-name">{currentUser.fullName.split(" ")[0]}</span>
+                  <span className="sk-user-role-tag">{currentUser.role}</span>
+                </button>
+
+                {showUserDropdown && (
+                  <div
+                    className="sk-user-dropdown-menu"
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 8px)",
+                      right: 0,
+                      background: "#0f172a",
+                      border: "1px solid rgba(56, 189, 248, 0.3)",
+                      borderRadius: "12px",
+                      padding: "12px 14px",
+                      width: "250px",
+                      boxShadow: "0 14px 34px rgba(0,0,0,0.85)",
+                      zIndex: 1000,
+                      textAlign: "left",
+                    }}
+                  >
+                    <div style={{ fontSize: "13px", fontWeight: 700, color: "#ffffff" }}>
+                      {currentUser.fullName}
+                    </div>
+                    <div style={{ fontSize: "11px", color: "#38bdf8", marginTop: "2px" }}>
+                      {currentUser.designation || currentUser.roleLabel || currentUser.role.toUpperCase()}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "10.5px",
+                        color: "#94a3b8",
+                        marginTop: "5px",
+                        borderBottom: "1px solid rgba(255,255,255,0.1)",
+                        paddingBottom: "8px",
+                      }}
+                    >
+                      📍 {currentUser.gpName ? `${currentUser.gpName}, ` : ""}{currentUser.districtName || "Madhya Pradesh"}
+                    </div>
+                    <div style={{ marginTop: "10px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUserDropdown(false);
+                          onOpenAuth?.("login");
+                        }}
+                        style={{
+                          background: "rgba(30, 41, 59, 0.8)",
+                          border: "1px solid rgba(148, 163, 184, 0.2)",
+                          borderRadius: "6px",
+                          padding: "6px 8px",
+                          color: "#cbd5e1",
+                          fontSize: "11.5px",
+                          cursor: "pointer",
+                          textAlign: "left",
+                        }}
+                      >
+                        🔄 {lang === "hi" ? "प्रोफ़ाइल / खाता बदलें" : "Switch Role / Account"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUserDropdown(false);
+                          onLogout?.();
+                        }}
+                        style={{
+                          background: "rgba(239, 68, 68, 0.15)",
+                          border: "1px solid rgba(239, 68, 68, 0.3)",
+                          borderRadius: "6px",
+                          padding: "6px 8px",
+                          color: "#fca5a5",
+                          fontSize: "11.5px",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                          textAlign: "left",
+                        }}
+                      >
+                        🚪 {lang === "hi" ? "लॉग आउट (Sign Out)" : "Sign Out"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="sk-login-cta-btn"
+                onClick={() => onOpenAuth?.("login")}
+                title="Sign In or Register New Official Account"
+              >
+                <span>🔐</span>
+                <span>{lang === "hi" ? "लॉग इन / पंजीकरण" : "Sign In / Register"}</span>
+              </button>
+            )}
           </div>
         </div>
       </header>

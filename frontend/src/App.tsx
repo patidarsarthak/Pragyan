@@ -14,6 +14,8 @@ import { FarmerModeCard } from "./components/farmer/FarmerModeCard";
 import { FarmerAdvisoryPortal } from "./components/farmer/FarmerAdvisoryPortal";
 import { Language } from "./lib/i18n";
 import { fetchHealth, currentSnapshotState } from "./api/client";
+import { AuthPage } from "./components/auth/AuthPage";
+import { UserProfile, getStoredUser, clearStoredAuth } from "./api/auth";
 
 export const App: React.FC = () => {
   const [lang, setLang] = useState<Language>("en");
@@ -21,13 +23,26 @@ export const App: React.FC = () => {
   const [isSnapshot, setIsSnapshot] = useState<boolean>(false);
   const [farmerMode, setFarmerMode] = useState<boolean>(false);
   const [lowBandwidthMode, setLowBandwidthMode] = useState<boolean>(false);
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(() => getStoredUser());
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
 
   // Sync tab and language with URL search parameter
   useEffect(() => {
+    const handleAuthChange = (e: any) => {
+      setCurrentUser(e.detail);
+    };
+    window.addEventListener("pragyan-auth-changed", handleAuthChange);
+
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get("tab");
-    if (tabParam && ["forecast", "evidence", "alerts", "past-events", "command", "health", "api-widget", "methodology"].includes(tabParam)) {
-      setCurrentTab(tabParam);
+    if (tabParam && ["forecast", "evidence", "alerts", "past-events", "command", "health", "api-widget", "methodology", "login", "register"].includes(tabParam)) {
+      if (tabParam === "register") {
+        setAuthMode("register");
+        setCurrentTab("login");
+      } else {
+        if (tabParam === "login") setAuthMode("login");
+        setCurrentTab(tabParam);
+      }
     }
     const langParam = params.get("lang");
     if (langParam && ["en", "hi", "bn"].includes(langParam)) {
@@ -51,6 +66,10 @@ export const App: React.FC = () => {
     fetchHealth()
       .then(() => setIsSnapshot(currentSnapshotState.isSnapshot))
       .catch(() => setIsSnapshot(true));
+
+    return () => {
+      window.removeEventListener("pragyan-auth-changed", handleAuthChange);
+    };
   }, []);
 
   const handleTabChange = (tab: string) => {
@@ -113,6 +132,21 @@ export const App: React.FC = () => {
     window.history.pushState({}, "", url.toString());
   };
 
+  const handleOpenAuth = (mode: "login" | "register" = "login") => {
+    setAuthMode(mode);
+    handleTabChange("login");
+  };
+
+  const handleAuthSuccess = (user: UserProfile) => {
+    setCurrentUser(user);
+    handleTabChange("forecast");
+  };
+
+  const handleLogout = () => {
+    clearStoredAuth();
+    setCurrentUser(null);
+  };
+
   if (lowBandwidthMode) {
     return (
       <LowBandwidthView
@@ -134,6 +168,9 @@ export const App: React.FC = () => {
         onToggleFarmerMode={handleToggleFarmerMode}
         lowBandwidth={lowBandwidthMode}
         onToggleLowBandwidth={handleToggleLowBandwidth}
+        currentUser={currentUser}
+        onOpenAuth={handleOpenAuth}
+        onLogout={handleLogout}
       />
 
       {farmerMode ? (
@@ -143,6 +180,14 @@ export const App: React.FC = () => {
         />
       ) : (
         <main style={{ flex: "1 0 auto" }}>
+          {currentTab === "login" && (
+            <AuthPage
+              lang={lang}
+              initialMode={authMode}
+              onSuccess={handleAuthSuccess}
+              onCancel={() => handleTabChange("forecast")}
+            />
+          )}
           {currentTab === "forecast" && <ForecastTab lang={lang} />}
           {currentTab === "alerts" && (
             <AlertsTab lang={lang} onNavigateToGP={handleNavigateToGPFromAlert} />

@@ -139,12 +139,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from backend.auth_api import router as auth_router
+
 app.include_router(sms_router)
 app.include_router(ivr_router)
 app.include_router(api_v1_router)
 app.include_router(ui_api_router, prefix="/api/ui")
 app.include_router(ui_hierarchy_router, prefix="/api/ui")
 app.include_router(ui_advisory_router, prefix="/api")
+app.include_router(auth_router, prefix="/api")
 
 @app.get("/api/regions")
 def get_regions_alias(lead_time_days: int = Query(1, ge=1, le=10)):

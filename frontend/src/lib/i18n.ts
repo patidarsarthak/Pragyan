@@ -43,6 +43,8 @@ export const DICTIONARY = {
   tabCommand: { en: "Command", hi: "कमांड", bn: "কমান্ড" },
   tabHealth: { en: "Health & Quality", hi: "स्वास्थ्य व गुणवत्ता", bn: "স্বাস্থ্য ও গুণমান" },
   tabApiWidget: { en: "API & Widget", hi: "एपीआई व विजेट", bn: "এপিআই ও উইজেট" },
+  tabLogin: { en: "Sign In", hi: "लॉग इन", bn: "লগ ইন" },
+  tabRegister: { en: "Register", hi: "पंजीकरण", bn: "রেজিস্টার" },
   lowBandwidth: { en: "Low BW", hi: "न्यून बैंडविड्थ", bn: "কম ব্যান্ডউইথ" },
   farmerMode: { en: "Farmer Mode", hi: "किसान मोड", bn: "কৃষক মোড" },
   farmerModeActive: { en: "Farmer Mode Active", hi: "किसान मोड सक्रिय", bn: "কৃষক মোড সক্রিয়" },
