@@ -273,6 +273,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           regions={regions}
           activeStateId={null}
           hideHeader={true}
+          onHoverFeature={onHoverFeature}
           onSelectState={(stateId) => {
             onNavigateScope({ level: "state", id: "IN-MP", name: "Madhya Pradesh" });
           }}
@@ -289,6 +290,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           regions={regions}
           activeStateId="IN-MP"
           hideHeader={true}
+          onHoverFeature={onHoverFeature}
           onSelectState={() => {
             onNavigateScope({ level: "india", id: "IN", name: "India" });
           }}
@@ -320,6 +322,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
             activeStateId="IN-MP"
             hideHeader={true}
             selectedRegionId={activeRegionId}
+            onHoverFeature={onHoverFeature}
             onSelectState={() => {
               onNavigateScope({ level: "india", id: "IN", name: "India" });
             }}

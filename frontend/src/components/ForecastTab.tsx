@@ -174,12 +174,42 @@ export const ForecastTab: React.FC<ForecastTabProps> = ({ lang }) => {
 
   // Handle Breadcrumb Jump Click
   const handleBreadcrumbClick = (item: BreadcrumbItem, index: number) => {
+    setSelectedGpCode(null);
     setBreadcrumbs((prev) => prev.slice(0, index + 1));
   };
 
-  // Handle Map Scope Navigation Drill-down
+  // Handle Map Scope Navigation Drill-down (strictly enforces single-level hierarchy without duplicates)
   const handleNavigateScope = (nextItem: BreadcrumbItem) => {
-    setBreadcrumbs((prev) => [...prev, nextItem]);
+    setSelectedGpCode(null);
+
+    setBreadcrumbs((prev) => {
+      const current = prev[prev.length - 1];
+      if (
+        current &&
+        current.level === nextItem.level &&
+        (current.id === nextItem.id || current.name.toLowerCase() === nextItem.name.toLowerCase())
+      ) {
+        return prev;
+      }
+
+      const LEVEL_ORDER: Record<string, number> = {
+        india: 0,
+        country: 0,
+        state: 1,
+        district: 2,
+        block: 3,
+        gp: 4,
+      };
+
+      const targetOrder = LEVEL_ORDER[nextItem.level] ?? 2;
+      const cutIdx = prev.findIndex((item) => (LEVEL_ORDER[item.level] ?? 0) >= targetOrder);
+
+      if (cutIdx !== -1) {
+        return [...prev.slice(0, cutIdx), nextItem];
+      }
+
+      return [...prev, nextItem];
+    });
   };
 
   // Handle Search Result Select

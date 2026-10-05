@@ -71,6 +71,7 @@ interface IndiaChoroplethMapProps {
   onSelectState?: (stateId: string | null) => void;
   activeStateId?: string | null;
   hideHeader?: boolean;
+  onHoverFeature?: (info: { name: string; level: string; riskScore?: number; riskBand?: string } | null) => void;
 }
 
 export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
@@ -80,6 +81,7 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
   onSelectState,
   activeStateId = null,
   hideHeader = false,
+  onHoverFeature,
 }) => {
   const [topology, setTopology] = useState<Topology | null>(null);
   const [claimedTerritory, setClaimedTerritory] = useState<Feature<Geometry, unknown> | null>(null);
@@ -299,7 +301,35 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
 
   const track = (target: HoverTarget) => (e: MouseEvent<SVGPathElement>) => {
     const r = wrapRef.current?.getBoundingClientRect();
-    if (r) setHover({ x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, target });
+    if (r) {
+      setHover({ x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, target });
+      if (onHoverFeature) {
+        if (target.kind === "state") {
+          const s = states.find((x) => x.properties.state_id === target.id);
+          if (s) {
+            onHoverFeature({
+              name: s.properties.state_name,
+              level: target.id === "IN-MP" ? "Operational Pilot State" : "National State",
+              riskScore: target.id === "IN-MP" ? 36 : undefined,
+              riskBand: target.id === "IN-MP" ? "watch" : undefined,
+            });
+          }
+        } else if (target.kind === "district") {
+          const d = shown.find((x) => x.properties.region_id === target.id);
+          const region = byRegionId.get(target.id);
+          if (d) {
+            const sc = region ? Math.round((region.risk_score ?? 0) * 100) : undefined;
+            const b = sc !== undefined ? (sc >= 65 ? "alert" : sc >= 40 ? "watch" : "calm") : undefined;
+            onHoverFeature({
+              name: d.properties.region_name,
+              level: `District (${d.properties.state_name})`,
+              riskScore: sc,
+              riskBand: b,
+            });
+          }
+        }
+      }
+    }
   };
 
   const suggestions = useMemo(() => {
@@ -345,14 +375,15 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
         badge: isMP ? "OPERATIONAL ML PILOT" : "OUTSIDE ML COVERAGE",
         body: isMP
           ? [
-              `${aggregation === "worst" ? "Worst district" : "Mean of districts"}: ${(roll?.value ? roll.value * 100 : 36).toFixed(1)}`,
-              roll?.worst ? `Worst: ${roll.worst.region_name}` : "",
-              "55 districts · 603 pilot panchayats evaluated",
-              "Click to drill down into 55 MP Districts & Gram Panchayats",
+              `State: ${f.properties.state_name} (Operational Pilot Basin)`,
+              `55 Districts · 313 Blocks · 603 Evaluated Gram Panchayats`,
+              `${aggregation === "worst" ? "Peak District Risk" : "Basin Mean Risk"}: ${(roll?.value ? roll.value * 100 : 36).toFixed(1)}%`,
+              "Click to drill down into 55 Districts and constituent Blocks",
             ].filter(Boolean)
           : [
-              "Outside ML coverage (not modelled).",
-              "Not covered in this pilot. No forecasts are produced here.",
+              `State: ${f.properties.state_name} (National Level)`,
+              "Contains all constituent Districts, Blocks & Gram Panchayats.",
+              "Outside active ML pilot basin (Phase 2 Roadmap).",
             ],
       };
     }
@@ -363,18 +394,20 @@ export const IndiaChoroplethMap: React.FC<IndiaChoroplethMapProps> = ({
     const isMP = f.properties.state_id === "IN-MP";
 
     return {
-      title: districtLabel(f.properties),
+      title: `${f.properties.region_name} District`,
       badge: isMP ? "PANCHAYAT DOWNSCALING READY" : "OFF-GRID",
       body: scored && region
         ? [
-            `Weather risk: ${((region.risk_score ?? 0) * 100).toFixed(1)}%`,
-            region.dominant_variable ? `Key driver: ${region.dominant_variable}` : "",
-            isMP ? "Click to open Panchayat Micro-Weather Grid" : "Coarse reanalysis only",
+            `State: ${f.properties.state_name} | District: ${f.properties.region_name}`,
+            `Weather Risk Index: ${((region.risk_score ?? 0) * 100).toFixed(1)}%`,
+            region.dominant_variable ? `Primary Meteorological Driver: ${region.dominant_variable}` : "",
+            isMP ? "Click to inspect constituent Blocks and Gram Panchayats" : "Coarse synoptic view",
           ].filter(Boolean)
         : [
+            `State: ${f.properties.state_name} | District: ${f.properties.region_name}`,
             isMP
-              ? "Gram Panchayat downscaling calibrated for this district. Click to inspect."
-              : "Off-grid district: High-resolution downscaling coming in Phase 3.",
+              ? "All constituent Blocks & Gram Panchayats calibrated. Click to inspect."
+              : "Off-grid district: High-resolution downscaling coming in Phase 2.",
           ],
     };
   }

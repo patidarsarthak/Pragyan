@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "audit_date": "2026-10-05",
+  "project": "Pragyan (SIH26074)",
+  "status_taxonomy": {
+    "BUILT_AND_TESTED": "Works with real data and backed by passing automated test",
+    "BUILT_UNTESTED": "Works when run, but no automated test exists",
+    "PARTIAL": "Some parts work, other claimed subcomponents are missing",
+    "MOCK_OR_SYNTHETIC": "Uses fake, simulated, or mathematically synthetic target data",
+    "NOT_BUILT": "No implementation found in codebase",
+    "UNVERIFIED": "Could not determine from available evidence"
+  },
+  "diagram_boxes": {
+    "input_coarse_nwp_forecast": {
+      "name": "Coarse NWP Forecast Ingestion (ECMWF IFS / GFS)",
+      "status": "PARTIAL",
+      "real_source": "Open-Meteo API (ECMWF IFS 0.25° & NOAA GFS); No IMD NWP; Nearest-grid rounding",
+      "code_ref": "ml/src/ingest_forecast.py:170-200"
+    },
+    "input_historical_weather_training": {
+      "name": "Historical Training Targets",
+      "status": "MOCK_OR_SYNTHETIC",
+      "real_source": "Synthetic deterministic formulas on coarse reanalysis + elevation/slope (Zero raw CHIRPS/ISD targets)",
+      "code_ref": "ml/src/dataset.py:88-120"
+    },
+    "input_terrain_dem": {
+      "name": "Terrain / DEM Features",
+      "status": "PARTIAL",
+      "real_source": "NASA SRTM 30m v3 (Elevation min/mean/max, relief, slope; Aspect NOT computed)",
+      "code_ref": "data_pipeline/05_download_dem.py:45-110"
+    },
+    "input_land_cover": {
+      "name": "Land Cover & Vegetation Indices",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "ESA WorldCover 10m v200 + Sentinel-2/MODIS 16-day NDVI composites",
+      "code_ref": "data_pipeline/07_download_landcover.py:35-90"
+    },
+    "input_station_network": {
+      "name": "Station Ground Truth & Reference Network",
+      "status": "MOCK_OR_SYNTHETIC",
+      "real_source": "6 real ISD stations in Dhanbad/Eastern India; 5 MP airport stations offline; '55 stations' is hard-coded in UI API",
+      "code_ref": "backend/ui_api.py:352, 873"
+    },
+    "engine_model_architecture": {
+      "name": "Semi-Parametric Downscaling Engine (Ridge + HistGradientBoosting)",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "JointMultiOutputWeatherModel (Linear Ridge Trunk + GBDT Residuals)",
+      "code_ref": "ml/src/model.py:48-285"
+    },
+    "engine_uncertainty_quantification": {
+      "name": "80% Uncertainty Range & Coverage",
+      "status": "MOCK_OR_SYNTHETIC",
+      "real_source": "N=12 Bootstrap bagging ensemble (Not conformal prediction); '82.4% coverage' is hard-coded in API",
+      "code_ref": "ml/src/model.py:17-25, backend/ui_api.py:351, 872"
+    },
+    "engine_validation_baselines": {
+      "name": "Validation Protocol & Baseline Ladder",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "Temporal holdout (2020-2022 vs 2024) + Spatial holdout vs Coarse, Bilinear, Lapse-Rate, Quantile Mapping",
+      "code_ref": "ml/src/dataset.py:125-157, ml/src/baselines.py"
+    },
+    "engine_leakage_isolation": {
+      "name": "Data Leakage Isolation",
+      "status": "PARTIAL",
+      "real_source": "Clean temporal and spatial block splitting; however target leakage exists via mathematical formula derivation",
+      "code_ref": "ml/src/dataset.py:88-120, data_pipeline/reports/LEAKAGE_AUDIT.md"
+    },
+    "trust_decision_cards": {
+      "name": "Cost-Loss Decision Engine Cards",
+      "status": "PARTIAL",
+      "real_source": "Murphy (1977) cost-loss engine built with YAML presets; UI API endpoint throws HTTP 500 error",
+      "code_ref": "ml/src/decision.py:30-180, backend/ui_api.py:1834"
+    },
+    "trust_forecast_ledger": {
+      "name": "Tamper-Evident Forecast Ledger & Report Card",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "SHA-256 hash-chained JSON archive (7 blocks); automated verifier script + contingency table metrics",
+      "code_ref": "ml/src/ledger.py:35-120, tools/verify_ledger.py"
+    },
+    "trust_verifiability_decay": {
+      "name": "Verifiability Map & Station Distance Decay",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "Haversine distance calculation to nearest station + exponential error degradation model",
+      "code_ref": "ml/src/skill_vs_distance.py:40-110, data/mp/panchayat_coverage.json"
+    },
+    "output_panchayat_forecast": {
+      "name": "Multi-Variable Panchayat Weather Forecast",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "Rainfall, Temp Max/Min, RH, Wind Speed, ET0 with 80% CI stored in SQLite predictions table",
+      "code_ref": "backend/sih26074_panchayat.db:predictions, backend/ui_api.py:405-520"
+    },
+    "output_reference_et0": {
+      "name": "FAO-56 Reference Evapotranspiration (ET0)",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "FAO-56 Hargreaves-Samani formulation driven by downscaled temperatures and extraterrestrial radiation Ra",
+      "code_ref": "ml/src/indices.py:38-75"
+    },
+    "output_agroadvisory_engine": {
+      "name": "Crop-Wise Agro-Meteorological Advisories",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "ICAR/KVK rules for 7 crops; GDD phenology tracking; sowing window planner; centralized IMD thresholds",
+      "code_ref": "config/advisory_rules/, ml/src/crop_stage.py, ml/src/planners/sowing_window.py"
+    },
+    "output_disease_pest_risk": {
+      "name": "Disease & Pest Weather Risk Planners",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "RH duration, wet canopy hours, temperature bounds (Blast, Rust, Mildew); generic active ingredients cited to KVK",
+      "code_ref": "ml/src/planners/disease_weather_risk.py"
+    },
+    "output_web_gis_map": {
+      "name": "Web GIS Administrative Drilldown Map",
+      "status": "PARTIAL",
+      "real_source": "India (36 states), MP State, 55 MP Districts, 603 GP points; Block polygons missing; non-MP states not scored",
+      "code_ref": "frontend/src/components/map/MapContainer.tsx, frontend/public/geo/"
+    },
+    "output_dissemination_channels": {
+      "name": "Farmer Dissemination Channels (SMS / IVR / WhatsApp)",
+      "status": "MOCK_OR_SYNTHETIC",
+      "real_source": "Simulated local Twilio webhook adapters; No Telegram bot; No Meta WhatsApp Cloud API; No paid telco gateway",
+      "code_ref": "backend/bot/sms_twilio.py, backend/bot/ivr_twilio.py"
+    },
+    "output_crowdsourced_reports": {
+      "name": "Farmer Ground Observations (Crowdsourcing)",
+      "status": "PARTIAL",
+      "real_source": "REST endpoints and SQLite crowd_reports table built (261 seed entries); excluded from ML scoring; simulated test records",
+      "code_ref": "backend/main.py:1176-1205, backend/schema.sql:193"
+    },
+    "engine_model_retraining": {
+      "name": "Automated Retraining & Recalibration",
+      "status": "BUILT_UNTESTED",
+      "real_source": "Offline manual batch script (11_train_model.py); No automated daemon, cron, or streaming scheduler",
+      "code_ref": "data_pipeline/11_train_model.py"
+    },
+    "governance_region_registry": {
+      "name": "Region Scope & Hierarchy Registry",
+      "status": "BUILT_AND_TESTED",
+      "real_source": "Authoritative YAML registry (MP active, JH archived); Non-modelled states render graceful Out of Scope notice",
+      "code_ref": "config/regions.yaml, backend/ui_api.py:1300-1360"
+    }
+  }
+}
