@@ -1,5268 +1,3120 @@
 {
-  "Balaghat": {
-    "LANJI": {
-      "block_code": 1,
-      "gps": []
-    },
-    "BIRSA": {
-      "block_code": 2,
-      "gps": []
-    },
-    "KIRNAPUR": {
-      "block_code": 3,
-      "gps": []
-    },
-    "KHAIRLANJI": {
-      "block_code": 4,
-      "gps": []
-    },
-    "WARASEONI": {
-      "block_code": 5,
-      "gps": []
-    },
-    "KATANGI": {
-      "block_code": 6,
-      "gps": []
-    },
-    "LALBARRA": {
-      "block_code": 221,
-      "gps": []
-    },
-    "BALAGHAT": {
-      "block_code": 222,
-      "gps": []
-    },
-    "PARASWADA": {
-      "block_code": 223,
-      "gps": []
-    },
-    "BAIHAR": {
-      "block_code": 224,
-      "gps": []
-    },
-    "Balaghat": {
-      "block_code": 3360,
-      "gps": [
-        {
-          "gp_name": "Balaghat Gram Panchayat",
-          "gp_code": 133027
-        },
-        {
-          "gp_name": "Balaghat Rural",
-          "gp_code": 133028
-        }
-      ]
-    },
-    "Baihar": {
-      "block_code": 3361,
-      "gps": [
-        {
-          "gp_name": "Baihar Gram Panchayat",
-          "gp_code": 133029
-        },
-        {
-          "gp_name": "Baihar Rural",
-          "gp_code": 133030
-        }
-      ]
-    },
-    "Katangi": {
-      "block_code": 3362,
-      "gps": [
-        {
-          "gp_name": "Katangi Gram Panchayat",
-          "gp_code": 133031
-        },
-        {
-          "gp_name": "Katangi Rural",
-          "gp_code": 133032
-        }
-      ]
-    },
-    "Kirnapur": {
-      "block_code": 3363,
-      "gps": [
-        {
-          "gp_name": "Kirnapur Gram Panchayat",
-          "gp_code": 133033
-        },
-        {
-          "gp_name": "Kirnapur Rural",
-          "gp_code": 133034
-        }
-      ]
-    },
-    "Lalburra": {
-      "block_code": 3364,
-      "gps": [
-        {
-          "gp_name": "Lalburra Gram Panchayat",
-          "gp_code": 133035
-        },
-        {
-          "gp_name": "Lalburra Rural",
-          "gp_code": 133036
-        }
-      ]
-    },
-    "Waraseoni": {
-      "block_code": 3365,
-      "gps": [
-        {
-          "gp_name": "Waraseoni Gram Panchayat",
-          "gp_code": 133037
-        },
-        {
-          "gp_name": "Waraseoni Rural",
-          "gp_code": 133038
-        }
-      ]
-    }
-  },
-  "Seoni": {
-    "KURAI": {
-      "block_code": 7,
-      "gps": []
-    },
-    "SEONI": {
-      "block_code": 213,
-      "gps": []
-    },
-    "LAKHNADON": {
-      "block_code": 215,
-      "gps": []
-    },
-    "CHHAPARA": {
-      "block_code": 216,
-      "gps": []
-    },
-    "DHANAURA": {
-      "block_code": 217,
-      "gps": []
-    },
-    "KAHNAPAS(GHANSAUR)": {
-      "block_code": 218,
-      "gps": []
-    },
-    "KEOLARI": {
-      "block_code": 219,
-      "gps": []
-    },
-    "BARGHAT": {
-      "block_code": 220,
-      "gps": []
-    },
-    "Seoni": {
-      "block_code": 4100,
-      "gps": [
-        {
-          "gp_name": "Seoni Gram Panchayat",
-          "gp_code": 133455
-        },
-        {
-          "gp_name": "Seoni Rural",
-          "gp_code": 133456
-        }
-      ]
-    },
-    "Barghat": {
-      "block_code": 4101,
-      "gps": [
-        {
-          "gp_name": "Barghat Gram Panchayat",
-          "gp_code": 133457
-        },
-        {
-          "gp_name": "Barghat Rural",
-          "gp_code": 133458
-        }
-      ]
-    },
-    "Chhapara": {
-      "block_code": 4102,
-      "gps": [
-        {
-          "gp_name": "Chhapara Gram Panchayat",
-          "gp_code": 133459
-        },
-        {
-          "gp_name": "Chhapara Rural",
-          "gp_code": 133460
-        }
-      ]
-    },
-    "Dhanora": {
-      "block_code": 4103,
-      "gps": [
-        {
-          "gp_name": "Dhanora Gram Panchayat",
-          "gp_code": 133461
-        },
-        {
-          "gp_name": "Dhanora Rural",
-          "gp_code": 133462
-        }
-      ]
-    },
-    "Ghansore": {
-      "block_code": 4104,
-      "gps": [
-        {
-          "gp_name": "Ghansore Gram Panchayat",
-          "gp_code": 133463
-        },
-        {
-          "gp_name": "Ghansore Rural",
-          "gp_code": 133464
-        }
-      ]
-    },
-    "Keolari": {
-      "block_code": 4105,
-      "gps": [
-        {
-          "gp_name": "Keolari Gram Panchayat",
-          "gp_code": 133465
-        },
-        {
-          "gp_name": "Keolari Rural",
-          "gp_code": 133466
-        }
-      ]
-    },
-    "Kurai": {
-      "block_code": 4106,
-      "gps": [
-        {
-          "gp_name": "Kurai Gram Panchayat",
-          "gp_code": 133467
-        },
-        {
-          "gp_name": "Kurai Rural",
-          "gp_code": 133468
-        }
-      ]
-    },
-    "Lakhnadon": {
-      "block_code": 4107,
-      "gps": [
-        {
-          "gp_name": "Lakhnadon Gram Panchayat",
-          "gp_code": 133469
-        },
-        {
-          "gp_name": "Lakhnadon Rural",
-          "gp_code": 133470
-        }
-      ]
-    }
-  },
-  "Chhindwara": {
-    "BICHHUA": {
-      "block_code": 8,
-      "gps": []
-    },
-    "MOHKHED": {
-      "block_code": 9,
-      "gps": []
-    },
-    "SAUSAR": {
-      "block_code": 10,
-      "gps": []
-    },
-    "PANDHURNA": {
-      "block_code": 11,
-      "gps": []
-    },
-    "HARRAI": {
-      "block_code": 203,
-      "gps": []
-    },
-    "TAMIA": {
-      "block_code": 204,
-      "gps": []
-    },
-    "JAMAI": {
-      "block_code": 208,
-      "gps": []
-    },
-    "PARASIA": {
-      "block_code": 210,
-      "gps": []
-    },
-    "CHHINDWARA": {
-      "block_code": 211,
-      "gps": []
-    },
-    "CHAURAI": {
-      "block_code": 212,
-      "gps": []
-    },
-    "AMARWARA": {
-      "block_code": 214,
-      "gps": []
-    },
-    "Chhindwara": {
-      "block_code": 3500,
-      "gps": [
-        {
-          "gp_name": "Chhindwara Gram Panchayat",
-          "gp_code": 133095
-        },
-        {
-          "gp_name": "Chhindwara Rural",
-          "gp_code": 133096
-        }
-      ]
-    },
-    "Amarwara": {
-      "block_code": 3501,
-      "gps": [
-        {
-          "gp_name": "Amarwara Gram Panchayat",
-          "gp_code": 133097
-        },
-        {
-          "gp_name": "Amarwara Rural",
-          "gp_code": 133098
-        }
-      ]
-    },
-    "Chaurai": {
-      "block_code": 3502,
-      "gps": [
-        {
-          "gp_name": "Chaurai Gram Panchayat",
-          "gp_code": 133099
-        },
-        {
-          "gp_name": "Chaurai Rural",
-          "gp_code": 133100
-        }
-      ]
-    },
-    "Jamai": {
-      "block_code": 3503,
-      "gps": [
-        {
-          "gp_name": "Jamai Gram Panchayat",
-          "gp_code": 133101
-        },
-        {
-          "gp_name": "Jamai Rural",
-          "gp_code": 133102
-        }
-      ]
-    },
-    "Parasia": {
-      "block_code": 3504,
-      "gps": [
-        {
-          "gp_name": "Parasia Gram Panchayat",
-          "gp_code": 133103
-        },
-        {
-          "gp_name": "Parasia Rural",
-          "gp_code": 133104
-        }
-      ]
-    },
-    "Sausar": {
-      "block_code": 3505,
-      "gps": [
-        {
-          "gp_name": "Sausar Gram Panchayat",
-          "gp_code": 133105
-        },
-        {
-          "gp_name": "Sausar Rural",
-          "gp_code": 133106
-        }
-      ]
-    }
-  },
-  "Betul": {
-    "MULTAI": {
-      "block_code": 12,
-      "gps": []
-    },
-    "PRABHAT PATTAN": {
-      "block_code": 13,
-      "gps": []
-    },
-    "ATHNER": {
-      "block_code": 14,
-      "gps": []
-    },
-    "BETUL": {
-      "block_code": 15,
-      "gps": []
-    },
-    "BHIMPUR": {
-      "block_code": 16,
-      "gps": []
-    },
-    "BHAINSDEHI": {
-      "block_code": 17,
-      "gps": []
-    },
-    "CHICHOLI": {
-      "block_code": 175,
-      "gps": []
-    },
-    "GHORADONGRI": {
-      "block_code": 176,
-      "gps": []
-    },
-    "SHAHPUR": {
-      "block_code": 177,
-      "gps": []
-    },
-    "AMLA": {
-      "block_code": 209,
-      "gps": []
-    },
-    "Betul": {
-      "block_code": 3400,
-      "gps": [
-        {
-          "gp_name": "Betul Gram Panchayat",
-          "gp_code": 133051
-        },
-        {
-          "gp_name": "Betul Rural",
-          "gp_code": 133052
-        }
-      ]
-    },
-    "Amla": {
-      "block_code": 3401,
-      "gps": [
-        {
-          "gp_name": "Amla Gram Panchayat",
-          "gp_code": 133053
-        },
-        {
-          "gp_name": "Amla Rural",
-          "gp_code": 133054
-        }
-      ]
-    },
-    "Bhainsdehi": {
-      "block_code": 3402,
-      "gps": [
-        {
-          "gp_name": "Bhainsdehi Gram Panchayat",
-          "gp_code": 133055
-        },
-        {
-          "gp_name": "Bhainsdehi Rural",
-          "gp_code": 133056
-        }
-      ]
-    },
-    "Chicholi": {
-      "block_code": 3403,
-      "gps": [
-        {
-          "gp_name": "Chicholi Gram Panchayat",
-          "gp_code": 133057
-        },
-        {
-          "gp_name": "Chicholi Rural",
-          "gp_code": 133058
-        }
-      ]
-    },
-    "Multai": {
-      "block_code": 3404,
-      "gps": [
-        {
-          "gp_name": "Multai Gram Panchayat",
-          "gp_code": 133059
-        },
-        {
-          "gp_name": "Multai Rural",
-          "gp_code": 133060
-        }
-      ]
-    },
-    "Shahpur": {
-      "block_code": 3405,
-      "gps": [
-        {
-          "gp_name": "Shahpur Gram Panchayat",
-          "gp_code": 133061
-        },
-        {
-          "gp_name": "Shahpur Rural",
-          "gp_code": 133062
-        }
-      ]
-    }
-  },
-  "Burhanpur": {
-    "KHAKNAR": {
-      "block_code": 18,
-      "gps": []
-    },
-    "BURHANPUR": {
-      "block_code": 23,
-      "gps": []
-    },
-    "Burhanpur": {
-      "block_code": 3460,
-      "gps": [
-        {
-          "gp_name": "Burhanpur Gram Panchayat",
-          "gp_code": 133079
-        },
-        {
-          "gp_name": "Burhanpur Rural",
-          "gp_code": 133080
-        }
-      ]
-    },
-    "Kharkalan": {
-      "block_code": 3461,
-      "gps": [
-        {
-          "gp_name": "Kharkalan Gram Panchayat",
-          "gp_code": 133081
-        },
-        {
-          "gp_name": "Kharkalan Rural",
-          "gp_code": 133082
-        }
-      ]
-    }
-  },
-  "East Nimar": {
-    "KHALWA": {
-      "block_code": 19,
-      "gps": []
-    },
-    "PANDHANA": {
-      "block_code": 20,
-      "gps": []
-    },
-    "CHHAIGAON MAKHAN": {
-      "block_code": 21,
-      "gps": []
-    },
-    "PUNASA": {
-      "block_code": 165,
-      "gps": []
-    },
-    "KHANDWA": {
-      "block_code": 166,
-      "gps": []
-    },
-    "HARSUD": {
-      "block_code": 167,
-      "gps": []
-    },
-    "BALADI": {
-      "block_code": 168,
-      "gps": []
-    }
-  },
-  "Khargone": {
-    "ZIRANYA": {
-      "block_code": 22,
-      "gps": []
-    },
-    "BHAGVANPURA": {
-      "block_code": 24,
-      "gps": []
-    },
-    "BHIKANGAON": {
-      "block_code": 25,
-      "gps": []
-    },
-    "GOGAWAN": {
-      "block_code": 26,
-      "gps": []
-    },
-    "KHARGONE": {
-      "block_code": 27,
-      "gps": []
-    },
-    "SEGAON": {
-      "block_code": 28,
-      "gps": []
-    },
-    "MAHESHWAR": {
-      "block_code": 162,
-      "gps": []
-    },
-    "KASRAWAD": {
-      "block_code": 163,
-      "gps": []
-    },
-    "BARWAH": {
-      "block_code": 164,
-      "gps": []
-    },
-    "Khargone": {
-      "block_code": 3800,
-      "gps": [
-        {
-          "gp_name": "Khargone Gram Panchayat",
-          "gp_code": 133259
-        },
-        {
-          "gp_name": "Khargone Rural",
-          "gp_code": 133260
-        }
-      ]
-    },
-    "Barwaha": {
-      "block_code": 3801,
-      "gps": [
-        {
-          "gp_name": "Barwaha Gram Panchayat",
-          "gp_code": 133261
-        },
-        {
-          "gp_name": "Barwaha Rural",
-          "gp_code": 133262
-        }
-      ]
-    },
-    "Bhagwanpura": {
-      "block_code": 3802,
-      "gps": [
-        {
-          "gp_name": "Bhagwanpura Gram Panchayat",
-          "gp_code": 133263
-        },
-        {
-          "gp_name": "Bhagwanpura Rural",
-          "gp_code": 133264
-        }
-      ]
-    },
-    "Gogawan": {
-      "block_code": 3803,
-      "gps": [
-        {
-          "gp_name": "Gogawan Gram Panchayat",
-          "gp_code": 133265
-        },
-        {
-          "gp_name": "Gogawan Rural",
-          "gp_code": 133266
-        }
-      ]
-    },
-    "Kasrawad": {
-      "block_code": 3804,
-      "gps": [
-        {
-          "gp_name": "Kasrawad Gram Panchayat",
-          "gp_code": 133267
-        },
-        {
-          "gp_name": "Kasrawad Rural",
-          "gp_code": 133268
-        }
-      ]
-    },
-    "Maheshwar": {
-      "block_code": 3805,
-      "gps": [
-        {
-          "gp_name": "Maheshwar Gram Panchayat",
-          "gp_code": 133269
-        },
-        {
-          "gp_name": "Maheshwar Rural",
-          "gp_code": 133270
-        }
-      ]
-    },
-    "Segaon": {
-      "block_code": 3806,
-      "gps": [
-        {
-          "gp_name": "Segaon Gram Panchayat",
-          "gp_code": 133271
-        },
-        {
-          "gp_name": "Segaon Rural",
-          "gp_code": 133272
-        }
-      ]
-    }
-  },
-  "Barwani": {
-    "SENDHAWA": {
-      "block_code": 29,
-      "gps": []
-    },
-    "RAJPUR": {
-      "block_code": 30,
-      "gps": []
-    },
-    "NEWALI": {
-      "block_code": 31,
-      "gps": []
-    },
-    "BARWANI": {
-      "block_code": 32,
-      "gps": []
-    },
-    "PATI": {
-      "block_code": 33,
-      "gps": []
-    },
-    "PANSEMAL": {
-      "block_code": 34,
-      "gps": []
-    },
-    "THIKRI": {
-      "block_code": 46,
-      "gps": []
-    },
-    "Barwani": {
-      "block_code": 3380,
-      "gps": [
-        {
-          "gp_name": "Barwani Gram Panchayat",
-          "gp_code": 133039
-        },
-        {
-          "gp_name": "Barwani Rural",
-          "gp_code": 133040
-        }
-      ]
-    },
-    "Anjad": {
-      "block_code": 3381,
-      "gps": [
-        {
-          "gp_name": "Anjad Gram Panchayat",
-          "gp_code": 133041
-        },
-        {
-          "gp_name": "Anjad Rural",
-          "gp_code": 133042
-        }
-      ]
-    },
-    "Pansemal": {
-      "block_code": 3382,
-      "gps": [
-        {
-          "gp_name": "Pansemal Gram Panchayat",
-          "gp_code": 133043
-        },
-        {
-          "gp_name": "Pansemal Rural",
-          "gp_code": 133044
-        }
-      ]
-    },
-    "Rajpur": {
-      "block_code": 3383,
-      "gps": [
-        {
-          "gp_name": "Rajpur Gram Panchayat",
-          "gp_code": 133045
-        },
-        {
-          "gp_name": "Rajpur Rural",
-          "gp_code": 133046
-        }
-      ]
-    },
-    "Sendhwa": {
-      "block_code": 3384,
-      "gps": [
-        {
-          "gp_name": "Sendhwa Gram Panchayat",
-          "gp_code": 133047
-        },
-        {
-          "gp_name": "Sendhwa Rural",
-          "gp_code": 133048
-        }
-      ]
-    },
-    "Thikri": {
-      "block_code": 3385,
-      "gps": [
-        {
-          "gp_name": "Thikri Gram Panchayat",
-          "gp_code": 133049
-        },
-        {
-          "gp_name": "Thikri Rural",
-          "gp_code": 133050
-        }
-      ]
-    }
-  },
-  "Jhabua": {
-    "JHABUA": {
-      "block_code": 35,
-      "gps": []
-    },
-    "RANAPUR": {
-      "block_code": 36,
-      "gps": []
-    },
-    "RAMA": {
-      "block_code": 55,
-      "gps": []
-    },
-    "PETLAWAD": {
-      "block_code": 57,
-      "gps": []
-    },
-    "THANDLA": {
-      "block_code": 66,
-      "gps": []
-    },
-    "MEGHNAGAR": {
-      "block_code": 67,
-      "gps": []
-    },
-    "Jhabua": {
-      "block_code": 3740,
-      "gps": [
-        {
-          "gp_name": "Jhabua Gram Panchayat",
-          "gp_code": 133221
-        },
-        {
-          "gp_name": "Jhabua Rural",
-          "gp_code": 133222
-        }
-      ]
-    },
-    "Meghnagar": {
-      "block_code": 3741,
-      "gps": [
-        {
-          "gp_name": "Meghnagar Gram Panchayat",
-          "gp_code": 133223
-        },
-        {
-          "gp_name": "Meghnagar Rural",
-          "gp_code": 133224
-        }
-      ]
-    },
-    "Petlawad": {
-      "block_code": 3742,
-      "gps": [
-        {
-          "gp_name": "Petlawad Gram Panchayat",
-          "gp_code": 133225
-        },
-        {
-          "gp_name": "Petlawad Rural",
-          "gp_code": 133226
-        }
-      ]
-    },
-    "Ranapur": {
-      "block_code": 3743,
-      "gps": [
-        {
-          "gp_name": "Ranapur Gram Panchayat",
-          "gp_code": 133227
-        },
-        {
-          "gp_name": "Ranapur Rural",
-          "gp_code": 133228
-        }
-      ]
-    },
-    "Rama": {
-      "block_code": 3744,
-      "gps": [
-        {
-          "gp_name": "Rama Gram Panchayat",
-          "gp_code": 133229
-        },
-        {
-          "gp_name": "Rama Rural",
-          "gp_code": 133230
-        }
-      ]
-    },
-    "Thandla": {
-      "block_code": 3745,
-      "gps": [
-        {
-          "gp_name": "Thandla Gram Panchayat",
-          "gp_code": 133231
-        },
-        {
-          "gp_name": "Thandla Rural",
-          "gp_code": 133232
-        }
-      ]
-    }
+  "Agar Malwa": {
+    "Agar": [
+      {
+        "gp_name": "Agar Gram Panchayat",
+        "gp_code": 133001
+      },
+      {
+        "gp_name": "Agar Rural",
+        "gp_code": 133002
+      }
+    ],
+    "Badod": [
+      {
+        "gp_name": "Badod Gram Panchayat",
+        "gp_code": 133003
+      },
+      {
+        "gp_name": "Badod Rural",
+        "gp_code": 133004
+      }
+    ],
+    "Nalkheda": [
+      {
+        "gp_name": "Nalkheda Gram Panchayat",
+        "gp_code": 133005
+      },
+      {
+        "gp_name": "Nalkheda Rural",
+        "gp_code": 133006
+      }
+    ],
+    "Susner": [
+      {
+        "gp_name": "Susner Gram Panchayat",
+        "gp_code": 133007
+      },
+      {
+        "gp_name": "Susner Rural",
+        "gp_code": 133008
+      }
+    ]
   },
   "Alirajpur": {
-    "BHABRA": {
-      "block_code": 37,
-      "gps": []
-    },
-    "UDAIGARH": {
-      "block_code": 38,
-      "gps": []
-    },
-    "ALIRAJPUR": {
-      "block_code": 39,
-      "gps": []
-    },
-    "KATTHIWADA": {
-      "block_code": 40,
-      "gps": []
-    },
-    "SONDWA": {
-      "block_code": 41,
-      "gps": []
-    },
-    "JOBAT": {
-      "block_code": 43,
-      "gps": []
-    },
-    "Alirajpur": {
-      "block_code": 3320,
-      "gps": [
-        {
-          "gp_name": "Alirajpur Gram Panchayat",
-          "gp_code": 133009
-        },
-        {
-          "gp_name": "Alirajpur Rural",
-          "gp_code": 133010
-        }
-      ]
-    },
-    "Bhabhra": {
-      "block_code": 3321,
-      "gps": [
-        {
-          "gp_name": "Bhabhra Gram Panchayat",
-          "gp_code": 133011
-        },
-        {
-          "gp_name": "Bhabhra Rural",
-          "gp_code": 133012
-        }
-      ]
-    },
-    "Katthiwada": {
-      "block_code": 3322,
-      "gps": [
-        {
-          "gp_name": "Katthiwada Gram Panchayat",
-          "gp_code": 133013
-        },
-        {
-          "gp_name": "Katthiwada Rural",
-          "gp_code": 133014
-        }
-      ]
-    },
-    "Sondwa": {
-      "block_code": 3323,
-      "gps": [
-        {
-          "gp_name": "Sondwa Gram Panchayat",
-          "gp_code": 133015
-        },
-        {
-          "gp_name": "Sondwa Rural",
-          "gp_code": 133016
-        }
-      ]
-    },
-    "Udaygarh": {
-      "block_code": 3324,
-      "gps": [
-        {
-          "gp_name": "Udaygarh Gram Panchayat",
-          "gp_code": 133017
-        },
-        {
-          "gp_name": "Udaygarh Rural",
-          "gp_code": 133018
-        }
-      ]
-    }
-  },
-  "Dhar": {
-    "DAHI": {
-      "block_code": 42,
-      "gps": []
-    },
-    "KUKSHI": {
-      "block_code": 44,
-      "gps": []
-    },
-    "NISARPUR": {
-      "block_code": 45,
-      "gps": []
-    },
-    "DHARAMPURI": {
-      "block_code": 47,
-      "gps": []
-    },
-    "UMARBAN": {
-      "block_code": 48,
-      "gps": []
-    },
-    "MANAWAR": {
-      "block_code": 49,
-      "gps": []
-    },
-    "GANDHWANI": {
-      "block_code": 50,
-      "gps": []
-    },
-    "TIRLA": {
-      "block_code": 51,
-      "gps": []
-    },
-    "NALCHHA": {
-      "block_code": 52,
-      "gps": []
-    },
-    "SARDARPUR": {
-      "block_code": 53,
-      "gps": []
-    },
-    "BAGH": {
-      "block_code": 54,
-      "gps": []
-    },
-    "BADNAWAR": {
-      "block_code": 58,
-      "gps": []
-    },
-    "DHAR": {
-      "block_code": 160,
-      "gps": []
-    },
-    "Dhar": {
-      "block_code": 3580,
-      "gps": [
-        {
-          "gp_name": "Dhar Gram Panchayat",
-          "gp_code": 133137
-        },
-        {
-          "gp_name": "Dhar Rural",
-          "gp_code": 133138
-        }
-      ]
-    },
-    "Badnawar": {
-      "block_code": 3581,
-      "gps": [
-        {
-          "gp_name": "Badnawar Gram Panchayat",
-          "gp_code": 133139
-        },
-        {
-          "gp_name": "Badnawar Rural",
-          "gp_code": 133140
-        }
-      ]
-    },
-    "Dharampuri": {
-      "block_code": 3582,
-      "gps": [
-        {
-          "gp_name": "Dharampuri Gram Panchayat",
-          "gp_code": 133141
-        },
-        {
-          "gp_name": "Dharampuri Rural",
-          "gp_code": 133142
-        }
-      ]
-    },
-    "Gandhwani": {
-      "block_code": 3583,
-      "gps": [
-        {
-          "gp_name": "Gandhwani Gram Panchayat",
-          "gp_code": 133143
-        },
-        {
-          "gp_name": "Gandhwani Rural",
-          "gp_code": 133144
-        }
-      ]
-    },
-    "Kukshi": {
-      "block_code": 3584,
-      "gps": [
-        {
-          "gp_name": "Kukshi Gram Panchayat",
-          "gp_code": 133145
-        },
-        {
-          "gp_name": "Kukshi Rural",
-          "gp_code": 133146
-        }
-      ]
-    },
-    "Manawar": {
-      "block_code": 3585,
-      "gps": [
-        {
-          "gp_name": "Manawar Gram Panchayat",
-          "gp_code": 133147
-        },
-        {
-          "gp_name": "Manawar Rural",
-          "gp_code": 133148
-        }
-      ]
-    },
-    "Sardarpur": {
-      "block_code": 3586,
-      "gps": [
-        {
-          "gp_name": "Sardarpur Gram Panchayat",
-          "gp_code": 133149
-        },
-        {
-          "gp_name": "Sardarpur Rural",
-          "gp_code": 133150
-        }
-      ]
-    }
-  },
-  "Ratlam": {
-    "BAJNA": {
-      "block_code": 56,
-      "gps": []
-    },
-    "RATLAM": {
-      "block_code": 60,
-      "gps": []
-    },
-    "ALOT": {
-      "block_code": 62,
-      "gps": []
-    },
-    "JAORA": {
-      "block_code": 63,
-      "gps": []
-    },
-    "PIPLODA": {
-      "block_code": 64,
-      "gps": []
-    },
-    "SAILANA": {
-      "block_code": 65,
-      "gps": []
-    },
-    "Ratlam": {
-      "block_code": 4000,
-      "gps": [
-        {
-          "gp_name": "Ratlam Gram Panchayat",
-          "gp_code": 133373
-        },
-        {
-          "gp_name": "Ratlam Rural",
-          "gp_code": 133374
-        }
-      ]
-    },
-    "Alot": {
-      "block_code": 4001,
-      "gps": [
-        {
-          "gp_name": "Alot Gram Panchayat",
-          "gp_code": 133375
-        },
-        {
-          "gp_name": "Alot Rural",
-          "gp_code": 133376
-        }
-      ]
-    },
-    "Bajna": {
-      "block_code": 4002,
-      "gps": [
-        {
-          "gp_name": "Bajna Gram Panchayat",
-          "gp_code": 133377
-        },
-        {
-          "gp_name": "Bajna Rural",
-          "gp_code": 133378
-        }
-      ]
-    },
-    "Jaora": {
-      "block_code": 4003,
-      "gps": [
-        {
-          "gp_name": "Jaora Gram Panchayat",
-          "gp_code": 133379
-        },
-        {
-          "gp_name": "Jaora Rural",
-          "gp_code": 133380
-        }
-      ]
-    },
-    "Piploda": {
-      "block_code": 4004,
-      "gps": [
-        {
-          "gp_name": "Piploda Gram Panchayat",
-          "gp_code": 133381
-        },
-        {
-          "gp_name": "Piploda Rural",
-          "gp_code": 133382
-        }
-      ]
-    },
-    "Sailana": {
-      "block_code": 4005,
-      "gps": [
-        {
-          "gp_name": "Sailana Gram Panchayat",
-          "gp_code": 133383
-        },
-        {
-          "gp_name": "Sailana Rural",
-          "gp_code": 133384
-        }
-      ]
-    }
-  },
-  "Ujjain": {
-    "BADNAGAR": {
-      "block_code": 59,
-      "gps": []
-    },
-    "KHACHAROD": {
-      "block_code": 61,
-      "gps": []
-    },
-    "MAHIDPUR": {
-      "block_code": 149,
-      "gps": []
-    },
-    "UJJAIN": {
-      "block_code": 150,
-      "gps": []
-    },
-    "GHATIYA": {
-      "block_code": 151,
-      "gps": []
-    },
-    "TARANA": {
-      "block_code": 154,
-      "gps": []
-    },
-    "Ujjain": {
-      "block_code": 4260,
-      "gps": [
-        {
-          "gp_name": "Ujjain Gram Panchayat",
-          "gp_code": 133537
-        },
-        {
-          "gp_name": "Ujjain Rural",
-          "gp_code": 133538
-        }
-      ]
-    },
-    "Badnagar": {
-      "block_code": 4261,
-      "gps": [
-        {
-          "gp_name": "Badnagar Gram Panchayat",
-          "gp_code": 133539
-        },
-        {
-          "gp_name": "Badnagar Rural",
-          "gp_code": 133540
-        }
-      ]
-    },
-    "Ghatiya": {
-      "block_code": 4262,
-      "gps": [
-        {
-          "gp_name": "Ghatiya Gram Panchayat",
-          "gp_code": 133541
-        },
-        {
-          "gp_name": "Ghatiya Rural",
-          "gp_code": 133542
-        }
-      ]
-    },
-    "Khachrod": {
-      "block_code": 4263,
-      "gps": [
-        {
-          "gp_name": "Khachrod Gram Panchayat",
-          "gp_code": 133543
-        },
-        {
-          "gp_name": "Khachrod Rural",
-          "gp_code": 133544
-        }
-      ]
-    },
-    "Mahidpur": {
-      "block_code": 4264,
-      "gps": [
-        {
-          "gp_name": "Mahidpur Gram Panchayat",
-          "gp_code": 133545
-        },
-        {
-          "gp_name": "Mahidpur Rural",
-          "gp_code": 133546
-        }
-      ]
-    },
-    "Tarana": {
-      "block_code": 4265,
-      "gps": [
-        {
-          "gp_name": "Tarana Gram Panchayat",
-          "gp_code": 133547
-        },
-        {
-          "gp_name": "Tarana Rural",
-          "gp_code": 133548
-        }
-      ]
-    }
-  },
-  "Mandsaur": {
-    "MANDSAUR": {
-      "block_code": 68,
-      "gps": []
-    },
-    "MALHARGARH": {
-      "block_code": 69,
-      "gps": []
-    },
-    "BHANPURA": {
-      "block_code": 127,
-      "gps": []
-    },
-    "GAROTH": {
-      "block_code": 128,
-      "gps": []
-    },
-    "SITAMAU": {
-      "block_code": 129,
-      "gps": []
-    },
-    "Mandsaur": {
-      "block_code": 3840,
-      "gps": [
-        {
-          "gp_name": "Mandsaur Gram Panchayat",
-          "gp_code": 133287
-        },
-        {
-          "gp_name": "Mandsaur Rural",
-          "gp_code": 133288
-        }
-      ]
-    },
-    "Bhanpura": {
-      "block_code": 3841,
-      "gps": [
-        {
-          "gp_name": "Bhanpura Gram Panchayat",
-          "gp_code": 133289
-        },
-        {
-          "gp_name": "Bhanpura Rural",
-          "gp_code": 133290
-        }
-      ]
-    },
-    "Daloda": {
-      "block_code": 3842,
-      "gps": [
-        {
-          "gp_name": "Daloda Gram Panchayat",
-          "gp_code": 133291
-        },
-        {
-          "gp_name": "Daloda Rural",
-          "gp_code": 133292
-        }
-      ]
-    },
-    "Garoth": {
-      "block_code": 3843,
-      "gps": [
-        {
-          "gp_name": "Garoth Gram Panchayat",
-          "gp_code": 133293
-        },
-        {
-          "gp_name": "Garoth Rural",
-          "gp_code": 133294
-        }
-      ]
-    },
-    "Malhargarh": {
-      "block_code": 3844,
-      "gps": [
-        {
-          "gp_name": "Malhargarh Gram Panchayat",
-          "gp_code": 133295
-        },
-        {
-          "gp_name": "Malhargarh Rural",
-          "gp_code": 133296
-        }
-      ]
-    },
-    "Sitamau": {
-      "block_code": 3845,
-      "gps": [
-        {
-          "gp_name": "Sitamau Gram Panchayat",
-          "gp_code": 133297
-        },
-        {
-          "gp_name": "Sitamau Rural",
-          "gp_code": 133298
-        }
-      ]
-    }
-  },
-  "Neemuch": {
-    "MANASA": {
-      "block_code": 70,
-      "gps": []
-    },
-    "NEEMUCH": {
-      "block_code": 71,
-      "gps": []
-    },
-    "JAWAD": {
-      "block_code": 72,
-      "gps": []
-    },
-    "Neemuch": {
-      "block_code": 3900,
-      "gps": [
-        {
-          "gp_name": "Neemuch Gram Panchayat",
-          "gp_code": 133325
-        },
-        {
-          "gp_name": "Neemuch Rural",
-          "gp_code": 133326
-        }
-      ]
-    },
-    "Jawad": {
-      "block_code": 3901,
-      "gps": [
-        {
-          "gp_name": "Jawad Gram Panchayat",
-          "gp_code": 133327
-        },
-        {
-          "gp_name": "Jawad Rural",
-          "gp_code": 133328
-        }
-      ]
-    },
-    "Manasa": {
-      "block_code": 3902,
-      "gps": [
-        {
-          "gp_name": "Manasa Gram Panchayat",
-          "gp_code": 133329
-        },
-        {
-          "gp_name": "Manasa Rural",
-          "gp_code": 133330
-        }
-      ]
-    }
-  },
-  "Sheopur": {
-    "VIJAYPUR": {
-      "block_code": 73,
-      "gps": []
-    },
-    "KARAHAL": {
-      "block_code": 124,
-      "gps": []
-    },
-    "SHEOPUR": {
-      "block_code": 126,
-      "gps": []
-    },
-    "Sheopur": {
-      "block_code": 4160,
-      "gps": [
-        {
-          "gp_name": "Sheopur Gram Panchayat",
-          "gp_code": 133489
-        },
-        {
-          "gp_name": "Sheopur Rural",
-          "gp_code": 133490
-        }
-      ]
-    },
-    "Karahal": {
-      "block_code": 4161,
-      "gps": [
-        {
-          "gp_name": "Karahal Gram Panchayat",
-          "gp_code": 133491
-        },
-        {
-          "gp_name": "Karahal Rural",
-          "gp_code": 133492
-        }
-      ]
-    },
-    "Vijaypur": {
-      "block_code": 4162,
-      "gps": [
-        {
-          "gp_name": "Vijaypur Gram Panchayat",
-          "gp_code": 133493
-        },
-        {
-          "gp_name": "Vijaypur Rural",
-          "gp_code": 133494
-        }
-      ]
-    }
-  },
-  "Gwalior": {
-    "BHITARWAR": {
-      "block_code": 74,
-      "gps": []
-    },
-    "GHATIGAON": {
-      "block_code": 75,
-      "gps": []
-    },
-    "MORAR": {
-      "block_code": 87,
-      "gps": []
-    },
-    "DABRA": {
-      "block_code": 90,
-      "gps": []
-    },
-    "Morar": {
-      "block_code": 3640,
-      "gps": [
-        {
-          "gp_name": "Morar Gram Panchayat",
-          "gp_code": 133173
-        },
-        {
-          "gp_name": "Morar Rural",
-          "gp_code": 133174
-        }
-      ]
-    },
-    "Ghatigaon": {
-      "block_code": 3641,
-      "gps": [
-        {
-          "gp_name": "Ghatigaon Gram Panchayat",
-          "gp_code": 133175
-        },
-        {
-          "gp_name": "Ghatigaon Rural",
-          "gp_code": 133176
-        }
-      ]
-    },
-    "Dabra": {
-      "block_code": 3642,
-      "gps": [
-        {
-          "gp_name": "Dabra Gram Panchayat",
-          "gp_code": 133177
-        },
-        {
-          "gp_name": "Dabra Rural",
-          "gp_code": 133178
-        }
-      ]
-    },
-    "Bhitarwar": {
-      "block_code": 3643,
-      "gps": [
-        {
-          "gp_name": "Bhitarwar Gram Panchayat",
-          "gp_code": 133179
-        },
-        {
-          "gp_name": "Bhitarwar Rural",
-          "gp_code": 133180
-        }
-      ]
-    }
-  },
-  "Morena": {
-    "JOURA": {
-      "block_code": 76,
-      "gps": []
-    },
-    "MORENA": {
-      "block_code": 77,
-      "gps": []
-    },
-    "PAHADGARH": {
-      "block_code": 78,
-      "gps": []
-    },
-    "KAILARAS": {
-      "block_code": 79,
-      "gps": []
-    },
-    "SABALGARH": {
-      "block_code": 80,
-      "gps": []
-    },
-    "PORSA": {
-      "block_code": 81,
-      "gps": []
-    },
-    "AMBAH": {
-      "block_code": 86,
-      "gps": []
-    },
-    "Morena": {
-      "block_code": 3860,
-      "gps": [
-        {
-          "gp_name": "Morena Gram Panchayat",
-          "gp_code": 133299
-        },
-        {
-          "gp_name": "Morena Rural",
-          "gp_code": 133300
-        }
-      ]
-    },
-    "Ambah": {
-      "block_code": 3861,
-      "gps": [
-        {
-          "gp_name": "Ambah Gram Panchayat",
-          "gp_code": 133301
-        },
-        {
-          "gp_name": "Ambah Rural",
-          "gp_code": 133302
-        }
-      ]
-    },
-    "Joras": {
-      "block_code": 3862,
-      "gps": [
-        {
-          "gp_name": "Joras Gram Panchayat",
-          "gp_code": 133303
-        },
-        {
-          "gp_name": "Joras Rural",
-          "gp_code": 133304
-        }
-      ]
-    },
-    "Kailaras": {
-      "block_code": 3863,
-      "gps": [
-        {
-          "gp_name": "Kailaras Gram Panchayat",
-          "gp_code": 133305
-        },
-        {
-          "gp_name": "Kailaras Rural",
-          "gp_code": 133306
-        }
-      ]
-    },
-    "Paharhgarh": {
-      "block_code": 3864,
-      "gps": [
-        {
-          "gp_name": "Paharhgarh Gram Panchayat",
-          "gp_code": 133307
-        },
-        {
-          "gp_name": "Paharhgarh Rural",
-          "gp_code": 133308
-        }
-      ]
-    },
-    "Porsa": {
-      "block_code": 3865,
-      "gps": [
-        {
-          "gp_name": "Porsa Gram Panchayat",
-          "gp_code": 133309
-        },
-        {
-          "gp_name": "Porsa Rural",
-          "gp_code": 133310
-        }
-      ]
-    },
-    "Sabalgarh": {
-      "block_code": 3866,
-      "gps": [
-        {
-          "gp_name": "Sabalgarh Gram Panchayat",
-          "gp_code": 133311
-        },
-        {
-          "gp_name": "Sabalgarh Rural",
-          "gp_code": 133312
-        }
-      ]
-    }
-  },
-  "Bhind": {
-    "BHIND": {
-      "block_code": 82,
-      "gps": []
-    },
-    "RAON": {
-      "block_code": 83,
-      "gps": []
-    },
-    "ATER": {
-      "block_code": 84,
-      "gps": []
-    },
-    "MEHGAON": {
-      "block_code": 85,
-      "gps": []
-    },
-    "GOHAD": {
-      "block_code": 88,
-      "gps": []
-    },
-    "LAHAR": {
-      "block_code": 92,
-      "gps": []
-    },
-    "Bhind": {
-      "block_code": 3420,
-      "gps": [
-        {
-          "gp_name": "Bhind Gram Panchayat",
-          "gp_code": 133063
-        },
-        {
-          "gp_name": "Bhind Rural",
-          "gp_code": 133064
-        }
-      ]
-    },
-    "Ater": {
-      "block_code": 3421,
-      "gps": [
-        {
-          "gp_name": "Ater Gram Panchayat",
-          "gp_code": 133065
-        },
-        {
-          "gp_name": "Ater Rural",
-          "gp_code": 133066
-        }
-      ]
-    },
-    "Gohad": {
-      "block_code": 3422,
-      "gps": [
-        {
-          "gp_name": "Gohad Gram Panchayat",
-          "gp_code": 133067
-        },
-        {
-          "gp_name": "Gohad Rural",
-          "gp_code": 133068
-        }
-      ]
-    },
-    "Lahar": {
-      "block_code": 3423,
-      "gps": [
-        {
-          "gp_name": "Lahar Gram Panchayat",
-          "gp_code": 133069
-        },
-        {
-          "gp_name": "Lahar Rural",
-          "gp_code": 133070
-        }
-      ]
-    },
-    "Mehgaon": {
-      "block_code": 3424,
-      "gps": [
-        {
-          "gp_name": "Mehgaon Gram Panchayat",
-          "gp_code": 133071
-        },
-        {
-          "gp_name": "Mehgaon Rural",
-          "gp_code": 133072
-        }
-      ]
-    },
-    "Ron": {
-      "block_code": 3425,
-      "gps": [
-        {
-          "gp_name": "Ron Gram Panchayat",
-          "gp_code": 133073
-        },
-        {
-          "gp_name": "Ron Rural",
-          "gp_code": 133074
-        }
-      ]
-    }
-  },
-  "Datia": {
-    "SEONDHA": {
-      "block_code": 89,
-      "gps": []
-    },
-    "BHANDER": {
-      "block_code": 91,
-      "gps": []
-    },
-    "DATIA": {
-      "block_code": 94,
-      "gps": []
-    },
-    "Datia": {
-      "block_code": 3540,
-      "gps": [
-        {
-          "gp_name": "Datia Gram Panchayat",
-          "gp_code": 133119
-        },
-        {
-          "gp_name": "Datia Rural",
-          "gp_code": 133120
-        }
-      ]
-    },
-    "Bhander": {
-      "block_code": 3541,
-      "gps": [
-        {
-          "gp_name": "Bhander Gram Panchayat",
-          "gp_code": 133121
-        },
-        {
-          "gp_name": "Bhander Rural",
-          "gp_code": 133122
-        }
-      ]
-    },
-    "Seondha": {
-      "block_code": 3542,
-      "gps": [
-        {
-          "gp_name": "Seondha Gram Panchayat",
-          "gp_code": 133123
-        },
-        {
-          "gp_name": "Seondha Rural",
-          "gp_code": 133124
-        }
-      ]
-    }
-  },
-  "Niwari": {
-    "NIWARI": {
-      "block_code": 93,
-      "gps": []
-    },
-    "PRITHVIPUR": {
-      "block_code": 96,
-      "gps": []
-    },
-    "Niwari": {
-      "block_code": 3920,
-      "gps": [
-        {
-          "gp_name": "Niwari Gram Panchayat",
-          "gp_code": 133331
-        },
-        {
-          "gp_name": "Niwari Rural",
-          "gp_code": 133332
-        }
-      ]
-    },
-    "Prithvipur": {
-      "block_code": 3921,
-      "gps": [
-        {
-          "gp_name": "Prithvipur Gram Panchayat",
-          "gp_code": 133333
-        },
-        {
-          "gp_name": "Prithvipur Rural",
-          "gp_code": 133334
-        }
-      ]
-    },
-    "Orchha": {
-      "block_code": 3922,
-      "gps": [
-        {
-          "gp_name": "Orchha Gram Panchayat",
-          "gp_code": 133335
-        },
-        {
-          "gp_name": "Orchha Rural",
-          "gp_code": 133336
-        }
-      ]
-    }
-  },
-  "Tikamgarh": {
-    "JATARA": {
-      "block_code": 95,
-      "gps": []
-    },
-    "PALERA": {
-      "block_code": 97,
-      "gps": []
-    },
-    "TIKAMGARH": {
-      "block_code": 98,
-      "gps": []
-    },
-    "BALDEOGARH": {
-      "block_code": 259,
-      "gps": []
-    },
-    "Tikamgarh": {
-      "block_code": 4240,
-      "gps": [
-        {
-          "gp_name": "Tikamgarh Gram Panchayat",
-          "gp_code": 133529
-        },
-        {
-          "gp_name": "Tikamgarh Rural",
-          "gp_code": 133530
-        }
-      ]
-    },
-    "Baldeogarh": {
-      "block_code": 4241,
-      "gps": [
-        {
-          "gp_name": "Baldeogarh Gram Panchayat",
-          "gp_code": 133531
-        },
-        {
-          "gp_name": "Baldeogarh Rural",
-          "gp_code": 133532
-        }
-      ]
-    },
-    "Jatara": {
-      "block_code": 4242,
-      "gps": [
-        {
-          "gp_name": "Jatara Gram Panchayat",
-          "gp_code": 133533
-        },
-        {
-          "gp_name": "Jatara Rural",
-          "gp_code": 133534
-        }
-      ]
-    },
-    "Palera": {
-      "block_code": 4243,
-      "gps": [
-        {
-          "gp_name": "Palera Gram Panchayat",
-          "gp_code": 133535
-        },
-        {
-          "gp_name": "Palera Rural",
-          "gp_code": 133536
-        }
-      ]
-    }
-  },
-  "Sagar": {
-    "SHAHGARH": {
-      "block_code": 99,
-      "gps": []
-    },
-    "BANDA": {
-      "block_code": 100,
-      "gps": []
-    },
-    "MALTHONE": {
-      "block_code": 101,
-      "gps": []
-    },
-    "RAHATGARH": {
-      "block_code": 102,
-      "gps": []
-    },
-    "KHURAI": {
-      "block_code": 103,
-      "gps": []
-    },
-    "BINA": {
-      "block_code": 106,
-      "gps": []
-    },
-    "JAISINAGAR": {
-      "block_code": 195,
-      "gps": []
-    },
-    "KESLI": {
-      "block_code": 197,
-      "gps": []
-    },
-    "SAGAR": {
-      "block_code": 198,
-      "gps": []
-    },
-    "REHLI": {
-      "block_code": 199,
-      "gps": []
-    },
-    "DEORI": {
-      "block_code": 200,
-      "gps": []
-    },
-    "Sagar": {
-      "block_code": 4040,
-      "gps": [
-        {
-          "gp_name": "Sagar Gram Panchayat",
-          "gp_code": 133407
-        },
-        {
-          "gp_name": "Sagar Rural",
-          "gp_code": 133408
-        }
-      ]
-    },
-    "Banda": {
-      "block_code": 4041,
-      "gps": [
-        {
-          "gp_name": "Banda Gram Panchayat",
-          "gp_code": 133409
-        },
-        {
-          "gp_name": "Banda Rural",
-          "gp_code": 133410
-        }
-      ]
-    },
-    "Bina": {
-      "block_code": 4042,
-      "gps": [
-        {
-          "gp_name": "Bina Gram Panchayat",
-          "gp_code": 133411
-        },
-        {
-          "gp_name": "Bina Rural",
-          "gp_code": 133412
-        }
-      ]
-    },
-    "Deori": {
-      "block_code": 4043,
-      "gps": [
-        {
-          "gp_name": "Deori Gram Panchayat",
-          "gp_code": 133413
-        },
-        {
-          "gp_name": "Deori Rural",
-          "gp_code": 133414
-        }
-      ]
-    },
-    "Jaisinagar": {
-      "block_code": 4044,
-      "gps": [
-        {
-          "gp_name": "Jaisinagar Gram Panchayat",
-          "gp_code": 133415
-        },
-        {
-          "gp_name": "Jaisinagar Rural",
-          "gp_code": 133416
-        }
-      ]
-    },
-    "Kesli": {
-      "block_code": 4045,
-      "gps": [
-        {
-          "gp_name": "Kesli Gram Panchayat",
-          "gp_code": 133417
-        },
-        {
-          "gp_name": "Kesli Rural",
-          "gp_code": 133418
-        }
-      ]
-    },
-    "Khurai": {
-      "block_code": 4046,
-      "gps": [
-        {
-          "gp_name": "Khurai Gram Panchayat",
-          "gp_code": 133419
-        },
-        {
-          "gp_name": "Khurai Rural",
-          "gp_code": 133420
-        }
-      ]
-    },
-    "Malthon": {
-      "block_code": 4047,
-      "gps": [
-        {
-          "gp_name": "Malthon Gram Panchayat",
-          "gp_code": 133421
-        },
-        {
-          "gp_name": "Malthon Rural",
-          "gp_code": 133422
-        }
-      ]
-    },
-    "Rahatgarh": {
-      "block_code": 4048,
-      "gps": [
-        {
-          "gp_name": "Rahatgarh Gram Panchayat",
-          "gp_code": 133423
-        },
-        {
-          "gp_name": "Rahatgarh Rural",
-          "gp_code": 133424
-        }
-      ]
-    },
-    "Rehli": {
-      "block_code": 4049,
-      "gps": [
-        {
-          "gp_name": "Rehli Gram Panchayat",
-          "gp_code": 133425
-        },
-        {
-          "gp_name": "Rehli Rural",
-          "gp_code": 133426
-        }
-      ]
-    },
-    "Shahgarh": {
-      "block_code": 4050,
-      "gps": [
-        {
-          "gp_name": "Shahgarh Gram Panchayat",
-          "gp_code": 133427
-        },
-        {
-          "gp_name": "Shahgarh Rural",
-          "gp_code": 133428
-        }
-      ]
-    }
-  },
-  "Ashoknagar": {
-    "CHANDERI": {
-      "block_code": 104,
-      "gps": []
-    },
-    "MUNGAOLI": {
-      "block_code": 105,
-      "gps": []
-    },
-    "ASHOKNAGAR": {
-      "block_code": 113,
-      "gps": []
-    },
-    "ISAGARH": {
-      "block_code": 117,
-      "gps": []
-    },
-    "Ashoknagar": {
-      "block_code": 3340,
-      "gps": [
-        {
-          "gp_name": "Ashoknagar Gram Panchayat",
-          "gp_code": 133019
-        },
-        {
-          "gp_name": "Ashoknagar Rural",
-          "gp_code": 133020
-        }
-      ]
-    },
-    "Chanderi": {
-      "block_code": 3341,
-      "gps": [
-        {
-          "gp_name": "Chanderi Gram Panchayat",
-          "gp_code": 133021
-        },
-        {
-          "gp_name": "Chanderi Rural",
-          "gp_code": 133022
-        }
-      ]
-    },
-    "Isagarh": {
-      "block_code": 3342,
-      "gps": [
-        {
-          "gp_name": "Isagarh Gram Panchayat",
-          "gp_code": 133023
-        },
-        {
-          "gp_name": "Isagarh Rural",
-          "gp_code": 133024
-        }
-      ]
-    },
-    "Mungawali": {
-      "block_code": 3343,
-      "gps": [
-        {
-          "gp_name": "Mungawali Gram Panchayat",
-          "gp_code": 133025
-        },
-        {
-          "gp_name": "Mungawali Rural",
-          "gp_code": 133026
-        }
-      ]
-    }
-  },
-  "Vidisha": {
-    "KURWAI": {
-      "block_code": 107,
-      "gps": []
-    },
-    "BASODA": {
-      "block_code": 108,
-      "gps": []
-    },
-    "SIRONJ": {
-      "block_code": 109,
-      "gps": []
-    },
-    "NATERAN": {
-      "block_code": 110,
-      "gps": []
-    },
-    "LATERI": {
-      "block_code": 111,
-      "gps": []
-    },
-    "VIDISHA": {
-      "block_code": 188,
-      "gps": []
-    },
-    "GYARASPUR": {
-      "block_code": 189,
-      "gps": []
-    },
-    "Vidisha": {
-      "block_code": 4300,
-      "gps": [
-        {
-          "gp_name": "Vidisha Gram Panchayat",
-          "gp_code": 133557
-        },
-        {
-          "gp_name": "Vidisha Rural",
-          "gp_code": 133558
-        }
-      ]
-    },
-    "Basoda": {
-      "block_code": 4301,
-      "gps": [
-        {
-          "gp_name": "Basoda Gram Panchayat",
-          "gp_code": 133559
-        },
-        {
-          "gp_name": "Basoda Rural",
-          "gp_code": 133560
-        }
-      ]
-    },
-    "Gyaraspur": {
-      "block_code": 4302,
-      "gps": [
-        {
-          "gp_name": "Gyaraspur Gram Panchayat",
-          "gp_code": 133561
-        },
-        {
-          "gp_name": "Gyaraspur Rural",
-          "gp_code": 133562
-        }
-      ]
-    },
-    "Kurwai": {
-      "block_code": 4303,
-      "gps": [
-        {
-          "gp_name": "Kurwai Gram Panchayat",
-          "gp_code": 133563
-        },
-        {
-          "gp_name": "Kurwai Rural",
-          "gp_code": 133564
-        }
-      ]
-    },
-    "Leteri": {
-      "block_code": 4304,
-      "gps": [
-        {
-          "gp_name": "Leteri Gram Panchayat",
-          "gp_code": 133565
-        },
-        {
-          "gp_name": "Leteri Rural",
-          "gp_code": 133566
-        }
-      ]
-    },
-    "Nateran": {
-      "block_code": 4305,
-      "gps": [
-        {
-          "gp_name": "Nateran Gram Panchayat",
-          "gp_code": 133567
-        },
-        {
-          "gp_name": "Nateran Rural",
-          "gp_code": 133568
-        }
-      ]
-    },
-    "Sironj": {
-      "block_code": 4306,
-      "gps": [
-        {
-          "gp_name": "Sironj Gram Panchayat",
-          "gp_code": 133569
-        },
-        {
-          "gp_name": "Sironj Rural",
-          "gp_code": 133570
-        }
-      ]
-    }
-  },
-  "Guna": {
-    "ARON": {
-      "block_code": 112,
-      "gps": []
-    },
-    "GUNA": {
-      "block_code": 114,
-      "gps": []
-    },
-    "BAMORI": {
-      "block_code": 125,
-      "gps": []
-    },
-    "CHANCHODA": {
-      "block_code": 135,
-      "gps": []
-    },
-    "RAGHOGARH": {
-      "block_code": 136,
-      "gps": []
-    },
-    "Guna": {
-      "block_code": 3620,
-      "gps": [
-        {
-          "gp_name": "Guna Gram Panchayat",
-          "gp_code": 133163
-        },
-        {
-          "gp_name": "Guna Rural",
-          "gp_code": 133164
-        }
-      ]
-    },
-    "Aron": {
-      "block_code": 3621,
-      "gps": [
-        {
-          "gp_name": "Aron Gram Panchayat",
-          "gp_code": 133165
-        },
-        {
-          "gp_name": "Aron Rural",
-          "gp_code": 133166
-        }
-      ]
-    },
-    "Bamori": {
-      "block_code": 3622,
-      "gps": [
-        {
-          "gp_name": "Bamori Gram Panchayat",
-          "gp_code": 133167
-        },
-        {
-          "gp_name": "Bamori Rural",
-          "gp_code": 133168
-        }
-      ]
-    },
-    "Chachoda": {
-      "block_code": 3623,
-      "gps": [
-        {
-          "gp_name": "Chachoda Gram Panchayat",
-          "gp_code": 133169
-        },
-        {
-          "gp_name": "Chachoda Rural",
-          "gp_code": 133170
-        }
-      ]
-    },
-    "Raghogarh": {
-      "block_code": 3624,
-      "gps": [
-        {
-          "gp_name": "Raghogarh Gram Panchayat",
-          "gp_code": 133171
-        },
-        {
-          "gp_name": "Raghogarh Rural",
-          "gp_code": 133172
-        }
-      ]
-    }
-  },
-  "Shivpuri": {
-    "BADARWAS": {
-      "block_code": 115,
-      "gps": []
-    },
-    "KOLARAS": {
-      "block_code": 116,
-      "gps": []
-    },
-    "KHANIADHANA": {
-      "block_code": 118,
-      "gps": []
-    },
-    "PICHHORE": {
-      "block_code": 119,
-      "gps": []
-    },
-    "KARERA": {
-      "block_code": 120,
-      "gps": []
-    },
-    "NARWAR": {
-      "block_code": 121,
-      "gps": []
-    },
-    "SHIVPURI": {
-      "block_code": 122,
-      "gps": []
-    },
-    "POHRI": {
-      "block_code": 123,
-      "gps": []
-    },
-    "Shivpuri": {
-      "block_code": 4180,
-      "gps": [
-        {
-          "gp_name": "Shivpuri Gram Panchayat",
-          "gp_code": 133495
-        },
-        {
-          "gp_name": "Shivpuri Rural",
-          "gp_code": 133496
-        }
-      ]
-    },
-    "Badarwas": {
-      "block_code": 4181,
-      "gps": [
-        {
-          "gp_name": "Badarwas Gram Panchayat",
-          "gp_code": 133497
-        },
-        {
-          "gp_name": "Badarwas Rural",
-          "gp_code": 133498
-        }
-      ]
-    },
-    "Karera": {
-      "block_code": 4182,
-      "gps": [
-        {
-          "gp_name": "Karera Gram Panchayat",
-          "gp_code": 133499
-        },
-        {
-          "gp_name": "Karera Rural",
-          "gp_code": 133500
-        }
-      ]
-    },
-    "Khaniyadhana": {
-      "block_code": 4183,
-      "gps": [
-        {
-          "gp_name": "Khaniyadhana Gram Panchayat",
-          "gp_code": 133501
-        },
-        {
-          "gp_name": "Khaniyadhana Rural",
-          "gp_code": 133502
-        }
-      ]
-    },
-    "Kolaras": {
-      "block_code": 4184,
-      "gps": [
-        {
-          "gp_name": "Kolaras Gram Panchayat",
-          "gp_code": 133503
-        },
-        {
-          "gp_name": "Kolaras Rural",
-          "gp_code": 133504
-        }
-      ]
-    },
-    "Narwar": {
-      "block_code": 4185,
-      "gps": [
-        {
-          "gp_name": "Narwar Gram Panchayat",
-          "gp_code": 133505
-        },
-        {
-          "gp_name": "Narwar Rural",
-          "gp_code": 133506
-        }
-      ]
-    },
-    "Pichhore": {
-      "block_code": 4186,
-      "gps": [
-        {
-          "gp_name": "Pichhore Gram Panchayat",
-          "gp_code": 133507
-        },
-        {
-          "gp_name": "Pichhore Rural",
-          "gp_code": 133508
-        }
-      ]
-    },
-    "Pohari": {
-      "block_code": 4187,
-      "gps": [
-        {
-          "gp_name": "Pohari Gram Panchayat",
-          "gp_code": 133509
-        },
-        {
-          "gp_name": "Pohari Rural",
-          "gp_code": 133510
-        }
-      ]
-    }
-  },
-  "Agar Malwa": {
-    "SUSNER": {
-      "block_code": 130,
-      "gps": []
-    },
-    "NALKHEDA": {
-      "block_code": 132,
-      "gps": []
-    },
-    "AGAR": {
-      "block_code": 147,
-      "gps": []
-    },
-    "BAROD": {
-      "block_code": 148,
-      "gps": []
-    },
-    "Agar": {
-      "block_code": 3300,
-      "gps": [
-        {
-          "gp_name": "Agar Gram Panchayat",
-          "gp_code": 133001
-        },
-        {
-          "gp_name": "Agar Rural",
-          "gp_code": 133002
-        }
-      ]
-    },
-    "Badod": {
-      "block_code": 3301,
-      "gps": [
-        {
-          "gp_name": "Badod Gram Panchayat",
-          "gp_code": 133003
-        },
-        {
-          "gp_name": "Badod Rural",
-          "gp_code": 133004
-        }
-      ]
-    },
-    "Nalkheda": {
-      "block_code": 3302,
-      "gps": [
-        {
-          "gp_name": "Nalkheda Gram Panchayat",
-          "gp_code": 133005
-        },
-        {
-          "gp_name": "Nalkheda Rural",
-          "gp_code": 133006
-        }
-      ]
-    },
-    "Susner": {
-      "block_code": 3303,
-      "gps": [
-        {
-          "gp_name": "Susner Gram Panchayat",
-          "gp_code": 133007
-        },
-        {
-          "gp_name": "Susner Rural",
-          "gp_code": 133008
-        }
-      ]
-    }
-  },
-  "Rajgarh": {
-    "ZIRAPUR": {
-      "block_code": 131,
-      "gps": []
-    },
-    "RAJGARH": {
-      "block_code": 133,
-      "gps": []
-    },
-    "KHILCHIPUR": {
-      "block_code": 134,
-      "gps": []
-    },
-    "BIAORA": {
-      "block_code": 137,
-      "gps": []
-    },
-    "NARSINGHGARH": {
-      "block_code": 138,
-      "gps": []
-    },
-    "SARANGPUR": {
-      "block_code": 144,
-      "gps": []
-    },
-    "Rajgarh": {
-      "block_code": 3980,
-      "gps": [
-        {
-          "gp_name": "Rajgarh Gram Panchayat",
-          "gp_code": 133361
-        },
-        {
-          "gp_name": "Rajgarh Rural",
-          "gp_code": 133362
-        }
-      ]
-    },
-    "Biaora": {
-      "block_code": 3981,
-      "gps": [
-        {
-          "gp_name": "Biaora Gram Panchayat",
-          "gp_code": 133363
-        },
-        {
-          "gp_name": "Biaora Rural",
-          "gp_code": 133364
-        }
-      ]
-    },
-    "Khilchipur": {
-      "block_code": 3982,
-      "gps": [
-        {
-          "gp_name": "Khilchipur Gram Panchayat",
-          "gp_code": 133365
-        },
-        {
-          "gp_name": "Khilchipur Rural",
-          "gp_code": 133366
-        }
-      ]
-    },
-    "Narsinghgarh": {
-      "block_code": 3983,
-      "gps": [
-        {
-          "gp_name": "Narsinghgarh Gram Panchayat",
-          "gp_code": 133367
-        },
-        {
-          "gp_name": "Narsinghgarh Rural",
-          "gp_code": 133368
-        }
-      ]
-    },
-    "Sarangpur": {
-      "block_code": 3984,
-      "gps": [
-        {
-          "gp_name": "Sarangpur Gram Panchayat",
-          "gp_code": 133369
-        },
-        {
-          "gp_name": "Sarangpur Rural",
-          "gp_code": 133370
-        }
-      ]
-    },
-    "Zirapur": {
-      "block_code": 3985,
-      "gps": [
-        {
-          "gp_name": "Zirapur Gram Panchayat",
-          "gp_code": 133371
-        },
-        {
-          "gp_name": "Zirapur Rural",
-          "gp_code": 133372
-        }
-      ]
-    }
-  },
-  "Sehore": {
-    "SEHORE": {
-      "block_code": 139,
-      "gps": []
-    },
-    "ICHHAWAR": {
-      "block_code": 140,
-      "gps": []
-    },
-    "ASHTA": {
-      "block_code": 143,
-      "gps": []
-    },
-    "NASRULLAGANJ": {
-      "block_code": 171,
-      "gps": []
-    },
-    "BUDNI": {
-      "block_code": 181,
-      "gps": []
-    },
-    "Sehore": {
-      "block_code": 4080,
-      "gps": [
-        {
-          "gp_name": "Sehore Gram Panchayat",
-          "gp_code": 133445
-        },
-        {
-          "gp_name": "Sehore Rural",
-          "gp_code": 133446
-        }
-      ]
-    },
-    "Ashta": {
-      "block_code": 4081,
-      "gps": [
-        {
-          "gp_name": "Ashta Gram Panchayat",
-          "gp_code": 133447
-        },
-        {
-          "gp_name": "Ashta Rural",
-          "gp_code": 133448
-        }
-      ]
-    },
-    "Budhni": {
-      "block_code": 4082,
-      "gps": [
-        {
-          "gp_name": "Budhni Gram Panchayat",
-          "gp_code": 133449
-        },
-        {
-          "gp_name": "Budhni Rural",
-          "gp_code": 133450
-        }
-      ]
-    },
-    "Ichhawar": {
-      "block_code": 4083,
-      "gps": [
-        {
-          "gp_name": "Ichhawar Gram Panchayat",
-          "gp_code": 133451
-        },
-        {
-          "gp_name": "Ichhawar Rural",
-          "gp_code": 133452
-        }
-      ]
-    },
-    "Nasrullaganj": {
-      "block_code": 4084,
-      "gps": [
-        {
-          "gp_name": "Nasrullaganj Gram Panchayat",
-          "gp_code": 133453
-        },
-        {
-          "gp_name": "Nasrullaganj Rural",
-          "gp_code": 133454
-        }
-      ]
-    }
-  },
-  "Shajapur": {
-    "KALAPIPAL": {
-      "block_code": 141,
-      "gps": []
-    },
-    "SHUJALPUR": {
-      "block_code": 142,
-      "gps": []
-    },
-    "MOMAN BADODIA": {
-      "block_code": 145,
-      "gps": []
-    },
-    "SHAJAPUR": {
-      "block_code": 146,
-      "gps": []
-    },
-    "Shajapur": {
-      "block_code": 4140,
-      "gps": [
-        {
-          "gp_name": "Shajapur Gram Panchayat",
-          "gp_code": 133481
-        },
-        {
-          "gp_name": "Shajapur Rural",
-          "gp_code": 133482
-        }
-      ]
-    },
-    "Kalapipal": {
-      "block_code": 4141,
-      "gps": [
-        {
-          "gp_name": "Kalapipal Gram Panchayat",
-          "gp_code": 133483
-        },
-        {
-          "gp_name": "Kalapipal Rural",
-          "gp_code": 133484
-        }
-      ]
-    },
-    "Mohan Badodiya": {
-      "block_code": 4142,
-      "gps": [
-        {
-          "gp_name": "Mohan Badodiya Gram Panchayat",
-          "gp_code": 133485
-        },
-        {
-          "gp_name": "Mohan Badodiya Rural",
-          "gp_code": 133486
-        }
-      ]
-    },
-    "Shujalpur": {
-      "block_code": 4143,
-      "gps": [
-        {
-          "gp_name": "Shujalpur Gram Panchayat",
-          "gp_code": 133487
-        },
-        {
-          "gp_name": "Shujalpur Rural",
-          "gp_code": 133488
-        }
-      ]
-    }
-  },
-  "Indore": {
-    "SANWER": {
-      "block_code": 152,
-      "gps": []
-    },
-    "INDORE": {
-      "block_code": 158,
-      "gps": []
-    },
-    "DEPALPUR": {
-      "block_code": 159,
-      "gps": []
-    },
-    "MHOW": {
-      "block_code": 161,
-      "gps": []
-    },
-    "Indore": {
-      "block_code": 3700,
-      "gps": [
-        {
-          "gp_name": "Indore Gram Panchayat",
-          "gp_code": 133199
-        },
-        {
-          "gp_name": "Indore Rural",
-          "gp_code": 133200
-        }
-      ]
-    },
-    "Depalpur": {
-      "block_code": 3701,
-      "gps": [
-        {
-          "gp_name": "Depalpur Gram Panchayat",
-          "gp_code": 133201
-        },
-        {
-          "gp_name": "Depalpur Rural",
-          "gp_code": 133202
-        }
-      ]
-    },
-    "Sanwer": {
-      "block_code": 3702,
-      "gps": [
-        {
-          "gp_name": "Sanwer Gram Panchayat",
-          "gp_code": 133203
-        },
-        {
-          "gp_name": "Sanwer Rural",
-          "gp_code": 133204
-        },
-        {
-          "gp_name": "Ajnod",
-          "gp_code": 133601
-        },
-        {
-          "gp_name": "Dhamnay",
-          "gp_code": 133602
-        },
-        {
-          "gp_name": "Kshipra",
-          "gp_code": 133603
-        },
-        {
-          "gp_name": "Panod",
-          "gp_code": 133604
-        }
-      ]
-    },
-    "Mhow": {
-      "block_code": 3703,
-      "gps": [
-        {
-          "gp_name": "Mhow Gram Panchayat",
-          "gp_code": 133205
-        },
-        {
-          "gp_name": "Mhow Rural",
-          "gp_code": 133206
-        }
-      ]
-    },
-    "Mhow (Dr. Ambedkar Nagar)": {
-      "block_code": 3377,
-      "gps": [
-        {
-          "gp_name": "Hasalpur",
-          "gp_code": 133701
-        },
-        {
-          "gp_name": "Patalpani",
-          "gp_code": 133702
-        },
-        {
-          "gp_name": "Choral",
-          "gp_code": 133703
-        },
-        {
-          "gp_name": "Badgonda",
-          "gp_code": 133704
-        },
-        {
-          "gp_name": "Beriakhedi",
-          "gp_code": 133705
-        }
-      ]
-    }
-  },
-  "Dewas": {
-    "DEWAS": {
-      "block_code": 153,
-      "gps": []
-    },
-    "TONK KHURD": {
-      "block_code": 155,
-      "gps": []
-    },
-    "SONKATCH": {
-      "block_code": 156,
-      "gps": []
-    },
-    "BAGLI": {
-      "block_code": 157,
-      "gps": []
-    },
-    "KANNOD": {
-      "block_code": 169,
-      "gps": []
-    },
-    "KHATEGAON": {
-      "block_code": 170,
-      "gps": []
-    },
-    "Dewas": {
-      "block_code": 3560,
-      "gps": [
-        {
-          "gp_name": "Dewas Gram Panchayat",
-          "gp_code": 133125
-        },
-        {
-          "gp_name": "Dewas Rural",
-          "gp_code": 133126
-        }
-      ]
-    },
-    "Bagli": {
-      "block_code": 3561,
-      "gps": [
-        {
-          "gp_name": "Bagli Gram Panchayat",
-          "gp_code": 133127
-        },
-        {
-          "gp_name": "Bagli Rural",
-          "gp_code": 133128
-        }
-      ]
-    },
-    "Kannod": {
-      "block_code": 3562,
-      "gps": [
-        {
-          "gp_name": "Kannod Gram Panchayat",
-          "gp_code": 133129
-        },
-        {
-          "gp_name": "Kannod Rural",
-          "gp_code": 133130
-        }
-      ]
-    },
-    "Khategaon": {
-      "block_code": 3563,
-      "gps": [
-        {
-          "gp_name": "Khategaon Gram Panchayat",
-          "gp_code": 133131
-        },
-        {
-          "gp_name": "Khategaon Rural",
-          "gp_code": 133132
-        }
-      ]
-    },
-    "Sonkatch": {
-      "block_code": 3564,
-      "gps": [
-        {
-          "gp_name": "Sonkatch Gram Panchayat",
-          "gp_code": 133133
-        },
-        {
-          "gp_name": "Sonkatch Rural",
-          "gp_code": 133134
-        }
-      ]
-    },
-    "Tonk Khurd": {
-      "block_code": 3565,
-      "gps": [
-        {
-          "gp_name": "Tonk Khurd Gram Panchayat",
-          "gp_code": 133135
-        },
-        {
-          "gp_name": "Tonk Khurd Rural",
-          "gp_code": 133136
-        }
-      ]
-    }
-  },
-  "Harda": {
-    "TIMARNI": {
-      "block_code": 172,
-      "gps": []
-    },
-    "HARDA": {
-      "block_code": 173,
-      "gps": []
-    },
-    "KHIRKIYA": {
-      "block_code": 174,
-      "gps": []
-    },
-    "Harda": {
-      "block_code": 3660,
-      "gps": [
-        {
-          "gp_name": "Harda Gram Panchayat",
-          "gp_code": 133181
-        },
-        {
-          "gp_name": "Harda Rural",
-          "gp_code": 133182
-        }
-      ]
-    },
-    "Khirkiya": {
-      "block_code": 3661,
-      "gps": [
-        {
-          "gp_name": "Khirkiya Gram Panchayat",
-          "gp_code": 133183
-        },
-        {
-          "gp_name": "Khirkiya Rural",
-          "gp_code": 133184
-        }
-      ]
-    },
-    "Timarni": {
-      "block_code": 3662,
-      "gps": [
-        {
-          "gp_name": "Timarni Gram Panchayat",
-          "gp_code": 133185
-        },
-        {
-          "gp_name": "Timarni Rural",
-          "gp_code": 133186
-        }
-      ]
-    }
-  },
-  "Narmadapuram": {
-    "KESLA": {
-      "block_code": 178,
-      "gps": []
-    },
-    "SOHAGPUR": {
-      "block_code": 179,
-      "gps": []
-    },
-    "BABAI": {
-      "block_code": 180,
-      "gps": []
-    },
-    "HOSHANGABAD": {
-      "block_code": 182,
-      "gps": []
-    },
-    "SEONI MALWA": {
-      "block_code": 183,
-      "gps": []
-    },
-    "BANKHEDI": {
-      "block_code": 206,
-      "gps": []
-    },
-    "PIPARIYA": {
-      "block_code": 207,
-      "gps": []
-    },
-    "Hoshangabad": {
-      "block_code": 3680,
-      "gps": [
-        {
-          "gp_name": "Hoshangabad Gram Panchayat",
-          "gp_code": 133187
-        },
-        {
-          "gp_name": "Hoshangabad Rural",
-          "gp_code": 133188
-        }
-      ]
-    },
-    "Babai": {
-      "block_code": 3681,
-      "gps": [
-        {
-          "gp_name": "Babai Gram Panchayat",
-          "gp_code": 133189
-        },
-        {
-          "gp_name": "Babai Rural",
-          "gp_code": 133190
-        }
-      ]
-    },
-    "Bankhedi": {
-      "block_code": 3682,
-      "gps": [
-        {
-          "gp_name": "Bankhedi Gram Panchayat",
-          "gp_code": 133191
-        },
-        {
-          "gp_name": "Bankhedi Rural",
-          "gp_code": 133192
-        }
-      ]
-    },
-    "Pipariya": {
-      "block_code": 3683,
-      "gps": [
-        {
-          "gp_name": "Pipariya Gram Panchayat",
-          "gp_code": 133193
-        },
-        {
-          "gp_name": "Pipariya Rural",
-          "gp_code": 133194
-        }
-      ]
-    },
-    "Sohagpur": {
-      "block_code": 3684,
-      "gps": [
-        {
-          "gp_name": "Sohagpur Gram Panchayat",
-          "gp_code": 133195
-        },
-        {
-          "gp_name": "Sohagpur Rural",
-          "gp_code": 133196
-        }
-      ]
-    },
-    "Seoni Malwa": {
-      "block_code": 3685,
-      "gps": [
-        {
-          "gp_name": "Seoni Malwa Gram Panchayat",
-          "gp_code": 133197
-        },
-        {
-          "gp_name": "Seoni Malwa Rural",
-          "gp_code": 133198
-        }
-      ]
-    }
-  },
-  "Raisen": {
-    "OBAIDALLAGANJ": {
-      "block_code": 184,
-      "gps": []
-    },
-    "SANCHI": {
-      "block_code": 187,
-      "gps": []
-    },
-    "GAIRATGANJ": {
-      "block_code": 190,
-      "gps": []
-    },
-    "BADI": {
-      "block_code": 191,
-      "gps": []
-    },
-    "UDAIPURA": {
-      "block_code": 193,
-      "gps": []
-    },
-    "SILWANI": {
-      "block_code": 194,
-      "gps": []
-    },
-    "BEGAMGANJ": {
-      "block_code": 196,
-      "gps": []
-    },
-    "Raisen": {
-      "block_code": 3960,
-      "gps": [
-        {
-          "gp_name": "Raisen Gram Panchayat",
-          "gp_code": 133347
-        },
-        {
-          "gp_name": "Raisen Rural",
-          "gp_code": 133348
-        }
-      ]
-    },
-    "Badi": {
-      "block_code": 3961,
-      "gps": [
-        {
-          "gp_name": "Badi Gram Panchayat",
-          "gp_code": 133349
-        },
-        {
-          "gp_name": "Badi Rural",
-          "gp_code": 133350
-        }
-      ]
-    },
-    "Begamganj": {
-      "block_code": 3962,
-      "gps": [
-        {
-          "gp_name": "Begamganj Gram Panchayat",
-          "gp_code": 133351
-        },
-        {
-          "gp_name": "Begamganj Rural",
-          "gp_code": 133352
-        }
-      ]
-    },
-    "Gairatganj": {
-      "block_code": 3963,
-      "gps": [
-        {
-          "gp_name": "Gairatganj Gram Panchayat",
-          "gp_code": 133353
-        },
-        {
-          "gp_name": "Gairatganj Rural",
-          "gp_code": 133354
-        }
-      ]
-    },
-    "Obedullaganj": {
-      "block_code": 3964,
-      "gps": [
-        {
-          "gp_name": "Obedullaganj Gram Panchayat",
-          "gp_code": 133355
-        },
-        {
-          "gp_name": "Obedullaganj Rural",
-          "gp_code": 133356
-        }
-      ]
-    },
-    "Silwani": {
-      "block_code": 3965,
-      "gps": [
-        {
-          "gp_name": "Silwani Gram Panchayat",
-          "gp_code": 133357
-        },
-        {
-          "gp_name": "Silwani Rural",
-          "gp_code": 133358
-        }
-      ]
-    },
-    "Udaipura": {
-      "block_code": 3966,
-      "gps": [
-        {
-          "gp_name": "Udaipura Gram Panchayat",
-          "gp_code": 133359
-        },
-        {
-          "gp_name": "Udaipura Rural",
-          "gp_code": 133360
-        }
-      ]
-    }
-  },
-  "Bhopal": {
-    "PHANDA": {
-      "block_code": 185,
-      "gps": []
-    },
-    "BERASIA": {
-      "block_code": 186,
-      "gps": []
-    },
-    "Berasia": {
-      "block_code": 3440,
-      "gps": [
-        {
-          "gp_name": "Berasia Gram Panchayat",
-          "gp_code": 133075
-        },
-        {
-          "gp_name": "Berasia Rural",
-          "gp_code": 133076
-        }
-      ]
-    },
-    "Phanda": {
-      "block_code": 3441,
-      "gps": [
-        {
-          "gp_name": "Phanda Gram Panchayat",
-          "gp_code": 133077
-        },
-        {
-          "gp_name": "Phanda Rural",
-          "gp_code": 133078
-        }
-      ]
-    }
-  },
-  "Narsinghpur": {
-    "SAINKHEDA": {
-      "block_code": 192,
-      "gps": []
-    },
-    "CHAWARPATHA": {
-      "block_code": 201,
-      "gps": []
-    },
-    "KARELI": {
-      "block_code": 202,
-      "gps": []
-    },
-    "BABAI CHICHALI": {
-      "block_code": 205,
-      "gps": []
-    },
-    "GOTEGAON": {
-      "block_code": 248,
-      "gps": []
-    },
-    "NARSIMHAPUR": {
-      "block_code": 249,
-      "gps": []
-    },
-    "Narsinghpur": {
-      "block_code": 3880,
-      "gps": [
-        {
-          "gp_name": "Narsinghpur Gram Panchayat",
-          "gp_code": 133313
-        },
-        {
-          "gp_name": "Narsinghpur Rural",
-          "gp_code": 133314
-        }
-      ]
-    },
-    "Babai Chichali": {
-      "block_code": 3881,
-      "gps": [
-        {
-          "gp_name": "Babai Chichali Gram Panchayat",
-          "gp_code": 133315
-        },
-        {
-          "gp_name": "Babai Chichali Rural",
-          "gp_code": 133316
-        }
-      ]
-    },
-    "Chawarpatha": {
-      "block_code": 3882,
-      "gps": [
-        {
-          "gp_name": "Chawarpatha Gram Panchayat",
-          "gp_code": 133317
-        },
-        {
-          "gp_name": "Chawarpatha Rural",
-          "gp_code": 133318
-        }
-      ]
-    },
-    "Gotegaon": {
-      "block_code": 3883,
-      "gps": [
-        {
-          "gp_name": "Gotegaon Gram Panchayat",
-          "gp_code": 133319
-        },
-        {
-          "gp_name": "Gotegaon Rural",
-          "gp_code": 133320
-        }
-      ]
-    },
-    "Kareli": {
-      "block_code": 3884,
-      "gps": [
-        {
-          "gp_name": "Kareli Gram Panchayat",
-          "gp_code": 133321
-        },
-        {
-          "gp_name": "Kareli Rural",
-          "gp_code": 133322
-        }
-      ]
-    },
-    "Sainkheda": {
-      "block_code": 3885,
-      "gps": [
-        {
-          "gp_name": "Sainkheda Gram Panchayat",
-          "gp_code": 133323
-        },
-        {
-          "gp_name": "Sainkheda Rural",
-          "gp_code": 133324
-        }
-      ]
-    }
-  },
-  "Mandla": {
-    "BICHHIYA": {
-      "block_code": 225,
-      "gps": []
-    },
-    "MAWAI": {
-      "block_code": 226,
-      "gps": []
-    },
-    "GHUGHRI": {
-      "block_code": 227,
-      "gps": []
-    },
-    "MOHGAON": {
-      "block_code": 228,
-      "gps": []
-    },
-    "MANDLA": {
-      "block_code": 229,
-      "gps": []
-    },
-    "NAINPUR": {
-      "block_code": 230,
-      "gps": []
-    },
-    "NARAYANGANJ": {
-      "block_code": 231,
-      "gps": []
-    },
-    "BIJADANDI": {
-      "block_code": 232,
-      "gps": []
-    },
-    "NIWAS": {
-      "block_code": 234,
-      "gps": []
-    },
-    "Mandla": {
-      "block_code": 3820,
-      "gps": [
-        {
-          "gp_name": "Mandla Gram Panchayat",
-          "gp_code": 133273
-        },
-        {
-          "gp_name": "Mandla Rural",
-          "gp_code": 133274
-        }
-      ]
-    },
-    "Bichhiya": {
-      "block_code": 3821,
-      "gps": [
-        {
-          "gp_name": "Bichhiya Gram Panchayat",
-          "gp_code": 133275
-        },
-        {
-          "gp_name": "Bichhiya Rural",
-          "gp_code": 133276
-        }
-      ]
-    },
-    "Ghughri": {
-      "block_code": 3822,
-      "gps": [
-        {
-          "gp_name": "Ghughri Gram Panchayat",
-          "gp_code": 133277
-        },
-        {
-          "gp_name": "Ghughri Rural",
-          "gp_code": 133278
-        }
-      ]
-    },
-    "Mohgaon": {
-      "block_code": 3823,
-      "gps": [
-        {
-          "gp_name": "Mohgaon Gram Panchayat",
-          "gp_code": 133279
-        },
-        {
-          "gp_name": "Mohgaon Rural",
-          "gp_code": 133280
-        }
-      ]
-    },
-    "Nainpur": {
-      "block_code": 3824,
-      "gps": [
-        {
-          "gp_name": "Nainpur Gram Panchayat",
-          "gp_code": 133281
-        },
-        {
-          "gp_name": "Nainpur Rural",
-          "gp_code": 133282
-        }
-      ]
-    },
-    "Narayanganj": {
-      "block_code": 3825,
-      "gps": [
-        {
-          "gp_name": "Narayanganj Gram Panchayat",
-          "gp_code": 133283
-        },
-        {
-          "gp_name": "Narayanganj Rural",
-          "gp_code": 133284
-        }
-      ]
-    },
-    "Niwas": {
-      "block_code": 3826,
-      "gps": [
-        {
-          "gp_name": "Niwas Gram Panchayat",
-          "gp_code": 133285
-        },
-        {
-          "gp_name": "Niwas Rural",
-          "gp_code": 133286
-        }
-      ]
-    }
-  },
-  "Jabalpur": {
-    "KUNDAM": {
-      "block_code": 233,
-      "gps": []
-    },
-    "SIHORA": {
-      "block_code": 240,
-      "gps": []
-    },
-    "MAJHOULI": {
-      "block_code": 243,
-      "gps": []
-    },
-    "PANAGAR": {
-      "block_code": 244,
-      "gps": []
-    },
-    "JABALPUR": {
-      "block_code": 245,
-      "gps": []
-    },
-    "PATAN": {
-      "block_code": 246,
-      "gps": []
-    },
-    "SHAHPURA": {
-      "block_code": 247,
-      "gps": []
-    },
-    "Jabalpur": {
-      "block_code": 3720,
-      "gps": [
-        {
-          "gp_name": "Jabalpur Gram Panchayat",
-          "gp_code": 133207
-        },
-        {
-          "gp_name": "Jabalpur Rural",
-          "gp_code": 133208
-        }
-      ]
-    },
-    "Kundam": {
-      "block_code": 3721,
-      "gps": [
-        {
-          "gp_name": "Kundam Gram Panchayat",
-          "gp_code": 133209
-        },
-        {
-          "gp_name": "Kundam Rural",
-          "gp_code": 133210
-        }
-      ]
-    },
-    "Majholi": {
-      "block_code": 3722,
-      "gps": [
-        {
-          "gp_name": "Majholi Gram Panchayat",
-          "gp_code": 133211
-        },
-        {
-          "gp_name": "Majholi Rural",
-          "gp_code": 133212
-        }
-      ]
-    },
-    "Panagar": {
-      "block_code": 3723,
-      "gps": [
-        {
-          "gp_name": "Panagar Gram Panchayat",
-          "gp_code": 133213
-        },
-        {
-          "gp_name": "Panagar Rural",
-          "gp_code": 133214
-        }
-      ]
-    },
-    "Patan": {
-      "block_code": 3724,
-      "gps": [
-        {
-          "gp_name": "Patan Gram Panchayat",
-          "gp_code": 133215
-        },
-        {
-          "gp_name": "Patan Rural",
-          "gp_code": 133216
-        }
-      ]
-    },
-    "Shahpura": {
-      "block_code": 3725,
-      "gps": [
-        {
-          "gp_name": "Shahpura Gram Panchayat",
-          "gp_code": 133217
-        },
-        {
-          "gp_name": "Shahpura Rural",
-          "gp_code": 133218
-        }
-      ]
-    },
-    "Sihora": {
-      "block_code": 3726,
-      "gps": [
-        {
-          "gp_name": "Sihora Gram Panchayat",
-          "gp_code": 133219
-        },
-        {
-          "gp_name": "Sihora Rural",
-          "gp_code": 133220
-        }
-      ]
-    }
-  },
-  "Dindori": {
-    "MEHANDWANI": {
-      "block_code": 235,
-      "gps": []
-    },
-    "SHAHPURA": {
-      "block_code": 236,
-      "gps": []
-    },
-    "DINDORI": {
-      "block_code": 306,
-      "gps": []
-    },
-    "KARANJIYA": {
-      "block_code": 310,
-      "gps": []
-    },
-    "BAJAG": {
-      "block_code": 311,
-      "gps": []
-    },
-    "AMARPUR": {
-      "block_code": 312,
-      "gps": []
-    },
-    "SAMNAPUR": {
-      "block_code": 313,
-      "gps": []
-    },
-    "Dindori": {
-      "block_code": 3600,
-      "gps": [
-        {
-          "gp_name": "Dindori Gram Panchayat",
-          "gp_code": 133151
-        },
-        {
-          "gp_name": "Dindori Rural",
-          "gp_code": 133152
-        }
-      ]
-    },
-    "Amarpur": {
-      "block_code": 3601,
-      "gps": [
-        {
-          "gp_name": "Amarpur Gram Panchayat",
-          "gp_code": 133153
-        },
-        {
-          "gp_name": "Amarpur Rural",
-          "gp_code": 133154
-        }
-      ]
-    },
-    "Bajag": {
-      "block_code": 3602,
-      "gps": [
-        {
-          "gp_name": "Bajag Gram Panchayat",
-          "gp_code": 133155
-        },
-        {
-          "gp_name": "Bajag Rural",
-          "gp_code": 133156
-        }
-      ]
-    },
-    "Karanjia": {
-      "block_code": 3603,
-      "gps": [
-        {
-          "gp_name": "Karanjia Gram Panchayat",
-          "gp_code": 133157
-        },
-        {
-          "gp_name": "Karanjia Rural",
-          "gp_code": 133158
-        }
-      ]
-    },
-    "Mehandwani": {
-      "block_code": 3604,
-      "gps": [
-        {
-          "gp_name": "Mehandwani Gram Panchayat",
-          "gp_code": 133159
-        },
-        {
-          "gp_name": "Mehandwani Rural",
-          "gp_code": 133160
-        }
-      ]
-    },
-    "Samnapur": {
-      "block_code": 3605,
-      "gps": [
-        {
-          "gp_name": "Samnapur Gram Panchayat",
-          "gp_code": 133161
-        },
-        {
-          "gp_name": "Samnapur Rural",
-          "gp_code": 133162
-        }
-      ]
-    }
-  },
-  "Umaria": {
-    "KARKELI": {
-      "block_code": 237,
-      "gps": []
-    },
-    "MANPUR": {
-      "block_code": 304,
-      "gps": []
-    },
-    "PALI": {
-      "block_code": 305,
-      "gps": []
-    },
-    "Umaria": {
-      "block_code": 4280,
-      "gps": [
-        {
-          "gp_name": "Umaria Gram Panchayat",
-          "gp_code": 133549
-        },
-        {
-          "gp_name": "Umaria Rural",
-          "gp_code": 133550
-        }
-      ]
-    },
-    "Karkeli": {
-      "block_code": 4281,
-      "gps": [
-        {
-          "gp_name": "Karkeli Gram Panchayat",
-          "gp_code": 133551
-        },
-        {
-          "gp_name": "Karkeli Rural",
-          "gp_code": 133552
-        }
-      ]
-    },
-    "Manpur": {
-      "block_code": 4282,
-      "gps": [
-        {
-          "gp_name": "Manpur Gram Panchayat",
-          "gp_code": 133553
-        },
-        {
-          "gp_name": "Manpur Rural",
-          "gp_code": 133554
-        }
-      ]
-    },
-    "Pali": {
-      "block_code": 4283,
-      "gps": [
-        {
-          "gp_name": "Pali Gram Panchayat",
-          "gp_code": 133555
-        },
-        {
-          "gp_name": "Pali Rural",
-          "gp_code": 133556
-        }
-      ]
-    }
-  },
-  "Katni": {
-    "BADWARA": {
-      "block_code": 238,
-      "gps": []
-    },
-    "DHEEMERKHEDA": {
-      "block_code": 239,
-      "gps": []
-    },
-    "BAHORIBAND": {
-      "block_code": 241,
-      "gps": []
-    },
-    "RITHI": {
-      "block_code": 274,
-      "gps": []
-    },
-    "KATNI": {
-      "block_code": 275,
-      "gps": []
-    },
-    "VIJAYRAGHAVGARH": {
-      "block_code": 276,
-      "gps": []
-    },
-    "Katni": {
-      "block_code": 3760,
-      "gps": [
-        {
-          "gp_name": "Katni Gram Panchayat",
-          "gp_code": 133233
-        },
-        {
-          "gp_name": "Katni Rural",
-          "gp_code": 133234
-        }
-      ]
-    },
-    "Badwara": {
-      "block_code": 3761,
-      "gps": [
-        {
-          "gp_name": "Badwara Gram Panchayat",
-          "gp_code": 133235
-        },
-        {
-          "gp_name": "Badwara Rural",
-          "gp_code": 133236
-        }
-      ]
-    },
-    "Bahoriband": {
-      "block_code": 3762,
-      "gps": [
-        {
-          "gp_name": "Bahoriband Gram Panchayat",
-          "gp_code": 133237
-        },
-        {
-          "gp_name": "Bahoriband Rural",
-          "gp_code": 133238
-        }
-      ]
-    },
-    "Dheemerkheda": {
-      "block_code": 3763,
-      "gps": [
-        {
-          "gp_name": "Dheemerkheda Gram Panchayat",
-          "gp_code": 133239
-        },
-        {
-          "gp_name": "Dheemerkheda Rural",
-          "gp_code": 133240
-        }
-      ]
-    },
-    "Rithi": {
-      "block_code": 3764,
-      "gps": [
-        {
-          "gp_name": "Rithi Gram Panchayat",
-          "gp_code": 133241
-        },
-        {
-          "gp_name": "Rithi Rural",
-          "gp_code": 133242
-        }
-      ]
-    },
-    "Vijayraghavgarh": {
-      "block_code": 3765,
-      "gps": [
-        {
-          "gp_name": "Vijayraghavgarh Gram Panchayat",
-          "gp_code": 133243
-        },
-        {
-          "gp_name": "Vijayraghavgarh Rural",
-          "gp_code": 133244
-        }
-      ]
-    }
-  },
-  "Damoh": {
-    "JABERA": {
-      "block_code": 242,
-      "gps": []
-    },
-    "TENDUKHEDA": {
-      "block_code": 250,
-      "gps": []
-    },
-    "DAMOH": {
-      "block_code": 251,
-      "gps": []
-    },
-    "PATHARIYA": {
-      "block_code": 252,
-      "gps": []
-    },
-    "BATIYAGARH": {
-      "block_code": 253,
-      "gps": []
-    },
-    "PATERA": {
-      "block_code": 254,
-      "gps": []
-    },
-    "HATTA": {
-      "block_code": 255,
-      "gps": []
-    },
-    "Damoh": {
-      "block_code": 3520,
-      "gps": [
-        {
-          "gp_name": "Damoh Gram Panchayat",
-          "gp_code": 133107
-        },
-        {
-          "gp_name": "Damoh Rural",
-          "gp_code": 133108
-        }
-      ]
-    },
-    "Batiyagarh": {
-      "block_code": 3521,
-      "gps": [
-        {
-          "gp_name": "Batiyagarh Gram Panchayat",
-          "gp_code": 133109
-        },
-        {
-          "gp_name": "Batiyagarh Rural",
-          "gp_code": 133110
-        }
-      ]
-    },
-    "Hatta": {
-      "block_code": 3522,
-      "gps": [
-        {
-          "gp_name": "Hatta Gram Panchayat",
-          "gp_code": 133111
-        },
-        {
-          "gp_name": "Hatta Rural",
-          "gp_code": 133112
-        }
-      ]
-    },
-    "Jabera": {
-      "block_code": 3523,
-      "gps": [
-        {
-          "gp_name": "Jabera Gram Panchayat",
-          "gp_code": 133113
-        },
-        {
-          "gp_name": "Jabera Rural",
-          "gp_code": 133114
-        }
-      ]
-    },
-    "Patera": {
-      "block_code": 3524,
-      "gps": [
-        {
-          "gp_name": "Patera Gram Panchayat",
-          "gp_code": 133115
-        },
-        {
-          "gp_name": "Patera Rural",
-          "gp_code": 133116
-        }
-      ]
-    },
-    "Tendukheda": {
-      "block_code": 3525,
-      "gps": [
-        {
-          "gp_name": "Tendukheda Gram Panchayat",
-          "gp_code": 133117
-        },
-        {
-          "gp_name": "Tendukheda Rural",
-          "gp_code": 133118
-        }
-      ]
-    }
-  },
-  "Chhatarpur": {
-    "BIJAWAR": {
-      "block_code": 256,
-      "gps": []
-    },
-    "BUXWAHA": {
-      "block_code": 257,
-      "gps": []
-    },
-    "BADA MALEHARA": {
-      "block_code": 258,
-      "gps": []
-    },
-    "CHHATARPUR": {
-      "block_code": 260,
-      "gps": []
-    },
-    "NOWGONG": {
-      "block_code": 261,
-      "gps": []
-    },
-    "RAJNAGAR": {
-      "block_code": 262,
-      "gps": []
-    },
-    "LAUNDI": {
-      "block_code": 264,
-      "gps": []
-    },
-    "BARIGARH": {
-      "block_code": 265,
-      "gps": []
-    },
-    "Chhatarpur": {
-      "block_code": 3480,
-      "gps": [
-        {
-          "gp_name": "Chhatarpur Gram Panchayat",
-          "gp_code": 133083
-        },
-        {
-          "gp_name": "Chhatarpur Rural",
-          "gp_code": 133084
-        }
-      ]
-    },
-    "Bakswaha": {
-      "block_code": 3481,
-      "gps": [
-        {
-          "gp_name": "Bakswaha Gram Panchayat",
-          "gp_code": 133085
-        },
-        {
-          "gp_name": "Bakswaha Rural",
-          "gp_code": 133086
-        }
-      ]
-    },
-    "Bijawar": {
-      "block_code": 3482,
-      "gps": [
-        {
-          "gp_name": "Bijawar Gram Panchayat",
-          "gp_code": 133087
-        },
-        {
-          "gp_name": "Bijawar Rural",
-          "gp_code": 133088
-        }
-      ]
-    },
-    "Laundi": {
-      "block_code": 3483,
-      "gps": [
-        {
-          "gp_name": "Laundi Gram Panchayat",
-          "gp_code": 133089
-        },
-        {
-          "gp_name": "Laundi Rural",
-          "gp_code": 133090
-        }
-      ]
-    },
-    "Nowgong": {
-      "block_code": 3484,
-      "gps": [
-        {
-          "gp_name": "Nowgong Gram Panchayat",
-          "gp_code": 133091
-        },
-        {
-          "gp_name": "Nowgong Rural",
-          "gp_code": 133092
-        }
-      ]
-    },
-    "Rajnagar": {
-      "block_code": 3485,
-      "gps": [
-        {
-          "gp_name": "Rajnagar Gram Panchayat",
-          "gp_code": 133093
-        },
-        {
-          "gp_name": "Rajnagar Rural",
-          "gp_code": 133094
-        }
-      ]
-    }
-  },
-  "Panna": {
-    "AJAIGARH": {
-      "block_code": 263,
-      "gps": []
-    },
-    "PANNA": {
-      "block_code": 270,
-      "gps": []
-    },
-    "GUNOUR": {
-      "block_code": 271,
-      "gps": []
-    },
-    "PAWAI": {
-      "block_code": 272,
-      "gps": []
-    },
-    "SHAHNAGAR": {
-      "block_code": 273,
-      "gps": []
-    },
-    "Panna": {
-      "block_code": 3940,
-      "gps": [
-        {
-          "gp_name": "Panna Gram Panchayat",
-          "gp_code": 133337
-        },
-        {
-          "gp_name": "Panna Rural",
-          "gp_code": 133338
-        }
-      ]
-    },
-    "Ajaygarh": {
-      "block_code": 3941,
-      "gps": [
-        {
-          "gp_name": "Ajaygarh Gram Panchayat",
-          "gp_code": 133339
-        },
-        {
-          "gp_name": "Ajaygarh Rural",
-          "gp_code": 133340
-        }
-      ]
-    },
-    "Gunnor": {
-      "block_code": 3942,
-      "gps": [
-        {
-          "gp_name": "Gunnor Gram Panchayat",
-          "gp_code": 133341
-        },
-        {
-          "gp_name": "Gunnor Rural",
-          "gp_code": 133342
-        }
-      ]
-    },
-    "Pawai": {
-      "block_code": 3943,
-      "gps": [
-        {
-          "gp_name": "Pawai Gram Panchayat",
-          "gp_code": 133343
-        },
-        {
-          "gp_name": "Pawai Rural",
-          "gp_code": 133344
-        }
-      ]
-    },
-    "Shahnagar": {
-      "block_code": 3944,
-      "gps": [
-        {
-          "gp_name": "Shahnagar Gram Panchayat",
-          "gp_code": 133345
-        },
-        {
-          "gp_name": "Shahnagar Rural",
-          "gp_code": 133346
-        }
-      ]
-    }
-  },
-  "Satna": {
-    "MAJHGAWAN": {
-      "block_code": 266,
-      "gps": []
-    },
-    "SOHAWAL": {
-      "block_code": 267,
-      "gps": []
-    },
-    "UNCHAHARA": {
-      "block_code": 268,
-      "gps": []
-    },
-    "NAGOD": {
-      "block_code": 269,
-      "gps": []
-    },
-    "MAIHAR": {
-      "block_code": 277,
-      "gps": []
-    },
-    "RAMNAGAR": {
-      "block_code": 278,
-      "gps": []
-    },
-    "AMARPATAN": {
-      "block_code": 288,
-      "gps": []
-    },
-    "RAMPUR BAGHELAN": {
-      "block_code": 289,
-      "gps": []
-    },
-    "Satna": {
-      "block_code": 4060,
-      "gps": [
-        {
-          "gp_name": "Satna Gram Panchayat",
-          "gp_code": 133429
-        },
-        {
-          "gp_name": "Satna Rural",
-          "gp_code": 133430
-        }
-      ]
-    },
-    "Amarpatan": {
-      "block_code": 4061,
-      "gps": [
-        {
-          "gp_name": "Amarpatan Gram Panchayat",
-          "gp_code": 133431
-        },
-        {
-          "gp_name": "Amarpatan Rural",
-          "gp_code": 133432
-        }
-      ]
-    },
-    "Majhgawan": {
-      "block_code": 4062,
-      "gps": [
-        {
-          "gp_name": "Majhgawan Gram Panchayat",
-          "gp_code": 133433
-        },
-        {
-          "gp_name": "Majhgawan Rural",
-          "gp_code": 133434
-        }
-      ]
-    },
-    "Nagod": {
-      "block_code": 4063,
-      "gps": [
-        {
-          "gp_name": "Nagod Gram Panchayat",
-          "gp_code": 133435
-        },
-        {
-          "gp_name": "Nagod Rural",
-          "gp_code": 133436
-        }
-      ]
-    },
-    "Ramnagar": {
-      "block_code": 4064,
-      "gps": [
-        {
-          "gp_name": "Ramnagar Gram Panchayat",
-          "gp_code": 133437
-        },
-        {
-          "gp_name": "Ramnagar Rural",
-          "gp_code": 133438
-        }
-      ]
-    },
-    "Rampur Baghelan": {
-      "block_code": 4065,
-      "gps": [
-        {
-          "gp_name": "Rampur Baghelan Gram Panchayat",
-          "gp_code": 133439
-        },
-        {
-          "gp_name": "Rampur Baghelan Rural",
-          "gp_code": 133440
-        }
-      ]
-    },
-    "Sohawal": {
-      "block_code": 4066,
-      "gps": [
-        {
-          "gp_name": "Sohawal Gram Panchayat",
-          "gp_code": 133441
-        },
-        {
-          "gp_name": "Sohawal Rural",
-          "gp_code": 133442
-        }
-      ]
-    },
-    "Uchehara": {
-      "block_code": 4067,
-      "gps": [
-        {
-          "gp_name": "Uchehara Gram Panchayat",
-          "gp_code": 133443
-        },
-        {
-          "gp_name": "Uchehara Rural",
-          "gp_code": 133444
-        }
-      ]
-    }
-  },
-  "Shahdol": {
-    "BEOHARI": {
-      "block_code": 279,
-      "gps": []
-    },
-    "BURHAR": {
-      "block_code": 301,
-      "gps": []
-    },
-    "GOHPARU": {
-      "block_code": 302,
-      "gps": []
-    },
-    "JAISINGHNAGAR": {
-      "block_code": 303,
-      "gps": []
-    },
-    "SOHAGPUR": {
-      "block_code": 308,
-      "gps": []
-    },
-    "Shahdol": {
-      "block_code": 4120,
-      "gps": [
-        {
-          "gp_name": "Shahdol Gram Panchayat",
-          "gp_code": 133471
-        },
-        {
-          "gp_name": "Shahdol Rural",
-          "gp_code": 133472
-        }
-      ]
-    },
-    "Beohari": {
-      "block_code": 4121,
-      "gps": [
-        {
-          "gp_name": "Beohari Gram Panchayat",
-          "gp_code": 133473
-        },
-        {
-          "gp_name": "Beohari Rural",
-          "gp_code": 133474
-        }
-      ]
-    },
-    "Burhar": {
-      "block_code": 4122,
-      "gps": [
-        {
-          "gp_name": "Burhar Gram Panchayat",
-          "gp_code": 133475
-        },
-        {
-          "gp_name": "Burhar Rural",
-          "gp_code": 133476
-        }
-      ]
-    },
-    "Gohparu": {
-      "block_code": 4123,
-      "gps": [
-        {
-          "gp_name": "Gohparu Gram Panchayat",
-          "gp_code": 133477
-        },
-        {
-          "gp_name": "Gohparu Rural",
-          "gp_code": 133478
-        }
-      ]
-    },
-    "Jaisinghnagar": {
-      "block_code": 4124,
-      "gps": [
-        {
-          "gp_name": "Jaisinghnagar Gram Panchayat",
-          "gp_code": 133479
-        },
-        {
-          "gp_name": "Jaisinghnagar Rural",
-          "gp_code": 133480
-        }
-      ]
-    }
-  },
-  "Sidhi": {
-    "KUSMI": {
-      "block_code": 280,
-      "gps": []
-    },
-    "MAJHAULI": {
-      "block_code": 281,
-      "gps": []
-    },
-    "RAMPUR NAIKIN": {
-      "block_code": 282,
-      "gps": []
-    },
-    "SIDHI": {
-      "block_code": 283,
-      "gps": []
-    },
-    "SIHAWAL": {
-      "block_code": 296,
-      "gps": []
-    },
-    "Sidhi": {
-      "block_code": 4200,
-      "gps": [
-        {
-          "gp_name": "Sidhi Gram Panchayat",
-          "gp_code": 133511
-        },
-        {
-          "gp_name": "Sidhi Rural",
-          "gp_code": 133512
-        }
-      ]
-    },
-    "Kusmi": {
-      "block_code": 4201,
-      "gps": [
-        {
-          "gp_name": "Kusmi Gram Panchayat",
-          "gp_code": 133513
-        },
-        {
-          "gp_name": "Kusmi Rural",
-          "gp_code": 133514
-        }
-      ]
-    },
-    "Majhauli": {
-      "block_code": 4202,
-      "gps": [
-        {
-          "gp_name": "Majhauli Gram Panchayat",
-          "gp_code": 133515
-        },
-        {
-          "gp_name": "Majhauli Rural",
-          "gp_code": 133516
-        }
-      ]
-    },
-    "Rampur Naikin": {
-      "block_code": 4203,
-      "gps": [
-        {
-          "gp_name": "Rampur Naikin Gram Panchayat",
-          "gp_code": 133517
-        },
-        {
-          "gp_name": "Rampur Naikin Rural",
-          "gp_code": 133518
-        }
-      ]
-    },
-    "Sihawal": {
-      "block_code": 4204,
-      "gps": [
-        {
-          "gp_name": "Sihawal Gram Panchayat",
-          "gp_code": 133519
-        },
-        {
-          "gp_name": "Sihawal Rural",
-          "gp_code": 133520
-        }
-      ]
-    }
-  },
-  "Rewa": {
-    "MAUGANJ": {
-      "block_code": 284,
-      "gps": []
-    },
-    "RAIPUR KARCHULIYAN": {
-      "block_code": 285,
-      "gps": []
-    },
-    "GANGEV": {
-      "block_code": 286,
-      "gps": []
-    },
-    "REWA": {
-      "block_code": 287,
-      "gps": []
-    },
-    "SIRMOUR": {
-      "block_code": 290,
-      "gps": []
-    },
-    "JAWA": {
-      "block_code": 291,
-      "gps": []
-    },
-    "NAIGARHI": {
-      "block_code": 292,
-      "gps": []
-    },
-    "TEONTHAR": {
-      "block_code": 293,
-      "gps": []
-    },
-    "HANUMANA": {
-      "block_code": 295,
-      "gps": []
-    },
-    "Rewa": {
-      "block_code": 4020,
-      "gps": [
-        {
-          "gp_name": "Rewa Gram Panchayat",
-          "gp_code": 133385
-        },
-        {
-          "gp_name": "Rewa Rural",
-          "gp_code": 133386
-        }
-      ]
-    },
-    "Gangev": {
-      "block_code": 4021,
-      "gps": [
-        {
-          "gp_name": "Gangev Gram Panchayat",
-          "gp_code": 133387
-        },
-        {
-          "gp_name": "Gangev Rural",
-          "gp_code": 133388
-        }
-      ]
-    },
-    "Hanumana": {
-      "block_code": 4022,
-      "gps": [
-        {
-          "gp_name": "Hanumana Gram Panchayat",
-          "gp_code": 133389
-        },
-        {
-          "gp_name": "Hanumana Rural",
-          "gp_code": 133390
-        }
-      ]
-    },
-    "Huzur": {
-      "block_code": 4023,
-      "gps": [
-        {
-          "gp_name": "Huzur Gram Panchayat",
-          "gp_code": 133391
-        },
-        {
-          "gp_name": "Huzur Rural",
-          "gp_code": 133392
-        }
-      ]
-    },
-    "Jawa": {
-      "block_code": 4024,
-      "gps": [
-        {
-          "gp_name": "Jawa Gram Panchayat",
-          "gp_code": 133393
-        },
-        {
-          "gp_name": "Jawa Rural",
-          "gp_code": 133394
-        }
-      ]
-    },
-    "Mauganj": {
-      "block_code": 4025,
-      "gps": [
-        {
-          "gp_name": "Mauganj Gram Panchayat",
-          "gp_code": 133395
-        },
-        {
-          "gp_name": "Mauganj Rural",
-          "gp_code": 133396
-        }
-      ]
-    },
-    "Naigarhi": {
-      "block_code": 4026,
-      "gps": [
-        {
-          "gp_name": "Naigarhi Gram Panchayat",
-          "gp_code": 133397
-        },
-        {
-          "gp_name": "Naigarhi Rural",
-          "gp_code": 133398
-        }
-      ]
-    },
-    "Raipur Karchuliyan": {
-      "block_code": 4027,
-      "gps": [
-        {
-          "gp_name": "Raipur Karchuliyan Gram Panchayat",
-          "gp_code": 133399
-        },
-        {
-          "gp_name": "Raipur Karchuliyan Rural",
-          "gp_code": 133400
-        }
-      ]
-    },
-    "Semariya": {
-      "block_code": 4028,
-      "gps": [
-        {
-          "gp_name": "Semariya Gram Panchayat",
-          "gp_code": 133401
-        },
-        {
-          "gp_name": "Semariya Rural",
-          "gp_code": 133402
-        }
-      ]
-    },
-    "Sirmaur": {
-      "block_code": 4029,
-      "gps": [
-        {
-          "gp_name": "Sirmaur Gram Panchayat",
-          "gp_code": 133403
-        },
-        {
-          "gp_name": "Sirmaur Rural",
-          "gp_code": 133404
-        }
-      ]
-    },
-    "Teonthar": {
-      "block_code": 4030,
-      "gps": [
-        {
-          "gp_name": "Teonthar Gram Panchayat",
-          "gp_code": 133405
-        },
-        {
-          "gp_name": "Teonthar Rural",
-          "gp_code": 133406
-        }
-      ]
-    }
-  },
-  "Singrauli": {
-    "CHITRANGI": {
-      "block_code": 294,
-      "gps": []
-    },
-    "DEVSAR": {
-      "block_code": 297,
-      "gps": []
-    },
-    "BAIDHAN": {
-      "block_code": 298,
-      "gps": []
-    },
-    "Singrauli": {
-      "block_code": 4220,
-      "gps": [
-        {
-          "gp_name": "Singrauli Gram Panchayat",
-          "gp_code": 133521
-        },
-        {
-          "gp_name": "Singrauli Rural",
-          "gp_code": 133522
-        }
-      ]
-    },
-    "Baishan": {
-      "block_code": 4221,
-      "gps": [
-        {
-          "gp_name": "Baishan Gram Panchayat",
-          "gp_code": 133523
-        },
-        {
-          "gp_name": "Baishan Rural",
-          "gp_code": 133524
-        }
-      ]
-    },
-    "Chitrangi": {
-      "block_code": 4222,
-      "gps": [
-        {
-          "gp_name": "Chitrangi Gram Panchayat",
-          "gp_code": 133525
-        },
-        {
-          "gp_name": "Chitrangi Rural",
-          "gp_code": 133526
-        }
-      ]
-    },
-    "Deosar": {
-      "block_code": 4223,
-      "gps": [
-        {
-          "gp_name": "Deosar Gram Panchayat",
-          "gp_code": 133527
-        },
-        {
-          "gp_name": "Deosar Rural",
-          "gp_code": 133528
-        }
-      ]
-    }
+    "Alirajpur": [
+      {
+        "gp_name": "Alirajpur Gram Panchayat",
+        "gp_code": 133009
+      },
+      {
+        "gp_name": "Alirajpur Rural",
+        "gp_code": 133010
+      }
+    ],
+    "Bhabhra": [
+      {
+        "gp_name": "Bhabhra Gram Panchayat",
+        "gp_code": 133011
+      },
+      {
+        "gp_name": "Bhabhra Rural",
+        "gp_code": 133012
+      }
+    ],
+    "Katthiwada": [
+      {
+        "gp_name": "Katthiwada Gram Panchayat",
+        "gp_code": 133013
+      },
+      {
+        "gp_name": "Katthiwada Rural",
+        "gp_code": 133014
+      }
+    ],
+    "Sondwa": [
+      {
+        "gp_name": "Sondwa Gram Panchayat",
+        "gp_code": 133015
+      },
+      {
+        "gp_name": "Sondwa Rural",
+        "gp_code": 133016
+      }
+    ],
+    "Udaygarh": [
+      {
+        "gp_name": "Udaygarh Gram Panchayat",
+        "gp_code": 133017
+      },
+      {
+        "gp_name": "Udaygarh Rural",
+        "gp_code": 133018
+      }
+    ]
   },
   "Anuppur": {
-    "ANUPPUR": {
-      "block_code": 299,
-      "gps": []
-    },
-    "KOTMA": {
-      "block_code": 300,
-      "gps": []
-    },
-    "PUSHPRAJGARH": {
-      "block_code": 307,
-      "gps": []
-    },
-    "JAITHARI": {
-      "block_code": 309,
-      "gps": []
-    },
-    "Anuppur": {
-      "block_code": 4320,
-      "gps": [
-        {
-          "gp_name": "Anuppur Gram Panchayat",
-          "gp_code": 133571
-        },
-        {
-          "gp_name": "Anuppur Rural",
-          "gp_code": 133572
-        }
-      ]
-    },
-    "Jaithari": {
-      "block_code": 4321,
-      "gps": [
-        {
-          "gp_name": "Jaithari Gram Panchayat",
-          "gp_code": 133573
-        },
-        {
-          "gp_name": "Jaithari Rural",
-          "gp_code": 133574
-        }
-      ]
-    },
-    "Kotma": {
-      "block_code": 4322,
-      "gps": [
-        {
-          "gp_name": "Kotma Gram Panchayat",
-          "gp_code": 133575
-        },
-        {
-          "gp_name": "Kotma Rural",
-          "gp_code": 133576
-        }
-      ]
-    },
-    "Pushprajgarh": {
-      "block_code": 4323,
-      "gps": [
-        {
-          "gp_name": "Pushprajgarh Gram Panchayat",
-          "gp_code": 133577
-        },
-        {
-          "gp_name": "Pushprajgarh Rural",
-          "gp_code": 133578
-        }
-      ]
-    }
+    "Anuppur": [
+      {
+        "gp_name": "Anuppur Gram Panchayat",
+        "gp_code": 133571
+      },
+      {
+        "gp_name": "Anuppur Rural",
+        "gp_code": 133572
+      }
+    ],
+    "Jaithari": [
+      {
+        "gp_name": "Jaithari Gram Panchayat",
+        "gp_code": 133573
+      },
+      {
+        "gp_name": "Jaithari Rural",
+        "gp_code": 133574
+      }
+    ],
+    "Kotma": [
+      {
+        "gp_name": "Kotma Gram Panchayat",
+        "gp_code": 133575
+      },
+      {
+        "gp_name": "Kotma Rural",
+        "gp_code": 133576
+      }
+    ],
+    "Pushprajgarh": [
+      {
+        "gp_name": "Pushprajgarh Gram Panchayat",
+        "gp_code": 133577
+      },
+      {
+        "gp_name": "Pushprajgarh Rural",
+        "gp_code": 133578
+      }
+    ]
+  },
+  "Ashoknagar": {
+    "Ashoknagar": [
+      {
+        "gp_name": "Ashoknagar Gram Panchayat",
+        "gp_code": 133019
+      },
+      {
+        "gp_name": "Ashoknagar Rural",
+        "gp_code": 133020
+      }
+    ],
+    "Chanderi": [
+      {
+        "gp_name": "Chanderi Gram Panchayat",
+        "gp_code": 133021
+      },
+      {
+        "gp_name": "Chanderi Rural",
+        "gp_code": 133022
+      }
+    ],
+    "Isagarh": [
+      {
+        "gp_name": "Isagarh Gram Panchayat",
+        "gp_code": 133023
+      },
+      {
+        "gp_name": "Isagarh Rural",
+        "gp_code": 133024
+      }
+    ],
+    "Mungawali": [
+      {
+        "gp_name": "Mungawali Gram Panchayat",
+        "gp_code": 133025
+      },
+      {
+        "gp_name": "Mungawali Rural",
+        "gp_code": 133026
+      }
+    ]
+  },
+  "Balaghat": {
+    "Baihar": [
+      {
+        "gp_name": "Baihar Gram Panchayat",
+        "gp_code": 133029
+      },
+      {
+        "gp_name": "Baihar Rural",
+        "gp_code": 133030
+      }
+    ],
+    "Balaghat": [
+      {
+        "gp_name": "Balaghat Gram Panchayat",
+        "gp_code": 133027
+      },
+      {
+        "gp_name": "Balaghat Rural",
+        "gp_code": 133028
+      }
+    ],
+    "Katangi": [
+      {
+        "gp_name": "Katangi Gram Panchayat",
+        "gp_code": 133031
+      },
+      {
+        "gp_name": "Katangi Rural",
+        "gp_code": 133032
+      }
+    ],
+    "Kirnapur": [
+      {
+        "gp_name": "Kirnapur Gram Panchayat",
+        "gp_code": 133033
+      },
+      {
+        "gp_name": "Kirnapur Rural",
+        "gp_code": 133034
+      }
+    ],
+    "Lalburra": [
+      {
+        "gp_name": "Lalburra Gram Panchayat",
+        "gp_code": 133035
+      },
+      {
+        "gp_name": "Lalburra Rural",
+        "gp_code": 133036
+      }
+    ],
+    "Waraseoni": [
+      {
+        "gp_name": "Waraseoni Gram Panchayat",
+        "gp_code": 133037
+      },
+      {
+        "gp_name": "Waraseoni Rural",
+        "gp_code": 133038
+      }
+    ]
+  },
+  "Barwani": {
+    "Anjad": [
+      {
+        "gp_name": "Anjad Gram Panchayat",
+        "gp_code": 133041
+      },
+      {
+        "gp_name": "Anjad Rural",
+        "gp_code": 133042
+      }
+    ],
+    "Barwani": [
+      {
+        "gp_name": "Barwani Gram Panchayat",
+        "gp_code": 133039
+      },
+      {
+        "gp_name": "Barwani Rural",
+        "gp_code": 133040
+      }
+    ],
+    "Pansemal": [
+      {
+        "gp_name": "Pansemal Gram Panchayat",
+        "gp_code": 133043
+      },
+      {
+        "gp_name": "Pansemal Rural",
+        "gp_code": 133044
+      }
+    ],
+    "Rajpur": [
+      {
+        "gp_name": "Rajpur Gram Panchayat",
+        "gp_code": 133045
+      },
+      {
+        "gp_name": "Rajpur Rural",
+        "gp_code": 133046
+      }
+    ],
+    "Sendhwa": [
+      {
+        "gp_name": "Sendhwa Gram Panchayat",
+        "gp_code": 133047
+      },
+      {
+        "gp_name": "Sendhwa Rural",
+        "gp_code": 133048
+      }
+    ],
+    "Thikri": [
+      {
+        "gp_name": "Thikri Gram Panchayat",
+        "gp_code": 133049
+      },
+      {
+        "gp_name": "Thikri Rural",
+        "gp_code": 133050
+      }
+    ]
+  },
+  "Betul": {
+    "Amla": [
+      {
+        "gp_name": "Amla Gram Panchayat",
+        "gp_code": 133053
+      },
+      {
+        "gp_name": "Amla Rural",
+        "gp_code": 133054
+      }
+    ],
+    "Betul": [
+      {
+        "gp_name": "Betul Gram Panchayat",
+        "gp_code": 133051
+      },
+      {
+        "gp_name": "Betul Rural",
+        "gp_code": 133052
+      }
+    ],
+    "Bhainsdehi": [
+      {
+        "gp_name": "Bhainsdehi Gram Panchayat",
+        "gp_code": 133055
+      },
+      {
+        "gp_name": "Bhainsdehi Rural",
+        "gp_code": 133056
+      }
+    ],
+    "Chicholi": [
+      {
+        "gp_name": "Chicholi Gram Panchayat",
+        "gp_code": 133057
+      },
+      {
+        "gp_name": "Chicholi Rural",
+        "gp_code": 133058
+      }
+    ],
+    "Multai": [
+      {
+        "gp_name": "Multai Gram Panchayat",
+        "gp_code": 133059
+      },
+      {
+        "gp_name": "Multai Rural",
+        "gp_code": 133060
+      }
+    ],
+    "Shahpur": [
+      {
+        "gp_name": "Shahpur Gram Panchayat",
+        "gp_code": 133061
+      },
+      {
+        "gp_name": "Shahpur Rural",
+        "gp_code": 133062
+      }
+    ]
+  },
+  "Bhind": {
+    "Ater": [
+      {
+        "gp_name": "Ater Gram Panchayat",
+        "gp_code": 133065
+      },
+      {
+        "gp_name": "Ater Rural",
+        "gp_code": 133066
+      }
+    ],
+    "Bhind": [
+      {
+        "gp_name": "Bhind Gram Panchayat",
+        "gp_code": 133063
+      },
+      {
+        "gp_name": "Bhind Rural",
+        "gp_code": 133064
+      }
+    ],
+    "Gohad": [
+      {
+        "gp_name": "Gohad Gram Panchayat",
+        "gp_code": 133067
+      },
+      {
+        "gp_name": "Gohad Rural",
+        "gp_code": 133068
+      }
+    ],
+    "Lahar": [
+      {
+        "gp_name": "Lahar Gram Panchayat",
+        "gp_code": 133069
+      },
+      {
+        "gp_name": "Lahar Rural",
+        "gp_code": 133070
+      }
+    ],
+    "Mehgaon": [
+      {
+        "gp_name": "Mehgaon Gram Panchayat",
+        "gp_code": 133071
+      },
+      {
+        "gp_name": "Mehgaon Rural",
+        "gp_code": 133072
+      }
+    ],
+    "Ron": [
+      {
+        "gp_name": "Ron Gram Panchayat",
+        "gp_code": 133073
+      },
+      {
+        "gp_name": "Ron Rural",
+        "gp_code": 133074
+      }
+    ]
+  },
+  "Bhopal": {
+    "Berasia": [
+      {
+        "gp_name": "Berasia Gram Panchayat",
+        "gp_code": 133075
+      },
+      {
+        "gp_name": "Berasia Rural",
+        "gp_code": 133076
+      }
+    ],
+    "Phanda": [
+      {
+        "gp_name": "Phanda Gram Panchayat",
+        "gp_code": 133077
+      },
+      {
+        "gp_name": "Phanda Rural",
+        "gp_code": 133078
+      }
+    ]
+  },
+  "Burhanpur": {
+    "Burhanpur": [
+      {
+        "gp_name": "Burhanpur Gram Panchayat",
+        "gp_code": 133079
+      },
+      {
+        "gp_name": "Burhanpur Rural",
+        "gp_code": 133080
+      }
+    ],
+    "Kharkalan": [
+      {
+        "gp_name": "Kharkalan Gram Panchayat",
+        "gp_code": 133081
+      },
+      {
+        "gp_name": "Kharkalan Rural",
+        "gp_code": 133082
+      }
+    ]
+  },
+  "Chhatarpur": {
+    "Bakswaha": [
+      {
+        "gp_name": "Bakswaha Gram Panchayat",
+        "gp_code": 133085
+      },
+      {
+        "gp_name": "Bakswaha Rural",
+        "gp_code": 133086
+      }
+    ],
+    "Bijawar": [
+      {
+        "gp_name": "Bijawar Gram Panchayat",
+        "gp_code": 133087
+      },
+      {
+        "gp_name": "Bijawar Rural",
+        "gp_code": 133088
+      }
+    ],
+    "Chhatarpur": [
+      {
+        "gp_name": "Chhatarpur Gram Panchayat",
+        "gp_code": 133083
+      },
+      {
+        "gp_name": "Chhatarpur Rural",
+        "gp_code": 133084
+      }
+    ],
+    "Laundi": [
+      {
+        "gp_name": "Laundi Gram Panchayat",
+        "gp_code": 133089
+      },
+      {
+        "gp_name": "Laundi Rural",
+        "gp_code": 133090
+      }
+    ],
+    "Nowgong": [
+      {
+        "gp_name": "Nowgong Gram Panchayat",
+        "gp_code": 133091
+      },
+      {
+        "gp_name": "Nowgong Rural",
+        "gp_code": 133092
+      }
+    ],
+    "Rajnagar": [
+      {
+        "gp_name": "Rajnagar Gram Panchayat",
+        "gp_code": 133093
+      },
+      {
+        "gp_name": "Rajnagar Rural",
+        "gp_code": 133094
+      }
+    ]
+  },
+  "Chhindwara": {
+    "Amarwara": [
+      {
+        "gp_name": "Amarwara Gram Panchayat",
+        "gp_code": 133097
+      },
+      {
+        "gp_name": "Amarwara Rural",
+        "gp_code": 133098
+      }
+    ],
+    "Chaurai": [
+      {
+        "gp_name": "Chaurai Gram Panchayat",
+        "gp_code": 133099
+      },
+      {
+        "gp_name": "Chaurai Rural",
+        "gp_code": 133100
+      }
+    ],
+    "Chhindwara": [
+      {
+        "gp_name": "Chhindwara Gram Panchayat",
+        "gp_code": 133095
+      },
+      {
+        "gp_name": "Chhindwara Rural",
+        "gp_code": 133096
+      }
+    ],
+    "Jamai": [
+      {
+        "gp_name": "Jamai Gram Panchayat",
+        "gp_code": 133101
+      },
+      {
+        "gp_name": "Jamai Rural",
+        "gp_code": 133102
+      }
+    ],
+    "Parasia": [
+      {
+        "gp_name": "Parasia Gram Panchayat",
+        "gp_code": 133103
+      },
+      {
+        "gp_name": "Parasia Rural",
+        "gp_code": 133104
+      }
+    ],
+    "Sausar": [
+      {
+        "gp_name": "Sausar Gram Panchayat",
+        "gp_code": 133105
+      },
+      {
+        "gp_name": "Sausar Rural",
+        "gp_code": 133106
+      }
+    ]
+  },
+  "Damoh": {
+    "Batiyagarh": [
+      {
+        "gp_name": "Batiyagarh Gram Panchayat",
+        "gp_code": 133109
+      },
+      {
+        "gp_name": "Batiyagarh Rural",
+        "gp_code": 133110
+      }
+    ],
+    "Damoh": [
+      {
+        "gp_name": "Damoh Gram Panchayat",
+        "gp_code": 133107
+      },
+      {
+        "gp_name": "Damoh Rural",
+        "gp_code": 133108
+      }
+    ],
+    "Hatta": [
+      {
+        "gp_name": "Hatta Gram Panchayat",
+        "gp_code": 133111
+      },
+      {
+        "gp_name": "Hatta Rural",
+        "gp_code": 133112
+      }
+    ],
+    "Jabera": [
+      {
+        "gp_name": "Jabera Gram Panchayat",
+        "gp_code": 133113
+      },
+      {
+        "gp_name": "Jabera Rural",
+        "gp_code": 133114
+      }
+    ],
+    "Patera": [
+      {
+        "gp_name": "Patera Gram Panchayat",
+        "gp_code": 133115
+      },
+      {
+        "gp_name": "Patera Rural",
+        "gp_code": 133116
+      }
+    ],
+    "Tendukheda": [
+      {
+        "gp_name": "Tendukheda Gram Panchayat",
+        "gp_code": 133117
+      },
+      {
+        "gp_name": "Tendukheda Rural",
+        "gp_code": 133118
+      }
+    ]
+  },
+  "Datia": {
+    "Bhander": [
+      {
+        "gp_name": "Bhander Gram Panchayat",
+        "gp_code": 133121
+      },
+      {
+        "gp_name": "Bhander Rural",
+        "gp_code": 133122
+      }
+    ],
+    "Datia": [
+      {
+        "gp_name": "Datia Gram Panchayat",
+        "gp_code": 133119
+      },
+      {
+        "gp_name": "Datia Rural",
+        "gp_code": 133120
+      }
+    ],
+    "Seondha": [
+      {
+        "gp_name": "Seondha Gram Panchayat",
+        "gp_code": 133123
+      },
+      {
+        "gp_name": "Seondha Rural",
+        "gp_code": 133124
+      }
+    ]
+  },
+  "Dewas": {
+    "Bagli": [
+      {
+        "gp_name": "Bagli Gram Panchayat",
+        "gp_code": 133127
+      },
+      {
+        "gp_name": "Bagli Rural",
+        "gp_code": 133128
+      }
+    ],
+    "Dewas": [
+      {
+        "gp_name": "Dewas Gram Panchayat",
+        "gp_code": 133125
+      },
+      {
+        "gp_name": "Dewas Rural",
+        "gp_code": 133126
+      }
+    ],
+    "Kannod": [
+      {
+        "gp_name": "Kannod Gram Panchayat",
+        "gp_code": 133129
+      },
+      {
+        "gp_name": "Kannod Rural",
+        "gp_code": 133130
+      }
+    ],
+    "Khategaon": [
+      {
+        "gp_name": "Khategaon Gram Panchayat",
+        "gp_code": 133131
+      },
+      {
+        "gp_name": "Khategaon Rural",
+        "gp_code": 133132
+      }
+    ],
+    "Sonkatch": [
+      {
+        "gp_name": "Sonkatch Gram Panchayat",
+        "gp_code": 133133
+      },
+      {
+        "gp_name": "Sonkatch Rural",
+        "gp_code": 133134
+      }
+    ],
+    "Tonk Khurd": [
+      {
+        "gp_name": "Tonk Khurd Gram Panchayat",
+        "gp_code": 133135
+      },
+      {
+        "gp_name": "Tonk Khurd Rural",
+        "gp_code": 133136
+      }
+    ]
+  },
+  "Dhar": {
+    "Badnawar": [
+      {
+        "gp_name": "Badnawar Gram Panchayat",
+        "gp_code": 133139
+      },
+      {
+        "gp_name": "Badnawar Rural",
+        "gp_code": 133140
+      }
+    ],
+    "Dhar": [
+      {
+        "gp_name": "Dhar Gram Panchayat",
+        "gp_code": 133137
+      },
+      {
+        "gp_name": "Dhar Rural",
+        "gp_code": 133138
+      }
+    ],
+    "Dharampuri": [
+      {
+        "gp_name": "Dharampuri Gram Panchayat",
+        "gp_code": 133141
+      },
+      {
+        "gp_name": "Dharampuri Rural",
+        "gp_code": 133142
+      }
+    ],
+    "Gandhwani": [
+      {
+        "gp_name": "Gandhwani Gram Panchayat",
+        "gp_code": 133143
+      },
+      {
+        "gp_name": "Gandhwani Rural",
+        "gp_code": 133144
+      }
+    ],
+    "Kukshi": [
+      {
+        "gp_name": "Kukshi Gram Panchayat",
+        "gp_code": 133145
+      },
+      {
+        "gp_name": "Kukshi Rural",
+        "gp_code": 133146
+      }
+    ],
+    "Manawar": [
+      {
+        "gp_name": "Manawar Gram Panchayat",
+        "gp_code": 133147
+      },
+      {
+        "gp_name": "Manawar Rural",
+        "gp_code": 133148
+      }
+    ],
+    "Sardarpur": [
+      {
+        "gp_name": "Sardarpur Gram Panchayat",
+        "gp_code": 133149
+      },
+      {
+        "gp_name": "Sardarpur Rural",
+        "gp_code": 133150
+      }
+    ]
+  },
+  "Dindori": {
+    "Amarpur": [
+      {
+        "gp_name": "Amarpur Gram Panchayat",
+        "gp_code": 133153
+      },
+      {
+        "gp_name": "Amarpur Rural",
+        "gp_code": 133154
+      }
+    ],
+    "Bajag": [
+      {
+        "gp_name": "Bajag Gram Panchayat",
+        "gp_code": 133155
+      },
+      {
+        "gp_name": "Bajag Rural",
+        "gp_code": 133156
+      }
+    ],
+    "Dindori": [
+      {
+        "gp_name": "Dindori Gram Panchayat",
+        "gp_code": 133151
+      },
+      {
+        "gp_name": "Dindori Rural",
+        "gp_code": 133152
+      }
+    ],
+    "Karanjia": [
+      {
+        "gp_name": "Karanjia Gram Panchayat",
+        "gp_code": 133157
+      },
+      {
+        "gp_name": "Karanjia Rural",
+        "gp_code": 133158
+      }
+    ],
+    "Mehandwani": [
+      {
+        "gp_name": "Mehandwani Gram Panchayat",
+        "gp_code": 133159
+      },
+      {
+        "gp_name": "Mehandwani Rural",
+        "gp_code": 133160
+      }
+    ],
+    "Samnapur": [
+      {
+        "gp_name": "Samnapur Gram Panchayat",
+        "gp_code": 133161
+      },
+      {
+        "gp_name": "Samnapur Rural",
+        "gp_code": 133162
+      }
+    ]
+  },
+  "Guna": {
+    "Aron": [
+      {
+        "gp_name": "Aron Gram Panchayat",
+        "gp_code": 133165
+      },
+      {
+        "gp_name": "Aron Rural",
+        "gp_code": 133166
+      }
+    ],
+    "Bamori": [
+      {
+        "gp_name": "Bamori Gram Panchayat",
+        "gp_code": 133167
+      },
+      {
+        "gp_name": "Bamori Rural",
+        "gp_code": 133168
+      }
+    ],
+    "Chachoda": [
+      {
+        "gp_name": "Chachoda Gram Panchayat",
+        "gp_code": 133169
+      },
+      {
+        "gp_name": "Chachoda Rural",
+        "gp_code": 133170
+      }
+    ],
+    "Guna": [
+      {
+        "gp_name": "Guna Gram Panchayat",
+        "gp_code": 133163
+      },
+      {
+        "gp_name": "Guna Rural",
+        "gp_code": 133164
+      }
+    ],
+    "Raghogarh": [
+      {
+        "gp_name": "Raghogarh Gram Panchayat",
+        "gp_code": 133171
+      },
+      {
+        "gp_name": "Raghogarh Rural",
+        "gp_code": 133172
+      }
+    ]
+  },
+  "Gwalior": {
+    "Bhitarwar": [
+      {
+        "gp_name": "Bhitarwar Gram Panchayat",
+        "gp_code": 133179
+      },
+      {
+        "gp_name": "Bhitarwar Rural",
+        "gp_code": 133180
+      }
+    ],
+    "Dabra": [
+      {
+        "gp_name": "Dabra Gram Panchayat",
+        "gp_code": 133177
+      },
+      {
+        "gp_name": "Dabra Rural",
+        "gp_code": 133178
+      }
+    ],
+    "Ghatigaon": [
+      {
+        "gp_name": "Ghatigaon Gram Panchayat",
+        "gp_code": 133175
+      },
+      {
+        "gp_name": "Ghatigaon Rural",
+        "gp_code": 133176
+      }
+    ],
+    "Morar": [
+      {
+        "gp_name": "Morar Gram Panchayat",
+        "gp_code": 133173
+      },
+      {
+        "gp_name": "Morar Rural",
+        "gp_code": 133174
+      }
+    ]
+  },
+  "Harda": {
+    "Harda": [
+      {
+        "gp_name": "Harda Gram Panchayat",
+        "gp_code": 133181
+      },
+      {
+        "gp_name": "Harda Rural",
+        "gp_code": 133182
+      }
+    ],
+    "Khirkiya": [
+      {
+        "gp_name": "Khirkiya Gram Panchayat",
+        "gp_code": 133183
+      },
+      {
+        "gp_name": "Khirkiya Rural",
+        "gp_code": 133184
+      }
+    ],
+    "Timarni": [
+      {
+        "gp_name": "Timarni Gram Panchayat",
+        "gp_code": 133185
+      },
+      {
+        "gp_name": "Timarni Rural",
+        "gp_code": 133186
+      }
+    ]
+  },
+  "Indore": {
+    "Depalpur": [
+      {
+        "gp_name": "Depalpur Gram Panchayat",
+        "gp_code": 133201
+      },
+      {
+        "gp_name": "Depalpur Rural",
+        "gp_code": 133202
+      }
+    ],
+    "Indore": [
+      {
+        "gp_name": "Indore Gram Panchayat",
+        "gp_code": 133199
+      },
+      {
+        "gp_name": "Indore Rural",
+        "gp_code": 133200
+      }
+    ],
+    "Mhow": [
+      {
+        "gp_name": "Mhow Gram Panchayat",
+        "gp_code": 133205
+      },
+      {
+        "gp_name": "Mhow Rural",
+        "gp_code": 133206
+      }
+    ],
+    "Mhow (Dr. Ambedkar Nagar)": [
+      {
+        "gp_name": "Badgonda",
+        "gp_code": 133704
+      },
+      {
+        "gp_name": "Beriakhedi",
+        "gp_code": 133705
+      },
+      {
+        "gp_name": "Choral",
+        "gp_code": 133703
+      },
+      {
+        "gp_name": "Hasalpur",
+        "gp_code": 133701
+      },
+      {
+        "gp_name": "Patalpani",
+        "gp_code": 133702
+      }
+    ],
+    "Sanwer": [
+      {
+        "gp_name": "Ajnod",
+        "gp_code": 133601
+      },
+      {
+        "gp_name": "Dhamnay",
+        "gp_code": 133602
+      },
+      {
+        "gp_name": "Kshipra",
+        "gp_code": 133603
+      },
+      {
+        "gp_name": "Panod",
+        "gp_code": 133604
+      },
+      {
+        "gp_name": "Sanwer Gram Panchayat",
+        "gp_code": 133203
+      },
+      {
+        "gp_name": "Sanwer Rural",
+        "gp_code": 133204
+      }
+    ]
+  },
+  "Jabalpur": {
+    "Jabalpur": [
+      {
+        "gp_name": "Jabalpur Gram Panchayat",
+        "gp_code": 133207
+      },
+      {
+        "gp_name": "Jabalpur Rural",
+        "gp_code": 133208
+      }
+    ],
+    "Kundam": [
+      {
+        "gp_name": "Kundam Gram Panchayat",
+        "gp_code": 133209
+      },
+      {
+        "gp_name": "Kundam Rural",
+        "gp_code": 133210
+      }
+    ],
+    "Majholi": [
+      {
+        "gp_name": "Majholi Gram Panchayat",
+        "gp_code": 133211
+      },
+      {
+        "gp_name": "Majholi Rural",
+        "gp_code": 133212
+      }
+    ],
+    "Panagar": [
+      {
+        "gp_name": "Panagar Gram Panchayat",
+        "gp_code": 133213
+      },
+      {
+        "gp_name": "Panagar Rural",
+        "gp_code": 133214
+      }
+    ],
+    "Patan": [
+      {
+        "gp_name": "Patan Gram Panchayat",
+        "gp_code": 133215
+      },
+      {
+        "gp_name": "Patan Rural",
+        "gp_code": 133216
+      }
+    ],
+    "Shahpura": [
+      {
+        "gp_name": "Shahpura Gram Panchayat",
+        "gp_code": 133217
+      },
+      {
+        "gp_name": "Shahpura Rural",
+        "gp_code": 133218
+      }
+    ],
+    "Sihora": [
+      {
+        "gp_name": "Sihora Gram Panchayat",
+        "gp_code": 133219
+      },
+      {
+        "gp_name": "Sihora Rural",
+        "gp_code": 133220
+      }
+    ]
+  },
+  "Jhabua": {
+    "Jhabua": [
+      {
+        "gp_name": "Jhabua Gram Panchayat",
+        "gp_code": 133221
+      },
+      {
+        "gp_name": "Jhabua Rural",
+        "gp_code": 133222
+      }
+    ],
+    "Meghnagar": [
+      {
+        "gp_name": "Meghnagar Gram Panchayat",
+        "gp_code": 133223
+      },
+      {
+        "gp_name": "Meghnagar Rural",
+        "gp_code": 133224
+      }
+    ],
+    "Petlawad": [
+      {
+        "gp_name": "Petlawad Gram Panchayat",
+        "gp_code": 133225
+      },
+      {
+        "gp_name": "Petlawad Rural",
+        "gp_code": 133226
+      }
+    ],
+    "Rama": [
+      {
+        "gp_name": "Rama Gram Panchayat",
+        "gp_code": 133229
+      },
+      {
+        "gp_name": "Rama Rural",
+        "gp_code": 133230
+      }
+    ],
+    "Ranapur": [
+      {
+        "gp_name": "Ranapur Gram Panchayat",
+        "gp_code": 133227
+      },
+      {
+        "gp_name": "Ranapur Rural",
+        "gp_code": 133228
+      }
+    ],
+    "Thandla": [
+      {
+        "gp_name": "Thandla Gram Panchayat",
+        "gp_code": 133231
+      },
+      {
+        "gp_name": "Thandla Rural",
+        "gp_code": 133232
+      }
+    ]
+  },
+  "Katni": {
+    "Badwara": [
+      {
+        "gp_name": "Badwara Gram Panchayat",
+        "gp_code": 133235
+      },
+      {
+        "gp_name": "Badwara Rural",
+        "gp_code": 133236
+      }
+    ],
+    "Bahoriband": [
+      {
+        "gp_name": "Bahoriband Gram Panchayat",
+        "gp_code": 133237
+      },
+      {
+        "gp_name": "Bahoriband Rural",
+        "gp_code": 133238
+      }
+    ],
+    "Dheemerkheda": [
+      {
+        "gp_name": "Dheemerkheda Gram Panchayat",
+        "gp_code": 133239
+      },
+      {
+        "gp_name": "Dheemerkheda Rural",
+        "gp_code": 133240
+      }
+    ],
+    "Katni": [
+      {
+        "gp_name": "Katni Gram Panchayat",
+        "gp_code": 133233
+      },
+      {
+        "gp_name": "Katni Rural",
+        "gp_code": 133234
+      }
+    ],
+    "Rithi": [
+      {
+        "gp_name": "Rithi Gram Panchayat",
+        "gp_code": 133241
+      },
+      {
+        "gp_name": "Rithi Rural",
+        "gp_code": 133242
+      }
+    ],
+    "Vijayraghavgarh": [
+      {
+        "gp_name": "Vijayraghavgarh Gram Panchayat",
+        "gp_code": 133243
+      },
+      {
+        "gp_name": "Vijayraghavgarh Rural",
+        "gp_code": 133244
+      }
+    ]
   },
   "Khandwa": {
-    "Khandwa": {
-      "block_code": 3780,
-      "gps": [
-        {
-          "gp_name": "Khandwa Gram Panchayat",
-          "gp_code": 133245
-        },
-        {
-          "gp_name": "Khandwa Rural",
-          "gp_code": 133246
-        }
-      ]
-    },
-    "Baladi": {
-      "block_code": 3781,
-      "gps": [
-        {
-          "gp_name": "Baladi Gram Panchayat",
-          "gp_code": 133247
-        },
-        {
-          "gp_name": "Baladi Rural",
-          "gp_code": 133248
-        }
-      ]
-    },
-    "Chhegaon Makhan": {
-      "block_code": 3782,
-      "gps": [
-        {
-          "gp_name": "Chhegaon Makhan Gram Panchayat",
-          "gp_code": 133249
-        },
-        {
-          "gp_name": "Chhegaon Makhan Rural",
-          "gp_code": 133250
-        }
-      ]
-    },
-    "Harsud": {
-      "block_code": 3783,
-      "gps": [
-        {
-          "gp_name": "Harsud Gram Panchayat",
-          "gp_code": 133251
-        },
-        {
-          "gp_name": "Harsud Rural",
-          "gp_code": 133252
-        }
-      ]
-    },
-    "Khalwa": {
-      "block_code": 3784,
-      "gps": [
-        {
-          "gp_name": "Khalwa Gram Panchayat",
-          "gp_code": 133253
-        },
-        {
-          "gp_name": "Khalwa Rural",
-          "gp_code": 133254
-        }
-      ]
-    },
-    "Pandhana": {
-      "block_code": 3785,
-      "gps": [
-        {
-          "gp_name": "Pandhana Gram Panchayat",
-          "gp_code": 133255
-        },
-        {
-          "gp_name": "Pandhana Rural",
-          "gp_code": 133256
-        }
-      ]
-    },
-    "Punasa": {
-      "block_code": 3786,
-      "gps": [
-        {
-          "gp_name": "Punasa Gram Panchayat",
-          "gp_code": 133257
-        },
-        {
-          "gp_name": "Punasa Rural",
-          "gp_code": 133258
-        }
-      ]
-    }
+    "Baladi": [
+      {
+        "gp_name": "Baladi Gram Panchayat",
+        "gp_code": 133247
+      },
+      {
+        "gp_name": "Baladi Rural",
+        "gp_code": 133248
+      }
+    ],
+    "Chhegaon Makhan": [
+      {
+        "gp_name": "Chhegaon Makhan Gram Panchayat",
+        "gp_code": 133249
+      },
+      {
+        "gp_name": "Chhegaon Makhan Rural",
+        "gp_code": 133250
+      }
+    ],
+    "Harsud": [
+      {
+        "gp_name": "Harsud Gram Panchayat",
+        "gp_code": 133251
+      },
+      {
+        "gp_name": "Harsud Rural",
+        "gp_code": 133252
+      }
+    ],
+    "Khalwa": [
+      {
+        "gp_name": "Khalwa Gram Panchayat",
+        "gp_code": 133253
+      },
+      {
+        "gp_name": "Khalwa Rural",
+        "gp_code": 133254
+      }
+    ],
+    "Khandwa": [
+      {
+        "gp_name": "Khandwa Gram Panchayat",
+        "gp_code": 133245
+      },
+      {
+        "gp_name": "Khandwa Rural",
+        "gp_code": 133246
+      }
+    ],
+    "Pandhana": [
+      {
+        "gp_name": "Pandhana Gram Panchayat",
+        "gp_code": 133255
+      },
+      {
+        "gp_name": "Pandhana Rural",
+        "gp_code": 133256
+      }
+    ],
+    "Punasa": [
+      {
+        "gp_name": "Punasa Gram Panchayat",
+        "gp_code": 133257
+      },
+      {
+        "gp_name": "Punasa Rural",
+        "gp_code": 133258
+      }
+    ]
   },
-  "Mauganj": {
-    "Mauganj": {
-      "block_code": 4340,
-      "gps": [
-        {
-          "gp_name": "Mauganj Gram Panchayat",
-          "gp_code": 133579
-        },
-        {
-          "gp_name": "Mauganj Rural",
-          "gp_code": 133580
-        }
-      ]
-    },
-    "Hanumana": {
-      "block_code": 4341,
-      "gps": [
-        {
-          "gp_name": "Hanumana Gram Panchayat",
-          "gp_code": 133581
-        },
-        {
-          "gp_name": "Hanumana Rural",
-          "gp_code": 133582
-        }
-      ]
-    },
-    "Naigarhi": {
-      "block_code": 4342,
-      "gps": [
-        {
-          "gp_name": "Naigarhi Gram Panchayat",
-          "gp_code": 133583
-        },
-        {
-          "gp_name": "Naigarhi Rural",
-          "gp_code": 133584
-        }
-      ]
-    }
+  "Khargone": {
+    "Barwaha": [
+      {
+        "gp_name": "Barwaha Gram Panchayat",
+        "gp_code": 133261
+      },
+      {
+        "gp_name": "Barwaha Rural",
+        "gp_code": 133262
+      }
+    ],
+    "Bhagwanpura": [
+      {
+        "gp_name": "Bhagwanpura Gram Panchayat",
+        "gp_code": 133263
+      },
+      {
+        "gp_name": "Bhagwanpura Rural",
+        "gp_code": 133264
+      }
+    ],
+    "Gogawan": [
+      {
+        "gp_name": "Gogawan Gram Panchayat",
+        "gp_code": 133265
+      },
+      {
+        "gp_name": "Gogawan Rural",
+        "gp_code": 133266
+      }
+    ],
+    "Kasrawad": [
+      {
+        "gp_name": "Kasrawad Gram Panchayat",
+        "gp_code": 133267
+      },
+      {
+        "gp_name": "Kasrawad Rural",
+        "gp_code": 133268
+      }
+    ],
+    "Khargone": [
+      {
+        "gp_name": "Khargone Gram Panchayat",
+        "gp_code": 133259
+      },
+      {
+        "gp_name": "Khargone Rural",
+        "gp_code": 133260
+      }
+    ],
+    "Maheshwar": [
+      {
+        "gp_name": "Maheshwar Gram Panchayat",
+        "gp_code": 133269
+      },
+      {
+        "gp_name": "Maheshwar Rural",
+        "gp_code": 133270
+      }
+    ],
+    "Segaon": [
+      {
+        "gp_name": "Segaon Gram Panchayat",
+        "gp_code": 133271
+      },
+      {
+        "gp_name": "Segaon Rural",
+        "gp_code": 133272
+      }
+    ]
   },
   "Maihar": {
-    "Maihar": {
-      "block_code": 4360,
-      "gps": [
-        {
-          "gp_name": "Maihar Gram Panchayat",
-          "gp_code": 133585
-        },
-        {
-          "gp_name": "Maihar Rural",
-          "gp_code": 133586
-        }
-      ]
-    },
-    "Amarpatan": {
-      "block_code": 4361,
-      "gps": [
-        {
-          "gp_name": "Amarpatan Gram Panchayat",
-          "gp_code": 133587
-        },
-        {
-          "gp_name": "Amarpatan Rural",
-          "gp_code": 133588
-        }
-      ]
-    },
-    "Ramnagar": {
-      "block_code": 4362,
-      "gps": [
-        {
-          "gp_name": "Ramnagar Gram Panchayat",
-          "gp_code": 133589
-        },
-        {
-          "gp_name": "Ramnagar Rural",
-          "gp_code": 133590
-        }
-      ]
-    }
+    "Amarpatan": [
+      {
+        "gp_name": "Amarpatan Gram Panchayat",
+        "gp_code": 133587
+      },
+      {
+        "gp_name": "Amarpatan Rural",
+        "gp_code": 133588
+      }
+    ],
+    "Maihar": [
+      {
+        "gp_name": "Maihar Gram Panchayat",
+        "gp_code": 133585
+      },
+      {
+        "gp_name": "Maihar Rural",
+        "gp_code": 133586
+      }
+    ],
+    "Ramnagar": [
+      {
+        "gp_name": "Ramnagar Gram Panchayat",
+        "gp_code": 133589
+      },
+      {
+        "gp_name": "Ramnagar Rural",
+        "gp_code": 133590
+      }
+    ]
+  },
+  "Mandla": {
+    "Bichhiya": [
+      {
+        "gp_name": "Bichhiya Gram Panchayat",
+        "gp_code": 133275
+      },
+      {
+        "gp_name": "Bichhiya Rural",
+        "gp_code": 133276
+      }
+    ],
+    "Ghughri": [
+      {
+        "gp_name": "Ghughri Gram Panchayat",
+        "gp_code": 133277
+      },
+      {
+        "gp_name": "Ghughri Rural",
+        "gp_code": 133278
+      }
+    ],
+    "Mandla": [
+      {
+        "gp_name": "Mandla Gram Panchayat",
+        "gp_code": 133273
+      },
+      {
+        "gp_name": "Mandla Rural",
+        "gp_code": 133274
+      }
+    ],
+    "Mohgaon": [
+      {
+        "gp_name": "Mohgaon Gram Panchayat",
+        "gp_code": 133279
+      },
+      {
+        "gp_name": "Mohgaon Rural",
+        "gp_code": 133280
+      }
+    ],
+    "Nainpur": [
+      {
+        "gp_name": "Nainpur Gram Panchayat",
+        "gp_code": 133281
+      },
+      {
+        "gp_name": "Nainpur Rural",
+        "gp_code": 133282
+      }
+    ],
+    "Narayanganj": [
+      {
+        "gp_name": "Narayanganj Gram Panchayat",
+        "gp_code": 133283
+      },
+      {
+        "gp_name": "Narayanganj Rural",
+        "gp_code": 133284
+      }
+    ],
+    "Niwas": [
+      {
+        "gp_name": "Niwas Gram Panchayat",
+        "gp_code": 133285
+      },
+      {
+        "gp_name": "Niwas Rural",
+        "gp_code": 133286
+      }
+    ]
+  },
+  "Mandsaur": {
+    "Bhanpura": [
+      {
+        "gp_name": "Bhanpura Gram Panchayat",
+        "gp_code": 133289
+      },
+      {
+        "gp_name": "Bhanpura Rural",
+        "gp_code": 133290
+      }
+    ],
+    "Daloda": [
+      {
+        "gp_name": "Daloda Gram Panchayat",
+        "gp_code": 133291
+      },
+      {
+        "gp_name": "Daloda Rural",
+        "gp_code": 133292
+      }
+    ],
+    "Garoth": [
+      {
+        "gp_name": "Garoth Gram Panchayat",
+        "gp_code": 133293
+      },
+      {
+        "gp_name": "Garoth Rural",
+        "gp_code": 133294
+      }
+    ],
+    "Malhargarh": [
+      {
+        "gp_name": "Malhargarh Gram Panchayat",
+        "gp_code": 133295
+      },
+      {
+        "gp_name": "Malhargarh Rural",
+        "gp_code": 133296
+      }
+    ],
+    "Mandsaur": [
+      {
+        "gp_name": "Mandsaur Gram Panchayat",
+        "gp_code": 133287
+      },
+      {
+        "gp_name": "Mandsaur Rural",
+        "gp_code": 133288
+      }
+    ],
+    "Sitamau": [
+      {
+        "gp_name": "Sitamau Gram Panchayat",
+        "gp_code": 133297
+      },
+      {
+        "gp_name": "Sitamau Rural",
+        "gp_code": 133298
+      }
+    ]
+  },
+  "Mauganj": {
+    "Hanumana": [
+      {
+        "gp_name": "Hanumana Gram Panchayat",
+        "gp_code": 133581
+      },
+      {
+        "gp_name": "Hanumana Rural",
+        "gp_code": 133582
+      }
+    ],
+    "Mauganj": [
+      {
+        "gp_name": "Mauganj Gram Panchayat",
+        "gp_code": 133579
+      },
+      {
+        "gp_name": "Mauganj Rural",
+        "gp_code": 133580
+      }
+    ],
+    "Naigarhi": [
+      {
+        "gp_name": "Naigarhi Gram Panchayat",
+        "gp_code": 133583
+      },
+      {
+        "gp_name": "Naigarhi Rural",
+        "gp_code": 133584
+      }
+    ]
+  },
+  "Morena": {
+    "Ambah": [
+      {
+        "gp_name": "Ambah Gram Panchayat",
+        "gp_code": 133301
+      },
+      {
+        "gp_name": "Ambah Rural",
+        "gp_code": 133302
+      }
+    ],
+    "Joras": [
+      {
+        "gp_name": "Joras Gram Panchayat",
+        "gp_code": 133303
+      },
+      {
+        "gp_name": "Joras Rural",
+        "gp_code": 133304
+      }
+    ],
+    "Kailaras": [
+      {
+        "gp_name": "Kailaras Gram Panchayat",
+        "gp_code": 133305
+      },
+      {
+        "gp_name": "Kailaras Rural",
+        "gp_code": 133306
+      }
+    ],
+    "Morena": [
+      {
+        "gp_name": "Morena Gram Panchayat",
+        "gp_code": 133299
+      },
+      {
+        "gp_name": "Morena Rural",
+        "gp_code": 133300
+      }
+    ],
+    "Paharhgarh": [
+      {
+        "gp_name": "Paharhgarh Gram Panchayat",
+        "gp_code": 133307
+      },
+      {
+        "gp_name": "Paharhgarh Rural",
+        "gp_code": 133308
+      }
+    ],
+    "Porsa": [
+      {
+        "gp_name": "Porsa Gram Panchayat",
+        "gp_code": 133309
+      },
+      {
+        "gp_name": "Porsa Rural",
+        "gp_code": 133310
+      }
+    ],
+    "Sabalgarh": [
+      {
+        "gp_name": "Sabalgarh Gram Panchayat",
+        "gp_code": 133311
+      },
+      {
+        "gp_name": "Sabalgarh Rural",
+        "gp_code": 133312
+      }
+    ]
+  },
+  "Narmadapuram": {
+    "Babai": [
+      {
+        "gp_name": "Babai Gram Panchayat",
+        "gp_code": 133189
+      },
+      {
+        "gp_name": "Babai Rural",
+        "gp_code": 133190
+      }
+    ],
+    "Bankhedi": [
+      {
+        "gp_name": "Bankhedi Gram Panchayat",
+        "gp_code": 133191
+      },
+      {
+        "gp_name": "Bankhedi Rural",
+        "gp_code": 133192
+      }
+    ],
+    "Hoshangabad": [
+      {
+        "gp_name": "Hoshangabad Gram Panchayat",
+        "gp_code": 133187
+      },
+      {
+        "gp_name": "Hoshangabad Rural",
+        "gp_code": 133188
+      }
+    ],
+    "Pipariya": [
+      {
+        "gp_name": "Pipariya Gram Panchayat",
+        "gp_code": 133193
+      },
+      {
+        "gp_name": "Pipariya Rural",
+        "gp_code": 133194
+      }
+    ],
+    "Seoni Malwa": [
+      {
+        "gp_name": "Seoni Malwa Gram Panchayat",
+        "gp_code": 133197
+      },
+      {
+        "gp_name": "Seoni Malwa Rural",
+        "gp_code": 133198
+      }
+    ],
+    "Sohagpur": [
+      {
+        "gp_name": "Sohagpur Gram Panchayat",
+        "gp_code": 133195
+      },
+      {
+        "gp_name": "Sohagpur Rural",
+        "gp_code": 133196
+      }
+    ]
+  },
+  "Narsinghpur": {
+    "Babai Chichali": [
+      {
+        "gp_name": "Babai Chichali Gram Panchayat",
+        "gp_code": 133315
+      },
+      {
+        "gp_name": "Babai Chichali Rural",
+        "gp_code": 133316
+      }
+    ],
+    "Chawarpatha": [
+      {
+        "gp_name": "Chawarpatha Gram Panchayat",
+        "gp_code": 133317
+      },
+      {
+        "gp_name": "Chawarpatha Rural",
+        "gp_code": 133318
+      }
+    ],
+    "Gotegaon": [
+      {
+        "gp_name": "Gotegaon Gram Panchayat",
+        "gp_code": 133319
+      },
+      {
+        "gp_name": "Gotegaon Rural",
+        "gp_code": 133320
+      }
+    ],
+    "Kareli": [
+      {
+        "gp_name": "Kareli Gram Panchayat",
+        "gp_code": 133321
+      },
+      {
+        "gp_name": "Kareli Rural",
+        "gp_code": 133322
+      }
+    ],
+    "Narsinghpur": [
+      {
+        "gp_name": "Narsinghpur Gram Panchayat",
+        "gp_code": 133313
+      },
+      {
+        "gp_name": "Narsinghpur Rural",
+        "gp_code": 133314
+      }
+    ],
+    "Sainkheda": [
+      {
+        "gp_name": "Sainkheda Gram Panchayat",
+        "gp_code": 133323
+      },
+      {
+        "gp_name": "Sainkheda Rural",
+        "gp_code": 133324
+      }
+    ]
+  },
+  "Neemuch": {
+    "Jawad": [
+      {
+        "gp_name": "Jawad Gram Panchayat",
+        "gp_code": 133327
+      },
+      {
+        "gp_name": "Jawad Rural",
+        "gp_code": 133328
+      }
+    ],
+    "Manasa": [
+      {
+        "gp_name": "Manasa Gram Panchayat",
+        "gp_code": 133329
+      },
+      {
+        "gp_name": "Manasa Rural",
+        "gp_code": 133330
+      }
+    ],
+    "Neemuch": [
+      {
+        "gp_name": "Neemuch Gram Panchayat",
+        "gp_code": 133325
+      },
+      {
+        "gp_name": "Neemuch Rural",
+        "gp_code": 133326
+      }
+    ]
+  },
+  "Niwari": {
+    "Niwari": [
+      {
+        "gp_name": "Niwari Gram Panchayat",
+        "gp_code": 133331
+      },
+      {
+        "gp_name": "Niwari Rural",
+        "gp_code": 133332
+      }
+    ],
+    "Orchha": [
+      {
+        "gp_name": "Orchha Gram Panchayat",
+        "gp_code": 133335
+      },
+      {
+        "gp_name": "Orchha Rural",
+        "gp_code": 133336
+      }
+    ],
+    "Prithvipur": [
+      {
+        "gp_name": "Prithvipur Gram Panchayat",
+        "gp_code": 133333
+      },
+      {
+        "gp_name": "Prithvipur Rural",
+        "gp_code": 133334
+      }
+    ]
   },
   "Pandhurna": {
-    "Pandhurna": {
-      "block_code": 4380,
-      "gps": [
-        {
-          "gp_name": "Pandhurna Gram Panchayat",
-          "gp_code": 133591
-        },
-        {
-          "gp_name": "Pandhurna Rural",
-          "gp_code": 133592
-        }
-      ]
-    },
-    "Sausar": {
-      "block_code": 4381,
-      "gps": [
-        {
-          "gp_name": "Sausar Gram Panchayat",
-          "gp_code": 133593
-        },
-        {
-          "gp_name": "Sausar Rural",
-          "gp_code": 133594
-        }
-      ]
-    }
+    "Pandhurna": [
+      {
+        "gp_name": "Pandhurna Gram Panchayat",
+        "gp_code": 133591
+      },
+      {
+        "gp_name": "Pandhurna Rural",
+        "gp_code": 133592
+      }
+    ],
+    "Sausar": [
+      {
+        "gp_name": "Sausar Gram Panchayat",
+        "gp_code": 133593
+      },
+      {
+        "gp_name": "Sausar Rural",
+        "gp_code": 133594
+      }
+    ]
+  },
+  "Panna": {
+    "Ajaygarh": [
+      {
+        "gp_name": "Ajaygarh Gram Panchayat",
+        "gp_code": 133339
+      },
+      {
+        "gp_name": "Ajaygarh Rural",
+        "gp_code": 133340
+      }
+    ],
+    "Gunnor": [
+      {
+        "gp_name": "Gunnor Gram Panchayat",
+        "gp_code": 133341
+      },
+      {
+        "gp_name": "Gunnor Rural",
+        "gp_code": 133342
+      }
+    ],
+    "Panna": [
+      {
+        "gp_name": "Panna Gram Panchayat",
+        "gp_code": 133337
+      },
+      {
+        "gp_name": "Panna Rural",
+        "gp_code": 133338
+      }
+    ],
+    "Pawai": [
+      {
+        "gp_name": "Pawai Gram Panchayat",
+        "gp_code": 133343
+      },
+      {
+        "gp_name": "Pawai Rural",
+        "gp_code": 133344
+      }
+    ],
+    "Shahnagar": [
+      {
+        "gp_name": "Shahnagar Gram Panchayat",
+        "gp_code": 133345
+      },
+      {
+        "gp_name": "Shahnagar Rural",
+        "gp_code": 133346
+      }
+    ]
+  },
+  "Raisen": {
+    "Badi": [
+      {
+        "gp_name": "Badi Gram Panchayat",
+        "gp_code": 133349
+      },
+      {
+        "gp_name": "Badi Rural",
+        "gp_code": 133350
+      }
+    ],
+    "Begamganj": [
+      {
+        "gp_name": "Begamganj Gram Panchayat",
+        "gp_code": 133351
+      },
+      {
+        "gp_name": "Begamganj Rural",
+        "gp_code": 133352
+      }
+    ],
+    "Gairatganj": [
+      {
+        "gp_name": "Gairatganj Gram Panchayat",
+        "gp_code": 133353
+      },
+      {
+        "gp_name": "Gairatganj Rural",
+        "gp_code": 133354
+      }
+    ],
+    "Obedullaganj": [
+      {
+        "gp_name": "Obedullaganj Gram Panchayat",
+        "gp_code": 133355
+      },
+      {
+        "gp_name": "Obedullaganj Rural",
+        "gp_code": 133356
+      }
+    ],
+    "Raisen": [
+      {
+        "gp_name": "Raisen Gram Panchayat",
+        "gp_code": 133347
+      },
+      {
+        "gp_name": "Raisen Rural",
+        "gp_code": 133348
+      }
+    ],
+    "Silwani": [
+      {
+        "gp_name": "Silwani Gram Panchayat",
+        "gp_code": 133357
+      },
+      {
+        "gp_name": "Silwani Rural",
+        "gp_code": 133358
+      }
+    ],
+    "Udaipura": [
+      {
+        "gp_name": "Udaipura Gram Panchayat",
+        "gp_code": 133359
+      },
+      {
+        "gp_name": "Udaipura Rural",
+        "gp_code": 133360
+      }
+    ]
+  },
+  "Rajgarh": {
+    "Biaora": [
+      {
+        "gp_name": "Biaora Gram Panchayat",
+        "gp_code": 133363
+      },
+      {
+        "gp_name": "Biaora Rural",
+        "gp_code": 133364
+      }
+    ],
+    "Khilchipur": [
+      {
+        "gp_name": "Khilchipur Gram Panchayat",
+        "gp_code": 133365
+      },
+      {
+        "gp_name": "Khilchipur Rural",
+        "gp_code": 133366
+      }
+    ],
+    "Narsinghgarh": [
+      {
+        "gp_name": "Narsinghgarh Gram Panchayat",
+        "gp_code": 133367
+      },
+      {
+        "gp_name": "Narsinghgarh Rural",
+        "gp_code": 133368
+      }
+    ],
+    "Rajgarh": [
+      {
+        "gp_name": "Rajgarh Gram Panchayat",
+        "gp_code": 133361
+      },
+      {
+        "gp_name": "Rajgarh Rural",
+        "gp_code": 133362
+      }
+    ],
+    "Sarangpur": [
+      {
+        "gp_name": "Sarangpur Gram Panchayat",
+        "gp_code": 133369
+      },
+      {
+        "gp_name": "Sarangpur Rural",
+        "gp_code": 133370
+      }
+    ],
+    "Zirapur": [
+      {
+        "gp_name": "Zirapur Gram Panchayat",
+        "gp_code": 133371
+      },
+      {
+        "gp_name": "Zirapur Rural",
+        "gp_code": 133372
+      }
+    ]
+  },
+  "Ratlam": {
+    "Alot": [
+      {
+        "gp_name": "Alot Gram Panchayat",
+        "gp_code": 133375
+      },
+      {
+        "gp_name": "Alot Rural",
+        "gp_code": 133376
+      }
+    ],
+    "Bajna": [
+      {
+        "gp_name": "Bajna Gram Panchayat",
+        "gp_code": 133377
+      },
+      {
+        "gp_name": "Bajna Rural",
+        "gp_code": 133378
+      }
+    ],
+    "Jaora": [
+      {
+        "gp_name": "Jaora Gram Panchayat",
+        "gp_code": 133379
+      },
+      {
+        "gp_name": "Jaora Rural",
+        "gp_code": 133380
+      }
+    ],
+    "Piploda": [
+      {
+        "gp_name": "Piploda Gram Panchayat",
+        "gp_code": 133381
+      },
+      {
+        "gp_name": "Piploda Rural",
+        "gp_code": 133382
+      }
+    ],
+    "Ratlam": [
+      {
+        "gp_name": "Ratlam Gram Panchayat",
+        "gp_code": 133373
+      },
+      {
+        "gp_name": "Ratlam Rural",
+        "gp_code": 133374
+      }
+    ],
+    "Sailana": [
+      {
+        "gp_name": "Sailana Gram Panchayat",
+        "gp_code": 133383
+      },
+      {
+        "gp_name": "Sailana Rural",
+        "gp_code": 133384
+      }
+    ]
+  },
+  "Rewa": {
+    "Gangev": [
+      {
+        "gp_name": "Gangev Gram Panchayat",
+        "gp_code": 133387
+      },
+      {
+        "gp_name": "Gangev Rural",
+        "gp_code": 133388
+      }
+    ],
+    "Hanumana": [
+      {
+        "gp_name": "Hanumana Gram Panchayat",
+        "gp_code": 133389
+      },
+      {
+        "gp_name": "Hanumana Rural",
+        "gp_code": 133390
+      }
+    ],
+    "Huzur": [
+      {
+        "gp_name": "Huzur Gram Panchayat",
+        "gp_code": 133391
+      },
+      {
+        "gp_name": "Huzur Rural",
+        "gp_code": 133392
+      }
+    ],
+    "Jawa": [
+      {
+        "gp_name": "Jawa Gram Panchayat",
+        "gp_code": 133393
+      },
+      {
+        "gp_name": "Jawa Rural",
+        "gp_code": 133394
+      }
+    ],
+    "Mauganj": [
+      {
+        "gp_name": "Mauganj Gram Panchayat",
+        "gp_code": 133395
+      },
+      {
+        "gp_name": "Mauganj Rural",
+        "gp_code": 133396
+      }
+    ],
+    "Naigarhi": [
+      {
+        "gp_name": "Naigarhi Gram Panchayat",
+        "gp_code": 133397
+      },
+      {
+        "gp_name": "Naigarhi Rural",
+        "gp_code": 133398
+      }
+    ],
+    "Raipur Karchuliyan": [
+      {
+        "gp_name": "Raipur Karchuliyan Gram Panchayat",
+        "gp_code": 133399
+      },
+      {
+        "gp_name": "Raipur Karchuliyan Rural",
+        "gp_code": 133400
+      }
+    ],
+    "Rewa": [
+      {
+        "gp_name": "Rewa Gram Panchayat",
+        "gp_code": 133385
+      },
+      {
+        "gp_name": "Rewa Rural",
+        "gp_code": 133386
+      }
+    ],
+    "Semariya": [
+      {
+        "gp_name": "Semariya Gram Panchayat",
+        "gp_code": 133401
+      },
+      {
+        "gp_name": "Semariya Rural",
+        "gp_code": 133402
+      }
+    ],
+    "Sirmaur": [
+      {
+        "gp_name": "Sirmaur Gram Panchayat",
+        "gp_code": 133403
+      },
+      {
+        "gp_name": "Sirmaur Rural",
+        "gp_code": 133404
+      }
+    ],
+    "Teonthar": [
+      {
+        "gp_name": "Teonthar Gram Panchayat",
+        "gp_code": 133405
+      },
+      {
+        "gp_name": "Teonthar Rural",
+        "gp_code": 133406
+      }
+    ]
+  },
+  "Sagar": {
+    "Banda": [
+      {
+        "gp_name": "Banda Gram Panchayat",
+        "gp_code": 133409
+      },
+      {
+        "gp_name": "Banda Rural",
+        "gp_code": 133410
+      }
+    ],
+    "Bina": [
+      {
+        "gp_name": "Bina Gram Panchayat",
+        "gp_code": 133411
+      },
+      {
+        "gp_name": "Bina Rural",
+        "gp_code": 133412
+      }
+    ],
+    "Deori": [
+      {
+        "gp_name": "Deori Gram Panchayat",
+        "gp_code": 133413
+      },
+      {
+        "gp_name": "Deori Rural",
+        "gp_code": 133414
+      }
+    ],
+    "Jaisinagar": [
+      {
+        "gp_name": "Jaisinagar Gram Panchayat",
+        "gp_code": 133415
+      },
+      {
+        "gp_name": "Jaisinagar Rural",
+        "gp_code": 133416
+      }
+    ],
+    "Kesli": [
+      {
+        "gp_name": "Kesli Gram Panchayat",
+        "gp_code": 133417
+      },
+      {
+        "gp_name": "Kesli Rural",
+        "gp_code": 133418
+      }
+    ],
+    "Khurai": [
+      {
+        "gp_name": "Khurai Gram Panchayat",
+        "gp_code": 133419
+      },
+      {
+        "gp_name": "Khurai Rural",
+        "gp_code": 133420
+      }
+    ],
+    "Malthon": [
+      {
+        "gp_name": "Malthon Gram Panchayat",
+        "gp_code": 133421
+      },
+      {
+        "gp_name": "Malthon Rural",
+        "gp_code": 133422
+      }
+    ],
+    "Rahatgarh": [
+      {
+        "gp_name": "Rahatgarh Gram Panchayat",
+        "gp_code": 133423
+      },
+      {
+        "gp_name": "Rahatgarh Rural",
+        "gp_code": 133424
+      }
+    ],
+    "Rehli": [
+      {
+        "gp_name": "Rehli Gram Panchayat",
+        "gp_code": 133425
+      },
+      {
+        "gp_name": "Rehli Rural",
+        "gp_code": 133426
+      }
+    ],
+    "Sagar": [
+      {
+        "gp_name": "Sagar Gram Panchayat",
+        "gp_code": 133407
+      },
+      {
+        "gp_name": "Sagar Rural",
+        "gp_code": 133408
+      }
+    ],
+    "Shahgarh": [
+      {
+        "gp_name": "Shahgarh Gram Panchayat",
+        "gp_code": 133427
+      },
+      {
+        "gp_name": "Shahgarh Rural",
+        "gp_code": 133428
+      }
+    ]
+  },
+  "Satna": {
+    "Amarpatan": [
+      {
+        "gp_name": "Amarpatan Gram Panchayat",
+        "gp_code": 133431
+      },
+      {
+        "gp_name": "Amarpatan Rural",
+        "gp_code": 133432
+      }
+    ],
+    "Majhgawan": [
+      {
+        "gp_name": "Majhgawan Gram Panchayat",
+        "gp_code": 133433
+      },
+      {
+        "gp_name": "Majhgawan Rural",
+        "gp_code": 133434
+      }
+    ],
+    "Nagod": [
+      {
+        "gp_name": "Nagod Gram Panchayat",
+        "gp_code": 133435
+      },
+      {
+        "gp_name": "Nagod Rural",
+        "gp_code": 133436
+      }
+    ],
+    "Ramnagar": [
+      {
+        "gp_name": "Ramnagar Gram Panchayat",
+        "gp_code": 133437
+      },
+      {
+        "gp_name": "Ramnagar Rural",
+        "gp_code": 133438
+      }
+    ],
+    "Rampur Baghelan": [
+      {
+        "gp_name": "Rampur Baghelan Gram Panchayat",
+        "gp_code": 133439
+      },
+      {
+        "gp_name": "Rampur Baghelan Rural",
+        "gp_code": 133440
+      }
+    ],
+    "Satna": [
+      {
+        "gp_name": "Satna Gram Panchayat",
+        "gp_code": 133429
+      },
+      {
+        "gp_name": "Satna Rural",
+        "gp_code": 133430
+      }
+    ],
+    "Sohawal": [
+      {
+        "gp_name": "Sohawal Gram Panchayat",
+        "gp_code": 133441
+      },
+      {
+        "gp_name": "Sohawal Rural",
+        "gp_code": 133442
+      }
+    ],
+    "Uchehara": [
+      {
+        "gp_name": "Uchehara Gram Panchayat",
+        "gp_code": 133443
+      },
+      {
+        "gp_name": "Uchehara Rural",
+        "gp_code": 133444
+      }
+    ]
+  },
+  "Sehore": {
+    "Ashta": [
+      {
+        "gp_name": "Ashta Gram Panchayat",
+        "gp_code": 133447
+      },
+      {
+        "gp_name": "Ashta Rural",
+        "gp_code": 133448
+      }
+    ],
+    "Budhni": [
+      {
+        "gp_name": "Budhni Gram Panchayat",
+        "gp_code": 133449
+      },
+      {
+        "gp_name": "Budhni Rural",
+        "gp_code": 133450
+      }
+    ],
+    "Ichhawar": [
+      {
+        "gp_name": "Ichhawar Gram Panchayat",
+        "gp_code": 133451
+      },
+      {
+        "gp_name": "Ichhawar Rural",
+        "gp_code": 133452
+      }
+    ],
+    "Nasrullaganj": [
+      {
+        "gp_name": "Nasrullaganj Gram Panchayat",
+        "gp_code": 133453
+      },
+      {
+        "gp_name": "Nasrullaganj Rural",
+        "gp_code": 133454
+      }
+    ],
+    "Sehore": [
+      {
+        "gp_name": "Sehore Gram Panchayat",
+        "gp_code": 133445
+      },
+      {
+        "gp_name": "Sehore Rural",
+        "gp_code": 133446
+      }
+    ]
+  },
+  "Seoni": {
+    "Barghat": [
+      {
+        "gp_name": "Barghat Gram Panchayat",
+        "gp_code": 133457
+      },
+      {
+        "gp_name": "Barghat Rural",
+        "gp_code": 133458
+      }
+    ],
+    "Chhapara": [
+      {
+        "gp_name": "Chhapara Gram Panchayat",
+        "gp_code": 133459
+      },
+      {
+        "gp_name": "Chhapara Rural",
+        "gp_code": 133460
+      }
+    ],
+    "Dhanora": [
+      {
+        "gp_name": "Dhanora Gram Panchayat",
+        "gp_code": 133461
+      },
+      {
+        "gp_name": "Dhanora Rural",
+        "gp_code": 133462
+      }
+    ],
+    "Ghansore": [
+      {
+        "gp_name": "Ghansore Gram Panchayat",
+        "gp_code": 133463
+      },
+      {
+        "gp_name": "Ghansore Rural",
+        "gp_code": 133464
+      }
+    ],
+    "Keolari": [
+      {
+        "gp_name": "Keolari Gram Panchayat",
+        "gp_code": 133465
+      },
+      {
+        "gp_name": "Keolari Rural",
+        "gp_code": 133466
+      }
+    ],
+    "Kurai": [
+      {
+        "gp_name": "Kurai Gram Panchayat",
+        "gp_code": 133467
+      },
+      {
+        "gp_name": "Kurai Rural",
+        "gp_code": 133468
+      }
+    ],
+    "Lakhnadon": [
+      {
+        "gp_name": "Lakhnadon Gram Panchayat",
+        "gp_code": 133469
+      },
+      {
+        "gp_name": "Lakhnadon Rural",
+        "gp_code": 133470
+      }
+    ],
+    "Seoni": [
+      {
+        "gp_name": "Seoni Gram Panchayat",
+        "gp_code": 133455
+      },
+      {
+        "gp_name": "Seoni Rural",
+        "gp_code": 133456
+      }
+    ]
+  },
+  "Shahdol": {
+    "Beohari": [
+      {
+        "gp_name": "Beohari Gram Panchayat",
+        "gp_code": 133473
+      },
+      {
+        "gp_name": "Beohari Rural",
+        "gp_code": 133474
+      }
+    ],
+    "Burhar": [
+      {
+        "gp_name": "Burhar Gram Panchayat",
+        "gp_code": 133475
+      },
+      {
+        "gp_name": "Burhar Rural",
+        "gp_code": 133476
+      }
+    ],
+    "Gohparu": [
+      {
+        "gp_name": "Gohparu Gram Panchayat",
+        "gp_code": 133477
+      },
+      {
+        "gp_name": "Gohparu Rural",
+        "gp_code": 133478
+      }
+    ],
+    "Jaisinghnagar": [
+      {
+        "gp_name": "Jaisinghnagar Gram Panchayat",
+        "gp_code": 133479
+      },
+      {
+        "gp_name": "Jaisinghnagar Rural",
+        "gp_code": 133480
+      }
+    ],
+    "Shahdol": [
+      {
+        "gp_name": "Shahdol Gram Panchayat",
+        "gp_code": 133471
+      },
+      {
+        "gp_name": "Shahdol Rural",
+        "gp_code": 133472
+      }
+    ]
+  },
+  "Shajapur": {
+    "Kalapipal": [
+      {
+        "gp_name": "Kalapipal Gram Panchayat",
+        "gp_code": 133483
+      },
+      {
+        "gp_name": "Kalapipal Rural",
+        "gp_code": 133484
+      }
+    ],
+    "Mohan Badodiya": [
+      {
+        "gp_name": "Mohan Badodiya Gram Panchayat",
+        "gp_code": 133485
+      },
+      {
+        "gp_name": "Mohan Badodiya Rural",
+        "gp_code": 133486
+      }
+    ],
+    "Shajapur": [
+      {
+        "gp_name": "Shajapur Gram Panchayat",
+        "gp_code": 133481
+      },
+      {
+        "gp_name": "Shajapur Rural",
+        "gp_code": 133482
+      }
+    ],
+    "Shujalpur": [
+      {
+        "gp_name": "Shujalpur Gram Panchayat",
+        "gp_code": 133487
+      },
+      {
+        "gp_name": "Shujalpur Rural",
+        "gp_code": 133488
+      }
+    ]
+  },
+  "Sheopur": {
+    "Karahal": [
+      {
+        "gp_name": "Karahal Gram Panchayat",
+        "gp_code": 133491
+      },
+      {
+        "gp_name": "Karahal Rural",
+        "gp_code": 133492
+      }
+    ],
+    "Sheopur": [
+      {
+        "gp_name": "Sheopur Gram Panchayat",
+        "gp_code": 133489
+      },
+      {
+        "gp_name": "Sheopur Rural",
+        "gp_code": 133490
+      }
+    ],
+    "Vijaypur": [
+      {
+        "gp_name": "Vijaypur Gram Panchayat",
+        "gp_code": 133493
+      },
+      {
+        "gp_name": "Vijaypur Rural",
+        "gp_code": 133494
+      }
+    ]
+  },
+  "Shivpuri": {
+    "Badarwas": [
+      {
+        "gp_name": "Badarwas Gram Panchayat",
+        "gp_code": 133497
+      },
+      {
+        "gp_name": "Badarwas Rural",
+        "gp_code": 133498
+      }
+    ],
+    "Karera": [
+      {
+        "gp_name": "Karera Gram Panchayat",
+        "gp_code": 133499
+      },
+      {
+        "gp_name": "Karera Rural",
+        "gp_code": 133500
+      }
+    ],
+    "Khaniyadhana": [
+      {
+        "gp_name": "Khaniyadhana Gram Panchayat",
+        "gp_code": 133501
+      },
+      {
+        "gp_name": "Khaniyadhana Rural",
+        "gp_code": 133502
+      }
+    ],
+    "Kolaras": [
+      {
+        "gp_name": "Kolaras Gram Panchayat",
+        "gp_code": 133503
+      },
+      {
+        "gp_name": "Kolaras Rural",
+        "gp_code": 133504
+      }
+    ],
+    "Narwar": [
+      {
+        "gp_name": "Narwar Gram Panchayat",
+        "gp_code": 133505
+      },
+      {
+        "gp_name": "Narwar Rural",
+        "gp_code": 133506
+      }
+    ],
+    "Pichhore": [
+      {
+        "gp_name": "Pichhore Gram Panchayat",
+        "gp_code": 133507
+      },
+      {
+        "gp_name": "Pichhore Rural",
+        "gp_code": 133508
+      }
+    ],
+    "Pohari": [
+      {
+        "gp_name": "Pohari Gram Panchayat",
+        "gp_code": 133509
+      },
+      {
+        "gp_name": "Pohari Rural",
+        "gp_code": 133510
+      }
+    ],
+    "Shivpuri": [
+      {
+        "gp_name": "Shivpuri Gram Panchayat",
+        "gp_code": 133495
+      },
+      {
+        "gp_name": "Shivpuri Rural",
+        "gp_code": 133496
+      }
+    ]
+  },
+  "Sidhi": {
+    "Kusmi": [
+      {
+        "gp_name": "Kusmi Gram Panchayat",
+        "gp_code": 133513
+      },
+      {
+        "gp_name": "Kusmi Rural",
+        "gp_code": 133514
+      }
+    ],
+    "Majhauli": [
+      {
+        "gp_name": "Majhauli Gram Panchayat",
+        "gp_code": 133515
+      },
+      {
+        "gp_name": "Majhauli Rural",
+        "gp_code": 133516
+      }
+    ],
+    "Rampur Naikin": [
+      {
+        "gp_name": "Rampur Naikin Gram Panchayat",
+        "gp_code": 133517
+      },
+      {
+        "gp_name": "Rampur Naikin Rural",
+        "gp_code": 133518
+      }
+    ],
+    "Sidhi": [
+      {
+        "gp_name": "Sidhi Gram Panchayat",
+        "gp_code": 133511
+      },
+      {
+        "gp_name": "Sidhi Rural",
+        "gp_code": 133512
+      }
+    ],
+    "Sihawal": [
+      {
+        "gp_name": "Sihawal Gram Panchayat",
+        "gp_code": 133519
+      },
+      {
+        "gp_name": "Sihawal Rural",
+        "gp_code": 133520
+      }
+    ]
+  },
+  "Singrauli": {
+    "Baishan": [
+      {
+        "gp_name": "Baishan Gram Panchayat",
+        "gp_code": 133523
+      },
+      {
+        "gp_name": "Baishan Rural",
+        "gp_code": 133524
+      }
+    ],
+    "Chitrangi": [
+      {
+        "gp_name": "Chitrangi Gram Panchayat",
+        "gp_code": 133525
+      },
+      {
+        "gp_name": "Chitrangi Rural",
+        "gp_code": 133526
+      }
+    ],
+    "Deosar": [
+      {
+        "gp_name": "Deosar Gram Panchayat",
+        "gp_code": 133527
+      },
+      {
+        "gp_name": "Deosar Rural",
+        "gp_code": 133528
+      }
+    ],
+    "Singrauli": [
+      {
+        "gp_name": "Singrauli Gram Panchayat",
+        "gp_code": 133521
+      },
+      {
+        "gp_name": "Singrauli Rural",
+        "gp_code": 133522
+      }
+    ]
+  },
+  "Tikamgarh": {
+    "Baldeogarh": [
+      {
+        "gp_name": "Baldeogarh Gram Panchayat",
+        "gp_code": 133531
+      },
+      {
+        "gp_name": "Baldeogarh Rural",
+        "gp_code": 133532
+      }
+    ],
+    "Jatara": [
+      {
+        "gp_name": "Jatara Gram Panchayat",
+        "gp_code": 133533
+      },
+      {
+        "gp_name": "Jatara Rural",
+        "gp_code": 133534
+      }
+    ],
+    "Palera": [
+      {
+        "gp_name": "Palera Gram Panchayat",
+        "gp_code": 133535
+      },
+      {
+        "gp_name": "Palera Rural",
+        "gp_code": 133536
+      }
+    ],
+    "Tikamgarh": [
+      {
+        "gp_name": "Tikamgarh Gram Panchayat",
+        "gp_code": 133529
+      },
+      {
+        "gp_name": "Tikamgarh Rural",
+        "gp_code": 133530
+      }
+    ]
+  },
+  "Ujjain": {
+    "Badnagar": [
+      {
+        "gp_name": "Badnagar Gram Panchayat",
+        "gp_code": 133539
+      },
+      {
+        "gp_name": "Badnagar Rural",
+        "gp_code": 133540
+      }
+    ],
+    "Ghatiya": [
+      {
+        "gp_name": "Ghatiya Gram Panchayat",
+        "gp_code": 133541
+      },
+      {
+        "gp_name": "Ghatiya Rural",
+        "gp_code": 133542
+      }
+    ],
+    "Khachrod": [
+      {
+        "gp_name": "Khachrod Gram Panchayat",
+        "gp_code": 133543
+      },
+      {
+        "gp_name": "Khachrod Rural",
+        "gp_code": 133544
+      }
+    ],
+    "Mahidpur": [
+      {
+        "gp_name": "Mahidpur Gram Panchayat",
+        "gp_code": 133545
+      },
+      {
+        "gp_name": "Mahidpur Rural",
+        "gp_code": 133546
+      }
+    ],
+    "Tarana": [
+      {
+        "gp_name": "Tarana Gram Panchayat",
+        "gp_code": 133547
+      },
+      {
+        "gp_name": "Tarana Rural",
+        "gp_code": 133548
+      }
+    ],
+    "Ujjain": [
+      {
+        "gp_name": "Ujjain Gram Panchayat",
+        "gp_code": 133537
+      },
+      {
+        "gp_name": "Ujjain Rural",
+        "gp_code": 133538
+      }
+    ]
+  },
+  "Umaria": {
+    "Karkeli": [
+      {
+        "gp_name": "Karkeli Gram Panchayat",
+        "gp_code": 133551
+      },
+      {
+        "gp_name": "Karkeli Rural",
+        "gp_code": 133552
+      }
+    ],
+    "Manpur": [
+      {
+        "gp_name": "Manpur Gram Panchayat",
+        "gp_code": 133553
+      },
+      {
+        "gp_name": "Manpur Rural",
+        "gp_code": 133554
+      }
+    ],
+    "Pali": [
+      {
+        "gp_name": "Pali Gram Panchayat",
+        "gp_code": 133555
+      },
+      {
+        "gp_name": "Pali Rural",
+        "gp_code": 133556
+      }
+    ],
+    "Umaria": [
+      {
+        "gp_name": "Umaria Gram Panchayat",
+        "gp_code": 133549
+      },
+      {
+        "gp_name": "Umaria Rural",
+        "gp_code": 133550
+      }
+    ]
+  },
+  "Vidisha": {
+    "Basoda": [
+      {
+        "gp_name": "Basoda Gram Panchayat",
+        "gp_code": 133559
+      },
+      {
+        "gp_name": "Basoda Rural",
+        "gp_code": 133560
+      }
+    ],
+    "Gyaraspur": [
+      {
+        "gp_name": "Gyaraspur Gram Panchayat",
+        "gp_code": 133561
+      },
+      {
+        "gp_name": "Gyaraspur Rural",
+        "gp_code": 133562
+      }
+    ],
+    "Kurwai": [
+      {
+        "gp_name": "Kurwai Gram Panchayat",
+        "gp_code": 133563
+      },
+      {
+        "gp_name": "Kurwai Rural",
+        "gp_code": 133564
+      }
+    ],
+    "Leteri": [
+      {
+        "gp_name": "Leteri Gram Panchayat",
+        "gp_code": 133565
+      },
+      {
+        "gp_name": "Leteri Rural",
+        "gp_code": 133566
+      }
+    ],
+    "Nateran": [
+      {
+        "gp_name": "Nateran Gram Panchayat",
+        "gp_code": 133567
+      },
+      {
+        "gp_name": "Nateran Rural",
+        "gp_code": 133568
+      }
+    ],
+    "Sironj": [
+      {
+        "gp_name": "Sironj Gram Panchayat",
+        "gp_code": 133569
+      },
+      {
+        "gp_name": "Sironj Rural",
+        "gp_code": 133570
+      }
+    ],
+    "Vidisha": [
+      {
+        "gp_name": "Vidisha Gram Panchayat",
+        "gp_code": 133557
+      },
+      {
+        "gp_name": "Vidisha Rural",
+        "gp_code": 133558
+      }
+    ]
   }
 }

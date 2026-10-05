@@ -129,7 +129,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
   // GeoJSON Data Ingestion Cache
   const [blocksGeoData, setBlocksGeoData] = useState<any | null>(null);
   const [gpsGeoData, setGpsGeoData] = useState<any | null>(null);
-  const [hierarchyData, setHierarchyData] = useState<Record<string, Record<string, { block_code: number; gps: Array<{ gp_name: string; gp_code: number }> }>> | null>(null);
+  const [hierarchyData, setHierarchyData] = useState<Record<string, Record<string, Array<{ gp_name: string; gp_code: number }>>> | null>(null);
 
   // Active Clicked Polygon Popup State
   const [clickedPopup, setClickedPopup] = useState<{
@@ -268,19 +268,130 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
     };
   }, [mapMode, activeLeadDay, activeCropId, cropLayerMetric]);
 
-  // Handle unit click in District/Block view
-  const handleUnitClick = (unit: AdminUnit) => {
-    if (unit.level === "gp") {
-      onSelectGp(unit.lgd);
-      getForecastForGP(unit.lgd);
+  // 4-Tier Administrative Hierarchy Calculations
+  const districtList = useMemo(() => {
+    if (!hierarchyData) return Object.keys(DISTRICT_LGD_MAP).map((k) => k.charAt(0).toUpperCase() + k.slice(1));
+    return Object.keys(hierarchyData).sort();
+  }, [hierarchyData]);
+
+  const activeDistrictName = useMemo(() => {
+    if (currentScope.level === "district") return currentScope.name.replace(/district/i, "").trim();
+    if (currentScope.level === "block") {
+      // Find parent district from hierarchy
+      if (hierarchyData) {
+        for (const [dist, blocks] of Object.entries(hierarchyData)) {
+          if (Object.keys(blocks).some((b) => b.toLowerCase() === currentScope.name.toLowerCase())) {
+            return dist;
+          }
+        }
+      }
+    }
+    return "";
+  }, [currentScope, hierarchyData]);
+
+  const activeBlockName = useMemo(() => {
+    if (currentScope.level === "block") return currentScope.name.trim();
+    return "";
+  }, [currentScope]);
+
+  const blockList = useMemo(() => {
+    if (!hierarchyData || !activeDistrictName || !hierarchyData[activeDistrictName]) {
+      return [];
+    }
+    return Object.keys(hierarchyData[activeDistrictName]).sort();
+  }, [hierarchyData, activeDistrictName]);
+
+  // DYNAMIC GRAM PANCHAYAT LIST: Updates immediately when District or Block changes!
+  const currentAvailableGps = useMemo(() => {
+    if (!hierarchyData) return [];
+    // 1. If both District and Block are selected: return that Block's Gram Panchayats
+    if (activeDistrictName && activeBlockName && hierarchyData[activeDistrictName]?.[activeBlockName]) {
+      return hierarchyData[activeDistrictName][activeBlockName];
+    }
+    // 2. If District is selected: return all Gram Panchayats in that District
+    if (activeDistrictName && hierarchyData[activeDistrictName]) {
+      const list: Array<{ gp_name: string; gp_code: number; block_name?: string }> = [];
+      for (const [blk, blkGps] of Object.entries(hierarchyData[activeDistrictName])) {
+        blkGps.forEach((g) => list.push({ ...g, block_name: blk }));
+      }
+      return list;
+    }
+    // 3. Overview mode: return all scored pilot Gram Panchayats across MP
+    const allGps: Array<{ gp_name: string; gp_code: number; block_name?: string; district_name?: string }> = [];
+    for (const [dist, blocks] of Object.entries(hierarchyData)) {
+      for (const [blk, blkGps] of Object.entries(blocks)) {
+        blkGps.forEach((g) => allGps.push({ ...g, block_name: blk, district_name: dist }));
+      }
+    }
+    return allGps;
+  }, [hierarchyData, activeDistrictName, activeBlockName]);
+
+  // 4-Tier Dropdown Change Handlers
+  const handleDistrictChange = (dist: string) => {
+    if (!dist) {
+      onNavigateScope({ level: "state", id: "IN-MP", name: "Madhya Pradesh" });
       return;
     }
-    const nextItem: BreadcrumbItem = {
-      level: unit.level,
-      id: unit.id,
-      name: unit.name,
-    };
-    onNavigateScope(nextItem);
+    const clean = dist.toLowerCase().replace(/district/i, "").trim();
+    const lgd = DISTRICT_LGD_MAP[clean] || 407;
+    onNavigateScope({
+      level: "district",
+      id: `district:${lgd}`,
+      name: dist,
+    });
+
+    // Auto-select first Gram Panchayat in this district so all weather panels update immediately!
+    if (hierarchyData && hierarchyData[dist]) {
+      const firstBlk = Object.keys(hierarchyData[dist])[0];
+      const firstGp = hierarchyData[dist][firstBlk]?.[0];
+      if (firstGp) {
+        onSelectGp(firstGp.gp_code);
+        getForecastForGP(firstGp.gp_code);
+      }
+    }
+  };
+
+  const handleBlockChange = (blk: string) => {
+    if (!blk) return;
+    onNavigateScope({
+      level: "block",
+      id: `block:${blk}`,
+      name: blk,
+    });
+
+    // Auto-select first Gram Panchayat in this block so all weather panels update immediately!
+    if (hierarchyData && activeDistrictName && hierarchyData[activeDistrictName]?.[blk]) {
+      const firstGp = hierarchyData[activeDistrictName][blk]?.[0];
+      if (firstGp) {
+        onSelectGp(firstGp.gp_code);
+        getForecastForGP(firstGp.gp_code);
+      }
+    }
+  };
+
+  const handleGpChange = (gpCodeStr: string) => {
+    if (!gpCodeStr) return;
+    const code = Number(gpCodeStr);
+    onSelectGp(code);
+    getForecastForGP(code);
+
+    // If parent block or district is known, sync navigation scope
+    if (hierarchyData) {
+      for (const [dist, blocks] of Object.entries(hierarchyData)) {
+        for (const [blk, gps] of Object.entries(blocks)) {
+          if (gps.some((g) => g.gp_code === code)) {
+            if (currentScope.level !== "block" || currentScope.name !== blk) {
+              onNavigateScope({
+                level: "block",
+                id: `block:${blk}`,
+                name: blk,
+              });
+            }
+            return;
+          }
+        }
+      }
+    }
   };
 
   // Color generator for block & GP cards
@@ -314,45 +425,6 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
     }
     return { fill: "#0D9488", stroke: "#0F766E", text: "#FFFFFF" };
   };
-
-  // 4-Tier Cascaded Administrative Filter Selections
-  const activeDistrictName = useMemo(() => {
-    if (currentScope.level === "district") return currentScope.name.replace(/district/i, "").trim();
-    if (currentScope.level === "block") {
-      // Find parent district from hierarchy
-      if (hierarchyData) {
-        for (const [dist, blocks] of Object.entries(hierarchyData)) {
-          if (Object.keys(blocks).some((b) => b.toLowerCase() === currentScope.name.toLowerCase())) {
-            return dist;
-          }
-        }
-      }
-    }
-    return "";
-  }, [currentScope, hierarchyData]);
-
-  const activeBlockName = useMemo(() => {
-    if (currentScope.level === "block") return currentScope.name.trim();
-    return "";
-  }, [currentScope]);
-
-  const districtList = useMemo(() => {
-    if (!hierarchyData) return Object.keys(DISTRICT_LGD_MAP).map((k) => k.charAt(0).toUpperCase() + k.slice(1));
-    return Object.keys(hierarchyData).sort();
-  }, [hierarchyData]);
-
-  const blockList = useMemo(() => {
-    if (!hierarchyData || !activeDistrictName || !hierarchyData[activeDistrictName]) {
-      return [];
-    }
-    return Object.keys(hierarchyData[activeDistrictName]).sort();
-  }, [hierarchyData, activeDistrictName]);
-
-  const gpList = useMemo(() => {
-    if (!hierarchyData || !activeDistrictName || !activeBlockName) return [];
-    const blkObj = hierarchyData[activeDistrictName]?.[activeBlockName];
-    return blkObj?.gps || [];
-  }, [hierarchyData, activeDistrictName, activeBlockName]);
 
   // Filter Block Polygons for current district
   const districtBlockFeatures = useMemo(() => {
@@ -391,7 +463,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
   const districtBlocksProjection = useMemo(() => {
     if (!districtBlockFeatures.length) return null;
     const fc = { type: "FeatureCollection", features: districtBlockFeatures } as any;
-    const proj = geoMercator().fitSize([720, 360], fc);
+    const proj = geoMercator().fitSize([720, 340], fc);
     const pathGenerator = geoPath(proj);
     return { proj, pathGenerator };
   }, [districtBlockFeatures]);
@@ -401,96 +473,188 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
     const feats = activeGpFeatures.length ? activeGpFeatures : [];
     if (!feats.length) return null;
     const fc = { type: "FeatureCollection", features: feats } as any;
-    const proj = geoMercator().fitSize([720, 360], fc);
+    const proj = geoMercator().fitSize([720, 300], fc);
     const pathGenerator = geoPath(proj);
     return { proj, pathGenerator };
   }, [activeGpFeatures]);
 
-  // 4-Tier Select Handlers
-  const handleSelectDistrictDropdown = (dist: string) => {
-    if (!dist) {
-      onNavigateScope({ level: "state", id: "IN-MP", name: "Madhya Pradesh" });
-      return;
-    }
-    const clean = dist.toLowerCase().replace(/district/i, "").trim();
-    const lgd = DISTRICT_LGD_MAP[clean] || 407;
-    onNavigateScope({
-      level: "district",
-      id: `district:${lgd}`,
-      name: dist,
-    });
-  };
+  // Persistent 4-Tier Cascaded Administrative Bar Header
+  const renderCascadedSelectorBar = () => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "10px 14px",
+        background: "#F8FAFC",
+        borderBottom: "1px solid #E2E8F0",
+        flexWrap: "wrap",
+        gap: "10px",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+        {/* Tier 1: State */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <span style={{ fontSize: "9.5px", fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>State</span>
+          <select
+            value="Madhya Pradesh"
+            disabled
+            style={{
+              padding: "5px 8px",
+              borderRadius: "6px",
+              border: "1px solid #CBD5E1",
+              fontSize: "12px",
+              background: "#F1F5F9",
+              fontWeight: 600,
+              color: "#334155",
+            }}
+          >
+            <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
+          </select>
+        </div>
 
-  const handleSelectBlockDropdown = (blk: string) => {
-    if (!blk) return;
-    const blkObj = hierarchyData?.[activeDistrictName]?.[blk];
-    const bcode = blkObj?.block_code || 3376;
-    onNavigateScope({
-      level: "block",
-      id: `block:${bcode}`,
-      name: blk,
-    });
-  };
+        {/* Tier 2: District */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <span style={{ fontSize: "9.5px", fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>
+            District ({districtList.length})
+          </span>
+          <select
+            value={activeDistrictName}
+            onChange={(e) => handleDistrictChange(e.target.value)}
+            style={{
+              padding: "5px 8px",
+              borderRadius: "6px",
+              border: "1px solid #2563EB",
+              fontSize: "12px",
+              background: "#FFFFFF",
+              fontWeight: 700,
+              color: "#0F172A",
+              cursor: "pointer",
+            }}
+          >
+            <option value="">Select District (55 in MP)...</option>
+            {districtList.map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
+        </div>
 
-  const handleSelectGpDropdown = (gpCodeStr: string) => {
-    if (!gpCodeStr) return;
-    const code = Number(gpCodeStr);
-    onSelectGp(code);
-    getForecastForGP(code);
-  };
+        {/* Tier 3: Block */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <span style={{ fontSize: "9.5px", fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>
+            Block ({blockList.length})
+          </span>
+          <select
+            value={activeBlockName}
+            onChange={(e) => handleBlockChange(e.target.value)}
+            disabled={!activeDistrictName}
+            style={{
+              padding: "5px 8px",
+              borderRadius: "6px",
+              border: "1px solid #CBD5E1",
+              fontSize: "12px",
+              background: activeDistrictName ? "#FFFFFF" : "#F1F5F9",
+              fontWeight: 600,
+              color: activeDistrictName ? "#0F172A" : "#94A3B8",
+              cursor: activeDistrictName ? "pointer" : "not-allowed",
+            }}
+          >
+            <option value="">
+              {activeDistrictName ? `All Blocks (${blockList.length})...` : "Select District First"}
+            </option>
+            {blockList.map((b) => (
+              <option key={b} value={b}>
+                {b}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Tier 4: Gram Panchayat (UPDATES ACCORDING TO CHANGES OF PLACES!) */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <span style={{ fontSize: "9.5px", fontWeight: 700, color: "#059669", textTransform: "uppercase" }}>
+            Gram Panchayat ({currentAvailableGps.length})
+          </span>
+          <select
+            value={selectedGpCode || ""}
+            onChange={(e) => handleGpChange(e.target.value)}
+            style={{
+              padding: "5px 10px",
+              borderRadius: "6px",
+              border: "2px solid #059669",
+              fontSize: "12px",
+              background: "#ECFDF5",
+              fontWeight: 700,
+              color: "#065F46",
+              cursor: "pointer",
+            }}
+          >
+            <option value="">
+              {currentAvailableGps.length > 0
+                ? `Select Panchayat (${currentAvailableGps.length} available)...`
+                : "Select District or Block First"}
+            </option>
+            {currentAvailableGps.map((gp: any) => (
+              <option key={gp.gp_code} value={gp.gp_code}>
+                {gp.gp_name} (#{gp.gp_code}){gp.block_name ? ` · ${gp.block_name}` : ""}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Layer Toggles & Verification Badge */}
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+        <label style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "11.5px", fontWeight: 700, color: "#2563EB", cursor: "pointer" }}>
+          <input type="checkbox" checked={showBlocksLayer} onChange={(e) => setShowBlocksLayer(e.target.checked)} />
+          Blocks Layer (313)
+        </label>
+        <label style={{ display: "flex", alignItems: "center", gap: "5px", fontSize: "11.5px", fontWeight: 700, color: "#059669", cursor: "pointer" }}>
+          <input type="checkbox" checked={showGpsLayer} onChange={(e) => setShowGpsLayer(e.target.checked)} />
+          Gram Panchayats (Cadastral)
+        </label>
+      </div>
+    </div>
+  );
+
+  // Persistent Attribution Footer
+  const renderAttributionFooter = () => (
+    <div style={{ padding: "8px 14px", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", fontSize: "11px", color: "#64748B", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "6px" }}>
+      <span>
+        ✓ <strong>313 LGD Blocks</strong> &amp; <strong>603 Cadastral Gram Panchayats</strong> Ingested (EPSG:4326)
+      </span>
+      <span>
+        Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.
+      </span>
+    </div>
+  );
 
   // LEVEL 1: National (All-India) Geographic Map
   if (currentScope.level === "india") {
     return (
-      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "520px" }}>
-        {/* Layer Controls Bar */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 14px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0", flexWrap: "wrap", gap: "8px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, color: "#475569", textTransform: "uppercase" }}>
-              Administrative Zoom:
-            </span>
-            <select
-              value=""
-              onChange={(e) => handleSelectDistrictDropdown(e.target.value)}
-              style={{ padding: "4px 8px", borderRadius: "6px", border: "1px solid #CBD5E1", fontSize: "12px", background: "#FFFFFF" }}
-            >
-              <option value="">Jump to District (55 in MP)...</option>
-              {districtList.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#334155", cursor: "pointer" }}>
-              <input type="checkbox" checked={showBlocksLayer} onChange={(e) => setShowBlocksLayer(e.target.checked)} />
-              Blocks Layer (313)
-            </label>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#334155", cursor: "pointer" }}>
-              <input type="checkbox" checked={showGpsLayer} onChange={(e) => setShowGpsLayer(e.target.checked)} />
-              Gram Panchayats (Cadastral)
-            </label>
-          </div>
+      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "520px", display: "flex", flexDirection: "column" }}>
+        {renderCascadedSelectorBar()}
+
+        <div style={{ position: "relative", flex: 1, minHeight: "440px" }}>
+          <IndiaChoroplethMap
+            regions={regions}
+            activeStateId={null}
+            hideHeader={true}
+            onHoverFeature={onHoverFeature}
+            onSelectState={(stateId, stateName) => {
+              if (!stateId) {
+                onNavigateScope({ level: "india", id: "IN", name: "India" });
+              } else {
+                const name = stateName || (stateId === "IN-MP" ? "Madhya Pradesh" : stateId);
+                onNavigateScope({ level: "state", id: stateId, name });
+              }
+            }}
+          />
         </div>
 
-        <IndiaChoroplethMap
-          regions={regions}
-          activeStateId={null}
-          hideHeader={true}
-          onHoverFeature={onHoverFeature}
-          onSelectState={(stateId, stateName) => {
-            if (!stateId) {
-              onNavigateScope({ level: "india", id: "IN", name: "India" });
-            } else {
-              const name = stateName || (stateId === "IN-MP" ? "Madhya Pradesh" : stateId);
-              onNavigateScope({ level: "state", id: stateId, name });
-            }
-          }}
-        />
-
-        {/* Attribution Bar */}
-        <div style={{ padding: "6px 12px", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", fontSize: "11px", color: "#64748B", textAlign: "right" }}>
-          Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.
-        </div>
+        {renderAttributionFooter()}
       </div>
     );
   }
@@ -499,59 +663,27 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
   if (currentScope.level === "state") {
     const activeState = typeof currentScope.id === "string" && currentScope.id.startsWith("IN-") ? currentScope.id : "IN-MP";
     return (
-      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "520px" }}>
-        {/* Layer Controls Bar */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 14px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0", flexWrap: "wrap", gap: "8px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, color: "#475569", textTransform: "uppercase" }}>
-              State Basin:
-            </span>
-            <select
-              value={activeDistrictName}
-              onChange={(e) => handleSelectDistrictDropdown(e.target.value)}
-              style={{ padding: "4px 8px", borderRadius: "6px", border: "1px solid #CBD5E1", fontSize: "12px", background: "#FFFFFF" }}
-            >
-              <option value="">Select District (55 in MP)...</option>
-              {districtList.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#334155", cursor: "pointer" }}>
-              <input type="checkbox" checked={showBlocksLayer} onChange={(e) => setShowBlocksLayer(e.target.checked)} />
-              Blocks Layer (313)
-            </label>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#334155", cursor: "pointer" }}>
-              <input type="checkbox" checked={showGpsLayer} onChange={(e) => setShowGpsLayer(e.target.checked)} />
-              Gram Panchayats (Cadastral)
-            </label>
-          </div>
+      <div style={{ position: "relative", width: "100%", height: "100%", minHeight: "520px", display: "flex", flexDirection: "column" }}>
+        {renderCascadedSelectorBar()}
+
+        <div style={{ position: "relative", flex: 1, minHeight: "440px" }}>
+          <IndiaChoroplethMap
+            regions={regions}
+            activeStateId={activeState}
+            hideHeader={true}
+            onHoverFeature={onHoverFeature}
+            onSelectState={() => {
+              onNavigateScope({ level: "india", id: "IN", name: "India" });
+            }}
+            onSelectRegion={(regionId, regionName) => {
+              const cleanName = (regionName || "").toLowerCase().replace(/district/i, "").trim();
+              const distLgd = DISTRICT_LGD_MAP[cleanName] || 407;
+              handleDistrictChange(regionName || "Indore");
+            }}
+          />
         </div>
 
-        <IndiaChoroplethMap
-          regions={regions}
-          activeStateId={activeState}
-          hideHeader={true}
-          onHoverFeature={onHoverFeature}
-          onSelectState={() => {
-            onNavigateScope({ level: "india", id: "IN", name: "India" });
-          }}
-          onSelectRegion={(regionId, regionName) => {
-            const cleanName = (regionName || "").toLowerCase().replace(/district/i, "").trim();
-            const distLgd = DISTRICT_LGD_MAP[cleanName] || 407;
-            onNavigateScope({
-              level: "district",
-              id: `district:${distLgd}`,
-              name: regionName || "Indore",
-            });
-          }}
-        />
-
-        {/* Attribution Bar */}
-        <div style={{ padding: "6px 12px", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", fontSize: "11px", color: "#64748B", textAlign: "right" }}>
-          Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.
-        </div>
+        {renderAttributionFooter()}
       </div>
     );
   }
@@ -566,74 +698,25 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
+          gap: "0px",
           background: "#FFFFFF",
         }}
       >
-        {/* 4-Tier Cascaded Administrative Filter Bar */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "8px 14px",
-            background: "#F8FAFC",
-            borderBottom: "1px solid #E2E8F0",
-            flexWrap: "wrap",
-            gap: "8px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, color: "#475569", textTransform: "uppercase" }}>
-              District Scope:
-            </span>
-            <select
-              value={activeDistrictName}
-              onChange={(e) => handleSelectDistrictDropdown(e.target.value)}
-              style={{ padding: "4px 8px", borderRadius: "6px", border: "1px solid #CBD5E1", fontSize: "12px", background: "#FFFFFF", fontWeight: 700 }}
-            >
-              {districtList.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-
-            <select
-              value={activeBlockName}
-              onChange={(e) => handleSelectBlockDropdown(e.target.value)}
-              style={{ padding: "4px 8px", borderRadius: "6px", border: "1px solid #CBD5E1", fontSize: "12px", background: "#FFFFFF" }}
-            >
-              <option value="">All Blocks ({blockList.length})...</option>
-              {blockList.map((b) => (
-                <option key={b} value={b}>{b}</option>
-              ))}
-            </select>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#2563EB", cursor: "pointer" }}>
-              <input type="checkbox" checked={showBlocksLayer} onChange={(e) => setShowBlocksLayer(e.target.checked)} />
-              Blocks Layer ({districtBlockFeatures.length || blockList.length})
-            </label>
-            <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11.5px", fontWeight: 600, color: "#059669", cursor: "pointer" }}>
-              <input type="checkbox" checked={showGpsLayer} onChange={(e) => setShowGpsLayer(e.target.checked)} />
-              Gram Panchayats ({activeGpFeatures.length})
-            </label>
-          </div>
-        </div>
+        {renderCascadedSelectorBar()}
 
         {/* SVG District Block Polygons Map */}
-        {districtBlockFeatures.length > 0 && districtBlocksProjection && (
-          <div style={{ padding: "10px 14px", background: "#FFFFFF" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-              <span style={{ fontSize: "11px", fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>
+        {districtBlockFeatures.length > 0 && districtBlocksProjection ? (
+          <div style={{ padding: "12px 14px", background: "#FFFFFF" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+              <span style={{ fontSize: "12px", fontWeight: 700, color: "#1E293B", textTransform: "uppercase" }}>
                 Official Block Boundaries ({districtBlockFeatures.length} LGD Polygons · {currentScope.name})
               </span>
-              <span style={{ fontSize: "11px", color: "#0284C7", background: "#E0F2FE", padding: "2px 8px", borderRadius: "4px" }}>
-                Click Block to Zoom In
+              <span style={{ fontSize: "11px", color: "#0284C7", background: "#E0F2FE", padding: "3px 8px", borderRadius: "4px", fontWeight: 600 }}>
+                Click Block to Drill Down
               </span>
             </div>
 
-            <svg viewBox="0 0 720 360" style={{ width: "100%", height: "340px", background: "#F1F5F9", borderRadius: "8px", border: "1px solid #CBD5E1" }}>
+            <svg viewBox="0 0 720 340" style={{ width: "100%", height: "340px", background: "#F1F5F9", borderRadius: "8px", border: "1px solid #CBD5E1" }}>
               {/* Blocks Layer */}
               {showBlocksLayer && (
                 <g>
@@ -651,7 +734,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                           strokeWidth={1.5}
                           strokeDasharray="4 2"
                           style={{ cursor: "pointer", transition: "all 0.15s ease" }}
-                          onClick={() => handleSelectBlockDropdown(blkName)}
+                          onClick={() => handleBlockChange(blkName)}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.fillOpacity = "0.9";
                             e.currentTarget.style.stroke = "#1D4ED8";
@@ -710,8 +793,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                       onClick={(e) => {
                         e.stopPropagation();
                         const code = Number(feat.properties?.gp_code);
-                        onSelectGp(code);
-                        getForecastForGP(code);
+                        handleGpChange(String(code));
                         const [cx, cy] = districtBlocksProjection.pathGenerator.centroid(feat.geometry);
                         setClickedPopup({
                           x: cx || 200,
@@ -728,13 +810,17 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                 })}
             </svg>
           </div>
+        ) : (
+          <div style={{ padding: "16px", textAlign: "center", color: "#64748B", fontSize: "12px" }}>
+            Loading district block boundaries...
+          </div>
         )}
 
         {/* Constituent Blocks Drawer with Scored Counts */}
-        <div style={{ background: "#FFFFFF", borderTop: "1px solid #E2E8F0", padding: "12px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px", flexWrap: "wrap", gap: "6px" }}>
+        <div style={{ background: "#FFFFFF", borderTop: "1px solid #E2E8F0", padding: "14px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px", flexWrap: "wrap", gap: "6px" }}>
             <span style={{ fontSize: "12px", fontWeight: 700, color: THEME.ink }}>
-              CONSTITUENT BLOCKS IN {currentScope.name.toUpperCase()} ({childrenUnits.length || blockList.length})
+              CONSTITUENT BLOCKS IN {currentScope.name.toUpperCase()} ({blockList.length || childrenUnits.length})
             </span>
             <span style={{ fontSize: "11px", color: "#065F46", background: "#ECFDF5", padding: "2px 8px", borderRadius: "4px", border: "1px solid #A7F3D0" }}>
               ✓ Survey of India / LGD 2024 Alignment
@@ -742,16 +828,16 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "8px" }}>
-            {(childrenUnits.length ? childrenUnits : blockList.map((b) => ({ id: `block:${b}`, name: b, level: "block" as const, lgd: 0, n_children: 0, n_gp_total: 10, n_gp_scored: 10, validated: true, has_geometry: true }))).map((b) => (
+            {blockList.map((blk) => (
               <button
-                key={b.id}
+                key={blk}
                 type="button"
-                onClick={() => handleUnitClick(b)}
+                onClick={() => handleBlockChange(blk)}
                 style={{
                   padding: "8px 12px",
                   borderRadius: "6px",
                   border: "1px solid #E2E8F0",
-                  background: "#F8FAFC",
+                  background: activeBlockName === blk ? "#EFF6FF" : "#F8FAFC",
                   cursor: "pointer",
                   display: "flex",
                   justifyContent: "space-between",
@@ -760,11 +846,13 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                   transition: "background 0.15s ease",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#EFF6FF")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "#F8FAFC")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = activeBlockName === blk ? "#EFF6FF" : "#F8FAFC")}
               >
                 <div>
-                  <div style={{ fontSize: "12px", fontWeight: 700, color: THEME.ink }}>{b.name}</div>
-                  <div style={{ fontSize: "10px", color: THEME.ink3 }}>{b.n_gp_scored || 10} scored GPs</div>
+                  <div style={{ fontSize: "12.5px", fontWeight: 700, color: THEME.ink }}>{blk}</div>
+                  <div style={{ fontSize: "10.5px", color: THEME.ink3 }}>
+                    {hierarchyData?.[activeDistrictName]?.[blk]?.length || 2} Gram Panchayats
+                  </div>
                 </div>
                 <span style={{ fontSize: "11px", fontWeight: 700, color: "#2563EB" }}>View GPs →</span>
               </button>
@@ -772,10 +860,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           </div>
         </div>
 
-        {/* Attribution Bar */}
-        <div style={{ padding: "6px 12px", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", fontSize: "11px", color: "#64748B", textAlign: "right" }}>
-          Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.
-        </div>
+        {renderAttributionFooter()}
       </div>
     );
   }
@@ -795,56 +880,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
         flexDirection: "column",
       }}
     >
-      {/* 4-Tier Cascaded Administrative Filter Bar */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "8px 12px",
-          background: "rgba(255, 255, 255, 0.9)",
-          backdropFilter: "blur(4px)",
-          borderBottom: "1px solid #E2E8F0",
-          fontSize: "12px",
-          flexWrap: "wrap",
-          gap: "8px",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
-          <span style={{ fontWeight: 700, color: "#0F172A", textTransform: "uppercase" }}>
-            VIEWING: {currentScope.name} BLOCK
-          </span>
-          <select
-            value={selectedGpCode || ""}
-            onChange={(e) => handleSelectGpDropdown(e.target.value)}
-            style={{ padding: "3px 8px", borderRadius: "5px", border: "1px solid #CBD5E1", fontSize: "11.5px", background: "#FFFFFF", fontWeight: 600 }}
-          >
-            <option value="">Select Panchayat ({childrenUnits.length || activeGpFeatures.length})...</option>
-            {(childrenUnits.length
-              ? childrenUnits
-              : activeGpFeatures.map((f: any) => ({ lgd: f.properties?.gp_code, name: f.properties?.gp_name }))
-            ).map((gp: any) => (
-              <option key={gp.lgd} value={gp.lgd}>
-                {gp.name} (#{gp.lgd})
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11px", fontWeight: 600, color: "#2563EB", cursor: "pointer" }}>
-            <input type="checkbox" checked={showBlocksLayer} onChange={(e) => setShowBlocksLayer(e.target.checked)} />
-            Block Outline
-          </label>
-          <label style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11px", fontWeight: 600, color: "#059669", cursor: "pointer" }}>
-            <input type="checkbox" checked={showGpsLayer} onChange={(e) => setShowGpsLayer(e.target.checked)} />
-            Cadastral Polygons
-          </label>
-          <span style={{ fontSize: "11px", color: "#00A389", fontWeight: 700 }}>
-            ● LGD Cadastral Boundaries
-          </span>
-        </div>
-      </div>
+      {renderCascadedSelectorBar()}
 
       {/* SVG Map of Gram Panchayat Cadastral Boundaries */}
       {showGpsLayer && activeGpFeatures.length > 0 && blockGpsProjection && (
@@ -873,8 +909,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                       strokeWidth={isSelected ? 2.8 : 1.2}
                       style={{ cursor: "pointer", transition: "all 0.15s ease" }}
                       onClick={() => {
-                        onSelectGp(code);
-                        getForecastForGP(code);
+                        handleGpChange(String(code));
                         setClickedPopup({
                           x: cx || 300,
                           y: cy || 140,
@@ -927,33 +962,14 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
       {/* Main Interactive Cadastral Micro-Grid */}
       <div style={{ flex: 1, padding: "16px", overflowY: "auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))", gap: "10px" }}>
-          {(childrenUnits.length
-            ? childrenUnits
-            : activeGpFeatures.map((f: any) => ({
-                id: `gp:${f.properties?.gp_code}`,
-                name: f.properties?.gp_name,
-                level: "gp" as const,
-                lgd: f.properties?.gp_code,
-                n_children: 0,
-                n_gp_total: 1,
-                n_gp_scored: 1,
-                validated: true,
-                has_geometry: true,
-                risk_score: 35,
-                risk_band: "calm" as const,
-                dominant_driver: "rainfall",
-              }))
-          ).map((unit: any) => {
-            const colors = getUnitColor(unit);
-            const isSelected = selectedGpCode === unit.lgd;
+          {currentAvailableGps.map((gp: any) => {
+            const isSelected = selectedGpCode === gp.gp_code;
+            const colors = { fill: "#10B981", stroke: "#059669", text: "#FFFFFF" };
 
             return (
               <div
-                key={unit.id}
-                onClick={() => {
-                  onSelectGp(unit.lgd);
-                  getForecastForGP(unit.lgd);
-                }}
+                key={gp.gp_code}
+                onClick={() => handleGpChange(String(gp.gp_code))}
                 style={{
                   background: isSelected ? "#EFF6FF" : "#FFFFFF",
                   border: isSelected ? "2px solid #2563EB" : `1px solid ${colors.stroke}`,
@@ -965,6 +981,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                   position: "relative",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
                   <span
@@ -978,28 +995,28 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
                       color: colors.text,
                     }}
                   >
-                    {unit.validated ? `${unit.risk_score}% RISK` : "UNVALIDATED"}
+                    1km Downscaled
                   </span>
                   <span style={{ fontSize: "10px", fontFamily: "monospace", color: "#64748B" }}>
-                    #{unit.lgd}
+                    #{gp.gp_code}
                   </span>
                 </div>
 
                 <div
                   style={{
-                    fontWeight: 600,
+                    fontWeight: 700,
                     fontSize: "13px",
-                    color: "#0F172A",
+                    color: isSelected ? "#1D4ED8" : "#0F172A",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {unit.name}
+                  {gp.gp_name}
                 </div>
 
                 <div style={{ fontSize: "11px", color: "#64748B", marginTop: "4px" }}>
-                  <span>1km Downscaled Grid</span>
+                  <span>{gp.block_name || activeBlockName || "Sanwer"} Block</span>
                 </div>
               </div>
             );
@@ -1045,8 +1062,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
           <button
             type="button"
             onClick={() => {
-              onSelectGp(clickedPopup.lgd);
-              getForecastForGP(clickedPopup.lgd);
+              handleGpChange(String(clickedPopup.lgd));
               setClickedPopup(null);
             }}
             style={{
@@ -1129,10 +1145,7 @@ export const DrillDownMap: React.FC<DrillDownMapProps> = ({
         </div>
       )}
 
-      {/* Attribution Bar */}
-      <div style={{ padding: "6px 12px", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", fontSize: "11px", color: "#64748B", textAlign: "right" }}>
-        Boundaries: LGD / Bhuvan / community compilation (India Geodata). Not official survey-of-India boundaries.
-      </div>
+      {renderAttributionFooter()}
     </div>
   );
 };
